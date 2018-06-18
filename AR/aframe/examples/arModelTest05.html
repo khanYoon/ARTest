@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<script src="vendor/aframe/build/aframe-master.js"></script>
+<script src="vendor/aframe/build/aframe-extras.js"></script>
+<script src="vendor/aframe/build/utils.js"></script>
+<!-- include aframe-ar.js -->
+<script src="../build/aframe-ar2.js"></script>
+<script>
+
+
+var isRun = false;
+AFRAME.registerComponent('yeah', {
+	schema: {
+		loop: {type:"number", default:0}
+	},
+	user : document.querySelector('#user'),
+	init: function () {	
+		/*
+		var user = document.querySelector('#user');
+		var video = document.querySelector('#video');
+		video.addEventListener('click', function (evt) { 
+			alert("yeah - isRun : " + isRun + ", user : " + user); 
+			
+			if(isRun) {
+				isRun = false;
+				user.setAttribute("animation-mixer", "clip", "idle");
+				
+			} else {
+				isRun = true;
+				user.setAttribute("animation-mixer", "clip", "run");
+			}
+		}); 
+		*/
+	},
+	
+	tick: function(time, deltaTime) {
+		var user = document.querySelector('#user');
+		if(this.data.loop < 100) {
+			user.setAttribute("animation-mixer", "clip", "idle");
+			
+		} else if(this.data.loop > 100 && this.data.loop < 200) {
+			user.setAttribute("animation-mixer", "clip", "walk");
+			
+		} else {
+			user.setAttribute("animation-mixer", "clip", "run");
+		}
+	},
+	
+	tock: function(time, deltaTime) {
+		this.data.loop++;
+		if(this.data.loop > 300) {
+			this.data.loop = 0;
+		}
+		//alert(this.data.loop);
+	}
+});
+
+
+
+</script>
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<a-scene id="scene" embedded arjs="sourceType:webcam; maxDetectionRate:30; debugUiEnabled:false;">
+	<a-assets>
+		<a-asset-item id="bot" src="vendor/aframe/models/bot4.json"></a-asset-item>
+	</a-assets>
+	<a-marker preset="hiro" markerhandler="">
+		<a-entity id="user" userRun="" json-model="src:#bot" animation-mixer="clip: idle" position="0 0 0" scale="0.5 0.5 0.5">		
+		</a-entity>	
+		<a-video visible="true" yeah="" id="video" width=0.01 height=0.01 position="0.4 0.16 0.1" rotation="0 0 0"></a-video> 				
+	</a-marker>
+
+	<a-entity camera>
+		<a-entity cursor="fuse: true; fuseTimeout: 500">
+		</a-entity>  		
+	</a-entity>
+    </a-scene>	
+</body>
+<script>
+
+</script>
+</html>

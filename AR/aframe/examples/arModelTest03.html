@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<script src="vendor/aframe/build/aframe-master.js"></script>
+<script src="vendor/aframe/build/aframe-extras.js"></script>
+<script src="vendor/aframe/build/utils.js"></script>
+<!-- include aframe-ar.js -->
+<script src="../build/aframe-ar2.js"></script>
+<script>
+
+	
+<!-- AFRAME.registerComponent('runClick', { -->
+    <!-- // Could use a schem to preserve the color! then simply change it on update -->
+    <!-- // if clicked? -->
+    <!-- init: function () { -->
+ 
+    <!-- this.el.addEventListener('click', function (evt) { -->
+		<!-- document.getElementById('user').setAttribute("animation-mixer", "clip", "run"); -->
+    <!-- }); -->
+    <!-- } -->
+<!-- }); -->
+
+<!-- AFRAME.registerComponent('stopClick', { -->
+    <!-- // Could use a schem to preserve the color! then simply change it on update -->
+    <!-- // if clicked? -->
+    <!-- init: function () { -->
+ 
+    <!-- this.el.addEventListener('click', function (evt) { -->
+		<!-- document.getElementById('user').setAttribute("animation-mixer", "clip", "idle"); -->
+    <!-- }); -->
+    <!-- } -->
+<!-- }); -->
+
+
+
+</script>
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<a-scene embedded arjs="sourceType:webcam; maxDetectionRate:30; debugUiEnabled:false;">
+	<a-assets>
+		<a-asset-item id="bot" src="vendor/aframe/models/bot4.json"></a-asset-item>
+	</a-assets>
+	<a-marker preset="hiro" markerhandler="">
+		<a-entity id="user" json-model="src:#bot" animation-mixer="clip: idle" position="0 0 0" scale="0.5 0.5 0.5">		
+		</a-entity>	 		
+		<a-entity id="startButton" geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.4 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05">
+		</a-entity>
+		<a-entity id="stopButton"  geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.4 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05">
+		</a-entity>		
+	</a-marker>
+
+	<a-entity camera>
+		<a-entity cursor="fuse: true; fuseTimeout: 500">
+		</a-entity>  		
+	</a-entity>
+    </a-scene>
+<script>
+var startEl = document.querySelector('#startButton');
+var stopEl = document.querySelector('#stopButton');
+var targetEl = document.querySelector('#user');
+startEl.addEventListener('click', function() {
+ targetEl.setAttribute("animation-mixer", "clip", "run");
+});
+stopEl.addEventListener('click', function() {
+ targetEl.setAttribute("animation-mixer", "clip", "idle");
+});
+</script>	
+</body>
+</html>

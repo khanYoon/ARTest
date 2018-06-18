@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- include aframe -->
+<!-- <script src="vendor/aframe/build/aframe.js"></script> -->
+<script src="vendor/aframe/build/aframe-master.js"></script>
+<script src="vendor/aframe/build/aframe-extras.js"></script>
+<script src="vendor/aframe/build/utils.js"></script>
+<!-- include aframe-ar.js -->
+<script src="../build/aframe-ar2.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script> 
+
+<script>
+//alert(12356);
+/*
+AFRAME.registerComponent('artoolkit', { 
+	init: function () { 
+		//var sceneEl = document.querySelector('a-scene').querySelector('a-assets'); 
+		var sceneEl = document.querySelector('a-scene');
+		var startBtn = sceneEl.querySelector('#startButton'); 
+		//var canvas = document.getElementsByClassName('a-canvas'); 
+		startBtn.addEventListener('click', function () { 
+			alert(12345);
+		}, false); 
+	} 
+});
+*/
+</script>
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+	<!-- enable artoolkit on this scene -->
+	<!--<a-scene stats> -->
+	<a-scene stats embedded arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
+		<a-assets>
+			<a-asset-item id="bot" src="vendor/aframe/models/bot4.json"></a-asset-item>
+		</a-assets>
+		
+		<a-entity id="user" json-model="src:#bot" animation-mixer="clip: idle" position="0 0 0" scale="0.5 0.5 0.5">		
+		</a-entity>	 		
+		<a-entity id="startButton" mouse-cursor geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.4 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="run();"></a-entity>
+		<a-entity id="stopButton"  geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.4 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="stop();"></a-entity>
+		<a-marker-camera preset='hiro' mouse-cursor>				
+		</a-marker-camera>
+ 		<!--<a-entity arjs-hit-testing=""></a-entity> -->
+	</a-scene>
+	<script>
+	
+	function run() {	
+		document.getElementById('user').setAttribute("animation-mixer", "clip", "run");
+	}
+	 
+	function stop() {
+		document.getElementById('user').setAttribute("animation-mixer", "clip", "idle");
+	}
+	
+	
+	/*
+	AFRAME.registerComponent('markerhandler', {
+		init: function() {
+			AR-Object01 = document.querySelector('#startButton');
+			AR-Object01.addEventListener('click', function () {
+				alert('asjdklfasj');
+			});
+		}
+
+	});
+	*/
+	
+	document.querySelector('#startButton').addEventListener('click', function () {
+		alert('111');
+	});
+	document.querySelector('#stopButton').addEventListener('click', function () {
+		alert('222');
+	});
+	</script>	
+</body>
+</html>

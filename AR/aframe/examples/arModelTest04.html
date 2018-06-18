@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<script src="vendor/aframe/build/aframe-master.js"></script>
+<script src="vendor/aframe/build/aframe-extras.js"></script>
+<script src="vendor/aframe/build/utils.js"></script>
+<!-- include aframe-ar.js -->
+<script src="../build/aframe-ar2.js"></script>
+<script>
+
+
+var KVECTOR3 = {
+	back 	: new THREE.Vector3( 0,  0, -1),
+	down 	: new THREE.Vector3( 0, -1,  0),
+	forward : new THREE.Vector3( 0,  0,  1),
+	left 	: new THREE.Vector3(-1,  0,  0),
+	one 	: new THREE.Vector3( 1,  1,  1),
+	right 	: new THREE.Vector3( 1,  0,  0),
+	up 		: new THREE.Vector3( 0,  1,  0),
+	zero 	: new THREE.Vector3( 0,  0,  0)
+};
+
+var isRun = false;
+AFRAME.registerComponent('yeah', {
+
+	init: function () {		
+		var user = document.querySelector('#user');
+		var video = document.querySelector('#video');
+		video.addEventListener('click', function (evt) { 
+			alert("yeah - isRun : " + isRun + ", user : " + user); 
+			
+			if(isRun) {
+				isRun = false;
+				user.setAttribute("animation-mixer", "clip", "idle");
+			} else {
+				isRun = true;
+				user.setAttribute("animation-mixer", "clip", "run");
+			}
+		}); 
+	} 
+});
+
+AFRAME.registerComponent('userRun', { 
+	
+	  transform : {
+			entity : this.el,
+			translate : function(x, y, z) {
+				var positionTmp = this.positionTmp = this.positionTmp || {x: 0.0, y: 0.0, z: 0.0};
+				var position = this.entity.getAttribute('position');
+				positionTmp.x = position.x + x;
+				positionTmp.y = position.y + y;
+				positionTmp.z = position.z + z;
+				this.entity.setAttribute('position', positionTmp);
+	      	},
+	      	translateVector : function(velocity, delta) {
+	      		//TODO 오일러 방식에서 사원수 방식으로 전환고려필요 
+	      		var directionVector = new THREE.Vector3(0, 0, 0);
+	      		var rotation = this.entity.getAttribute('rotation');
+	      		directionVector.copy(velocity);
+	      		directionVector.multiplyScalar(delta);
+	      		if (!rotation) { return directionVector; }
+	      		var rotationEuler = new THREE.Euler(0, 0, 0, 'YXZ');
+	      		rotationEuler.set(THREE.Math.degToRad(rotation.x), THREE.Math.degToRad(rotation.y), THREE.Math.degToRad(rotation.z));
+	      		directionVector.applyEuler(rotationEuler);
+	      		
+	      		this.translate(directionVector.x, directionVector.y, directionVector.z);
+	      	}
+		},
+	
+	init : function() {
+		alert('userRUn');
+	},
+	
+	tick : function(time, timeDelta) {
+		
+		
+		if(isRun) {
+				user.setAttribute("animation-mixer", "clip", "idle");
+		} else {
+			alert('111');
+			this.transform.translateVector(KVECTOR3.forward, timeDelta);
+		}
+	}
+});
+
+</script>
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<a-scene id="scene" embedded arjs="sourceType:webcam; maxDetectionRate:30; debugUiEnabled:false;">
+	<a-assets>
+		<a-asset-item id="bot" src="vendor/aframe/models/bot4.json"></a-asset-item>
+	</a-assets>
+	<a-marker preset="hiro">
+		<a-entity id="user" userRun="" json-model="src:#bot" animation-mixer="clip: idle" position="0 0 0" scale="0.5 0.5 0.5">		
+		</a-entity>	
+		<a-video visible="true" yeah="" id="video" width=0.5 height=0.5 position="0.4 0.16 0.1" rotation="0 0 0"></a-video> 				
+	</a-marker>
+
+	<a-entity camera>
+		<a-entity cursor="fuse: true; fuseTimeout: 500">
+		</a-entity>  		
+	</a-entity>
+    </a-scene>	
+</body>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<script src="vendor/aframe/build/aframe-master.js"></script>
+<script src="vendor/aframe/build/aframe-extras.js"></script>
+<script src="vendor/aframe/build/utils.js"></script>
+<!-- include aframe-ar.js -->
+<script src="../build/aframe-ar2.js"></script>
+
+<body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
+<a-scene id="scene" embedded arjs="sourceType:webcam; maxDetectionRate:30; debugUiEnabled:false;">
+	<a-marker preset="hiro">
+		<a-box position="0 0 0" rotation="0 0 0" color="skyblue" event-set__enter="_event: mouseenter; material.color: yellowgreen; scale: 3 1 1" event-set__leave="_event: mouseleave; material.color: skyblue; scale: 1 1 1"> 
+			<a-animation attribute="rotation" begin="click" dur="500" fill="backwards" to="30 30 360">
+			</a-animation> 
+		</a-box>
+	</a-marker>     
+	<a-entity camera>
+		<a-entity cursor="fuse: true; fuseTimeout: 500">
+		</a-entity>  
+	</a-entity>
+</body>
+<script>
+
+</script>
+</html>
