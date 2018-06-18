@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>monoPoly Scene</title>
+		<script src="/aframe-inspector/js/jquery.min.js"></script>
+		<script src="/aframe-inspector/js/aframe-master.js"></script>
+		<script src="/aframe-inspector/js/aframe-animation-component.js"></script>
+		<script src="/aframe-gui-master/examples/js/aframe-gui.js"></script>
+		<script src="/aframe-inspector/js/utils.js"></script>
+		<script src="/kframe/components/text-geometry/examples/build.js"></script>
+		<script>
+		 AFRAME.registerComponent("user1-object", {
+			   init: function () {
+			     this.el.addEventListener("click", function (evt) {
+			    	 alert("1");
+			     });
+			   }
+			 });
+		</script>
+	</head>
+	<body>
+	<a-scene debug="false">
+		<a-assets>
+			<canvas id="canvasObj" crossorigin="anonymous" webkit-playsinline=""></canvas>
+	        <a-asset-item id="building-obj" src="/aframe-inspector/models/Building.obj">
+	        </a-asset-item>
+	        <a-asset-item id="building-mtl" src="/aframe-inspector/models/Building.mtl">
+	        </a-asset-item>
+			<a-asset-item id="house-obj" src="/aframe-inspector/models/HousF/HousF/houseF.obj">
+			</a-asset-item>
+			<a-asset-item id="house-mtl" src="/aframe-inspector/models/HousF/HousF/houseF.mtl">
+			</a-asset-item>
+			<a-asset-item id="tower-obj" src="/aframe-inspector/models/CNtower.obj">
+			</a-asset-item>
+			<a-asset-item id="tower-mtl" src="/aframe-inspector/models/CNtower.mtl">
+			</a-asset-item>
+			<a-asset-item id="korFont" src="/aframe-inspector/font/korea-font.json">
+			</a-asset-item>
+			
+		</a-assets>
+		
+		<!-- Lights -->
+		<a-entity id="ambientLight" light="type: ambient" position="22.4 10 2.4"></a-entity>
+		<!-- user -->
+		<a-entity id="user1" geometry="primitive:cylinder;height:3;radius:0.5" material="color:blue" position="12.42 0.2 12.42" scale="1.000 0.500 1.500" wasd-controls="" user1-object>
+			
+			<!-- 룰렛 -->
+			<a-gui-flex-container id="rouletteBoard" visible="false">
+				<a-entity position="0 1 0">
+				
+					<a-entity geometry="primitive : plane;height:1; width:2" material="color:blue" position="0 1.5 -3">
+						<!-- panel1 -->
+						<a-entity id="roulette1" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="-0.6 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- panel2 -->
+						<a-entity id="roulette2" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="0 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- Button -->
+						<a-entity id="startButton" cursor raycaster="far: 20; interval: 1000; objects: .clickable" geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.6 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05"></a-entity>
+						<a-entity id="stopButton" cursor raycaster="far: 20; interval: 1000; objects: .clickable" geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.6 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05"></a-entity>
+					</a-entity>
+	
+				</a-entity>
+			</a-gui-flex-container>
+			
+			<!-- 시작 confirm -->
+			<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
+			opacity="0.7" width="3.5" height="4.5"
+			position="-0.21 2.5 -4" rotation="0 0 0" visible="false">
+				<a-gui-label 
+					width="2.5" height="0.75"
+					value="시작하시겠습니까?"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-label>
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false, {fn:utils.objView, param:['rouletteBoard', true]})" key-code="32"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-button>
+	
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false);"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-button >
+				
+			</a-gui-flex-container>
+			
+			<!-- dialog -->
+			<a-gui-flex-container id="dialog"
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
+			opacity="0.7" width="3.5" height="4.5"
+			position="-0.21 2.5 -4" rotation="0 0 0" visible="false">
+				<a-gui-label 
+					width="2.5" height="0.75"
+					value="선택하세요"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-label>
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="utils.cameraOn('allViewCamera');utils.objView('dialog', false);utils.objView('allViewDialog', true)" key-code="32"
+					value="전체 보기"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-button>
+	
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="testButtonAction"
+					value="건물올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-button >
+				
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="utils.objView('dialog', false);utils.objView('rouletteBoard', true);"
+					value="다음"
+					font-family="Arial"
+					margin="0 0 0.05 0" visible="false">
+				</a-gui-button >
+	
+			</a-gui-flex-container>
+			
+			<!-- 시작 dialog -->
+			<a-gui-flex-container 
+			flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
+			opacity="0.7" width="3.5" height="4.5"
+			position="-0.21 2.5 -4" rotation="0 0 0" id="startDialog" visible="false">
+				
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="utils.objView('startDialog', false);utils.objView('rouletteBoard', true);"
+					value="시작"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+	
+			</a-gui-flex-container>
+			
+			<!-- 점수판 -->
+			<a-entity position="0 2.5 0">
+				
+				<a-entity id="score" geometry="primitive : plane; height:1; width:2" position="3.8 2 -3" material="color:red" visible="false">
+					<!-- panel1 -->
+					<a-entity id="userNm1" geometry="primitive : plane;height:0.2; width:0.7" material="color:white" position="-0.6 0.2 0.1" text="value: user1; align: center; width: 4; color: #333; zOffset: 0.01"></a-entity>
+					<a-entity id="scoreuser1" geometry="primitive : plane;height:0.2; width:0.9" material="color:white" position="0.3 0.2 0.1" text="value: 10000; align: center; width: 4; color: #333; zOffset: 0.01"></a-entity>
+					<a-entity id="userNm2" geometry="primitive : plane;height:0.2; width:0.7" material="color:white" position="-0.6 -0.15 0.1" text="value: user2; align: center; width: 4; color: #333; zOffset: 0.01"></a-entity>
+					<a-entity id="scoreuser2" geometry="primitive : plane;height:0.2; width:0.9" material="color:white" position="0.3 -0.15 0.1" text="value: 10000; align: center; width: 4; color: #333; zOffset: 0.01"></a-entity>
+				</a-entity>
+
+			</a-entity>
+			
+			<!-- user camera -->
+			<a-entity camera="active:true" id="userCamera"  look-controls="enabled:true;hmdEnabled:true" position="0 2.5 0" >
+				
+				<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+			</a-entity>
+		</a-entity>
+
+		<!-- Floor. -->
+		<a-entity id="floor" geometry="primitive: box; height: 0.1; depth: 24; width: 24" material="color: #fafafa; metalness: .1" scale="1 1.2 1" position="22.4 0 2.4" rotiation="0 0 0">
+			<a-entity id="bord1-1" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 10" rotation="270 0 0">
+	<!-- 			<a-entity id="building1-1" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072">
+				</a-entity>
+				<a-entity id="hous1-1" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0">
+				</a-entity> -->
+				<a-entity id="pan1-1" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord1-2" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 6" rotation="270 0 0">
+				<a-entity id="building1-2" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous1-2" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan1-2" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord1-3" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 2" rotation="270 0 0">
+				<a-entity id="building1-3" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous1-3" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan1-3" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord1-4" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 -2" rotation="270 0 0">
+				<a-entity id="building1-4" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous1-4" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan1-4" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord1-5" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 -6" rotation="270 0 0">
+				<a-entity id="building1-5" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous1-5" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan1-5" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord2-1" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 -10" rotation="270 0 0">
+				<a-entity id="building2-1" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous2-1" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan2-1" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord2-2" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-6 0.06 -10" rotation="270 0 0">
+				<a-entity id="building2-2" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous2-2" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan2-2" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord2-3" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-2 0.06 -10" rotation="270 0 0">
+				<a-entity id="building2-3" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous2-3" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan2-3" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord2-4" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="2 0.06 -10" rotation="270 0 0">
+				<a-entity id="building2-4" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous2-4" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan2-4" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord2-5" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="6 0.06 -10" rotation="270 0 0">
+				<a-entity id="building2-5" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous2-5" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan2-5" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord3-1" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="10 0.06 -10" rotation="270 0 0">
+				<a-entity id="building3-1" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous3-1" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan3-1" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord3-2" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="10 0.06 -6" rotation="270 0 0">
+				<a-entity id="building3-2" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous3-2" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan3-2" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord3-3" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="10 0.06 -2" rotation="270 0 0">
+				<a-entity id="building3-3" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous3-3" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan3-3" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord3-4" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="10 0.06 2" rotation="270 0 0">
+				<a-entity id="building3-4" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous3-4" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan3-4" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord3-5" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="10 0.06 6" rotation="270 0 0">
+				<a-entity id="building3-5" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous3-5" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan3-5" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord4-1" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="10 0.06 10" rotation="270 0 0">
+				<a-entity id="building4-1" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous4-1" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan4-1" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord4-2" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="6 0.06 10" rotation="270 0 0">
+				<a-entity id="building4-2" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous4-2" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan4-2" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord4-3" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="2 0.06 10" rotation="270 0 0">
+				<a-entity id="building4-3" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous4-3" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan4-3" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord4-4" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-2 0.06 10" rotation="270 0 0">
+				<a-entity id="building4-4" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous4-4" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan4-4" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+	        <a-entity id="bord4-5" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-6 0.06 10" rotation="270 0 0">
+				<a-entity id="building4-5" obj-model="obj:#building-obj; mtl:#building-mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="false">
+				</a-entity>
+				<a-entity id="hous4-5" obj-model="obj:#house-obj; mtl:#house-mtl;" scale="0.27 -41600 0.014" position="-1.4 -0.075 -0.072" rotation="270 0 0" visible="false">
+				</a-entity>
+				<a-entity id="pan4-5" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 30">
+				</a-entity>
+	        </a-entity>
+        </a-entity>
+		
+		<!-- allView -->
+		<a-entity id="allViewCamera" position="22.233 8.088 25" rotation="-20 0 0" scale="1.000 0.500 1.500" wasd-controls="">
+			
+			<!-- dialog -->
+			<a-gui-flex-container 
+				flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1" 
+				opacity="0.7" width="3.5" height="1.5"
+				position="-0.21 -1.1 -4" rotation="0 0 0" id="allViewDialog" visible="true">
+				<a-gui-button 
+					width="2.5" height="0.75"
+					onclick="utils.cameraOn('userCamera');utils.objView('dialog', true);utils.objView('allViewDialog', false);" key-code="32"
+					value="돌아가기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+	
+			</a-gui-flex-container>
+			
+			<a-entity camera="active:false" id="allViewCamera" scale="1.000 1.000 1.000" rotation="-24.229 0.000 0.000" look-controls="enabled:true;hmdEnabled:true">
+				<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+			</a-entity>
+			
+		</a-entity>
+		
+	</a-scene>
+	<script src="/aframe-inspector/dist/aframe-inspector.js"></script>
+	<script>
+		utils.init();
+	</script>
+</body>
+</html>

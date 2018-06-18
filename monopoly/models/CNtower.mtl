@@ -1,0 +1,176 @@
+newmtl antenna
+Kd 0.968627 0.968627 0.968627
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl base
+Kd 0.580392 0.580392 0.580392
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl base_leper
+Kd 0.968627 0.968627 0.968627
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl base_leper2
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl flatroof
+Kd 0.67451 0.67451 0.67451
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl floor
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl frame
+Kd 0.831373 0.831373 0.831373
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 0.33 0.33 0.33
+Ns 0
+Tr 0
+d 1
+Ni 0
+Tf 1 1 1
+
+newmtl glass
+Kd 0.257301 0.347394 0.458824
+Ke 0 0 0
+Ka 0.3 0.3 0.3
+Ks 0.7 0.7 0.7
+Ns 899
+Tr 0.5
+d 0.5
+Ni 1
+Tf 0.9 0.9 0.9
+
+newmtl glass_louvers
+Kd 0.337255 0.407843 0.486275
+Ke 0 0 0
+Ka 1 1 1
+Ks 1 1 1
+Ns 400
+Tr 0.05
+d 0.95
+Ni 1
+Tf 1 1 1
+
+newmtl louvers
+Kd 0.352941 0.392157 0.486275
+Ke 0 0 0
+Ka 1 1 1
+Ks 1 1 1
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl roof_beige
+Kd 0.768627 0.760784 0.72549
+Ke 0 0 0
+Ka 1 1 1
+Ks 1 1 1
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Tower-red
+Kd 0.580392 0.188912 0.234969
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl wall
+Kd 0.866667 0.854902 0.792157
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl wall_coping
+Kd 0.690196 0.666667 0.52549
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl wall_grey
+Kd 0.733333 0.733333 0.733333
+Ke 0 0 0
+Ka 1 1 1
+Ks 1 1 1
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl wall_red
+Kd 0.580392 0.188912 0.234969
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+

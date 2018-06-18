@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>monoPoly Scene</title>
+		<script src="/monopoly/js/aframe-master.js"></script>
+		<script src="/monopoly/js/aframe-extras.js"></script>
+
+	</head>
+	<body>
+		<a-scene>
+			<a-camera><a-cursor></a-cursor></a-camera>
+<!-- 			<a-entity position="0 0 -10" scale="2 3 2"></a-entity> -->
+			<a-entity position="0 0 -10" scale="2 3 2" json-model="src:url(/monopoly/models/trump/monster.json)" animation-mixer="clip:" visable="true"></a-entity>
+
+			<script type="text/javascript">
+				// document.querySelector("a-scene").addEventListener("click", function(evt){
+				// 	document.querySelector("a-entity").setAttribute("animation-mixer", "clip:Run; autoplay:true;")
+				// })
+			</script>
+		</a-scene>
+		<!-- <script src="/aframe-extras-master/src/loaders/json-model.js"></script> -->
+		<script src="/monopoly/dist/aframe-inspector.js"></script>
+	</body>
+</html>
