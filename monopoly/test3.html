@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="utf-8">
 		<title>monoPoly Scene</title>
-		<script src="/monopoly/js/aframe-master.js"></script>
-		<script src="/monopoly/js/aframe-extras.js"></script>
-		<script src="/monopoly/js/aframe-gui.js"></script>
-		<script src="/monopoly/js/utils.js"></script>
-		<script src="/monopoly/js/text-geometry/build.js"></script>
-		<script src="/monopoly/js/aframe-environment-component.min.js"></script>
+		<script src="/js/aframe-master.js"></script>
+		<script src="/js/aframe-extras.js"></script>
+		<script src="/js/aframe-gui.js"></script>
+		<script src="/js/utils.js"></script>
+		<script src="/js/text-geometry/build.js"></script>
+		<script src="/js/aframe-environment-component.min.js"></script>
 	</head>
-	<body class="a-body" >	
+	<body class="a-body" >
 	<!-- scene BackGround 속성  확인완료  -->
 	<!-- scene debug 속성  확인완료  -->
 	<!-- scene fog 속성  확인완료 -->
@@ -25,24 +25,24 @@
 <!-- 			<canvas class="a-canvas" data-aframe-canvas="true" width="300" height="150" ></canvas> -->
 			<canvas class="canvas2" data-aframe-canvas="true" width="300" height="150" crossorigin="anonymous" webkit-playsinline=""></canvas>
 			<!-- <canvas id="canvasObj" crossorigin="anonymous" webkit-playsinline=""></canvas> -->
-			<!-- <a-asset-item id="wolf" src="/monopoly/models/wolf.dae"></a-asset-item> -->
+			<!-- <a-asset-item id="wolf" src="/models/wolf.dae"></a-asset-item> -->
 			<a-mixin id="move" attribute="position" direction="alternate" dur="4096" fill="forwards" easing="linear" repeat="indefinite"></a-mixin>
 			<a-mixin id="box" geometry="primitive: torusKnot; p: 3; q: 11; radiusTubular: .5;
 			                                    radius: 10" material="color: #2F3C4F"></a-mixin>
 			<a-mixin id="spin" attribute="rotation" dur="4096" to="-360 0 0" easing="linear" repeat="indefinite"></a-mixin>
 			<!-- <img id="louvre" src="louvre.jpg">		 -->
-			<a-asset-item id="trump_json" src="/monopoly/models/trump/bot4.json"></a-asset-item>
-<!-- 			<a-asset-item id="mega_scene" src="/monopoly/models/mega_scene/scene.gltf"></a-asset-item>	
-			<a-asset-item id="building_obj" src="/monopoly/models/Building.obj"></a-asset-item>
-	        <a-asset-item id="building_mtl" src="/monopoly/models/Building.mtl"></a-asset-item> -->
- 			<audio id="rain" src="/monopoly/models/Rains.mp3" preload="auto"></audio>	        
+			<a-asset-item id="trump_json" src="/models/trump/bot4.json"></a-asset-item>
+<!-- 			<a-asset-item id="mega_scene" src="/models/mega_scene/scene.gltf"></a-asset-item>
+			<a-asset-item id="building_obj" src="/models/Building.obj"></a-asset-item>
+	        <a-asset-item id="building_mtl" src="/models/Building.mtl"></a-asset-item> -->
+ 			<audio id="rain" src="/models/Rains.mp3" preload="auto"></audio>
 		</a-assets>
-		
+
 		<!-- a-entity camera 속성 확인완료 -->
 		<!-- a-entity look-controls 속성 확인완료 -->
 		<!-- a-entity wasd-controls 속성 확인완료 -->
-		
- 		<a-entity id="camera" camera="active:true; far:10000; fov:80; near:0.005; zoom:3; spectator:false" wasd-controls="" look-controls="" position="13.5 1.5 13.5">				
+
+ 		<a-entity id="camera" camera="active:true; far:10000; fov:80; near:0.005; zoom:3; spectator:false" wasd-controls="" look-controls="" position="13.5 1.5 13.5">
 			<!-- a-entity cursor 속성 fuse :false = desktop , false = mobile //DownEvents, upEvents 확인되지 않음. -->
 			<a-entity cursor="fuse:false; fuseTimeout:1500;" geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.016" material="color:#EEE" position="0 0 -1" raycaster="">
 			</a-entity>
@@ -54,21 +54,21 @@
 				</a-entity>
 	        </a-entity>
 		</a-entity>
-		
+
 		<!-- fog 속성   test entity -->
 		<a-entity mixin="box" position="-30 0 0" geometry="" material="" rotation="">
 		<a-animation mixin="move" to="-100 0 0"></a-animation>
 		<a-animation mixin="spin"></a-animation>
-		</a-entity>	
-			
+		</a-entity>
+
 		<!-- a-entity collada-model 속성 확인 완료 -->
 		<a-entity id="wolfs" collada-model="#wolf" position="12.5 3.75 6.5">
-		</a-entity>	
-		
+		</a-entity>
+
 		<!-- geometry box -->
 		<a-entity id="geoBox" position ="0 1 0" geometry="primitive: box; width: 1; height: 1; depth: 1"></a-entity>
 		<!-- geometry circle -->
-		<a-entity id="geocircle" position ="2 1 1"  geometry="primitive: circle; radius: 1" material="side: double"></a-entity>		
+		<a-entity id="geocircle" position ="2 1 1"  geometry="primitive: circle; radius: 1" material="side: double"></a-entity>
 		<!-- geometry cone -->
 		<a-entity id="geocone" position ="5 1 1" geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1"></a-entity>
 		<!-- geometry cylinder -->
@@ -85,7 +85,7 @@
 		<!-- geometry octahedron -->
 		<a-entity id="geooctahedron" position ="-5 1 1" geometry="primitive: octahedron"></a-entity>
 		<!-- geometry plane -->
-		<a-entity id="geoplane" position ="-5 5 1" scale="0.2 0.2 0.2"  geometry="primitive: plane; height: 10; width: 10" material="side: double"></a-entity>		
+		<a-entity id="geoplane" position ="-5 5 1" scale="0.2 0.2 0.2"  geometry="primitive: plane; height: 10; width: 10" material="side: double"></a-entity>
 		<!-- geometry ring -->
 		<a-entity id="georing" position ="-8 1 1" geometry="primitive: ring; radiusInner: 0.5; radiusOuter: 1"
           material="side: double"></a-entity>
@@ -96,7 +96,7 @@
 		<!-- geometry tetrahedron -->
 		<a-entity id="geotrahedron" position ="-12 5 1" geometry="primitive: tetrahedron; radius: 2"></a-entity>
 		<!-- geometry torus -->
-		<a-entity id="geotorus" position ="-7 1 -6" geometry="primitive: torus; radius: 2; radiusTubular: 0.5; arc: 180"></a-entity>		
+		<a-entity id="geotorus" position ="-7 1 -6" geometry="primitive: torus; radius: 2; radiusTubular: 0.5; arc: 180"></a-entity>
 		<!-- geometry torusKnot -->
 		<a-entity id="geotorusKnot" position ="-1 1 -4" geometry="primitive: torusKnot; p: 3; q:7"></a-entity>
 		<!-- geometry triangle -->
@@ -104,38 +104,38 @@
 		<!-- geometry end -->
 
 		<!-- jsonModel 확인완료   -->
-		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000" wasd-controls="">		
+		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000" wasd-controls="">
 		</a-entity>
-		
+
 <!-- <!-- 		gltf-model 확인완료
 		<a-entity id="megaScenes" gltf-model="#mega_scene">		 -->
 		</a-entity> -->
-		
+
 		<!-- Lights 확인완료 -->
-		
+
 		<a-entity id="ambientLight" light="type: ambient; color: #CCC"></a-entity>
-		
+
 		<a-entity id="directLight" light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
-		
+
 		<a-entity id="hemisphereLight" light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 2"></a-entity>
-		
+
 		<a-entity id="spotLight" light="type: spot; angle: 45"></a-entity>
-		
+
 		<!-- Lights Ends  -->
 
-		<!-- Line 확인완료   -->				
+		<!-- Line 확인완료   -->
 		<a-entity id="line" position="0 2.5 11" line="start: 0, 1, 0; end: 2 0 -5; color: red"
-          line__2="start: -2, 4, 5; end: 0 4 -3; color: green"></a-entity>	
-		
+          line__2="start: -2, 4, 5; end: 0 4 -3; color: green"></a-entity>
+
 		<!-- position 확인완료  -->
 		<!-- Scale 확인완료 -->
 		<!-- Rotation 확인완료 -->
-		<!-- Link 확인완료   -->	
-		<!-- stats 확인완료   -->	
+		<!-- Link 확인완료   -->
+		<!-- stats 확인완료   -->
 		<a-entity position="15.5 2.5 13.5" rotation="0 90 0" link="href: test1.html; title: MonoPoly;"></a-entity>
-		
-		<!-- obj-model 확인완료   -->	
-		<!-- visible 확인완료   -->	
+
+		<!-- obj-model 확인완료   -->
+		<!-- visible 확인완료   -->
 		<a-entity id="bord4-4" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-2 0.06 10" rotation="270 0 0">
 	<!-- 		<a-entity id="building4-4" building="" obj-model="obj:#building_obj; mtl:#building_mtl;" rotation="270 0 0" scale="-2.5 -150000 0.1" position="-1.45 0.078 -0.072" visible="true">
 			</a-entity> -->
@@ -145,16 +145,16 @@
         <!-- Sound 확인완료   -->
         <a-entity id="rain1" geometry="primitive: box" sound="on: mouseenter;src: #rain;" position="15.5 2.5 10.5" ></a-entity>
         <!-- text 확인완료   -->
-        <a-entity text="value: Hello World;color:blue;" position="14 1.5 12.5"></a-entity>	 				
+        <a-entity text="value: Hello World;color:blue;" position="14 1.5 12.5"></a-entity>
 	</a-scene>
-    <script src="/monopoly/dist/aframe-inspector.js"></script>
+    <script src="/dist/aframe-inspector.js"></script>
     <script>
     	document.querySelector('a-scene').components.screenshot.getCanvas('equirectangular');
     	document.querySelector('a-scene').components.screenshot.capture('perspective')
     </script>
-  
+
   <!-- 아래 주석 해제 후 위의 a-scene부터 script 까지 주석 한다음 확인 가능 embedded 속성  -->
-<!-- 	
+<!--
 	<style>
 		  #myEmbeddedScene {
 		    width:100%;
@@ -172,7 +172,7 @@
 				<a-plane rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
 			</a-scene>
 		</div> -->
-		<!-- 
+		<!--
 		test해보지 못한것
 		daydream-controls
 		gearvr-controls
@@ -183,7 +183,7 @@
 		rayCaster
 		tracked-controls
 		vive-controls
-		windows-motion-controls		
+		windows-motion-controls
 		  -->
   </body>
 </html>
