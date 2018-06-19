@@ -3,12 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<title>monoPoly Scene</title>
-		<script src="/js/aframe-master.js"></script>
-		<script src="/js/aframe-extras.js"></script>
-		<script src="/js/aframe-gui.js"></script>
-		<script src="/js/utils.js"></script>
-		<script src="/js/text-geometry/build.js"></script>
-		<script src="/js/aframe-environment-component.min.js"></script>
+		<script src="js/aframe-master.js"></script>
+		<script src="js/aframe-extras.js"></script>
+		<script src="js/aframe-gui.js"></script>
+		<script src="js/utils.js"></script>
+		<script src="js/text-geometry/build.js"></script>
+		<script src="js/aframe-environment-component.min.js"></script>
 	</head>
 	<body class="a-body" >
 	<!-- scene BackGround 속성  확인완료  -->
@@ -25,17 +25,17 @@
 <!-- 			<canvas class="a-canvas" data-aframe-canvas="true" width="300" height="150" ></canvas> -->
 			<canvas class="canvas2" data-aframe-canvas="true" width="300" height="150" crossorigin="anonymous" webkit-playsinline=""></canvas>
 			<!-- <canvas id="canvasObj" crossorigin="anonymous" webkit-playsinline=""></canvas> -->
-			<!-- <a-asset-item id="wolf" src="/models/wolf.dae"></a-asset-item> -->
+			<!-- <a-asset-item id="wolf" src="models/wolf.dae"></a-asset-item> -->
 			<a-mixin id="move" attribute="position" direction="alternate" dur="4096" fill="forwards" easing="linear" repeat="indefinite"></a-mixin>
 			<a-mixin id="box" geometry="primitive: torusKnot; p: 3; q: 11; radiusTubular: .5;
 			                                    radius: 10" material="color: #2F3C4F"></a-mixin>
 			<a-mixin id="spin" attribute="rotation" dur="4096" to="-360 0 0" easing="linear" repeat="indefinite"></a-mixin>
 			<!-- <img id="louvre" src="louvre.jpg">		 -->
-			<a-asset-item id="trump_json" src="/models/trump/bot4.json"></a-asset-item>
-<!-- 			<a-asset-item id="mega_scene" src="/models/mega_scene/scene.gltf"></a-asset-item>
-			<a-asset-item id="building_obj" src="/models/Building.obj"></a-asset-item>
-	        <a-asset-item id="building_mtl" src="/models/Building.mtl"></a-asset-item> -->
- 			<audio id="rain" src="/models/Rains.mp3" preload="auto"></audio>
+			<a-asset-item id="trump_json" src="models/trump/bot4.json"></a-asset-item>
+<!-- 			<a-asset-item id="mega_scene" src="models/mega_scene/scene.gltf"></a-asset-item>
+			<a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
+	        <a-asset-item id="building_mtl" src="models/Building.mtl"></a-asset-item> -->
+ 			<audio id="rain" src="models/Rains.mp3" preload="auto"></audio>
 		</a-assets>
 
 		<!-- a-entity camera 속성 확인완료 -->
