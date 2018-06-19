@@ -1,5 +1,4 @@
 /* global AFRAME */
-
 AFRAME.registerComponent('ar', {
   schema: {
     takeOverCamera: {default: true},
