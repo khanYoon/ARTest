@@ -5,13 +5,13 @@
     <title>Hello, World! • A-Frame ar</title>
     <!--<script src="https://rawgit.com/aframevr/aframe/master/dist/aframe-master.min.js"></script> -->
     <script src="../js/aframe-master.js"></script>
-    <script src="https://rawgit.com/google-ar/three.ar.js/master/dist/three.ar.min.js"></script>
+    <script src="../dist/three.ar.min.js"></script>
     <script src="https://rawgit.com/chenzlabs/aframe-ar/master/dist/aframe-ar.min.js"></script>
     <script src="https://aframe-ar-plane.glitch.me/grid-shader.js"></script>
     <script src="https://aframe-ar-plane.glitch.me/polygon.js"></script>
     <script src="https://aframe-ar-plane.glitch.me/planes-example.js"></script>
     <script>
-      alert('load1');
+      alert('load2');
          AFRAME.registerComponent('thing', {
            init: function () {
              this.el.setAttribute('geometry', {primitive:'box', width:0.01, depth:0.01, height:1});
