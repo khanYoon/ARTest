@@ -11,7 +11,7 @@
     alert('gogo1');
 AFRAME.registerComponent('go', {
   tick : function(a,b) {
-    this.transform.translateVector(new THREE.Vector3( 0,  0,  1), b);
+    this.transform.translateVector(new THREE.Vector3( 0,  0,  -1), b);
   }
 }
     </script>
