@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World! • A-Frame ar</title>
+    <meta name="description" content="Hello, World! • A-Frame three.ar.js">
+    <script src="../js/aframe-master.js"></script>
+    <script src="../dist/three.ar.js"></script>
+    <script src="../dist/aframe-ar.js"></script>
+    <script src="../dist/aframe-extras.js"></script>
+  </head>
+  <body>
+    <a-scene ar>
+      <a-assets>
+        <a-asset-item id="trump_json" src="models/bot4.json"></a-asset-item>
+      </a-assets>
+      <a-entity id="user1" json-model="src:#trump_json" animation-mixer="clip: idle" position="-0.25 0.125 -0.75" scale="1.000 1.000 1.000">
+      </a-entity>
+      <a-box scale="0.25 0.25 0.25" position="-0.25 0.125 -0.75" rotation="0 45 0" color="#4CC3D9" shadow></a-box>
+      <a-sphere scale="0.25 0.25 0.25" position="0 0.3125 -1.25" radius="1.25" color="#EF2D5E" shadow></a-sphere>
+      <a-cylinder scale="0.25 0.25 0.25" position="0.25 0.1875 -0.75" radius="0.5" height="1.5" color="#FFC65D" shadow></a-cylinder>
+      <a-plane scale="0.25 0.25 0.25" position="0 0 -1" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" shadow></a-plane>
+    </a-scene>
+  </body>
+</html>
