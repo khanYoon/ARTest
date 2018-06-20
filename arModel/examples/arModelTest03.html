@@ -15,7 +15,7 @@
           user.setAttribute('animation-mixer','clip', 'run');
         },
         tick : function(a,b) {
-          this.transform.translateVector(new THREE.Vector3( 0,  0,  -0.001), b);
+          this.transform.translateVector(new THREE.Vector3( 0,  0,  0.001), b);
         }
       });
     </script>
@@ -28,7 +28,7 @@
         <a-asset-item id="hall_obj" src="../models/hall.obj"></a-asset-item>
       </a-assets>
 
-     <a-entity obj-model="obj:#hall_obj; mtl=#hall_mtl" position="0 0 0" scale="0.1 0.1 0.1">
+     <a-entity obj-model="obj:#hall_obj;" position="0 0 0" scale="1 1 1">
      </a-entity>
       <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.25 0.125 -0.75" scale="1.000 1.000 1.000">
       </a-entity>
