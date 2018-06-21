@@ -9,12 +9,15 @@
     <script src="../dist/aframe-ar.js"></script>
     <script src="../dist/aframe-extras.js"></script>
 
-    <script src="../js/lzma.js"></script>
-    <script src="../js/ctm.js"></script>
-    <script src="../js/CTMLoader.js"></script>
-
-    <script src="../js/ctm_component.js"></script>
+    <script src="../js/aframe-teleport-controls.min.js"></script>
+    <script src="../js/spheres_anim.js"></script>
+    <script src="../js/anim_1.js"></script>
+    <script src="../js/anim_2.js"></script>
     <script src="../js/mocap.js"></script>
+    <script src="../js/envMapMaterial.js"></script>
+    <script src="../js/ctm_component.js"></script>
+    <script src="../js/mobile_component.js"></script>
+
     <script>
       AFRAME.registerComponent('go', {
         init : function() {
@@ -115,7 +118,32 @@
         <!-- david_bike_hall_3 -->
         <a-asset-item id="david_bike_hall_3-ctm" src="../models/david_bike_hall_3.ctm"></a-asset-item>
 
+
+        <!-- mocaps -->
+        <a-asset-item id="am_threejs_CEC_BODY_1_HEAD-mocap" src="../js/am_threejs_CEC_BODY_1_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_1_LEFT-mocap" src="../js/am_threejs_CEC_BODY_1_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_1_RIGHT-mocap" src="../js/am_threejs_CEC_BODY_1_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_2_HEAD-mocap" src="../js/am_threejs_CEC_BODY_2_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_2_LEFT-mocap" src="../js//am_threejs_CEC_BODY_2_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_2_RIGHT-mocap" src="../js/am_threejs_CEC_BODY_2_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_3_HEAD-mocap" src="../js/am_threejs_CEC_BODY_3_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_3_LEFT-mocap" src="../js/am_threejs_CEC_BODY_3_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_3_RIGHT-mocap" src="../js/am_threejs_CEC_BODY_3_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_4_HEAD-mocap" src="../js/am_threejs_CEC_BODY_4_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_4_LEFT-mocap" src="../js/am_threejs_CEC_BODY_4_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_4_RIGHT-mocap" src="../js/am_threejs_CEC_BODY_4_RIGHT.js"></a-asset-item>
+        <!-- - mocaps -->
+
       </a-assets>
+
+
+      <a-entity spheres="" material="shader: envMapMaterial; src:textures/cube/hall/; " position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity anim_1="" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity anim_2="" position="" rotation="" scale="" visible=""></a-entity>
+
       <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
       <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
       <a-entity obj-model="obj: #castle_lake-obj;" material="src: #castle_lake-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
@@ -150,6 +178,34 @@
       <a-entity ctm="src: #david_bike_hall_3-ctm; name:david_bike_hall_3;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
 
       <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.25 -1 -5" scale="1.000 1.000 1.000"></a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_1_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_1_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_1_RIGHT-mocap;
+                       totalFrames:645;
+                       torsoPosition: 0 -0.4 0.05" position="0 -1 -1" rotation="0 -90 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_2_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_2_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_2_RIGHT-mocap;
+                       totalFrames:626;
+                       torsoPosition: 0.0 -0.4 0.05" position="0 -1 -1" rotation="0 -90 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_3_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_3_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_3_RIGHT-mocap;
+                       totalFrames:600;
+                       torsoPosition: 0 -0.4 0.05" position="0 -1 -1" rotation="0 -90 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_4_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_4_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_4_RIGHT-mocap;
+                       totalFrames:7050;
+                       torsoPosition: -0.05 -0.4 0.0" position="0 -1 -1" rotation="0 0 0" scale="" visible="">
+      </a-entity>
 
     </a-scene>
   </body>
