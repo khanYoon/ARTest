@@ -1,0 +1,315 @@
+<html class="a-html"><head>
+    <meta charset="utf-8">
+    <title>Cecropia's The Hall VR in A-Frame</title>
+
+
+    <meta property="og:title" content="Cecropia's The Hall VR in A-Frame">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cecropia.github.io/thehallaframe/">
+    <meta property="og:image" content="https://cecropia.github.io/thehallaframe/screenshots/thehall1.jpg">
+    <meta property="og:description" content="WebVR demo that displays art ">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="twitter:title" content="Cecropia's The Hall VR in A-Frame">
+    <meta name="twitter:description" content="WebVR demo that displays art ">
+    <meta name="twitter:image" content="https://cecropia.github.io/thehallaframe/screenshots/thehall1.jpg">
+
+
+
+
+    <link rel="icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <meta name="description" content="Cecropia's The Hall VR in A-Frame">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta aframe-injected="" name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,shrink-to-fit=no,user-scalable=no,minimal-ui"><meta aframe-injected="" name="mobile-web-app-capable" content="yes"><meta aframe-injected="" name="theme-color" content="black"><script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="js/aframe.0.7.0.min.js"></script><style type="text/css" data-href="src\style\aframe.css">.a-html{bottom:0;left:0;position:fixed;right:0;top:0}.a-body{height:100%;margin:0;overflow:hidden;padding:0;width:100%}:-webkit-full-screen{background-color:transparent}.a-hidden{display:none!important}.a-canvas{height:100%;left:0;position:absolute;top:0;width:100%}.a-canvas.a-grab-cursor:hover{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}.a-canvas.a-grab-cursor:active,.a-grabbing{cursor:grabbing;cursor:-moz-grabbing;cursor:-webkit-grabbing}// Class is removed when doing <a-scene embedded>. a-scene.fullscreen .a-canvas{width:100%!important;height:100%!important;top:0!important;left:0!important;right:0!important;bottom:0!important;z-index:999999!important;position:fixed!important}.a-inspector-loader{background-color:#ed3160;position:fixed;left:3px;top:3px;padding:6px 10px;color:#fff;text-decoration:none;font-size:12px;font-family:Roboto,sans-serif;text-align:center;z-index:99999;width:204px}@keyframes dots-1{from{opacity:0}25%{opacity:1}}@keyframes dots-2{from{opacity:0}50%{opacity:1}}@keyframes dots-3{from{opacity:0}75%{opacity:1}}@-webkit-keyframes dots-1{from{opacity:0}25%{opacity:1}}@-webkit-keyframes dots-2{from{opacity:0}50%{opacity:1}}@-webkit-keyframes dots-3{from{opacity:0}75%{opacity:1}}.a-inspector-loader .dots span{animation:dots-1 2s infinite steps(1);-webkit-animation:dots-1 2s infinite steps(1)}.a-inspector-loader .dots span:first-child+span{animation-name:dots-2;-webkit-animation-name:dots-2}.a-inspector-loader .dots span:first-child+span+span{animation-name:dots-3;-webkit-animation-name:dots-3}a-scene{display:block;position:relative;height:100%;width:100%}a-assets,a-scene audio,a-scene img,a-scene video{display:none}.a-enter-vr-modal,.a-orientation-modal{font-family:Consolas,Andale Mono,Courier New,monospace}.a-enter-vr-modal a{border-bottom:1px solid #fff;padding:2px 0;text-decoration:none;transition:.1s color ease-in}.a-enter-vr-modal a:hover{background-color:#fff;color:#111;padding:2px 4px;position:relative;left:-4px}.a-enter-vr{font-family:sans-serif,monospace;font-size:13px;width:100%;font-weight:200;line-height:16px;position:absolute;right:20px;bottom:20px}.a-enter-vr.embedded{right:5px;bottom:5px}.a-enter-vr-button,.a-enter-vr-modal,.a-enter-vr-modal a{color:#fff}.a-enter-vr-button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245.82%20141.73%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3Bfill-rule%3Aevenodd%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Ctitle%3Emask%3C%2Ftitle%3E%3Cpath%20class%3D%22a%22%20d%3D%22M175.56%2C111.37c-22.52%2C0-40.77-18.84-40.77-42.07S153%2C27.24%2C175.56%2C27.24s40.77%2C18.84%2C40.77%2C42.07S198.08%2C111.37%2C175.56%2C111.37ZM26.84%2C69.31c0-23.23%2C18.25-42.07%2C40.77-42.07s40.77%2C18.84%2C40.77%2C42.07-18.26%2C42.07-40.77%2C42.07S26.84%2C92.54%2C26.84%2C69.31ZM27.27%2C0C11.54%2C0%2C0%2C12.34%2C0%2C28.58V110.9c0%2C16.24%2C11.54%2C30.83%2C27.27%2C30.83H99.57c2.17%2C0%2C4.19-1.83%2C5.4-3.7L116.47%2C118a8%2C8%2C0%2C0%2C1%2C12.52-.18l11.51%2C20.34c1.2%2C1.86%2C3.22%2C3.61%2C5.39%2C3.61h72.29c15.74%2C0%2C27.63-14.6%2C27.63-30.83V28.58C245.82%2C12.34%2C233.93%2C0%2C218.19%2C0H27.27Z%22%2F%3E%3C%2Fsvg%3E) 50% 50%/70% 70% no-repeat rgba(0,0,0,.35);border:0;bottom:0;cursor:pointer;min-width:50px;min-height:30px;padding-right:5%;padding-top:4%;position:absolute;right:0;transition:background-color .05s ease;-webkit-transition:background-color .05s ease;z-index:9999}.a-enter-vr-button:active,.a-enter-vr-button:hover{background-color:#666}[data-a-enter-vr-no-webvr] .a-enter-vr-button{border-color:#666;opacity:.65}[data-a-enter-vr-no-webvr] .a-enter-vr-button:active,[data-a-enter-vr-no-webvr] .a-enter-vr-button:hover{background-color:rgba(0,0,0,.35);cursor:not-allowed}.a-enter-vr-modal{background-color:#666;border-radius:0;display:none;min-height:32px;margin-right:70px;padding:9px;width:280px;right:2%;position:absolute}.a-enter-vr-modal:after{border-bottom:10px solid transparent;border-left:10px solid #666;border-top:10px solid transparent;display:inline-block;content:'';position:absolute;right:-5px;top:5px;width:0;height:0}.a-enter-vr-modal a,.a-enter-vr-modal p{display:inline}.a-enter-vr-modal p{margin:0}.a-enter-vr-modal p:after{content:' '}[data-a-enter-vr-no-headset].a-enter-vr:hover .a-enter-vr-modal,[data-a-enter-vr-no-webvr].a-enter-vr:hover .a-enter-vr-modal{display:block}.a-orientation-modal{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%2090%2090%22%20enable-background%3D%22new%200%200%2090%2090%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%220%2C0%200%2C0%200%2C0%20%22%3E%3C/polygon%3E%3Cg%3E%3Cpath%20d%3D%22M71.545%2C48.145h-31.98V20.743c0-2.627-2.138-4.765-4.765-4.765H18.456c-2.628%2C0-4.767%2C2.138-4.767%2C4.765v42.789%20%20%20c0%2C2.628%2C2.138%2C4.766%2C4.767%2C4.766h5.535v0.959c0%2C2.628%2C2.138%2C4.765%2C4.766%2C4.765h42.788c2.628%2C0%2C4.766-2.137%2C4.766-4.765V52.914%20%20%20C76.311%2C50.284%2C74.173%2C48.145%2C71.545%2C48.145z%20M18.455%2C16.935h16.344c2.1%2C0%2C3.808%2C1.708%2C3.808%2C3.808v27.401H37.25V22.636%20%20%20c0-0.264-0.215-0.478-0.479-0.478H16.482c-0.264%2C0-0.479%2C0.214-0.479%2C0.478v36.585c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h7.507v7.644%20%20%20h-5.534c-2.101%2C0-3.81-1.709-3.81-3.81V20.743C14.645%2C18.643%2C16.354%2C16.935%2C18.455%2C16.935z%20M16.96%2C23.116h19.331v25.031h-7.535%20%20%20c-2.628%2C0-4.766%2C2.139-4.766%2C4.768v5.828h-7.03V23.116z%20M71.545%2C73.064H28.757c-2.101%2C0-3.81-1.708-3.81-3.808V52.914%20%20%20c0-2.102%2C1.709-3.812%2C3.81-3.812h42.788c2.1%2C0%2C3.809%2C1.71%2C3.809%2C3.812v16.343C75.354%2C71.356%2C73.645%2C73.064%2C71.545%2C73.064z%22%3E%3C/path%3E%3Cpath%20d%3D%22M28.919%2C58.424c-1.466%2C0-2.659%2C1.193-2.659%2C2.66c0%2C1.466%2C1.193%2C2.658%2C2.659%2C2.658c1.468%2C0%2C2.662-1.192%2C2.662-2.658%20%20%20C31.581%2C59.617%2C30.387%2C58.424%2C28.919%2C58.424z%20M28.919%2C62.786c-0.939%2C0-1.703-0.764-1.703-1.702c0-0.939%2C0.764-1.704%2C1.703-1.704%20%20%20c0.94%2C0%2C1.705%2C0.765%2C1.705%2C1.704C30.623%2C62.022%2C29.858%2C62.786%2C28.919%2C62.786z%22%3E%3C/path%3E%3Cpath%20d%3D%22M69.654%2C50.461H33.069c-0.264%2C0-0.479%2C0.215-0.479%2C0.479v20.288c0%2C0.264%2C0.215%2C0.478%2C0.479%2C0.478h36.585%20%20%20c0.263%2C0%2C0.477-0.214%2C0.477-0.478V50.939C70.131%2C50.676%2C69.917%2C50.461%2C69.654%2C50.461z%20M69.174%2C51.417V70.75H33.548V51.417H69.174z%22%3E%3C/path%3E%3Cpath%20d%3D%22M45.201%2C30.296c6.651%2C0%2C12.233%2C5.351%2C12.551%2C11.977l-3.033-2.638c-0.193-0.165-0.507-0.142-0.675%2C0.048%20%20%20c-0.174%2C0.198-0.153%2C0.501%2C0.045%2C0.676l3.883%2C3.375c0.09%2C0.075%2C0.198%2C0.115%2C0.312%2C0.115c0.141%2C0%2C0.273-0.061%2C0.362-0.166%20%20%20l3.371-3.877c0.173-0.2%2C0.151-0.502-0.047-0.675c-0.194-0.166-0.508-0.144-0.676%2C0.048l-2.592%2C2.979%20%20%20c-0.18-3.417-1.629-6.605-4.099-9.001c-2.538-2.461-5.877-3.817-9.404-3.817c-0.264%2C0-0.479%2C0.215-0.479%2C0.479%20%20%20C44.72%2C30.083%2C44.936%2C30.296%2C45.201%2C30.296z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E) center/50% 50% no-repeat rgba(244,244,244,1);bottom:0;font-size:14px;font-weight:600;left:0;line-height:20px;right:0;position:fixed;top:0;z-index:9999999}.a-orientation-modal:after{color:#666;content:"Insert phone into Cardboard holder.";display:block;position:absolute;text-align:center;top:70%;transform:translateY(-70%);width:100%}.a-orientation-modal button{background:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20version%3D%221.1%22%20x%3D%220px%22%20y%3D%220px%22%20viewBox%3D%220%200%20100%20100%22%20enable-background%3D%22new%200%200%20100%20100%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M55.209%2C50l17.803-17.803c1.416-1.416%2C1.416-3.713%2C0-5.129c-1.416-1.417-3.713-1.417-5.129%2C0L50.08%2C44.872%20%20L32.278%2C27.069c-1.416-1.417-3.714-1.417-5.129%2C0c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129L44.951%2C50L27.149%2C67.803%20%20c-1.417%2C1.416-1.417%2C3.713%2C0%2C5.129c0.708%2C0.708%2C1.636%2C1.062%2C2.564%2C1.062c0.928%2C0%2C1.856-0.354%2C2.564-1.062L50.08%2C55.13l17.803%2C17.802%20%20c0.708%2C0.708%2C1.637%2C1.062%2C2.564%2C1.062s1.856-0.354%2C2.564-1.062c1.416-1.416%2C1.416-3.713%2C0-5.129L55.209%2C50z%22%3E%3C/path%3E%3C/svg%3E) no-repeat;border:none;height:50px;text-indent:-9999px;width:50px}</style><style type="text/css" data-href="src\style\rStats.css">.rs-base{background-color:#333;color:#fafafa;border-radius:0;font:10px monospace;left:5px;line-height:1em;opacity:.85;overflow:hidden;padding:10px;position:fixed;top:5px;width:300px;z-index:10000}.rs-base div.hidden{display:none}.rs-base h1{color:#fff;cursor:pointer;font-size:1.4em;font-weight:300;margin:0 0 5px;padding:0}.rs-group{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;margin-bottom:5px}.rs-group:last-child{margin-bottom:0}.rs-counter-base{align-items:center;display:-webkit-box;display:-webkit-flex;display:flex;height:10px;-webkit-justify-content:space-between;justify-content:space-between;margin:2px 0}.rs-counter-base.alarm{color:#b70000;text-shadow:0 0 0 #b70000,0 0 1px #fff,0 0 1px #fff,0 0 2px #fff,0 0 2px #fff,0 0 3px #fff,0 0 3px #fff,0 0 4px #fff,0 0 4px #fff}.rs-counter-id{font-weight:300;-webkit-box-ordinal-group:0;-webkit-order:0;order:0;width:54px}.rs-counter-value{font-weight:300;-webkit-box-ordinal-group:1;-webkit-order:1;order:1;text-align:right;width:35px}.rs-canvas{-webkit-box-ordinal-group:2;-webkit-order:2;order:2}@media (min-width:480px){.rs-base{left:20px;top:20px}}</style>
+    <script src="js/aframe-extras.min.js"></script>
+
+    <script src="js/lzma.js"></script>
+    <script src="js/ctm.js"></script>
+    <script src="js/CTMLoader.js"></script>
+
+    <script src="js/aframe-teleport-controls.min.js"></script>
+    <script src="js/spheres_anim.js"></script>
+    <script src="js/anim_1.js"></script>
+    <script src="js/anim_2.js"></script>
+    <script src="js/mocap.js"></script>
+    <script src="js/envMapMaterial.js"></script>
+    <script src="js/ctm_component.js"></script>
+    <script src="js/mobile_component.js"></script>
+
+  </head>
+
+  <body class="a-body">
+
+
+
+    <!--<a-scene stats>-->
+
+    <a-scene class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" style="z-index: auto;">
+
+      <a-entity mobile="" position="" rotation="" scale="" visible=""></a-entity>
+
+      <a-entity light="type: directional; color: #FFF; intensity: 0.5" position="2 20 0" rotation="" scale="" visible=""></a-entity>
+      <a-entity light="type: ambient; color: #FFF" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!-- Custom components with animations -->
+      <a-entity spheres="" material="shader: envMapMaterial; src:textures/cube/hall/; " position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity anim_1="" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity anim_2="" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!-- - Custom components with animations -->
+
+      <a-assets>
+        <a-mixin id="checkpoint"></a-mixin>
+        <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
+
+
+        <img id="sky_sphere-texture" src="textures/sky_sphere.jpg">
+
+        <a-sound src="audio/84529__cmusounddesign__02-museum.ogg" autoplay="true" loop="true" position="1 1 0" rotation="" scale="" visible="" sound=""></a-sound>
+
+        <a-sound src="audio/219462__cediez__musee-victoria-londres-grand-escalier.ogg" autoplay="true" loop="true" position="1 1 10" rotation="" scale="" visible="" sound=""></a-sound>
+
+
+        <!-- floor -->
+        <a-asset-item id="floor-obj" src="models/floor.obj"></a-asset-item>
+        <img id="floor-texture" src="textures/floor.jpg">
+        <img id="floor_normal-texture" src="textures/floor_normal.jpg">
+        <!-- - floor -->
+
+        <!-- hall -->
+        <a-asset-item id="hall-obj" src="models/hall.obj"></a-asset-item>
+        <img id="hall-texture" src="textures/hall.jpg">
+        <!--<img id="hall_normal-texture" src="textures/hall_normal.jpg">-->
+        <!-- - hall -->
+
+        <!-- hall low floor -->
+        <!-- this piece is only meant for teleportation -->
+        <a-asset-item id="hall_low_floor-obj" src="models/hall_low_floor.obj"></a-asset-item>
+
+        <!-- - hall low floor-->
+
+        <!-- acropolis -->
+        <a-asset-item id="acropolis-obj" src="models/acropolis.obj"></a-asset-item>
+        <img id="acropolis-texture" src="textures/acropolis.jpg">
+        <!-- - acropolis -->
+
+        <!-- castle_lake -->
+        <a-asset-item id="castle_lake-obj" src="models/castle_lake.obj"></a-asset-item>
+        <img id="castle_lake-texture" src="textures/castle_lake.jpg">
+        <!-- - castle_lake -->
+
+        <!-- good_samaritan -->
+        <a-asset-item id="good_samaritan-obj" src="models/good_samaritan.obj"></a-asset-item>
+        <img id="good_samaritan-texture" src="textures/good_samaritan.jpg">
+        <!-- - good_samaritan -->
+
+        <!-- moonlight -->
+        <a-asset-item id="moonlight-obj" src="models/moonlight.obj"></a-asset-item>
+        <img id="moonlight-texture" src="textures/moonlight.jpg">
+        <!-- - moonlight -->
+
+        <!-- podiums -->
+        <a-asset-item id="podiums-obj" src="models/podiums.obj"></a-asset-item>
+        <img id="podiums-texture" src="textures/podiums.jpg">
+        <!-- - podiums -->
+
+        <!-- lamps -->
+        <a-asset-item id="lamps-obj" src="models/lamps.obj"></a-asset-item>
+        <img id="lamps-texture" src="textures/lamps.jpg">
+        <!-- - lamps -->
+
+        <!-- david -->
+        <!--<a-asset-item id="david-obj" src="models/david.obj"></a-asset-item>-->
+        <a-asset-item id="david-ctm" src="models/david.ctm"></a-asset-item>
+        <!--<img id="david-texture" src="textures/david.jpg">-->
+        <!-- - david -->
+
+        <!-- female_head -->
+        <!--<a-asset-item id="female_head-obj" src="models/female_head.obj"></a-asset-item>-->
+        <a-asset-item id="female_head-ctm" src="models/female_head.ctm"></a-asset-item>
+        <!--<img id="female_head-texture" src="textures/female_head.jpg">-->
+        <!-- - female_head -->
+
+        <!-- lion -->
+        <!--<a-asset-item id="lion-obj" src="models/lion.obj"></a-asset-item>-->
+        <a-asset-item id="lion-ctm" src="models/lion.ctm"></a-asset-item>
+        <!--<img id="lion-texture" src="textures/lion.jpg">-->
+        <!-- - lion -->
+
+        <!-- greek_bust -->
+        <!--<a-asset-item id="greek_bust-obj" src="models/greek_bust.obj"></a-asset-item>-->
+        <a-asset-item id="greek_bust-ctm" src="models/greek_bust.ctm"></a-asset-item>
+        <!--<img id="greek_bust-texture" src="textures/greek_bust.jpg">-->
+        <!-- - greek_bust -->
+
+        <!-- old_man -->
+        <!--<a-asset-item id="old_man-obj" src="models/old_man.obj"></a-asset-item>-->
+        <a-asset-item id="old_man-ctm" src="models/old_man.ctm"></a-asset-item>
+        <!--<img id="old_man-texture" src="textures/old_man.jpg">-->
+        <!-- - old_man -->
+
+        <!-- nefertiti -->
+        <!--<a-asset-item id="nefertiti-obj" src="models/nefertiti.obj"></a-asset-item>-->
+        <a-asset-item id="nefertiti-ctm" src="models/nefertiti.ctm"></a-asset-item>
+        <!--<img id="nefertiti-texture" src="textures/nefertiti.jpg">-->
+        <!-- - nefertiti -->
+
+        <!-- fractal_1 -->
+        <!--<a-asset-item id="fractal_1-obj" src="models/fractal_1.obj"></a-asset-item>-->
+        <a-asset-item id="fractal_1-ctm" src="models/fractal_1.ctm"></a-asset-item>
+        <!--<img id="fractal_1-texture" src="textures/fractal_1.jpg">-->
+        <!-- - fractal_1 -->
+
+        <!-- fractal_2 -->
+        <!--<a-asset-item id="fractal_2-obj" src="models/fractal_2.obj"></a-asset-item>-->
+        <a-asset-item id="fractal_2-ctm" src="models/fractal_2.ctm"></a-asset-item>
+        <!--<img id="fractal_2-texture" src="textures/fractal_2.jpg">-->
+        <!-- - fractal_2 -->
+
+        <!-- fractal_3 -->
+        <!--<a-asset-item id="fractal_3-obj" src="models/fractal_3.obj"></a-asset-item>-->
+        <a-asset-item id="fractal_3-ctm" src="models/fractal_3.ctm"></a-asset-item>
+        <!--<img id="fractal_3-texture" src="textures/fractal_3.jpg">-->
+        <!-- - fractal_3 -->
+
+        <!-- female_helmet -->
+        <!--<a-asset-item id="female_helmet-obj" src="models/female_helmet.obj"></a-asset-item>-->
+        <a-asset-item id="female_helmet-ctm" src="models/female_helmet.ctm"></a-asset-item>
+        <!--<img id="female_helmet-texture" src="textures/female_helmet.jpg">-->
+        <!-- - female_helmet -->
+
+        <!-- monk_uv -->
+        <!--<a-asset-item id="monk_uv-obj" src="models/monk_uv.obj"></a-asset-item>-->
+        <a-asset-item id="monk_uv-ctm" src="models/monk_uv.ctm"></a-asset-item>
+        <!--<img id="monk_uv-texture" src="textures/monk_uv.jpg">-->
+        <!-- - monk_uv -->
+
+        <!-- david_bike_hall_3 -->
+        <!--<a-asset-item id="david_bike_hall_3-obj" src="models/david_bike_hall_3.obj"></a-asset-item>-->
+        <a-asset-item id="david_bike_hall_3-ctm" src="models/david_bike_hall_3.ctm"></a-asset-item>
+        <!--<img id="david_bike_hall_3-texture" src="textures/david_bike_hall_3.jpg">-->
+        <!-- - david_bike_hall_3 -->
+
+
+        <!-- mocaps -->
+        <a-asset-item id="am_threejs_CEC_BODY_1_HEAD-mocap" src="js/mocap/am_threejs_CEC_BODY_1_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_1_LEFT-mocap" src="js/mocap/am_threejs_CEC_BODY_1_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_1_RIGHT-mocap" src="js/mocap/am_threejs_CEC_BODY_1_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_2_HEAD-mocap" src="js/mocap/am_threejs_CEC_BODY_2_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_2_LEFT-mocap" src="js/mocap/am_threejs_CEC_BODY_2_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_2_RIGHT-mocap" src="js/mocap/am_threejs_CEC_BODY_2_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_3_HEAD-mocap" src="js/mocap/am_threejs_CEC_BODY_3_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_3_LEFT-mocap" src="js/mocap/am_threejs_CEC_BODY_3_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_3_RIGHT-mocap" src="js/mocap/am_threejs_CEC_BODY_3_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_4_HEAD-mocap" src="js/mocap/am_threejs_CEC_BODY_4_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_4_LEFT-mocap" src="js/mocap/am_threejs_CEC_BODY_4_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_4_RIGHT-mocap" src="js/mocap/am_threejs_CEC_BODY_4_RIGHT.js"></a-asset-item>
+        <!-- - mocaps -->
+
+      </a-assets>
+
+      <a-sky color="#EEEEFF" material="src: #sky_sphere-texture" position="" rotation="" scale="" visible="" geometry=""></a-sky>
+
+      <a-entity obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.6" id="floor" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #hall-obj;" material="src: #hall-texture" id="hall" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #castle_lake-obj;" material="src: #castle_lake-texture" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #good_samaritan-obj;" material="src: #good_samaritan-texture" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture" position="" rotation="" scale="" visible=""></a-entity>
+      <a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #david-obj;" material="src: #david-texture"></a-entity>-->
+      <a-entity ctm="src: #david-ctm; name:david;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #female_head-obj;" material="src: #female_head-texture"></a-entity>-->
+      <a-entity ctm="src: #female_head-ctm; name:female_head;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #lion-obj;" material="src: #lion-texture"></a-entity>-->
+      <a-entity ctm="src: #lion-ctm; name:lion;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #greek_bust-obj;" material="src: #greek_bust-texture"></a-entity>-->
+      <a-entity ctm="src: #greek_bust-ctm; name:greek_bust;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #old_man-obj;" material="src: #old_man-texture"></a-entity>-->
+      <a-entity ctm="src: #old_man-ctm; name:old_man;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #nefertiti-obj;" material="src: #nefertiti-texture"></a-entity>-->
+      <a-entity ctm="src: #nefertiti-ctm; name:nefertiti;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #fractal_1-obj;" material="src: #fractal_1-texture"></a-entity>-->
+      <a-entity ctm="src: #fractal_1-ctm; name:fractal_1;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #fractal_2-obj;" material="src: #fractal_2-texture"></a-entity>-->
+      <a-entity ctm="src: #fractal_2-ctm; name:fractal_2;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #fractal_3-obj;" material="src: #fractal_3-texture"></a-entity>-->
+      <a-entity ctm="src: #fractal_3-ctm; name:fractal_3;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #female_helmet-obj;" material="src: #female_helmet-texture"></a-entity>-->
+      <a-entity ctm="src: #female_helmet-ctm; name:female_helmet;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #monk_uv-obj;" material="src: #monk_uv-texture"></a-entity>-->
+      <a-entity ctm="src: #monk_uv-ctm; name:monk_uv;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <!--<a-entity obj-model="obj: #david_bike_hall_3-obj;" material="src: #david_bike_hall_3-texture"></a-entity>-->
+      <a-entity ctm="src: #david_bike_hall_3-ctm; name:david_bike_hall_3;" position="" rotation="" scale="" visible=""></a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_1_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_1_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_1_RIGHT-mocap;
+                       totalFrames:645;
+                       torsoPosition: 0 -0.4 0.05" position=" -3 1 6.5" rotation="0 -90 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_2_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_2_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_2_RIGHT-mocap;
+                       totalFrames:626;
+                       torsoPosition: 0.0 -0.4 0.05" position=" -3 1 9.2" rotation="0 -90 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_3_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_3_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_3_RIGHT-mocap;
+                       totalFrames:600;
+                       torsoPosition: 0 -0.4 0.05" position=" -3 1 12.2" rotation="0 -90 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity mocap="head: #am_threejs_CEC_BODY_4_HEAD-mocap;
+                       left: #am_threejs_CEC_BODY_4_LEFT-mocap;
+                       right: #am_threejs_CEC_BODY_4_RIGHT-mocap;
+                       totalFrames:7050;
+                       torsoPosition: -0.05 -0.4 0.0" ;="" position=" -3 1 4" rotation="0 0 0" scale="" visible="">
+      </a-entity>
+
+      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="left" position="" rotation="" scale="" visible="" vive-controls="" oculus-touch-controls="" windows-motion-controls=""></a-entity>
+      <a-entity teleport-controls="button: trigger; collision-entities: #floor #hall_low_floor" hand-controls="right" position="" rotation="" scale="" visible="" vive-controls="" oculus-touch-controls="" windows-motion-controls=""></a-entity>
+
+    <canvas class="a-canvas a-grab-cursor" data-aframe-canvas="true" width="1167" height="1987" style="width: 778px; height: 1325px;"></canvas><a-entity class="teleport-ray" visible="" position="" rotation="" scale=""></a-entity><a-entity class="hintEntity" visible="" position="" rotation="" scale=""><a-entity geometry="" rotation="" material="" position="" scale="" visible=""></a-entity><a-entity geometry="" position="" material="" rotation="" scale="" visible=""></a-entity></a-entity><a-entity class="teleport-ray" visible="" position="" rotation="" scale=""></a-entity><a-entity class="hintEntity" visible="" position="" rotation="" scale=""><a-entity geometry="" rotation="" material="" position="" scale="" visible=""></a-entity><a-entity geometry="" position="" material="" rotation="" scale="" visible=""></a-entity></a-entity><div class="a-enter-vr" aframe-injected=""><button class="a-enter-vr-button" title="Enter VR mode with a headset or fullscreen mode on a desktop. Visit https://webvr.rocks or https://webvr.info for more information." aframe-injected=""></button></div><div class="a-orientation-modal a-hidden" aframe-injected=""><button aframe-injected="">Exit VR</button></div><a-entity position="" data-aframe-default-camera="" camera="" wasd-controls="" rotation="" look-controls="" aframe-injected="" scale="" visible=""></a-entity></a-scene>
+
+    <script src="main.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-92113119-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+
+
+
+</body></html>

@@ -8,11 +8,15 @@
     <script src="../dist/three.ar.js"></script>
     <script src="../dist/aframe-ar.js"></script>
     <script src="../dist/aframe-extras.js"></script>
+
+    <script src="../js/lzma.js"></script>
+    <script src="../js/ctm.js"></script>
+    <script src="../js/CTMLoader.js"></script>
     <script>
       AFRAME.registerComponent('go', {
         init : function() {
           var user = document.querySelector("#user1");
-          user.setAttribute('animation-mixer','clip', 'run');
+          user.setAttribute('animation-mixer','clip', 'walk');
         },
         tick : function(a,b) {
           this.transform.translateVector(new THREE.Vector3( 0,  0,  0.001), b);
@@ -61,6 +65,53 @@
         <a-asset-item id="lamps-obj" src="../models/lamps.obj"></a-asset-item>
         <img id="lamps-texture" src="../models/lamps.jpg">
 
+
+        <!-- david -->
+        <a-asset-item id="david-ctm" src="../models/david.ctm"></a-asset-item>
+
+        <!-- female_head -->
+        <a-asset-item id="female_head-ctm" src="../models/female_head.ctm"></a-asset-item>
+        <!-- - female_head -->
+
+        <!-- lion -->
+        <a-asset-item id="lion-ctm" src="../models/lion.ctm"></a-asset-item>
+        <!-- - lion -->
+
+        <!-- greek_bust -->
+        <a-asset-item id="greek_bust-ctm" src="../models/greek_bust.ctm"></a-asset-item>
+        <!-- - greek_bust -->
+
+        <!-- old_man -->
+        <a-asset-item id="old_man-ctm" src="../models/old_man.ctm"></a-asset-item>
+        <!-- - old_man -->
+
+        <!-- nefertiti -->
+        <a-asset-item id="nefertiti-ctm" src="../models/nefertiti.ctm"></a-asset-item>
+        <!-- - nefertiti -->
+
+        <!-- fractal_1 -->
+        <a-asset-item id="fractal_1-ctm" src="../models/fractal_1.ctm"></a-asset-item>
+        <!-- - fractal_1 -->
+
+        <!-- fractal_2 -->
+        <a-asset-item id="fractal_2-ctm" src="../models/fractal_2.ctm"></a-asset-item>
+        <!-- - fractal_2 -->
+
+        <!-- fractal_3 -->
+        <a-asset-item id="fractal_3-ctm" src="../models/fractal_3.ctm"></a-asset-item>
+        <!-- - fractal_3 -->
+
+        <!-- female_helmet -->
+        <a-asset-item id="female_helmet-ctm" src="../models/female_helmet.ctm"></a-asset-item>
+        <!-- - female_helmet -->
+
+        <!-- monk_uv -->
+        <a-asset-item id="monk_uv-ctm" src="../models/monk_uv.ctm"></a-asset-item>
+        <!-- - monk_uv -->
+
+        <!-- david_bike_hall_3 -->
+        <a-asset-item id="david_bike_hall_3-ctm" src="models/david_bike_hall_3.ctm"></a-asset-item>
+
       </a-assets>
       <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
       <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
@@ -69,7 +120,34 @@
       <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
       <a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
       <a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+
+      <a-entity ctm="src: #david-ctm; name:david;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #female_head-ctm; name:female_head;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #lion-ctm; name:lion;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #greek_bust-ctm; name:greek_bust;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #old_man-ctm; name:old_man;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #nefertiti-ctm; name:nefertiti;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #fractal_1-ctm; name:fractal_1;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #fractal_2-ctm; name:fractal_2;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #fractal_3-ctm; name:fractal_3;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #female_helmet-ctm; name:female_helmet;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #monk_uv-ctm; name:monk_uv;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
+      <a-entity ctm="src: #david_bike_hall_3-ctm; name:david_bike_hall_3;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+
       <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.25 -1 -5" scale="1.000 1.000 1.000"></a-entity>
+
     </a-scene>
   </body>
 </html>
