@@ -24,14 +24,52 @@
     <a-scene ar>
       <a-assets>
         <a-asset-item id="bot" src="../models/bot4.json"></a-asset-item>
+
         <a-asset-item id="hall_obj" src="../models/hall.obj"></a-asset-item>
         <img id="hall-texture" src="../models/hall.jpg">
-      </a-assets>
 
-     <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5">
-     </a-entity>
-      <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.25 -1 -5" scale="1.000 1.000 1.000">
-      </a-entity>
+        <a-asset-item id="floor-obj" src="../models/floor.obj"></a-asset-item>
+        <img id="floor-texture" src="../models/floor.jpg">
+        <img id="floor_normal-texture" src="../models/floor_normal.jpg">
+
+        <!-- acropolis -->
+        <a-asset-item id="acropolis-obj" src="../models/acropolis.obj"></a-asset-item>
+        <img id="acropolis-texture" src="../models/acropolis.jpg">
+        <!-- - acropolis -->
+
+        <!-- castle_lake -->
+        <a-asset-item id="castle_lake-obj" src="../models/castle_lake.obj"></a-asset-item>
+        <img id="castle_lake-texture" src="../models/castle_lake.jpg">
+        <!-- - castle_lake -->
+
+        <!-- good_samaritan -->
+        <a-asset-item id="good_samaritan-obj" src="../models/good_samaritan.obj"></a-asset-item>
+        <img id="good_samaritan-texture" src="../models/good_samaritan.jpg">
+        <!-- - good_samaritan -->
+
+        <!-- moonlight -->
+        <a-asset-item id="moonlight-obj" src="../models/moonlight.obj"></a-asset-item>
+        <img id="moonlight-texture" src="../models/moonlight.jpg">
+        <!-- - moonlight -->
+
+        <!-- podiums -->
+        <a-asset-item id="podiums-obj" src="../models/podiums.obj"></a-asset-item>
+        <img id="podiums-texture" src="../models/podiums.jpg">
+        <!-- - podiums -->
+
+        <!-- lamps -->
+        <a-asset-item id="lamps-obj" src="../models/lamps.obj"></a-asset-item>
+        <img id="lamps-texture" src="../models/lamps.jpg">
+
+      </a-assets>
+      <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
+      <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+      <a-entity obj-model="obj: #castle_lake-obj;" material="src: #castle_lake-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+      <a-entity obj-model="obj: #good_samaritan-obj;" material="src: #good_samaritan-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+      <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+      <a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+      <a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
+      <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.25 -1 -5" scale="1.000 1.000 1.000"></a-entity>
     </a-scene>
   </body>
 </html>
