@@ -9,15 +9,6 @@
     <script src="../dist/aframe-ar.js"></script>
     <script src="../dist/aframe-extras.js"></script>
 
-    <script src="../js/aframe-teleport-controls.min.js"></script>
-    <script src="../js/spheres_anim.js"></script>
-    <script src="../js/anim_1.js"></script>
-    <script src="../js/anim_2.js"></script>
-    <script src="../js/mocap.js"></script>
-    <script src="../js/envMapMaterial.js"></script>
-    <script src="../js/ctm_component.js"></script>
-    <script src="../js/mobile_component.js"></script>
-
     <script>
       AFRAME.registerComponent('go', {
         init : function() {
@@ -34,131 +25,12 @@
     <a-scene ar>
       <a-assets>
         <a-asset-item id="bot" src="../models/bot4.json"></a-asset-item>
-
         <a-asset-item id="hall_obj" src="../models/hall.obj"></a-asset-item>
         <img id="hall-texture" src="../models/hall.jpg">
-
-        <a-asset-item id="floor-obj" src="../models/floor.obj"></a-asset-item>
-        <img id="floor-texture" src="../models/floor.jpg">
-        <img id="floor_normal-texture" src="../models/floor_normal.jpg">
-
-        <!-- acropolis -->
-        <a-asset-item id="acropolis-obj" src="../models/acropolis.obj"></a-asset-item>
-        <img id="acropolis-texture" src="../models/acropolis.jpg">
-        <!-- - acropolis -->
-
-        <!-- castle_lake -->
-        <a-asset-item id="castle_lake-obj" src="../models/castle_lake.obj"></a-asset-item>
-        <img id="castle_lake-texture" src="../models/castle_lake.jpg">
-        <!-- - castle_lake -->
-
-        <!-- good_samaritan -->
-        <a-asset-item id="good_samaritan-obj" src="../models/good_samaritan.obj"></a-asset-item>
-        <img id="good_samaritan-texture" src="../models/good_samaritan.jpg">
-        <!-- - good_samaritan -->
-
-        <!-- moonlight -->
-        <a-asset-item id="moonlight-obj" src="../models/moonlight.obj"></a-asset-item>
-        <img id="moonlight-texture" src="../models/moonlight.jpg">
-        <!-- - moonlight -->
-
-        <!-- podiums -->
-        <a-asset-item id="podiums-obj" src="../models/podiums.obj"></a-asset-item>
-        <img id="podiums-texture" src="../models/podiums.jpg">
-        <!-- - podiums -->
-
-        <!-- lamps -->
-        <a-asset-item id="lamps-obj" src="../models/lamps.obj"></a-asset-item>
-        <img id="lamps-texture" src="../models/lamps.jpg">
-
-
-        <!-- david -->
-        <a-asset-item id="david-ctm" src="../models/david.ctm"></a-asset-item>
-
-        <!-- female_head -->
-        <a-asset-item id="female_head-ctm" src="../models/female_head.ctm"></a-asset-item>
-        <!-- - female_head -->
-
-        <!-- lion -->
-        <a-asset-item id="lion-ctm" src="../models/lion.ctm"></a-asset-item>
-        <!-- - lion -->
-
-        <!-- greek_bust -->
-        <a-asset-item id="greek_bust-ctm" src="../models/greek_bust.ctm"></a-asset-item>
-        <!-- - greek_bust -->
-
-        <!-- old_man -->
-        <a-asset-item id="old_man-ctm" src="../models/old_man.ctm"></a-asset-item>
-        <!-- - old_man -->
-
-        <!-- nefertiti -->
-        <a-asset-item id="nefertiti-ctm" src="../models/nefertiti.ctm"></a-asset-item>
-        <!-- - nefertiti -->
-
-        <!-- fractal_1 -->
-        <a-asset-item id="fractal_1-ctm" src="../models/fractal_1.ctm"></a-asset-item>
-        <!-- - fractal_1 -->
-
-        <!-- fractal_2 -->
-        <a-asset-item id="fractal_2-ctm" src="../models/fractal_2.ctm"></a-asset-item>
-        <!-- - fractal_2 -->
-
-        <!-- fractal_3 -->
-        <a-asset-item id="fractal_3-ctm" src="../models/fractal_3.ctm"></a-asset-item>
-        <!-- - fractal_3 -->
-
-        <!-- female_helmet -->
-        <a-asset-item id="female_helmet-ctm" src="../models/female_helmet.ctm"></a-asset-item>
-        <!-- - female_helmet -->
-
-        <!-- monk_uv -->
-        <a-asset-item id="monk_uv-ctm" src="../models/monk_uv.ctm"></a-asset-item>
-        <!-- - monk_uv -->
-
-        <!-- david_bike_hall_3 -->
-        <a-asset-item id="david_bike_hall_3-ctm" src="../models/david_bike_hall_3.ctm"></a-asset-item>
-
       </a-assets>
 
-
-      <a-entity spheres="" material="shader: envMapMaterial; src:../models/hall/; " position="" rotation="" scale="" visible=""></a-entity>
-      <a-entity anim_1="" position="" rotation="" scale="" visible=""></a-entity>
-      <a-entity anim_2="" position="" rotation="" scale="" visible=""></a-entity>
-
       <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
-      <a-entity obj-model="obj: #acropolis-obj;" material="src: #acropolis-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-      <a-entity obj-model="obj: #castle_lake-obj;" material="src: #castle_lake-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-      <a-entity obj-model="obj: #good_samaritan-obj;" material="src: #good_samaritan-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-      <a-entity obj-model="obj: #moonlight-obj;" material="src: #moonlight-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-      <a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-      <a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-
-      <a-entity ctm="src: #david-ctm; name:david;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #female_head-ctm; name:female_head;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #lion-ctm; name:lion;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #greek_bust-ctm; name:greek_bust;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #old_man-ctm; name:old_man;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #nefertiti-ctm; name:nefertiti;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #fractal_1-ctm; name:fractal_1;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #fractal_2-ctm; name:fractal_2;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #fractal_3-ctm; name:fractal_3;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #female_helmet-ctm; name:female_helmet;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #monk_uv-ctm; name:monk_uv;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity ctm="src: #david_bike_hall_3-ctm; name:david_bike_hall_3;" position="0 -1 -1" rotation="" scale="0.5 0.5 0.5" visible=""></a-entity>
-
-      <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.25 -1 -5" scale="1.000 1.000 1.000"></a-entity>
+      <a-entity id="user1" go="" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity>
 
     </a-scene>
   </body>
