@@ -19,6 +19,20 @@
         var el = evt.target;
         el.setAttribute('material', 'color', '#f77');
       });
+      
+      this.el.addEventListener('click', function () {
+        var user = document.querySelector("#user1");
+
+        if(isWalk===false){
+          isWalk = true;
+          user.setAttribute('go','');
+          user.setAttribute('animation-mixer','clip', 'walk');
+        }else{
+          isWalk = false;
+          user.removeAttribute('go');
+          user.setAttribute('animation-mixer','clip', 'idle');
+        }
+      });
     }
   });
 </script>

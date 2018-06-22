@@ -52,7 +52,7 @@
 
       <a-camera>
         <a-ring id="cursor" raycaster="objects:.users" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02"></a-ring>
-        <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="tab"></a-text>
+        <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="rayCast"></a-text>
       </a-camera>
     </a-scene>
     <script>
@@ -66,6 +66,19 @@
           raycaster.addEventListener('raycaster-intersected-cleared', function (evt) {
             cursor.setAttribute('color', 'red');
           });
+
+          raycaster.addEventListener('click', function () {
+            if(isWalk===false){
+              isWalk = true;
+              user.setAttribute('go','');
+              user.setAttribute('animation-mixer','clip', 'walk');
+            }else{
+              isWalk = false;
+              user.removeAttribute('go');
+              user.setAttribute('animation-mixer','clip', 'idle');
+            }
+          });
+          
    </script>
 <!--    <script>
       var raycaster = document.querySelector('[ar-raycaster]');
