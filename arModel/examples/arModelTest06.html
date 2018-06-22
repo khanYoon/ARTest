@@ -51,7 +51,7 @@
     <!--  <a-ring id="mark" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring> -->
 
       <a-camera>
-        <a-ring id="cursor" raycaster="objects:.users" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02"></a-ring>
+        <a-entity id="cursor" cursor="" raycaster="objects:.box" rotation="0 0 0" position="0 0 -2" geometry="primitive:ring;radius-inner=0.01; radius-outer:0.02;" material="color:red;"></a-entity>
         <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="rayCast"></a-text>
       </a-camera>
     </a-scene>
