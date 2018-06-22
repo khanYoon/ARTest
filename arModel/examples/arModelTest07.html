@@ -9,6 +9,17 @@
   <body>
 
 <script>
+
+  var isWalk = false;
+
+  AFRAME.registerComponent('go', {
+    init : function() {
+    },
+    tick : function(a,b) {
+      this.transform.translateVector(new THREE.Vector3( 0,  0,  0.001), b);
+    }
+  });
+
   AFRAME.registerComponent('raycast-blab', {
     init: function () {
       this.el.addEventListener('raycaster-intersected', function (evt) {
@@ -19,18 +30,16 @@
         var el = evt.target;
         el.setAttribute('material', 'color', '#f77');
       });
-      
+
       this.el.addEventListener('click', function () {
-        var user = document.querySelector("#user1");
+        var box = document.querySelector(".box");
 
         if(isWalk===false){
           isWalk = true;
-          user.setAttribute('go','');
-          user.setAttribute('animation-mixer','clip', 'walk');
+          box.setAttribute('go','');
         }else{
           isWalk = false;
-          user.removeAttribute('go');
-          user.setAttribute('animation-mixer','clip', 'idle');
+          box.removeAttribute('go');
         }
       });
     }
