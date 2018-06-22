@@ -15,18 +15,17 @@
         }
       });
 
-      AFRAME.registerComponent('user-raycaster', {
+      AFRAME.registerComponent('user-raycast', {
         init: function () {
-          var user = document.querySelector('#user1');
           var cursor = document.querySelector('#cursor');
-
-          user.addEventListener('raycaster-intersection', function (evt) {
+          alert('cursor'+curor);
+          this.el.addEventListener('raycaster-intersected', function (evt) {
             // Turn the mark green and move it to the intersection point.
             cursor.setAttribute('color', 'green');
             // FIXME: lerp position
           });
 
-          user.addEventListener('raycaster-intersection-cleared', function (evt) {
+          this.el.addEventListener('raycaster-intersected-cleared', function (evt) {
             // Turn the mark red.  FIXME: lerp position
             cursor.setAttribute('color', 'red');
           });
@@ -44,7 +43,7 @@
       </a-assets>
 
       <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
-      <a-entity id="user1" user-raycaster="" class="users" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity>
+      <a-entity id="user1" user-raycast="" class="users" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity>
 
     <!--  <a-entity ar-raycaster="" raycaster="objects:.users"></a-entity> -->
     <!--  <a-entity ar-raycaster raycaster="objects:none"></a-entity> -->
