@@ -59,21 +59,21 @@
           var user = document.querySelector('#user1');
           var ray = document.querySelector('#ray');
 
-//          user.addEventListener('raycaster-intersected', function (evt) {
-//            ray.setAttribute('material','color', 'green');
-//          });
-//
-//          user.addEventListener('raycaster-intersected-cleared', function (evt) {
-//            ray.setAttribute('material','color', 'red');
-//          });
-
-          user.addEventListener('raycaster-intersection', function (evt) {
+          user.addEventListener('raycaster-intersected', function (evt) {
             ray.setAttribute('material','color', '#00FF00');
           });
 
-          user.addEventListener('raycaster-intersection-cleared', function (evt) {
+          user.addEventListener('raycaster-intersected-cleared', function (evt) {
             ray.setAttribute('material','color', '#FF0000');
           });
+
+//          user.addEventListener('raycaster-intersection', function (evt) {
+//            ray.setAttribute('material','color', '#00FF00');
+//          });
+
+//          user.addEventListener('raycaster-intersection-cleared', function (evt) {
+//            ray.setAttribute('material','color', '#FF0000');
+//          });
 
 
           user.addEventListener('click', function () {
