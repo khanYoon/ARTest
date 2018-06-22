@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>monoPoly Scene</title>
+			<!-- aframe-master.js 와 ar 관련 js 다른 경로에 두어야 한다. -->
 			<script src="dist/aframe-master.js"></script>
 			<script src="js/three.ar.js"></script>
 	    <script src="js/aframe-ar.js"></script>
@@ -277,7 +278,7 @@
 		</script>
 	</head>
 	<body>
-	<a-scene debug="false">
+	<a-scene debug="false" ar>
 		<a-assets>
 			<canvas id="canvasObj" crossorigin="anonymous" webkit-playsinline=""></canvas>
 	        <a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
