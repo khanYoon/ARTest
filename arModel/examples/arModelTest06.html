@@ -47,10 +47,11 @@
         <a-asset-item src="https://cdn.glitch.com/843c8e83-ac9e-499e-8aba-1332cd1fe4a6%2Fsilogo_small.obj?1502705824920" id="samsung-internet-obj"></a-asset-item>
       </a-assets>
       <!-- Use AR raycaster, and set raycaster to ignore all A-Frame objects like logos. -->
-      <a-entity ar-raycaster raycaster="objects:none"></a-entity>
+      <a-entity ar-raycaster raycaster="objects:.collidable"></a-entity>
+      <a-entity class="collidable" geometry="primitive: box" position="1 0 0"></a-entity>
       <!-- Declare a ring to use as the raycaster intersection mark. -->
-      <a-ring id="mark" rotation="-90 0 0" radius-inner="0.01" radius-outer="0.02"></a-ring>
       <a-camera>
+        <a-ring id="mark" rotation="0 0 0" radius-inner="0.01" radius-outer="0.02"></a-ring>
         <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="heads up"></a-text>
       </a-camera>
     </a-scene>
