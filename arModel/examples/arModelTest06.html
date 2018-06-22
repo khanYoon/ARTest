@@ -31,7 +31,7 @@
             }
           });
         }
-      });      
+      });
 
     </script>
   </head>
@@ -48,10 +48,10 @@
 
       <a-entity ar-raycaster raycaster="objects:none"></a-entity>
     <!--  <a-entity ar-raycaster raycaster="objects:none"></a-entity> -->
-      <a-ring id="mark" rotation="0 0 0" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring>
+      <a-ring id="mark" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring>
 
       <a-camera>
-        <a-ring id="cursor" rotation="0 0 0" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring>
+        <a-ring id="cursor" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring>
         <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="tab"></a-text>
       </a-camera>
     </a-scene>
