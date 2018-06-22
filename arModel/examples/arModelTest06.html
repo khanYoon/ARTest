@@ -51,24 +51,23 @@
     <!--  <a-ring id="mark" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring> -->
 
       <a-camera>
-        <a-entity id="cursor" cursor="" raycaster="objects:.users" rotation="0 0 0" position="0 0 -2" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color:red;"></a-entity>
+        <a-entity id="ray" cursor="" raycaster="objects:.users" rotation="0 0 0" position="0 0 -2" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color:red;"></a-entity>
         <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="rayCast"></a-text>
       </a-camera>
     </a-scene>
     <script>
-          var raycaster = document.querySelector('#user1');
-          var cursor = document.querySelector('#cursor');
+          var user = document.querySelector('#user1');
+          var ray = document.querySelector('#ray');
 
-          raycaster.addEventListener('raycaster-intersected', function (evt) {
-            cursor.setAttribute('color', 'green');
+          user.addEventListener('raycaster-intersected', function (evt) {
+            ray.setAttribute('color', 'green');
           });
 
-          raycaster.addEventListener('raycaster-intersected-cleared', function (evt) {
-            cursor.setAttribute('color', 'red');
+          user.addEventListener('raycaster-intersected-cleared', function (evt) {
+            ray.setAttribute('color', 'red');
           });
 
-          raycaster.addEventListener('click', function () {
-            var user = document.querySelector("#user1");
+          user.addEventListener('click', function () {
 
             if(isWalk===false){
               isWalk = true;
