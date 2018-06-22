@@ -15,19 +15,25 @@
         }
       });
 
-      window.addEventListener('click', function () {
-        var user = document.querySelector("#user1");
+      AFRAME.registerComponent('clickEvent', {
+        init : function() {
+          this.el.addEventListener('click', function () {
+            var user = document.querySelector("#user1");
 
-        if(isWalk===false){
-          isWalk = true;
-          user.setAttribute('go','');
-          user.setAttribute('animation-mixer','clip', 'walk');
-        }else{
-          isWalk = false;
-          user.removeAttribute('go');
-          user.setAttribute('animation-mixer','clip', 'idle');
+            if(isWalk===false){
+              isWalk = true;
+              user.setAttribute('go','');
+              user.setAttribute('animation-mixer','clip', 'walk');
+            }else{
+              isWalk = false;
+              user.removeAttribute('go');
+              user.setAttribute('animation-mixer','clip', 'idle');
+            }
+          });
         }
       });
+
+
 
     </script>
   </head>
@@ -45,7 +51,7 @@
       <a-entity raycaster="objects:.users"></a-entity>
     <!--   <a-entity ar-raycaster raycaster="objects:none"></a-entity> -->
       <a-camera>
-        <a-ring id="mark" rotation="0 0 0" radius-inner="0.01" radius-outer="0.02"></a-ring>
+        <a-ring id="mark" clickEvent="" rotation="0 0 0" radius-inner="0.01" radius-outer="0.02"></a-ring>
         <a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="tab"></a-text>
       </a-camera>
     </a-scene>
