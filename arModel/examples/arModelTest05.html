@@ -12,20 +12,19 @@
         },
         tick : function(a,b) {
           this.transform.translateVector(new THREE.Vector3( 0,  0,  0.001), b);
-        }
-      });
+        },
+        window.addEventListener('click', function () {
+          var user = document.querySelector("#user1");
 
-      window.addEventListener('click', function () {
-        var user = document.querySelector("#user1");
-
-        if(isWalk===false){
-          isWalk = true;
-          user.setAttribute('go','');
-          user.setAttribute('animation-mixer','clip', 'walk');
-        }else{
-          user.removeAttribute('go');
-          user.setAttribute('animation-mixer','clip', 'idle');
-        }
+          if(isWalk===false){
+            isWalk = true;
+            user.setAttribute('go','');
+            user.setAttribute('animation-mixer','clip', 'walk');
+          }else{
+            user.removeAttribute('go');
+            user.setAttribute('animation-mixer','clip', 'idle');
+          }
+        })
       });
     </script>
   </head>
@@ -41,7 +40,7 @@
       <a-entity id="user1" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity>
 
       <!-- Use AR raycaster, and set raycaster to ignore all A-Frame objects like logos. -->
-      <a-entity ar-raycaster raycaster="objects:none"></a-entity>
+      <a-entity ar-raycaster raycaster="objects:#user1"></a-entity>
       <!-- Declare a ring to use as the raycaster intersection mark. -->
       <a-ring id="mark" rotation="-90 0 0" radius-inner="0.01" radius-outer="0.02"></a-ring>
       <a-camera>
