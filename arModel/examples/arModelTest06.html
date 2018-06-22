@@ -46,9 +46,9 @@
       <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
       <a-entity id="user1" class="users" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity>
 
-      <a-entity ar-raycaster raycaster="objects:none"></a-entity>
+      <a-entity raycaster="objects:.users"></a-entity>
     <!--  <a-entity ar-raycaster raycaster="objects:none"></a-entity> -->
-      <a-ring id="mark" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring>
+    <!--  <a-ring id="mark" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring> -->
 
       <a-camera>
         <a-ring id="cursor" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring>
