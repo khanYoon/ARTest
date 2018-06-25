@@ -11,7 +11,6 @@
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
 			<script src="js/aframe-environment-component.min.js"></script>
-
 	</head>
 	<body>
 	<a-scene ar>
@@ -210,6 +209,208 @@
         </a-entity>
 
         <!-- gameView -->
+		<a-entity id="gameView" position="0 0.5 -1" rotation="0 0 0" scale="1.000 0.500 1.500">
+
+			<!-- 시작 confirm -->
+			<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="true">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="시작하시겠습니까?"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false, {fn:utils.objView, param:['rouletteBoard', true]})" key-code="32"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false);"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 슬롯머신 -->
+			<a-gui-flex-container id="rouletteBoard" visible="false">
+				<a-entity position="0 1 0">
+
+					<a-entity geometry="primitive : plane;height:1; width:2" material="color:blue" position="0 -1 -3">
+						<!-- panel1 -->
+						<a-entity id="roulette1" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="-0.6 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- panel2 -->
+						<a-entity id="roulette2" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="0 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- Button -->
+						<a-entity id="startButton" geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.6 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="utils.rouletteStart();"></a-entity>
+						<a-entity id="stopButton" geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.6 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="utils.rouletteEnd();"></a-entity>
+					</a-entity>
+
+				</a-entity>
+			</a-gui-flex-container>
+
+			<!-- 말판 소유하기 dialog -->
+			<a-gui-flex-container id="ownerDialog" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="여기를 구매하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('ownerDialog', false, {fn:utils.setOwner, param:[]})"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('ownerDialog', false, {fn:utils.turnOver, param:[]});"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog1 집, 빌딩 모두-->
+			<a-gui-flex-container id="buildDialog1" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="5.5"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['01']})"
+					value="집만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['02']})"
+					value="빌딩올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['03']})"
+					value="집 & 빌딩올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog2 집-->
+			<a-gui-flex-container id="buildDialog2" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3.7"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog2', false, {fn:utils.setOwnerBuild, param:['01']})"
+					value="집만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog2', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog3 빌딩 -->
+			<a-gui-flex-container id="buildDialog3" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3.7"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog3', false, {fn:utils.setOwnerBuild, param:['02']})"
+					value="빌딩올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog3', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog4 모두 건설했을경우 -->
+			<a-gui-flex-container id="buildDialog4" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+				opacity="0.7" width="3" height="3"
+				position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+					<a-gui-label
+						width="2.5" height="0.75"
+						value="건설완료"
+						font-family="Arial"
+						margin="0 0 0.05 0">
+					</a-gui-label>
+
+					<a-gui-button
+						width="2.5" height="0.75"
+						onclick="utils.confirm('buildDialog4', false, {fn:utils.turnOver, param:[]});"
+						value="순서 넘기기"
+						font-family="Arial"
+						margin="0 0 0.05 0">
+					</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- text -->
+			<a-gui-flex-container id="alertText" visible="false" position="0 -3.8 -1.65">
+				<a-entity
+				text-geometry="value: "
+				material="color: #66E1B4"
+				position="-1.4 2 -4">
+				</a-entity>
+			</a-gui-flex-container>
+		</a-entity>
 
 		<a-camera id="gameViewCamera">
 			<a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
