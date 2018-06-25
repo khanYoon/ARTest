@@ -25,7 +25,7 @@
 					this.positionIndex = 0;
 					gameStatus = "00";
 					gameInfo.gameUser[0]._this = this;
-					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+					utils.obj("#" + this.id).setAttribute("rotation", {x:0, y:0, z:0});
 
 				},
 				tick: function (time, timeDelta) {
@@ -158,7 +158,7 @@
 					gameStatus = "00";
 					gameInfo.gameUser[1]._this = this;
 					console.log("[" + this.id + "]init");
-					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+					utils.obj("#" + this.id).setAttribute("rotation", {x:0, y:0, z:0});
 
 				},
 				tick: function (time, timeDelta) {
