@@ -37,18 +37,14 @@
   <body>
     <a-scene ar>
       <a-assets>
-        <a-asset-item id="bot" src="../models/bot4.json"></a-asset-item>
+        <a-asset-item id="mario" src="../models/Mario_Bros/Obj/Mario.obj"></a-asset-item>
+        <img id="mario_texture" src="../models/Mario_Bros/Textures/mario_main.png"></img>
         <a-asset-item id="hall_obj" src="../models/hall.obj"></a-asset-item>
         <img id="hall-texture" src="../models/hall.jpg">
       </a-assets>
 
-      <a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.01 0.01 0.01"></a-entity>
-      <!--<a-entity id="user1" user-raycast="" class="users" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity> -->
-      <a-entity id="user1" class="users" json-model="src:#bot" animation-mixer="clip: idle" position="-0.2 -1 -7" scale="1.000 1.000 1.000"></a-entity>
+      <a-entity obj-model="obj:#mario;" material="src: #mario_texture" position="0 -1 -1" scale="1 1 1"></a-entity>
 
-    <!--  <a-entity ar-raycaster="" raycaster="objects:.users"></a-entity> -->
-    <!--  <a-entity ar-raycaster raycaster="objects:none"></a-entity> -->
-    <!--  <a-ring id="mark" rotation="0 0 0" position="0 0 -2" radius-inner="0.01" radius-outer="0.02" color="blue"></a-ring> -->
 
       <a-camera>
         <a-entity id="ray" cursor="" raycaster="objects:.users" rotation="0 0 0" position="0 0 -2" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color:#FF0000;"></a-entity>
@@ -89,21 +85,5 @@
             }
           });
    </script>
-<!--    <script>
-      var raycaster = document.querySelector('[ar-raycaster]');
-      var mark = document.querySelector('#mark');
-
-      raycaster.addEventListener('raycaster-intersection', function (evt) {
-        // Turn the mark green and move it to the intersection point.
-        mark.setAttribute('color', 'green');
-        // FIXME: lerp position
-        mark.setAttribute('position', evt.detail.intersections[0].point);
-      });
-
-      raycaster.addEventListener('raycaster-intersection-cleared', function (evt) {
-        // Turn the mark red.  FIXME: lerp position
-        mark.setAttribute('color', 'red');
-      });
-    </script>  -->
   </body>
 </html>
