@@ -301,14 +301,14 @@
 		      });
 
 		      this.el.addEventListener('click', function () {
-		        var box = document.querySelector("#floor");
+		        var floor = document.querySelector("#floor");
 
 		        if(isWalk===false){
 		          isWalk = true;
-		          box.setAttribute('go','');
+		          floor.setAttribute('go','');
 		        }else{
 		          isWalk = false;
-		          box.removeAttribute('go');
+		          floor.removeAttribute('go');
 		        }
 		      });
 		    }
