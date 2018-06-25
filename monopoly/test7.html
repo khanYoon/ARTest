@@ -57,11 +57,6 @@
 							case "02" :
 								console.log(utils.getGameStatus(gameStatus).name);
 
-								console.log(utils.obj("#gameViewCamera").getAttribute("rotation"));
-								var ly = utils.obj("#gameViewCamera").getAttribute("rotation").y;
-								console.log(ly);
-								utils.obj("#gameViewCamera").setAttribute("rotation", {x:0, y:ly - 1, z:0});
-
 								// 룰렛 판이 비활성화 일경우 상태값 변경
 								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
 									gameStatus = "03";
@@ -189,10 +184,7 @@
 							// 주사위 굴리기
 							case "02" :
 								console.log(utils.getGameStatus(gameStatus).name);
-
-								console.log(utils.obj("#gameViewCamera").getAttribute("rotation"));
-								var ly = utils.obj("#gameViewCamera").getAttribute("rotation").y;
-								console.log(ly);
+								
 								// 룰렛 판이 비활성화 일경우 상태값 변경
 								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
 									gameStatus = "03";
@@ -678,9 +670,8 @@
 		</a-entity>
 
 		<a-camera id="gameViewCamera">
-			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+			<a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-camera>
-
 
     </a-scene>
     <!-- <script src="dist/aframe-inspector.js"></script> -->
