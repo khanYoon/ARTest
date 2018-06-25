@@ -281,8 +281,8 @@
 	<a-scene debug="false" ar>
 		<a-assets>
 			<canvas id="canvasObj" crossorigin="anonymous" webkit-playsinline=""></canvas>
-			<a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
-			<a-asset-item id="building_mtl" src="models/Building.mtl"></a-asset-item>
+	        <a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
+	        <a-asset-item id="building_mtl" src="models/Building.mtl"></a-asset-item>
 			<a-asset-item id="house_obj" src="models/HousF/HousF/houseF.obj"></a-asset-item>
 			<a-asset-item id="house_mtl" src="models/HousF/HousF/houseF.mtl"></a-asset-item>
 			<a-asset-item id="tower_obj" src="models/CNtower.obj"></a-asset-item>
@@ -298,14 +298,9 @@
  	<!--	<a-entity id="environment" environment="preset: forest; fog: false"></a-entity> -->
 
 		<!-- user -->
-		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000">
+		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000" wasd-controls="">
 			<!-- user camera -->
 			<a-entity rotation="-180 360 -180">
-				<a-gui-flex-container id="user1ViewBackBtn"
-				flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
-				opacity="0.7" width="2.6" height="1"
-				position="-0.210 0.675 -2.849" rotation="0 0 0" id="allViewDialog" visible="true">
-				</a-gui-flex-container>
 				<a-entity camera="active:false" id="user1Camera" look-controls="enabled:true;hmdEnabled:true" position="0 1.9 -0.15" >
 					<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 				</a-entity>
@@ -313,7 +308,7 @@
 		</a-entity>
 
 		<!-- user -->
-		<a-entity id="user2" user2-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000">
+		<a-entity id="user2" user2-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000" wasd-controls="">
 			<!-- user camera -->
 			<a-entity rotation="-180 360 -180">
 				<a-entity camera="active:false" id="user2Camera" look-controls="enabled:true;hmdEnabled:true" position="0 1.627 -0.15" >
@@ -487,12 +482,8 @@
 
         </a-entity>
 
-        <!-- Lights. -->
-		<a-entity id="pointLight" light="type: point; intensity: 0.25; intensity:1" position="0 6 0"></a-entity>
-
         <!-- gameView -->
-		<a-entity id="gameView" position="-0.167 8.088 23.6" rotation="-20 0 0" scale="1.000 0.500 1.500" wasd-controls="">
-
+		<a-entity id="gameView" position="-0.167 8.088 23.6" rotation="-20 0 0" scale="1.000 0.500 1.500">
 
 			<!-- 시작 confirm -->
 			<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
@@ -700,16 +691,6 @@
 
 		</a-entity>
 
-		<a-entity id="allView" position="-11.42 16.5 -0.268" rotation="-62.753 -91.809 1.801" scale="1.000 1.000 1.500">
-			<a-gui-flex-container
-				flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
-				opacity="0.7" width="3" height="1.5"
-				position="-0.21 0.03 -3.6" rotation="0 0 0" id="allViewDialog" visible="false">
-			</a-gui-flex-container>
-
-			<a-entity camera="active:false" id="allViewCamera"></a-entity>
-
-		</a-entity>
     </a-scene>
     <!-- <script src="dist/aframe-inspector.js"></script> -->
   </body>
