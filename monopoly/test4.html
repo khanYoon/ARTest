@@ -300,7 +300,8 @@
 		<!-- user -->
 		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000">
 			<!-- user camera -->
-			<a-entity rotation="-180 360 -180">
+			<!-- <a-entity rotation="-180 360 -180"> -->
+			<a-entity rotation="0 0 0">
 				<a-entity camera="active:false" id="user1Camera" look-controls="enabled:true;hmdEnabled:true" position="0 1.9 -0.15" >
 					<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 				</a-entity>
@@ -310,7 +311,8 @@
 		<!-- user -->
 		<a-entity id="user2" user2-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 0.111 10" scale="1.000 1.000 1.000">
 			<!-- user camera -->
-			<a-entity rotation="-180 360 -180">
+			<!-- <a-entity rotation="-180 360 -180"> -->
+			<a-entity rotation="0 0 0">
 				<a-entity camera="active:false" id="user2Camera" look-controls="enabled:true;hmdEnabled:true" position="0 1.627 -0.15" >
 					<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" rotation="0 180 180"  material="color: #EEE" position="0 0 -1"></a-entity>
 				</a-entity>
@@ -483,7 +485,7 @@
         </a-entity>
 
         <!-- gameView -->
-		<a-entity id="gameView" position="-0.167 8.088 23.6" rotation="-20 0 0" scale="1.000 0.500 1.500">
+		<a-entity id="gameView" position="-0.167 8.088 23.6" rotation="0 0 0" scale="1.000 0.500 1.500">
 
 			<!-- 시작 confirm -->
 			<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
