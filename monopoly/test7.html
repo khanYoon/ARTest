@@ -11,6 +11,271 @@
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
 			<script src="js/aframe-environment-component.min.js"></script>
+		<script>
+
+			var moveNo = 0;
+			AFRAME.registerComponent("user1-object", {
+				schema: {
+					// moveX: {type: "number", default: 0},
+					// moveY: {type: "number", default: 0},
+					// moveZ: {type: "number", default: 0}
+				},
+				init: function () {
+					this.id = this.el.getAttribute("id");
+					this.positionIndex = 0;
+					gameStatus = "00";
+					gameInfo.gameUser[0]._this = this;
+					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+
+				},
+				tick: function (time, timeDelta) {
+					// 사용자의 순서일경우
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tick");
+					}
+				},
+				tock: function(time, timeDelta){
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tock");
+						switch (gameStatus) {
+							// 게임준비일경우
+							case "00" :
+
+								utils.objView("startConfirm", true); // 시작버튼 confilm 띄우기
+								gameStatus = "01";
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 시작버튼을 활성화 되어있을 경우
+							case "01" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 게임준비 창이 비활성화 일경우 상태값 변경
+								if(utils.obj("#startConfirm").getAttribute("visible") == false){
+									gameStatus = "02";
+								}
+								break;
+							// 주사위 굴리기
+							case "02" :
+								console.log(utils.getGameStatus(gameStatus).name);
+
+								console.log(utils.obj("#gameViewCamera").getAttribute("rotation"));
+								var ly = utils.obj("#gameViewCamera").getAttribute("rotation").y;
+								console.log(ly);
+								utils.obj("#gameViewCamera").setAttribute("rotation", {x:0, y:ly - 1, z:0});
+
+								// 룰렛 판이 비활성화 일경우 상태값 변경
+								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+									gameStatus = "03";
+								}
+								break;
+							// 이동
+							case "03" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+								if(runType == "idle"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									utils.move(this.id, this.positionIndex);
+
+								}else if(runType == "run_stop"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+									// 움직인 만큼 포지션 추가
+									this.positionIndex += moveCount;
+
+									if(this.positionIndex >= positionArr.length){
+										this.positionIndex -= positionArr.length;
+									}
+									// 움직인 카운트 초기화
+									moveCount = 0;
+									// utils.objView("text", false);
+									gameStatus = "04";
+
+								}
+
+								break;
+							// 정지
+							case "04" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 소유권확인
+								utils.ownerCheck(this.id);
+								break;
+							// 말판구입
+							case "05" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+									// 소유권확인
+									utils.confirm("ownerDialog", true);
+								}
+								break;
+							// 건물건설
+							case "06" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog4").getAttribute("visible") == false){
+									// 건물 체크
+									utils.buildCheck();
+								}
+								break;
+							// 전체View
+							case "07" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 대기
+							case "08" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								nowGameUserIndex += 1;
+
+								if(nowGameUserIndex + 1 > totalUser){
+									nowGameUserIndex = 0;
+								}
+								utils.objView("rouletteBoard", true);
+								gameStatus = "02";
+
+								break;
+						}
+					}
+				},
+				update: function(){
+					console.log("update");
+				},
+				remove: function(){
+					console.log("remove");
+				}
+			});
+
+			AFRAME.registerComponent("user2-object", {
+				schema: {
+					// moveX: {type: "number", default: 0},
+					// moveY: {type: "number", default: 0},
+					// moveZ: {type: "number", default: 0}
+				},
+				init: function () {
+
+					this.id = this.el.getAttribute("id");
+					this.positionIndex = 0;
+					gameStatus = "00";
+					gameInfo.gameUser[1]._this = this;
+					console.log("[" + this.id + "]init");
+					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+
+				},
+				tick: function (time, timeDelta) {
+					// 사용자의 순서일경우
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log(this);
+						console.log("tick");
+					}
+				},
+				tock: function(time, timeDelta){
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tock");
+						switch (gameStatus) {
+							// 게임준비일경우
+							case "00" :
+								utils.objView("startConfirm", true); // 시작버튼 confilm 띄우기
+								gameStatus = "01";
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 시작버튼을 활성화 되어있을 경우
+							case "01" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 게임준비 창이 비활성화 일경우 상태값 변경
+								if(utils.obj("#startConfirm").getAttribute("visible") == false){
+									gameStatus = "02";
+								}
+								break;
+							// 주사위 굴리기
+							case "02" :
+								console.log(utils.getGameStatus(gameStatus).name);
+
+								console.log(utils.obj("#gameViewCamera").getAttribute("rotation"));
+								var ly = utils.obj("#gameViewCamera").getAttribute("rotation").y;
+								console.log(ly);
+								// 룰렛 판이 비활성화 일경우 상태값 변경
+								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+									gameStatus = "03";
+								}
+								break;
+							// 이동
+							case "03" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+								if(runType == "idle"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									utils.move(this.id, this.positionIndex);
+
+								}else if(runType == "run_stop"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+									// 움직인 만큼 포지션 추가
+									this.positionIndex += moveCount;
+
+									if(this.positionIndex >= positionArr.length){
+										this.positionIndex -= positionArr.length;
+									}
+									// 움직인 카운트 초기화
+									moveCount = 0;
+									// utils.objView("text", false);
+									gameStatus = "04";
+
+								}
+
+								break;
+							// 정지
+							case "04" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 소유권확인
+								utils.ownerCheck(this.id);
+								break;
+							// 말판구입
+							case "05" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+									// 소유권확인
+									utils.confirm("ownerDialog", true);
+								}
+								break;
+							// 건물건설
+							case "06" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog4").getAttribute("visible") == false){
+									// 건물 체크
+									utils.buildCheck();
+								}
+								break;
+							// 전체View
+							case "07" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 대기
+							case "08" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								nowGameUserIndex += 1;
+
+								if(nowGameUserIndex + 1 > totalUser){
+									nowGameUserIndex = 0;
+								}
+								utils.objView("rouletteBoard", true);
+								gameStatus = "02";
+
+								break;
+						}
+					}
+				},
+				update: function(){
+					console.log("update");
+				},
+				remove: function(){
+					console.log("remove");
+				}
+			});
+		</script>
 	</head>
 	<body>
 	<a-scene ar>
@@ -208,9 +473,213 @@
 
         </a-entity>
 
-		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="">
-			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+        <!-- gameView -->
+		<a-entity id="gameView" position="0 0.5 -1" rotation="0 0 0" scale="1.000 0.500 1.500">
+
+			<!-- 시작 confirm -->
+			<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="true">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="시작하시겠습니까?"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false, {fn:utils.objView, param:['rouletteBoard', true]})" key-code="32"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false);"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 슬롯머신 -->
+			<a-gui-flex-container id="rouletteBoard" visible="false">
+				<a-entity position="0 1 0">
+
+					<a-entity geometry="primitive : plane;height:1; width:2" material="color:blue" position="0 -1 -3">
+						<!-- panel1 -->
+						<a-entity id="roulette1" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="-0.6 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- panel2 -->
+						<a-entity id="roulette2" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="0 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- Button -->
+						<a-entity id="startButton" geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.6 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="utils.rouletteStart();"></a-entity>
+						<a-entity id="stopButton" geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.6 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="utils.rouletteEnd();"></a-entity>
+					</a-entity>
+
+				</a-entity>
+			</a-gui-flex-container>
+
+			<!-- 말판 소유하기 dialog -->
+			<a-gui-flex-container id="ownerDialog" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="여기를 구매하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('ownerDialog', false, {fn:utils.setOwner, param:[]})"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('ownerDialog', false, {fn:utils.turnOver, param:[]});"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog1 집, 빌딩 모두-->
+			<a-gui-flex-container id="buildDialog1" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="5.5"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['01']})"
+					value="집만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['02']})"
+					value="빌딩올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['03']})"
+					value="집 & 빌딩올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog2 집-->
+			<a-gui-flex-container id="buildDialog2" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3.7"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog2', false, {fn:utils.setOwnerBuild, param:['01']})"
+					value="집만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog2', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog3 빌딩 -->
+			<a-gui-flex-container id="buildDialog3" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+			opacity="0.7" width="3" height="3.7"
+			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-label>
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog3', false, {fn:utils.setOwnerBuild, param:['02']})"
+					value="빌딩올리기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button>
+
+				<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog3', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+				</a-gui-button >
+			</a-gui-flex-container>
+
+			<!-- 건물올리기 dialog4 모두 건설했을경우 -->
+			<a-gui-flex-container id="buildDialog4" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+				opacity="0.7" width="3" height="3"
+				position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+					<a-gui-label
+						width="2.5" height="0.75"
+						value="건설완료"
+						font-family="Arial"
+						margin="0 0 0.05 0">
+					</a-gui-label>
+
+					<a-gui-button
+						width="2.5" height="0.75"
+						onclick="utils.confirm('buildDialog4', false, {fn:utils.turnOver, param:[]});"
+						value="순서 넘기기"
+						font-family="Arial"
+						margin="0 0 0.05 0">
+					</a-gui-button >
+
+			</a-gui-flex-container>
+
+			<!-- text -->
+			<a-gui-flex-container id="alertText" visible="false" position="0 -3.8 -1.65">
+				<a-entity
+				text-geometry="value: "
+				material="color: #66E1B4"
+				position="-1.4 2 -4">
+				</a-entity>
+			</a-gui-flex-container>
 		</a-entity>
+
+		<a-camera id="gameViewCamera">
+			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+		</a-camera>
 
 
     </a-scene>
