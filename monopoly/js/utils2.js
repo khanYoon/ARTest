@@ -256,10 +256,6 @@ utils = {
 					// 종료ID
 					var endId = positionArr[ePositionIndex];
 
-					alert('startId : ' + startId);
-					alert('endId : ' + endId);
-					alert('movingIndex : ' + movingIndex);
-
 					var _y = 0;
 					if(movingIndex == 0 && (endId == "bord1-1" || endId == "bord2-1" || endId == "bord3-1" || endId == "bord4-1")){
 						var _y = utils.obj("#" + moveId).getAttribute("rotation").y - 90;
@@ -275,9 +271,6 @@ utils = {
 					var sPosition = utils.obj("#" + startId).object3D.position;
 					var ePosition = utils.obj("#" + endId).object3D.position;
 
-					alert('sPosition : ' + sPosition.x + " / " + sPosition.y + " / " + sPosition.z);
-					alert('ePosition : ' + ePosition.x + " / " + ePosition.y + " / " + ePosition.z);
-
 					var movePosition = {};
 
 					let isLoop = true;
@@ -285,17 +278,13 @@ utils = {
 					// x축으로 움직일경우
 					if(sPosition.x != ePosition.x){
 						index = Math.abs(sPosition.x + ePosition.x * -1);
-						alert('index x : ' + index);
 						movePosition = {x: index};
-						alert('movePositionx : ' + movePosition.x);
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
 								obj.object3D.position.x += ((movePosition.x * -1) / 4) / 10;
-								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
 							}else{
 								obj.object3D.position.x += (movePosition.x / 4) / 10;
-								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
 							}
 						}
 					}
@@ -303,17 +292,13 @@ utils = {
 					// z축으로 움직일경우
 					if(sPosition.z != ePosition.z){
 						index = Math.abs(sPosition.z + ePosition.z * -1);
-						alert('index z : ' + index);
 						movePosition = {z: index};
-						alert('movePositionz : ' + movePosition.z);
 						// z축으로 움직일때
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
 								obj.object3D.position.z += ((movePosition.z * -1) / 4) / 10;
-								alert('if obj.object3D.position.z: ' + obj.object3D.position.z);
 							}else{
 								obj.object3D.position.z += (movePosition.z / 4) / 10;
-								alert('else obj.object3D.position.z: ' + obj.object3D.position.z);
 							}
 						}
 					}
@@ -324,15 +309,25 @@ utils = {
 					}else{
 						//2018 06-26 khan 추가
 						if(sPosition.z != ePosition.z){
-							alert('ePosition.z : ' + ePosition.z + ' /  obj.object3D.position.z : ' + obj.object3D.position.z )
-							if(ePosition.z === obj.object3D.position.z){
-								movingIndex++;
+							if(sPosition.z > ePosition.z){
+								if(ePosition.z < obj.object3D.position.z){
+									movingIndex++;
+								}
+							}else{
+								if(ePosition.z > obj.object3D.position.z){
+									movingIndex++;
+								}
 							}
 						}
 						if(sPosition.x != ePosition.x){
-							alert('ePosition.x : ' + ePosition.x + ' /  obj.object3D.position.x : ' + obj.object3D.position.x )
-							if(ePosition.x === obj.object3D.position.x){
-								movingIndex++;
+							if(sPosition.x > ePosition.x){
+								if(ePosition.x < obj.object3D.position.x){
+									movingIndex++;
+								}
+							}else{
+								if(ePosition.x > obj.object3D.position.x){
+									movingIndex++;
+								}
 							}
 						}
 					}
