@@ -310,10 +310,10 @@ utils = {
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
 								obj.object3D.position.z += ((movePosition.z * -1) / 4) / 10;
-								alert('if obj.object3D.position.x: ' + obj.object3D.position.z);
+								alert('if obj.object3D.position.z: ' + obj.object3D.position.z);
 							}else{
 								obj.object3D.position.z += (movePosition.z / 4) / 10;
-								alert('else obj.object3D.position.x: ' + obj.object3D.position.z);
+								alert('else obj.object3D.position.z: ' + obj.object3D.position.z);
 							}
 						}
 					}
@@ -324,11 +324,13 @@ utils = {
 					}else{
 						//2018 06-26 khan 추가
 						if(sPosition.z != ePosition.z){
+							alert('ePosition.z : ' + ePosition.z + ' /  obj.object3D.position.z : ' + obj.object3D.position.z )
 							if(ePosition.z === obj.object3D.position.z){
 								movingIndex++;
 							}
 						}
 						if(sPosition.x != ePosition.x){
+							alert('ePosition.x : ' + ePosition.x + ' /  obj.object3D.position.x : ' + obj.object3D.position.x )
 							if(ePosition.x === obj.object3D.position.x){
 								movingIndex++;
 							}
