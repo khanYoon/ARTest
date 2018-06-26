@@ -517,14 +517,14 @@ utils = {
 		 * 텍스트 입력
 		 */
 		setText : function(text){
-			utils.obj("#alertText").querySelector("a-entity").setAttribute("text", "value", text);
+			utils.obj("#alertText").querySelector("a-entity").setAttribute("text-geometry", "value", text);
 		},
 		/**
 		 * 텍스트 보여주기
 		 */
 		textView : function(isText){
 			if(isText ==  false){
-				utils.obj("#alertText").querySelector("a-entity").setAttribute("text", "value", " ");
+				utils.obj("#alertText").querySelector("a-entity").setAttribute("text-geometry", "value", " ");
 			}
 			utils.obj("#alertText").setAttribute("visible", isText);
 		},
