@@ -259,7 +259,7 @@ utils = {
 					alert('startId : ' + startId);
 					alert('endId : ' + endId);
 					alert('movingIndex : ' + movingIndex);
-					
+
 					var _y = 0;
 					if(movingIndex == 0 && (endId == "bord1-1" || endId == "bord2-1" || endId == "bord3-1" || endId == "bord4-1")){
 						var _y = utils.obj("#" + moveId).getAttribute("rotation").y - 90;
@@ -275,8 +275,8 @@ utils = {
 					var sPosition = utils.obj("#" + startId).object3D.position;
 					var ePosition = utils.obj("#" + endId).object3D.position;
 
-					alert('sPosition : ' + sPosition);
-					alert('ePosition : ' + ePosition);
+					alert('sPosition : ' + sPosition.x + " / " + sPosition.y + " / " + sPosition.z);
+					alert('ePosition : ' + ePosition.x + " / " + ePosition.y + " / " + ePosition.z);
 
 					var movePosition = {};
 
