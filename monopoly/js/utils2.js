@@ -305,8 +305,19 @@ utils = {
 						_moveCount++;
 						movingIndex = 0;
 					}else{
-						movingIndex++;
+						//추가
+						if(sPosition.z != ePosition.z){
+							if(ePosition.z === obj.object3D.position.z){
+								movingIndex++;
+							}
+						}
+						if(sPosition.x != ePosition.x){
+							if(ePosition.x === obj.object3D.position.x){
+								movingIndex++;
+							}
+						}
 					}
+					
 
 				}
 			}
