@@ -240,8 +240,6 @@ utils = {
 
 					var sPositionIndex = positionIndex + _moveCount;
 					var ePositionIndex = sPositionIndex + 1;
-					alert('sPositionIndex : ' + sPositionIndex);
-					alert('ePositionIndex : ' + ePositionIndex);
 
 					// 마지막 말판에 도착했는지를 확인
 					if(sPositionIndex >= positionArr.length){
