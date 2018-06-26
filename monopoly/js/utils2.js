@@ -256,6 +256,9 @@ utils = {
 					// 종료ID
 					var endId = positionArr[ePositionIndex];
 
+					console.log('startId : ' + startId);
+					console.log('endId : ' + endId);
+					console.log('movingIndex : ' + movingIndex);
 					var _y = 0;
 					if(movingIndex == 0 && (endId == "bord1-1" || endId == "bord2-1" || endId == "bord3-1" || endId == "bord4-1")){
 						var _y = utils.obj("#" + moveId).getAttribute("rotation").y - 90;
@@ -270,6 +273,9 @@ utils = {
 					var obj = utils.obj("#" + moveId);
 					var sPosition = utils.obj("#" + startId).object3D.position;
 					var ePosition = utils.obj("#" + endId).object3D.position;
+
+					console.log('sPosition : ' + sPosition);
+					console.log('ePosition : ' + ePosition);
 
 					var movePosition = {};
 
