@@ -74,7 +74,7 @@
 								if(runType == "idle"){
 
 									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
-									alert('positionINdex : ' this.positionIndex);
+									console.log('positionINdex : ' + this.positionIndex);
 									utils.move(this.id, this.positionIndex);
 
 								}else if(runType == "run_stop"){
