@@ -11,6 +11,7 @@
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
 			<script src="js/aframe-environment-component.min.js"></script>
+			<script src="AR.js/arjs-aframe"></script>
 		<script>
 
 			var moveNo = 0;
@@ -276,45 +277,6 @@
 				}
 			});
 		</script>
-
-		<script>
-
-		  var isWalk = false;
-
-		  AFRAME.registerComponent('go', {
-		    init : function() {
-		    },
-		    tick : function(a,b) {
-		      this.transform.translateVector(new THREE.Vector3( 0,  0,  0.001), b);
-		    }
-		  });
-
-		  AFRAME.registerComponent('raycast-blab', {
-		    init: function () {
-		      this.el.addEventListener('raycaster-intersected', function (evt) {
-		        var el = evt.target;
-		        el.setAttribute('material', 'color', '#7f7');
-		      });
-		      this.el.addEventListener('raycaster-intersected-cleared', function (evt) {
-		        var el = evt.target;
-		        el.setAttribute('material', 'color', '#f77');
-		      });
-
-		      this.el.addEventListener('click', function () {
-		        var floor = document.querySelector("#floor");
-
-		        if(isWalk===false){
-		          isWalk = true;
-		          floor.setAttribute('go','');
-		        }else{
-		          isWalk = false;
-		          floor.removeAttribute('go');
-		        }
-		      });
-		    }
-		  });
-		</script>
-
 	</head>
 	<body>
 	<a-scene ar>
@@ -332,7 +294,7 @@
 			<a-asset-item id="trump_json" src="models/trump/bot4.json"></a-asset-item>
 			<a-asset-item id="trump_mtl" src="models/trump/Trump1.mtl"></a-asset-item>
 		</a-assets>
-
+		<a-marker preset="hiro">
  	<!--	<a-entity id="environment" environment="preset: forest; fog: false"></a-entity> -->
 
 		<!-- user -->
@@ -348,7 +310,7 @@
 		</a-entity>
 
 		<!-- Floor. -->
-		<a-entity id="floor" geometry="primitive: box; height: 0.1; depth: 24; width: 24" material="color: #fafafa; metalness: .1" scale="1 1.2 1" position="0 -5 -15" rotiation="0 0 0" raycast-blab>
+		<a-entity id="floor" geometry="primitive: box; height: 0.1; depth: 24; width: 24" material="color: #fafafa; metalness: .1" scale="1 1.2 1" position="0 -5 -15" rotiation="0 0 0">
 			<a-entity id="bord1-1" geometry="primitive: plane; height: .2; width: 4" material="color: red; metalness: .1" scale="1 20 0" position="-10 0.06 10" rotation="270 0 0">
 				<a-entity id="pan1-1" geometry="primitive: plane; height: .2; width: 4" material="color: white; metalness: .1" scale="0.9 0.9 0" position="0.020 -0.001 4000">
 				</a-entity>
@@ -716,10 +678,11 @@
 			</a-gui-flex-container>
 		</a-entity>
 
+		</a-marker>
+		
 		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="">
-			<a-entity cursor="" raycaster="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-entity>
-
 
     </a-scene>
     <!-- <script src="dist/aframe-inspector.js"></script> -->
