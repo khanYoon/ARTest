@@ -281,7 +281,7 @@ utils = {
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
-								obj.object3D.position.x += (movePosition.x * -3) / 4;
+								obj.object3D.position.x += (movePosition.x * -1) / 4;
 							}else{
 								obj.object3D.position.x += movePosition.x / 4;
 							}
