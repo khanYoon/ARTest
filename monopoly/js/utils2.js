@@ -240,8 +240,8 @@ utils = {
 
 					var sPositionIndex = positionIndex + _moveCount;
 					var ePositionIndex = sPositionIndex + 1;
-					console.log('sPositionIndex : ' + sPositionIndex);
-					console.log('ePositionIndex : ' + ePositionIndex);
+					alert('sPositionIndex : ' + sPositionIndex);
+					alert('ePositionIndex : ' + ePositionIndex);
 
 					// 마지막 말판에 도착했는지를 확인
 					if(sPositionIndex >= positionArr.length){
@@ -256,9 +256,10 @@ utils = {
 					// 종료ID
 					var endId = positionArr[ePositionIndex];
 
-					console.log('startId : ' + startId);
-					console.log('endId : ' + endId);
-					console.log('movingIndex : ' + movingIndex);
+					alert('startId : ' + startId);
+					alert('endId : ' + endId);
+					alert('movingIndex : ' + movingIndex);
+					
 					var _y = 0;
 					if(movingIndex == 0 && (endId == "bord1-1" || endId == "bord2-1" || endId == "bord3-1" || endId == "bord4-1")){
 						var _y = utils.obj("#" + moveId).getAttribute("rotation").y - 90;
@@ -274,8 +275,8 @@ utils = {
 					var sPosition = utils.obj("#" + startId).object3D.position;
 					var ePosition = utils.obj("#" + endId).object3D.position;
 
-					console.log('sPosition : ' + sPosition);
-					console.log('ePosition : ' + ePosition);
+					alert('sPosition : ' + sPosition);
+					alert('ePosition : ' + ePosition);
 
 					var movePosition = {};
 
