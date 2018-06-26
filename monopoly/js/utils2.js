@@ -247,10 +247,6 @@ utils = {
 			}
 
 		},
-		sleep : function (delay) {
-				var start = new Date().getTime();
-				while (new Date().getTime() < start + delay);
-	 	},
 		/**
 		 * 캐릭터 이동
 		 * @param moveId : 움직이는 object ID
@@ -278,7 +274,6 @@ utils = {
 			render();
 
 			function moving(){
-				utils.sleep(1000);
 				if(_moveCount == moveCount){
 
 					utils.obj("#" + moveId).setAttribute("animation-mixer", "clip", "run_stop");
