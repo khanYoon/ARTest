@@ -278,7 +278,7 @@ utils = {
 			render();
 
 			function moving(){
-				this.sleep(1000);
+				utils.sleep(1000);
 				if(_moveCount == moveCount){
 
 					utils.obj("#" + moveId).setAttribute("animation-mixer", "clip", "run_stop");
