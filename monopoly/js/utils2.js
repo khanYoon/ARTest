@@ -273,8 +273,6 @@ utils = {
 
 					let isLoop = true;
 
-					alert('sPosition.x : '+ sPosition.x + '/ sPosition.z : '+ sPosition.z '/ eposition.x : ' + eposition.x +'obj.object3D.position.x : ' + obj.object3D.position.x + ' / eposition.z : ' + eposition.z +' / obj.object3D.position.z :' + obj.object3D.position.z)
-
 					// x축으로 움직일경우
 					if(sPosition.x != ePosition.x){
 						index = Math.abs(sPosition.x + ePosition.x * -1);
@@ -314,6 +312,8 @@ utils = {
 							}
 						}
 					}
+
+					alert('sPosition.x : '+ sPosition.x + '/ sPosition.z : '+ sPosition.z '/ eposition.x : ' + eposition.x +'obj.object3D.position.x : ' + obj.object3D.position.x + ' / eposition.z : ' + eposition.z +' / obj.object3D.position.z :' + obj.object3D.position.z + ' / moveIndex : ' + movingIndex);
 
 					if(movingIndex == 3){
 						_moveCount++;
