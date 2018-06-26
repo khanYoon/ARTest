@@ -280,11 +280,9 @@ utils = {
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
-								obj.object3D.position.x += ((movePosition.x * -1) / 4) / 10;
-								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
+								obj.object3D.position.x += (movePosition.x * -1) / 4;
 							}else{
-								obj.object3D.position.x += (movePosition.x / 4) / 10;
-								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
+								obj.object3D.position.x += movePosition.x / 4;
 							}
 						}
 					}
@@ -296,9 +294,9 @@ utils = {
 						// z축으로 움직일때
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
-								obj.object3D.position.z += ((movePosition.z * -1) / 4) / 10;
+								obj.object3D.position.z += (movePosition.z * -1) / 4;
 							}else{
-								obj.object3D.position.z += (movePosition.z / 4) / 10;
+								obj.object3D.position.z += movePosition.z / 4 / 10;
 							}
 						}
 					}
