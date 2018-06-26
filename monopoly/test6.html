@@ -10,7 +10,7 @@
 			<script src="js/aframe-gui.js"></script>
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
-			<script src="js/aframe-environment-component.min.js"></script>			
+			<script src="js/aframe-environment-component.min.js"></script>
 		<script>
 
 			var moveNo = 0;
@@ -74,6 +74,7 @@
 								if(runType == "idle"){
 
 									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									alert('positionINdex : ' this.positionIndex);
 									utils.move(this.id, this.positionIndex);
 
 								}else if(runType == "run_stop"){
