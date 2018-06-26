@@ -273,6 +273,8 @@ utils = {
 
 					let isLoop = true;
 
+					alert('sPosition.x : '+ sPosition.x + '/ sPosition.z : '+ sPosition.z '/ eposition.x : ' + eposition.x + ' / eposition.z : ' + eposition.z)
+
 					// x축으로 움직일경우
 					if(sPosition.x != ePosition.x){
 						index = Math.abs(sPosition.x + ePosition.x * -1);
