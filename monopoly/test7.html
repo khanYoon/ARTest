@@ -10,7 +10,6 @@
 			<script src="js/aframe-gui.js"></script>
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
-			<script src="js/aframe-environment-component.min.js"></script>
 		<script>
 
 			var moveNo = 0;
@@ -331,13 +330,9 @@
 			<a-asset-item id="sonic_mtl" src="models/sonic/SONIC_Girl.mtl"></a-asset-item>
 			<a-asset-item id="trump_json" src="models/trump/bot4.json"></a-asset-item>
 			<a-asset-item id="trump_mtl" src="models/trump/Trump1.mtl"></a-asset-item>
-			<a-asset-item id="hall_obj" src="models/hall.obj"></a-asset-item>
-			<img id="hall-texture" src="models/hall.jpg">
 		</a-assets>
 
  	<!--	<a-entity id="environment" environment="preset: forest; fog: false"></a-entity> -->
-
-		<a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="5 5 5"></a-entity>
 
 		<!-- user -->
 		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-10 -4.7 -5" scale="1.000 1.000 1.000">
@@ -713,22 +708,17 @@
 			<!-- text -->
 			<a-gui-flex-container id="alertText" visible="false" position="0 -3.8 -1.65">
 				<a-entity
-				text-geometry="value: "
+				text="value:"
 				material="color: #66E1B4"
 				position="-1.4 2 -4">
 				</a-entity>
 			</a-gui-flex-container>
 		</a-entity>
 
-  <!--		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="">
+		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="">
 			<a-entity cursor="" raycaster="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
-		</a-entity> -->
+		</a-entity>
 
-
-		<a-camera>
-			<a-entity id="gameViewCamera" cursor="" rotation="0 0 0" position="0 0 -2" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color:red;"></a-entity>
-			<a-text id="hud" align="center" wrap-count="800" position="0 -0.1 -0.25" value="tab"></a-text>
-		</a-camera>
 
     </a-scene>
     <!-- <script src="dist/aframe-inspector.js"></script> -->
