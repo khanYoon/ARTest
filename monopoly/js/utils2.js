@@ -89,7 +89,7 @@ utils = {
 			}
 
 			function cameraMoving(){
-				var moveIndex = moveDistanceTo / 10;
+				var moveIndex = moveDistanceTo / 100;
 
 				camera.setAttribute("position", document.querySelector("#user1").object3D.position)
 				// startCamera.position
@@ -326,9 +326,9 @@ utils = {
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
-								obj.object3D.position.x += (movePosition.x * -1) / 4;
+								obj.object3D.position.x += (movePosition.x * -1) / 10;
 							}else{
-								obj.object3D.position.x += movePosition.x / 4;
+								obj.object3D.position.x += movePosition.x / 10;
 							}
 						}
 					}
@@ -341,9 +341,9 @@ utils = {
 						// z축으로 움직일때
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
-								obj.object3D.position.z += (movePosition.z * -1) / 4;
+								obj.object3D.position.z += (movePosition.z * -1) / 10;
 							}else{
-								obj.object3D.position.z += movePosition.z / 4;
+								obj.object3D.position.z += movePosition.z / 10;
 							}
 						}
 					}
