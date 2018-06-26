@@ -296,7 +296,7 @@ utils = {
 							if(sPosition.z > ePosition.z){
 								obj.object3D.position.z += (movePosition.z * -1) / 4;
 							}else{
-								obj.object3D.position.z += movePosition.z / 4 / 10;
+								obj.object3D.position.z += movePosition.z / 4;
 							}
 						}
 					}
