@@ -285,14 +285,17 @@ utils = {
 					// x축으로 움직일경우
 					if(sPosition.x != ePosition.x){
 						index = Math.abs(sPosition.x + ePosition.x * -1);
+						alert('index x : ' + index);
 						movePosition = {x: index};
-
+						alert('movePositionx : ' + movePosition.x);
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
 								obj.object3D.position.x += (movePosition.x * -1) / 4;
+								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
 							}else{
 								obj.object3D.position.x += movePosition.x / 4;
+								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
 							}
 						}
 					}
@@ -300,14 +303,17 @@ utils = {
 					// z축으로 움직일경우
 					if(sPosition.z != ePosition.z){
 						index = Math.abs(sPosition.z + ePosition.z * -1);
+						alert('index z : ' + index);
 						movePosition = {z: index};
-
+						alert('movePositionz : ' + movePosition.z);
 						// z축으로 움직일때
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
 								obj.object3D.position.z += (movePosition.z * -1) / 4;
+								alert('if obj.object3D.position.x: ' + obj.object3D.position.z);
 							}else{
 								obj.object3D.position.z += movePosition.z / 4;
+								alert('else obj.object3D.position.x: ' + obj.object3D.position.z);
 							}
 						}
 					}
