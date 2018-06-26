@@ -275,7 +275,7 @@ utils = {
 
 					// x축으로 움직일경우
 					if(sPosition.x != ePosition.x){
-						index = Math.abs(sPosition.x + ePosition.x * -0.5);
+						index = Math.abs(sPosition.x + ePosition.x * -1);
 						movePosition = {x: index};
 
 						// x축으로 움직일때
@@ -290,7 +290,7 @@ utils = {
 
 					// z축으로 움직일경우
 					if(sPosition.z != ePosition.z){
-						index = Math.abs(sPosition.z + ePosition.z * -0.5);
+						index = Math.abs(sPosition.z + ePosition.z * -1);
 						movePosition = {z: index};
 
 						// z축으로 움직일때
