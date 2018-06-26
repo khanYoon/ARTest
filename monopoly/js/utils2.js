@@ -266,8 +266,8 @@ utils = {
 
 					// 한칸씩 이동
 					var obj = utils.obj("#" + moveId);
-					var sPosition = utils.obj("#" + startId).object3D.position;
-					var ePosition = utils.obj("#" + endId).object3D.position;
+					var sPosition = utils.obj("#" + startId).object3D.position / 4;
+					var ePosition = utils.obj("#" + endId).object3D.position / 4;
 
 					var movePosition = {};
 
