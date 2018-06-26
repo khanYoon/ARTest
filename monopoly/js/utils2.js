@@ -55,50 +55,6 @@ utils = {
 		/*
 		 * 카메라 줌 아웃
 		 */
-		zoomInOut : function(startObjId, endObjId){
-			// var a = new THREE.Vector3( 1, 1, 0 );
-
-			// //no arguments; will be initialised to (0, 0, 0)
-			// var b = new THREE.Vector3( );
-
-			// var d = a.distanceTo( b );
-
-			// console.log(d);
-
-
-			var startCamera = this.obj("#" + startObjId).object3D;
-			var endCamera = this.obj("#" + endObjId).object3D;
-
-			console.log(startCamera.position);
-			console.log(endCamera.position);
-			var startVector = new THREE.Vector3(startCamera.position.x, startCamera.position.y, startCamera.z);
-			var endVector = new THREE.Vector3(endCamera.position.x, endCamera.position.y, endCamera.z);
-
-			var moveDistanceTo = startVector.distanceTo(endVector);
-
-			let renderer = new THREE.WebGLRenderer();
-
-			let isCameraMoving = true;
-
-			function render(){
-				if(isCameraMoving){
-					requestAnimationFrame(render);
-					cameraMoving();
-					renderer.render(scene, startCamera);
-				}
-			}
-
-			function cameraMoving(){
-				var moveIndex = moveDistanceTo / 100;
-
-				camera.setAttribute("position", document.querySelector("#user1").object3D.position)
-				// startCamera.position
-
-			}
-
-			console.log(moveDistanceTo);
-
-		},
 		/**
 		 * 게임상태 취득
 		 */
