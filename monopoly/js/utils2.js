@@ -282,7 +282,7 @@ utils = {
 								obj.object3D.position.x = parseFloat(obj.object3D.position.x +((movePosition.x * -1) / 4) / 10).toFixed(2));
 								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
 							}else{
-								obj.object3D.position.x = parseFloat(obj.object3D.position.x +(movePosition.x / 4) / 10).toFixed(2));
+								obj.object3D.position.x = parseFloat(obj.object3D.position.x + (movePosition.x / 4) / 10).toFixed(2));
 								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
 							}
 						}
