@@ -307,7 +307,7 @@ utils = {
 					}else{
 						//2018 06-26 khan 추가
 						if(sPosition.z != ePosition.z){
-							alert("sPosition.z : "+ sPosition.z  + " / ePosition.z : " + ePosition.z + " / obj.object3D.position.z : " + obj.object3D.position.z )
+							alert("sPosition.z : "+ sPosition.z  + " / ePosition.z : " + ePosition.z + " / obj.object3D.position.z : " + obj.object3D.position.z )							
 							if(ePosition.z < obj.object3D.position.z){
 								movingIndex++;
 							}
