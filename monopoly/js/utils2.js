@@ -306,7 +306,7 @@ utils = {
 						movingIndex = 0;
 					}else{
 						//2018 06-26 khan 추가
-						alert('movingIndex : '+moveIndex);
+						alert('movingIndex : '+ movingIndex);
 						movingIndex ++;
 					}
 
