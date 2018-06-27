@@ -307,12 +307,21 @@ utils = {
 					}else{
 						//2018 06-26 khan 추가
 						if(sPosition.z != ePosition.z){
-							if(ePosition.z === obj.object3D.position.z){
+							alert("ePosition.z : " )
+							if(ePosition.z < obj.object3D.position.z){
+								movingIndex++;
+							}
+						}else{
+							if(ePosition.z > obj.object3D.position.z){
 								movingIndex++;
 							}
 						}
 						if(sPosition.x != ePosition.x){
 							if(ePosition.x === obj.object3D.position.x){
+								movingIndex++;
+							}
+						}else{
+							if(ePosition.x > obj.object3D.position.x){
 								movingIndex++;
 							}
 						}
