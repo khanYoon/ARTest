@@ -308,21 +308,23 @@ utils = {
 						//2018 06-26 khan 추가
 						if(sPosition.z != ePosition.z){
 							alert("sPosition.z : "+ sPosition.z  + " / ePosition.z : " + ePosition.z + " / obj.object3D.position.z : " + obj.object3D.position.z )
-							if(ePosition.z > obj.object3D.position.z){
+							if(ePosition.z < obj.object3D.position.z){
 								movingIndex++;
 							}
 						}else{
-							if(ePosition.z < obj.object3D.position.z){
+							alert("sPosition.z : "+ sPosition.z  + " / ePosition.z : " + ePosition.z + " / obj.object3D.position.z : " + obj.object3D.position.z )
+							if(ePosition.z > obj.object3D.position.z){
 								movingIndex++;
 							}
 						}
 						if(sPosition.x != ePosition.x){
 							alert("sPosition.x : "+ sPosition.x  + " / ePosition.x : " + ePosition.x + " / obj.object3D.position.x : " + obj.object3D.position.x  )
-							if(ePosition.x > obj.object3D.position.x){
+							if(ePosition.x < obj.object3D.position.x){
 								movingIndex++;
 							}
 						}else{
-							if(ePosition.x < obj.object3D.position.x){
+							alert("sPosition.x : "+ sPosition.x  + " / ePosition.x : " + ePosition.x + " / obj.object3D.position.x : " + obj.object3D.position.x )
+							if(ePosition.x > obj.object3D.position.x){
 								movingIndex++;
 							}
 						}
