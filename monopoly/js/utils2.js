@@ -301,7 +301,7 @@ utils = {
 						}
 					}
 
-					if(movingIndex == 10){
+					if(movingIndex == 15){
 						_moveCount++;
 						movingIndex = 0;
 					}else{
