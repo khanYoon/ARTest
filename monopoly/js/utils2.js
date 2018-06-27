@@ -307,7 +307,7 @@ utils = {
 					}else{
 						//2018 06-26 khan 추가
 						if(sPosition.z != ePosition.z){
-							alert("ePosition.z : " )
+							alert("sPosition.z : "+ sPosition.z  + " / ePosition.z : " + ePosition.z + " / obj.object3D.position.z : " + obj.object3D.position.z )
 							if(ePosition.z < obj.object3D.position.z){
 								movingIndex++;
 							}
@@ -317,7 +317,8 @@ utils = {
 							}
 						}
 						if(sPosition.x != ePosition.x){
-							if(ePosition.x === obj.object3D.position.x){
+							alert("sPosition.x : "+ sPosition.x  + " / ePosition.x : " + ePosition.x + " / obj.object3D.position.x : " + obj.object3D.position.x  )
+							if(ePosition.x < obj.object3D.position.x){
 								movingIndex++;
 							}
 						}else{
