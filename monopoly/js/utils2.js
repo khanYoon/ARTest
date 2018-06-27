@@ -294,7 +294,6 @@ utils = {
 								obj.object3D.position.x += parseFloat(((movePosition.x * -1) / 4) / 10).toFixed(5);
 								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
 							}else{
-								cal2 = (movePosition.x / 4) / 10;
 								obj.object3D.position.x += parseFloat((movePosition.x / 4) / 10).toFixed(5);
 								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
 							}
