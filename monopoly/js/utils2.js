@@ -281,10 +281,8 @@ utils = {
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
 								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.x * -1) / 4) / 10).toFixed(3))).toFixed(3);
-								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
 							}else{
 								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat((movePosition.x / 4) / 10).toFixed(3))).toFixed(3);
-								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
 							}
 						}
 					}
@@ -297,10 +295,8 @@ utils = {
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
 								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 10).toFixed(3))).toFixed(3);
-								alert('if obj.object3D.position.z: ' + obj.object3D.position.z);
 							}else{
 								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.z / 4) / 10).toFixed(3))).toFixed(3);
-								alert('else obj.object3D.position.z: ' + obj.object3D.position.z);
 							}
 						}
 					}
