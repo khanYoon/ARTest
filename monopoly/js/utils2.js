@@ -292,11 +292,11 @@ utils = {
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
 								var cal1 = parseFloat(((movePosition.x * -1) / 4) / 10).toFixed(5);
-								obj.object3D.position.x += cal1;
+								obj.object3D.position.x += parseFloat(cal1);
 								alert('if obj.object3D.position.x: ' + obj.object3D.position.x);
 							}else{
 								cal2 = parseFloat((movePosition.x / 4) / 10).toFixed(5);
-								obj.object3D.position.x += cal2
+								obj.object3D.position.x += parseFloat(cal2);
 								alert('else obj.object3D.position.x: ' + obj.object3D.position.x);
 							}
 						}
@@ -313,12 +313,12 @@ utils = {
 							if(sPosition.z > ePosition.z){
 								var cal3 = parseFloat(((movePosition.z * -1) / 4) / 10).toFixed(5);
 								alert('연산값3 : ' + cal3);
-								obj.object3D.position.z += cal3;
+								obj.object3D.position.z += parseFloat(cal3);
 								alert('if obj.object3D.position.z: ' + obj.object3D.position.z);
 							}else{
 								var cal4 = parseFloat((movePosition.z / 4) / 10).toFixed(5);
 								alert('연산값4 : ' + cal4);
-								obj.object3D.position.z += cal4;
+								obj.object3D.position.z += parseFloat(cal4);
 								alert('else obj.object3D.position.z: ' + obj.object3D.position.z);
 							}
 						}
