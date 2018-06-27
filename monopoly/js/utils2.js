@@ -301,12 +301,12 @@ utils = {
 						}
 					}
 
-					if(movingIndex == 50){
+					if(movingIndex == 48){
 						_moveCount++;
 						movingIndex = 0;
 					}else{
 						//2018 06-26 khan 추가
-						alert('movingIndex : '+ movingIndex);
+//						alert('movingIndex : '+ movingIndex);
 						movingIndex ++;
 					}
 
