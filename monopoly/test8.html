@@ -11,6 +11,7 @@
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
 			<script src="js/aframe-environment-component.min.js"></script>
+			<script src="arjs/arjs-aframe.js"></script>
 		<script>
 
 			var moveNo = 0;
@@ -278,7 +279,7 @@
 		</script>
 	</head>
 	<body>
-	<a-scene ar>
+	<a-scene ar arjs='sourceType: webcam; detectionMode: mono; maxDetectionRate: 30; canvasWidth: 240; canvasHeight: 180'>
 		<a-assets>
 			<a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
 			<a-asset-item id="building_mtl" src="models/Building.mtl"></a-asset-item>
@@ -295,7 +296,7 @@
 		</a-assets>
 
  	<!--	<a-entity id="environment" environment="preset: forest; fog: false"></a-entity> -->
-
+		<a-maker preset="hiro">
 		<!-- user -->
 		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-49 -9 -10" scale="5 5 5">
 			<!-- user camera -->
@@ -676,7 +677,7 @@
 				</a-entity>
 			</a-gui-flex-container>
 		</a-entity>
-
+	</a-marker>
 		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="" wasd-controls="">
 			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-entity>
