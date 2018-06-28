@@ -57,6 +57,41 @@
 
 
     </a-scene>
+
+		<script>
+					var user = document.querySelector('#user1');
+					var ray = document.querySelector('#ray');
+
+					user.addEventListener('raycaster-intersected', function (evt) {
+						ray.setAttribute('material','color', '#00FF00');
+					});
+
+					user.addEventListener('raycaster-intersected-cleared', function (evt) {
+						ray.setAttribute('material','color', '#FF0000');
+					});
+
+//          user.addEventListener('raycaster-intersection', function (evt) {
+//            ray.setAttribute('material','color', '#00FF00');
+//          });
+
+//          user.addEventListener('raycaster-intersection-cleared', function (evt) {
+//            ray.setAttribute('material','color', '#FF0000');
+//          });
+
+
+					user.addEventListener('click', function () {
+
+						if(isWalk===false){
+							isWalk = true;
+							user.setAttribute('go','');
+							user.setAttribute('animation-mixer','clip', 'walk');
+						}else{
+							isWalk = false;
+							user.removeAttribute('go');
+							user.setAttribute('animation-mixer','clip', 'idle');
+						}
+					});
+	 </script>
     <!-- <script src="dist/aframe-inspector.js"></script> -->
   </body>
 </html>
