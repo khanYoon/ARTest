@@ -10,8 +10,6 @@
 			<script src="js/aframe-gui.js"></script>
 			<script src="js/utils2.js"></script>
 			<script src="js/text-geometry/build.js"></script>
-			<script src="js/aframe-environment-component.min.js"></script>
-			<script src="arjs/arjs-aframe.js"></script>
 		<script>
 
 			var moveNo = 0;
@@ -57,12 +55,6 @@
 							// 주사위 굴리기
 							case "02" :
 								console.log(utils.getGameStatus(gameStatus).name);
-
-								console.log(utils.obj("#gameViewCamera").getAttribute("rotation"));
-								var ly = utils.obj("#gameViewCamera").getAttribute("rotation").y;
-								console.log(ly);
-								utils.obj("#gameViewCamera").setAttribute("rotation", {x:0, y:ly - 1, z:0});
-
 								// 룰렛 판이 비활성화 일경우 상태값 변경
 								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
 									gameStatus = "03";
@@ -191,10 +183,6 @@
 							// 주사위 굴리기
 							case "02" :
 								console.log(utils.getGameStatus(gameStatus).name);
-
-								console.log(utils.obj("#gameViewCamera").getAttribute("rotation"));
-								var ly = utils.obj("#gameViewCamera").getAttribute("rotation").y;
-								console.log(ly);
 								// 룰렛 판이 비활성화 일경우 상태값 변경
 								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
 									gameStatus = "03";
@@ -287,26 +275,16 @@
 			<a-asset-item id="house_mtl" src="models/HousF/HousF/houseF.mtl"></a-asset-item>
 			<a-asset-item id="tower_obj" src="models/CNtower.obj"></a-asset-item>
 			<a-asset-item id="tower_mtl" src="models/CNtower.mtl"></a-asset-item>
-			<a-asset-item id="rego_obj" src="models/rego/LEGO_Man.obj"></a-asset-item>
-			<a-asset-item id="rego_mtl" src="models/rego/LEGO_Man.mtl"></a-asset-item>
-			<a-asset-item id="sonic_obj" src="models/sonic/SONIC_Girl.obj"></a-asset-item>
-			<a-asset-item id="sonic_mtl" src="models/sonic/SONIC_Girl.mtl"></a-asset-item>
 			<a-asset-item id="trump_json" src="models/trump/bot4.json"></a-asset-item>
 			<a-asset-item id="trump_mtl" src="models/trump/Trump1.mtl"></a-asset-item>
 		</a-assets>
 
- 	<!--	<a-entity id="environment" environment="preset: forest; fog: false"></a-entity> -->
-		<a-maker preset="hiro">
 		<!-- user -->
 		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-49 -9 -10" scale="5 5 5">
-			<!-- user camera -->
-			<!-- <a-entity rotation="-180 360 -180"> -->
 		</a-entity>
 
 		<!-- user -->
 		<a-entity id="user2" user2-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-4 -9 -5" scale="5 5 5">
-			<!-- user camera -->
-			<!-- <a-entity rotation="-180 360 -180"> -->
 		</a-entity>
 
 		<!-- Floor. -->
@@ -677,7 +655,7 @@
 				</a-entity>
 			</a-gui-flex-container>
 		</a-entity>
-	</a-marker>
+		
 		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="" wasd-controls="">
 			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-entity>
