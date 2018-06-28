@@ -10,7 +10,7 @@
 			<script src="js/aframe-gui.js"></script>
 			<script src="js/utils3.js"></script>
 			<script src="js/text-geometry/build.js"></script>
-		<script>
+			<script>
 
 			var moveNo = 0;
 			AFRAME.registerComponent("user1-object", {
@@ -654,9 +654,9 @@
 			</a-gui-flex-container>
 		</a-entity>
 
-		<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="" wasd-controls="">
+		<a-camera id="gameViewCamera">
 			<a-entity cursor geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
-		</a-entity>
+		</a-camera>
 
 
     </a-scene>
