@@ -294,9 +294,9 @@ utils = {
 						// z축으로 움직일때
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
-								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 8).toFixed(3))).toFixed(3);
+								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 20).toFixed(3))).toFixed(3);
 							}else{
-								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.z / 4) / 8).toFixed(3))).toFixed(3);
+								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.z / 4) / 20).toFixed(3))).toFixed(3);
 							}
 						}
 					}
