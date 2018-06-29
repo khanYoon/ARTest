@@ -269,6 +269,8 @@
 	<body>
 	<a-scene ar>
 		<a-assets>
+			<a-asset-item id="hall_obj" src="models/hall.obj"></a-asset-item>
+			<img id="hall-texture" src="models/hall.jpg">
 			<a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
 			<a-asset-item id="building_mtl" src="models/Building.mtl"></a-asset-item>
 			<a-asset-item id="house_obj" src="models/HousF/HousF/houseF.obj"></a-asset-item>
@@ -278,6 +280,8 @@
 			<a-asset-item id="trump_json" src="models/trump/bot4.json"></a-asset-item>
 			<a-asset-item id="trump_mtl" src="models/trump/Trump1.mtl"></a-asset-item>
 		</a-assets>
+		
+		<a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
 		<!-- user -->
 		<a-entity id="user1" user1-object="" json-model="src:#trump_json" animation-mixer="clip: idle" position="-49 -9 -10" scale="5 5 5"></a-entity>
 
