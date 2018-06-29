@@ -280,9 +280,9 @@ utils = {
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
-								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.x * -1) / 4) / 2).toFixed(3))).toFixed(3);
+								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.x * -1) / 4) / 4).toFixed(3))).toFixed(3);
 							}else{
-								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat((movePosition.x / 4) / 2).toFixed(3))).toFixed(3);
+								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat((movePosition.x / 4) / 4).toFixed(3))).toFixed(3);
 							}
 						}
 					}
@@ -294,14 +294,14 @@ utils = {
 						// z축으로 움직일때
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
-								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 2).toFixed(3))).toFixed(3);
+								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 4).toFixed(3))).toFixed(3);
 							}else{
-								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.z / 4) / 2).toFixed(3))).toFixed(3);
+								obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.z / 4) / 4).toFixed(3))).toFixed(3);
 							}
 						}
 					}
 
-					if(movingIndex == 38){
+					if(movingIndex == 10){
 						_moveCount++;
 						movingIndex = 0;
 					}else{
