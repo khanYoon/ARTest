@@ -280,9 +280,9 @@ utils = {
 						// x축으로 움직일때
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
-								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.x * -1) / 4) / 8).toFixed(3))).toFixed(3);
+								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.x * -1) / 4) / 20).toFixed(3))).toFixed(3);
 							}else{
-								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat((movePosition.x / 4) / 8).toFixed(3))).toFixed(3);
+								obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat((movePosition.x / 4) / 20).toFixed(3))).toFixed(3);
 							}
 						}
 					}
@@ -301,7 +301,7 @@ utils = {
 						}
 					}
 
-					if(movingIndex == 30){
+					if(movingIndex == 38){
 						_moveCount++;
 						movingIndex = 0;
 					}else{
