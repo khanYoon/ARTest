@@ -81,6 +81,7 @@ utils = {
 
 				//20180702 khan 추가
 				utils.turnOver();
+				gameStatus = "02";
 				isOwnerCheck = false;
 			}
 
@@ -120,6 +121,7 @@ utils = {
 						utils.setText(text);
 						utils.textView(true);
 						setTimeout("utils.textView(false);utils.turnOver();", 1000);
+						gameStatus = "02";
 
 					}else{
 
