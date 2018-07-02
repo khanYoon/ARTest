@@ -79,6 +79,8 @@ utils = {
 
 			movingUserId = moveId;
 
+			//시작점에 서 false 로 바뀐뒤  turnOver되면 isOwnerCheck 값이 항상 false 이므로 매번 호출 될때 마다 초기화
+			isOwnerCheck = true;
 			// 시작점은 제외
 			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
 
