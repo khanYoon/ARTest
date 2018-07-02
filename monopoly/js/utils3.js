@@ -120,8 +120,8 @@ utils = {
 						text += "Minus";
 						utils.setText(text);
 						utils.textView(true);
-						setTimeout("utils.textView(false);", 1000);
-						setTimeout("utils.turnOver();", 1000);
+						setTimeout("utils.textView(false);", 100);
+						setTimeout("utils.turnOver();", 100);
 
 					}else{
 
