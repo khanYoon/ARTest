@@ -29,6 +29,8 @@ var renderer = new THREE.WebGLRenderer({ antialias: true });
 var movingUserId;
 var backBtn = false;
 
+var testCheck = false;
+
 utils = {
 		/**
 		 * scene이 로드 되면 이벤트를 추가한다.
@@ -76,14 +78,6 @@ utils = {
 		ownerCheck : function(moveId){
 
 			movingUserId = moveId;
-
-			// 시작점은 제외
-			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
-
-				//20180702 khan 추가
-				utils.turnOver();
-				isOwnerCheck = false;
-			}
 
 			if(isOwnerCheck){
 				isOwnerCheck = false;
@@ -134,6 +128,14 @@ utils = {
 
 				isOwnerCheck = true;
 
+			}
+
+			// 시작점은 제외
+			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
+
+				//20180702 khan 추가
+				utils.turnOver();
+				isOwnerCheck = true;
 			}
 		},
 		/**
