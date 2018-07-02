@@ -77,7 +77,6 @@ utils = {
 
 			movingUserId = moveId;
 
-			alert("movingUserId : " + movingUserId);
 			// 시작점은 제외
 			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
 
@@ -85,9 +84,7 @@ utils = {
 				utils.turnOver();
 				alert("gameStatus : " + gameStatus);
 				isOwnerCheck = false;
-			}
-
-			alert("isOwnerCheck : "+isOwnerCheck);
+			}			
 
 			if(isOwnerCheck){
 				isOwnerCheck = false;
