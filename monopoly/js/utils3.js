@@ -119,7 +119,7 @@ utils = {
 						text += "Minus";
 						utils.setText(text);
 						utils.textView(true);
-						setTimeout("utils.textView(false);utils.turnOver();", 3000);
+						setTimeout("utils.textView(false);utils.turnOver();", 300);
 
 					}else{
 
