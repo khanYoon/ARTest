@@ -345,7 +345,6 @@ utils = {
 			this.setText(moveCount + " MOVE");
 			this.textView(true);
 			this.luckSevenInit();
-			alert("gameStatus : " + gameStatus);
 		},
 		/**
 		 * 슬롯머신 초기화
