@@ -80,8 +80,7 @@ utils = {
 			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
 
 				//20180702 khan 추가
-				utils.turnOver();			
-				gameStatus = "08";
+				utils.turnOver();
 				isOwnerCheck = false;
 			}
 
