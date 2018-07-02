@@ -79,6 +79,14 @@ utils = {
 
 			movingUserId = moveId;
 
+			// 시작점은 제외
+			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
+
+				//20180702 khan 추가
+				utils.turnOver();
+				isOwnerCheck = false;
+			}
+
 			if(isOwnerCheck){
 				isOwnerCheck = false;
 
@@ -130,13 +138,6 @@ utils = {
 
 			}
 
-			// 시작점은 제외
-			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
-
-				//20180702 khan 추가
-				utils.turnOver();
-				isOwnerCheck = true;
-			}
 		},
 		/**
 		 * 소유자 등록
