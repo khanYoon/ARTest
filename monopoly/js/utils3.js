@@ -78,6 +78,8 @@ utils = {
 			movingUserId = moveId;
 			// 시작점은 제외
 			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
+
+				//20180702 khan 추가
 				turnOver();
 				isOwnerCheck = false;
 			}
