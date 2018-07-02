@@ -81,6 +81,7 @@ utils = {
 
 				//20180702 khan 추가
 				utils.turnOver();
+				alert("gameStatus : " + gameStatus);
 				isOwnerCheck = false;
 			}
 
@@ -344,6 +345,7 @@ utils = {
 			this.setText(moveCount + " MOVE");
 			this.textView(true);
 			this.luckSevenInit();
+			alert("gameStatus : " + gameStatus);
 		},
 		/**
 		 * 슬롯머신 초기화
