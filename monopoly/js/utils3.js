@@ -82,7 +82,6 @@ utils = {
 
 				//20180702 khan 추가
 				utils.turnOver();
-				alert("gameStatus : " + gameStatus);
 				isOwnerCheck = true;
 			}
 
