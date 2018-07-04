@@ -193,7 +193,7 @@
 			addImage : function (name, url, physicalWidth){
 					alert('three-ar addImage 안!');
 			},
-
+			//test
 	    hitAR: (function () {
 	        // Temporary variables, only within closure scope.
 	        var transform = new THREE.Matrix4();
@@ -612,8 +612,7 @@
 
 	    // Link to new ARKit image marker and anchor support.
 
-	    addImage: function (name, url, physicalWidth) {
-					alert('mozila addImage');
+	    addImage: function (name, url, physicalWidth) {					
 	        if (!this.arDisplay) { return null; }
 	/*
 	NSDictionary *imageAnchorInfoDictionary = [message body];
