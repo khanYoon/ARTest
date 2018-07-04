@@ -23,6 +23,7 @@ AFRAME.registerComponent('show-at-image-marker', {
     if (!this.source) { return; }
 
     if (!this.added) {
+      alert("여기는 들어옴!")
       this.source.addImage(this.data.name, this.data.src, this.data.physicalWidth);
       this.added = true;
       return;
