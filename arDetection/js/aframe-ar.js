@@ -1359,7 +1359,6 @@
 	        this.source = whichar;
 	      }
 	    }
-			alert('getSource 호출! : ' + whichar);
 	    return this.source;
 	  },
 	  getPlanes: function () {
