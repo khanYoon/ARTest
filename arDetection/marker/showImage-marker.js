@@ -25,7 +25,8 @@ AFRAME.registerComponent('show-at-image-marker', {
 
     if (!this.added) {
       alert('여기는 들어옴! : ' + this.source + ' name : ' + this.data.name + ' src : ' + this.data.src + ' physicalwidth : '  + this.data.physicalWidth);
-      this.source.addImage(this.data.name, this.data.src, this.data.physicalWidth);
+      document.querySelector('[ar]').components.ar.addIMage(this.data.name, this.data.src, this.data.physicalWidth);
+      //this.source.addImage(this.data.name, this.data.src, this.data.physicalWidth);
       alert('added : ' + this.added);
       this.added = true;
       return;
