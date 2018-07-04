@@ -189,6 +189,10 @@
 	        if (!this.arDisplay || !this.arDisplay.getFrameData) { return null; }
 	        return this.projectionMatrix;
 	    },
+			//test
+			addImage : function (name, url, physicalWidth){
+					alert('three-ar addImage 안!');
+			},
 
 	    hitAR: (function () {
 	        // Temporary variables, only within closure scope.
@@ -1368,7 +1372,6 @@
 	    return this.source ? this.source.getAnchors() : undefined;
 	  },
 	  addImage: function (name, url, physicalWidth) {
-			alert('addImage 안!');
 	    return this.source.addImage(name, url, physicalWidth);
 	  },
 	  removeImage: function (name) {
