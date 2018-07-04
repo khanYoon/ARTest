@@ -20,16 +20,19 @@
     </div>
     <a-scene ar="worldSensing: true">
     <a-assets>
-      <img crossorigin="anonymous" id="fhubs" src="models/Fhubs.png"></img>
 			<a-asset-item id="bot" src="models/bot4.json"></a-asset-item>
     </a-assets>
       <!-- When found, this is placed where the logo is detected -->
-      <a-entity id="logo" show-at-image-marker="name:hubs; src:#fhubs; physicalWidth:0.20;">
+      <a-entity id="logo" show-at-image-marker="name:hubs; src:http://cdn.glitch.com/5faa540f-1ef0-40d6-a191-5215a51c3aca%2Fhubs.png?1528753564704; physicalWidth:0.20;">
         <a-entity json-model="#bot" position="0 0 0">
           <a-animation attribute="rotation" from="0 -180 0" to="0 179 0" dur="90000" repeat="indefinite"></a-animation>
         </a-entity>
       </a-entity>
-
+      <a-assets>
+        <!-- preload image -->
+        <img crossorigin="anonymous"
+             src="http://cdn.glitch.com/5faa540f-1ef0-40d6-a191-5215a51c3aca%2Fhubs.png?1528753564704"></img>
+      </a-assets>
     </a-scene>
   </body>
 </html>
