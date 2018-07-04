@@ -190,14 +190,14 @@
 	        return this.projectionMatrix;
 	    },
 
-	    hitAR: (function () {          
+	    hitAR: (function () {
 	        // Temporary variables, only within closure scope.
 	        var transform = new THREE.Matrix4();
 	        var hitpoint = new THREE.Vector3();
 	        var hitquat = new THREE.Quaternion();
 	        var hitscale = new THREE.Vector3();
 	        var worldpos = new THREE.Vector3();
-	          
+
 	        // The desired function, which this returns.
 	        return function (x, y, el, raycasterEl) {
 	            if (!this.arDisplay || !this.arDisplay.hitTest) { return []; }
@@ -219,12 +219,12 @@
 	                    face: undefined, // Face3
 	                    faceIndex: undefined,
 	                    index: undefined,
-	                    uv: undefined // Vector2                
+	                    uv: undefined // Vector2
 	*/
 	                });
 	            }
 	            return hitsToReturn;
-	        }        
+	        }
 	    })()
 	});
 
@@ -256,8 +256,8 @@
 	var base64    = ''
 	var encodings = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 
-	var bytes      = buffer;  // assume it's a typedArrayBuffer 
-			
+	var bytes      = buffer;  // assume it's a typedArrayBuffer
+
 	if (buffer instanceof ArrayBuffer) {
 	bytes = new Uint8Array(arrayBuffer)
 	} else if (buffer instanceof ImageData) {
@@ -609,6 +609,7 @@
 	    // Link to new ARKit image marker and anchor support.
 
 	    addImage: function (name, url, physicalWidth) {
+					alert('mozila addImage');
 	        if (!this.arDisplay) { return null; }
 	/*
 	NSDictionary *imageAnchorInfoDictionary = [message body];
@@ -638,13 +639,13 @@
 	        if (!aImg.complete || !aImg.naturalHeight) {
 	          console.log('!!! addImage: !aImg.complete || !aImg.naturalHeight, aborting');
 	          return;
-	        } 
-	       
+	        }
+
 	        // The image needs to be have nonzero size...
 	        if (!aImg.width || !aImg.height) {
 	          console.log('!!! addImage: !aImg.width || !aImg.height, aborting');
 	          return;
-	        } 
+	        }
 
 	        aCanvas.width = aImg.width;
 	        aCanvas.height = aImg.height;
@@ -779,7 +780,7 @@
 				 rayStart: new THREE.Vector3(), //vec3.create(),
 				 rayEnd: new THREE.Vector3(), //vec3.create(),
 				 cameraPosition: new THREE.Vector3(), //vec3.create(),
-				 cameraQuaternion: new THREE.Quaternion(), //quat.create(),	
+				 cameraQuaternion: new THREE.Quaternion(), //quat.create(),
 				 //modelViewMatrix: new THREE.Matrix4(), //mat4.create(),
 				 //projectionMatrix: new THREE.Matrix4(), //mat4.create(),
 				 projViewMatrix: new THREE.Matrix4(), //mat4.create(),
@@ -797,7 +798,7 @@
 				 planeHit: new THREE.Matrix4(), //mat4.create()
 				 planeQuaternion: new THREE.Quaternion()  // quat.create()
 			 };
-	 
+
 			 /**
 				* Tests whether the given ray intersects the given plane.
 				*
@@ -816,7 +817,7 @@
 					 return rayToPlane.dot(planeNormal) / denom;
 				 };
 			 })();
-	 
+
 			 /**
 				* Sorts based on the distance from the VRHits to the camera.
 				*
@@ -831,18 +832,18 @@
 				 hitVars.planeIntersection.setFromMatrixPosition(hitVars.planeMatrix);
 				 // Get the distance from the intersection point to the camera.
 				 var distA = hitVars.planeIntersection.distanceTo(hitVars.cameraPosition);
-	 
+
 				 // Get the matrix of hit b.
 				 hitVars.planeMatrix.fromArray(b.modelMatrix);
 				 // Get the translation component of b's matrix.
 				 hitVars.planeIntersection.setFromMatrixPosition(hitVars.planeMatrix);
 				 // Get the distance from the intersection point to the camera.
 				 var distB = hitVars.planeIntersection.distanceTo(hitVars.cameraPosition);
-	 
+
 				 // Return comparison of distance from camera to a and b.
 				 return distA < distB ? -1 : 1;
 			 };
-	 
+
 			 return function(x, y) {
 				 // Coordinates must be in normalized screen space.
 				 if (x < 0 || x > 1 || y < 0 || y > 1) {
@@ -850,7 +851,7 @@
 							 "hitTest - x and y values must be normalized [0,1]!")
 					 ;
 				 }
-	 
+
 				 var hits = [];
 				 // If there are no anchors detected, there will be no hits.
 				 var planes = this.getPlanes();
@@ -864,10 +865,10 @@
 
 				 // Set the projection matrix.
 				 //hitVars.projectionMatrix.fromArray(this.projectionMatrix);
-	 
+
 				 // Set the model view matrix.
 				 //hitVars.modelViewMatrix.fromArray(this.viewMatrix);
-	 
+
 				 // Combine the projection and model view matrices.
 				 hitVars.planeMatrix.multiplyMatrices(
 					 this.projectionMatrix, //hitVars.projectionMatrix,
@@ -875,13 +876,13 @@
 				 );
 				 // Invert the combined matrix because we need to go from screen -> world.
 				 hitVars.projViewMatrix.getInverse(hitVars.planeMatrix);
-	 
+
 				 // Transform the screen-space ray start and end to world-space.
 				 hitVars.worldRayStart.copy(hitVars.rayStart)
 					 .applyMatrix4(hitVars.projViewMatrix);
 				 hitVars.worldRayEnd.copy(hitVars.rayEnd)
 					 .applyMatrix4(hitVars.projViewMatrix);
-	 
+
 				 // Subtract start from end to get the ray direction and then normalize.
 				 hitVars.worldRayDir.subVectors(
 					 hitVars.worldRayEnd,
@@ -893,21 +894,21 @@
 					 var plane = planes[i];
 					 // Get the anchor transform.
 					 hitVars.planeMatrix.fromArray(plane.modelMatrix);
-	 
+
 					 // Get the position of the anchor in world-space.
 					 hitVars.planeCenter.set(plane.center.x, plane.center.y, plane.center.z);
 					 hitVars.planePosition.copy(hitVars.planeCenter)
 						 .applyMatrix4(hitVars.planeMatrix)
 
 					 hitVars.planeAlignment = plane.alignment
-	 
+
 					 // Get the plane normal.
 					 if (hitVars.planeAlignment === 0) {
 						 hitVars.planeNormal.set(0, 1, 0);
 	                 } else {
 						 hitVars.planeNormal.set(hitVars.planeMatrix[4], hitVars.planeMatrix[5], hitVars.planeMatrix[6]);
 	                 }
-	 
+
 					 // Check if the ray intersects the plane.
 					 var t = rayIntersectsPlane(
 						 hitVars.planeNormal,
@@ -920,7 +921,7 @@
 					 if (t < 0) {
 						 continue;
 					 }
-	 
+
 					 // Calculate the actual intersection point.
 					 hitVars.planeIntersectionLocal.copy(hitVars.worldRayDir).multiplyScalar(t);
 					 hitVars.planeIntersection.addVectors(
@@ -933,14 +934,14 @@
 						 ///////////////////////////////////////////////
 						 // Test by converting extents to world-space.
 						 // TODO: get this working to avoid matrix inversion in method below.
-	 
+
 						 // Get the rotation component of the anchor transform.
 						 mat4.getRotation(hitVars.planeQuaternion, hitVars.planeMatrix);
-	 
+
 						 // Convert the extent into world space.
 						 vec3.transformQuat(
 						 hitVars.planeExtent, hitVars.planeExtent, hitVars.planeQuaternion);
-	 
+
 						 // Check if intersection is outside of the extent of the anchor.
 						 if (Math.abs(hitVars.planeIntersection[0] - hitVars.planePosition[0]) > hitVars.planeExtent[0] / 2) {
 						 continue;
@@ -950,13 +951,13 @@
 						 }
 						 ////////////////////////////////////////////////
 						 */
-	 
+
 					 ////////////////////////////////////////////////
 					 // Test by converting intersection into plane-space.
 					 hitVars.planeMatrixInverse.getInverse(hitVars.planeMatrix);
 					 hitVars.planeIntersectionLocal.copy(hitVars.planeIntersection)
 						 .applyMatrix4(hitVars.planeMatrixInverse);
-	 
+
 					 // Check if intersection is outside of the extent of the anchor.
 					 // Tolerance is added to match the behavior of the native hitTest call.
 					 var tolerance = 0.0075;
@@ -972,9 +973,9 @@
 					 ) {
 						 continue;
 					 }
-	 
+
 					 ////////////////////////////////////////////////
-	 
+
 					 // The intersection is valid - create a matrix from hit position.
 					 hitVars.planeQuaternion.setFromRotationMatrix(hitVars.planeMatrix);
 					 hitVars.planeHit.makeRotationFromQuaternion(hitVars.planeQuaternion).setPosition(hitVars.planeIntersection);
@@ -985,7 +986,7 @@
 					 hit.i = i;
 					 hits.push(hit);
 				 }
-	 
+
 
 				 // Sort the hits by distance.
 				 hits.sort(sortFunction);
@@ -1028,7 +1029,7 @@
 	                });
 	            }
 	            return hitsToReturn;
-	        }   
+	        }
 	    })()
 	});
 
@@ -1156,7 +1157,7 @@
 
 	        planespec.extent = plane.extent;
 	        if (plane.center) { planespec.center = plane.center; }
-	        if (plane.polygon) { planespec.vertices = plane.polygon; } 
+	        if (plane.polygon) { planespec.vertices = plane.polygon; }
 	        else if (plane.vertices) { planespec.vertices = plane.vertices; }
 
 	        // Figure out whether added or updated.
@@ -1252,7 +1253,7 @@
 	        this.anchorsRemovedDetail.anchors = removedThese;
 	        this.el.emit('anchorsremoved', this.anchorsRemovedDetail);
 	      }
-	    };    
+	    };
 	  })()
 	});
 
@@ -1367,6 +1368,7 @@
 	    return this.source ? this.source.getAnchors() : undefined;
 	  },
 	  addImage: function (name, url, physicalWidth) {
+			alert('addImage 안!');
 	    return this.source.addImage(name, url, physicalWidth);
 	  },
 	  removeImage: function (name) {
@@ -1387,7 +1389,7 @@
 	    }
 
 	    // Ensure passthrough is visible, make sure A-Frame styles don't interfere.
-	    document.head.insertAdjacentHTML('beforeend', 
+	    document.head.insertAdjacentHTML('beforeend',
 	      '<style>html,body {background-color: transparent !important;}</style>');
 	  }
 	});
@@ -1427,13 +1429,13 @@
 	      }
 	    }
 	  },
-	  
+
 	  tick: function (t, dt) {
 	    if (!this.data.enabled) { return; }
-	    
+
 	    var whichar = this.checkWhichAR();
 	    if (!whichar) { return; }
-	    
+
 	    // Apply the pose position via setAttribute,
 	    // so that other A-Frame components can see the values.
 	    this.el.setAttribute('position', whichar.getPosition());
@@ -1445,9 +1447,9 @@
 	    // Apply the projection matrix, if we're not in VR.
 	    if (!this.el.sceneEl.is('vr-mode')) {
 	      this.el.components.camera.camera.projectionMatrix = whichar.getProjectionMatrix();
-	    }    
+	    }
 	  },
-	  
+
 	  checkWhichAR: function () {
 	    if (!this.whichar) {
 	      var whichar = this.el.sceneEl.components['three-ar'];
@@ -1458,7 +1460,7 @@
 	      this.whichar = whichar;
 	    }
 	    return this.whichar;
-	  }  
+	  }
 	});
 
 
@@ -1470,22 +1472,22 @@
 
 	// ar-raycaster modifies raycaster to append AR hit, if any.
 	// But note that current AR hit API does not support orientation as input.
-	AFRAME.registerComponent('ar-raycaster', {      
+	AFRAME.registerComponent('ar-raycaster', {
 	  dependencies: ['raycaster'],
-	        
+
 	  schema: {
 	    x: {default: 0.5},
 	    y: {default: 0.5},
 	    el: {type: 'selector'}
 	  },
-	        
+
 	  init: function () {
 	    // HACK: monkey-patch raycaster to append AR hit result
 	    this.raycaster = this.el.components['raycaster'].raycaster;
 	    this.raycasterIntersectObjects = this.raycaster.intersectObjects.bind(this.raycaster);
 	    this.raycaster.intersectObjects = this.intersectObjects.bind(this);
 	  },
-	        
+
 	  update: function (oldData) {
 	    if (!this.data.el) {
 	      // If not given some other element, return hit against the scene.
@@ -1495,7 +1497,7 @@
 	      }
 	    }
 	  },
-	        
+
 	  intersectObjects: function (objects, recursive, rawIntersections) {
 	    // it appears that intersectObjects is now returning in rawIntersections
 	    var results = this.raycasterIntersectObjects(objects, recursive, rawIntersections);
@@ -1506,8 +1508,8 @@
 	      results = results.concat(this.hitAR());
 	    }
 	    return results;
-	  },        
-	        
+	  },
+
 	  hitAR: function () {
 	    var whichar = this.checkWhichAR();
 	    if (!whichar || !whichar.arDisplay) { return []; }
