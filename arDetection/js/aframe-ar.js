@@ -191,140 +191,7 @@
 	    },
 			//test
 			addImage: function (name, url, physicalWidth) {
-	        if (!this.arDisplay) { return null; }
-	/*
-	NSDictionary *imageAnchorInfoDictionary = [message body];
-	NSString *createDetectionImageCallback = [[message body] objectForKey:WEB_AR_CALLBACK_OPTION];
-	// callback
-
-	CGFloat physicalWidth = [referenceImageDictionary[@"physicalWidth"] doubleValue];
-	NSString* b64String = referenceImageDictionary[@"buffer"];
-	size_t width = (size_t) [referenceImageDictionary[@"imageWidth"] intValue];
-	size_t height = (size_t) [referenceImageDictionary[@"imageHeight"] intValue];
-	...
-	result.name = referenceImageDictionary[@"uid"];
-	*/
-	        // NOTE: looks like WebXR Viewer won't load from URL,
-	        //       so we need to convert from img element
-	        var aCanvas = document.createElement('canvas');
-	        var aContext = aCanvas.getContext('2d');
-	        var aImg; // Don't use element; chance of changed width/height.
-	        if (!aImg) {
-	          aImg = document.createElement('img');
-	          aImg.crossOrigin = 'anonymous';
-	          aImg.src = url;
-	          document.body.appendChild(aImg);
-	        }
-
-	        // The image needs to be loaded...
-	        if (!aImg.complete || !aImg.naturalHeight) {
-	          console.log('!!! addImage: !aImg.complete || !aImg.naturalHeight, aborting');
-	          return;
-	        }
-
-	        // The image needs to be have nonzero size...
-	        if (!aImg.width || !aImg.height) {
-	          console.log('!!! addImage: !aImg.width || !aImg.height, aborting');
-	          return;
-	        }
-
-	        aCanvas.width = aImg.width;
-	        aCanvas.height = aImg.height;
-	        aContext.drawImage(aImg, 0, 0);
-	        var aImageData = aContext.getImageData(0, 0, aImg.width, aImg.height);
-	        var b64ImageData = encode(aImageData.data);
-	        if (!b64ImageData) {
-	          console.log('!!! addImage: !b64ImageData, aborting');
-	          return;
-	        }
-
-	        // NOTE: also, WebXR Viewer doesn't pass back which image/name,
-	        //       so we need a per-image/name callback
-	        window.callbackForCreateImageAnchorCounter = (window.callbackForCreateImageAnchorCounter || 0) + 1;
-	        var callbackName = 'callbackForCreateImageAnchor_' + window.callbackForCreateImageAnchorCounter;
-	        var imageName = name;
-	        //console.log('creating ', callbackName, ' for ', imageName);
-	        window[callbackName] = function (data) {
-	          //console.log(callbackName);
-	          //console.log(data);
-	          //var name = callbackName.substring(29);
-	          if (data.created !== undefined) {
-	            if (!data.created) {
-	              // we failed to create the image, for whatever reason.
-	              console.log('addImage: !created; ', data.error);
-	              delete window[callbackName];
-	            } else {
-	              //console.log('addImage: created, activating ', imageName);
-	              window.webkit.messageHandlers.activateDetectionImage.postMessage({
-	                callback: callbackName,
-	                uid: imageName
-	              });
-	            }
-	          } else
-	          if (data.activated !== undefined) {
-	            if (!data.activated) {
-	              // we failed to activate the image, for whatever reason.
-	              console.log('addImage: !activated; ', data.error);
-	            } else {
-	              //console.log('addImage: activated ', imageName);
-	            }
-	            delete window[callbackName];
-	          }
-	        };
-
-	        window.webkit.messageHandlers.createImageAnchor.postMessage({
-	          callback: callbackName,
-	          uid: name,
-	          buffer: b64ImageData,
-	          imageWidth: aImg.width,
-	          imageHeight: aImg.height,
-	          physicalWidth: physicalWidth // in meters
-	        });
-	    },
-
-	    removeImage: function (name) {
-	        if (!this.arDisplay) { return null; }
-	/*
-	NSDictionary *imageAnchorInfoDictionary = [message body];
-	NSString *imageName = imageAnchorInfoDictionary[WEB_AR_DETECTION_IMAGE_NAME_OPTION];
-	// detectionImageName
-	NSString *deactivateDetectionImageCallback = [[message body] objectForKey:WEB_AR_CALLBACK_OPTION];
-	// callback
-	*/
-	        window.callbackForRemoveImageAnchorCounter = (window.callbackForRemoveImageAnchorCounter || 0) + 1;
-	        var callbackName = 'callbackForRemoveImageAnchor_' + window.callbackForRemoveImageAnchorCounter;
-	        var imageName = name;
-	        //console.log('creating ', callbackName, ' for ', imageName);
-	        window[callbackName] = function (data) {
-	          //console.log(callbackName);
-	          //console.log(data);
-
-	          if (data.deactivated !== undefined) {
-	            if (!data.deactivated) {
-	              console.log('!!! ' + callbackName + ': !deactivated', data.error);
-	              delete window[callbackName];
-	            } else {
-	              //console.log(callbackName + ': deactivated, destroying', imageName);
-	            }
-	            window.webkit.messageHandlers.destroyDetectionImage.postMessage({
-	              callback: callbackName,
-	              uid: imageName
-	            });
-	          }
-	          if (data.destroyed !== undefined) {
-	            if (!data.destroyed) {
-	              console.log('!!! ' + callbackName + ': !destroyed, ', data.error);
-	            } else {
-	              //console.log(callbackName + ': destroyed', imageName);
-	            }
-	            delete window[callbackName];
-	          }
-	        };
-
-	        window.webkit.messageHandlers.deactivateDetectionImage.postMessage({
-	          callback: callbackName,
-	          uid: imageName
-	        });
+				alert('three-ar addImage call!!');
 	    },
 			//test
 	    hitAR: (function () {
@@ -746,6 +613,7 @@
 	    // Link to new ARKit image marker and anchor support.
 
 	    addImage: function (name, url, physicalWidth) {
+					alert('mozilla-xr-ar call!!');
 	        if (!this.arDisplay) { return null; }
 	/*
 	NSDictionary *imageAnchorInfoDictionary = [message body];
