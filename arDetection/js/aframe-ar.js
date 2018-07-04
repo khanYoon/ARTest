@@ -1352,14 +1352,12 @@
 	      if (whichar && whichar.arDisplay) {
 	        this.source = whichar.arDisplay;
 	      }
-				alert('three-ar');
 	    }
 	    if (!this.source) {
 	      whichar = this.el.sceneEl.components['mozilla-xr-ar'];
 	      if (whichar && whichar.arDisplay) {
 	        this.source = whichar;
 	      }
-				alert('mozila-xr-ar');
 	    }
 	    return this.source;
 	  },
