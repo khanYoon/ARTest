@@ -8726,8 +8726,7 @@ AFRAME.registerSystem('arjs', {
 
 				// fixing a-frame css
 				var buttonElement = document.querySelector('.a-enter-vr')
-				if( buttonElement ){
-					alert('aasss');
+				if( buttonElement ){					
 					buttonElement.style.position = 'fixed'
 				}
 			}
