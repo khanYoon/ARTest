@@ -8325,7 +8325,7 @@ AFRAME.registerComponent('arjs-anchor', {
 				// create anchorDebugUI
 //				var anchorDebugUI = new ARjs.AnchorDebugUI(arAnchor)
 //				containerElement.appendChild(anchorDebugUI.domElement)
-			}
+//			}
 		}, 1000/60)
 	},
 	remove : function(){
@@ -8749,7 +8749,7 @@ AFRAME.registerSystem('arjs', {
 				// create sessionDebugUI
 			//	var sessionDebugUI = new ARjs.SessionDebugUI(arSession)
 			//	containerElement.appendChild(sessionDebugUI.domElement)
-			}
+//			}
 		})
 
 		//////////////////////////////////////////////////////////////////////////////
