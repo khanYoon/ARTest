@@ -8313,15 +8313,15 @@ AFRAME.registerComponent('arjs-anchor', {
 			//////////////////////////////////////////////////////////////////////////////
 			//		honor .debugUIEnabled
 			//////////////////////////////////////////////////////////////////////////////
-			if( arjsSystem.data.debugUIEnabled ){
-				// get or create containerElement
-				var containerElement = document.querySelector('#arjsDebugUIContainer')
-				if( containerElement === null ){
-					containerElement = document.createElement('div')
-					containerElement.id = 'arjsDebugUIContainer'
-					containerElement.setAttribute('style', 'position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1; color: grey;')
-					document.body.appendChild(containerElement)
-				}
+//			if( arjsSystem.data.debugUIEnabled ){
+//				// get or create containerElement
+//				var containerElement = document.querySelector('#arjsDebugUIContainer')
+//				if( containerElement === null ){
+//					containerElement = document.createElement('div')
+//					containerElement.id = 'arjsDebugUIContainer'
+//					containerElement.setAttribute('style', 'position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1; color: grey;')
+//					document.body.appendChild(containerElement)
+//				}
 				// create anchorDebugUI
 				var anchorDebugUI = new ARjs.AnchorDebugUI(arAnchor)
 				containerElement.appendChild(anchorDebugUI.domElement)
@@ -8727,6 +8727,7 @@ AFRAME.registerSystem('arjs', {
 				// fixing a-frame css
 				var buttonElement = document.querySelector('.a-enter-vr')
 				if( buttonElement ){
+					alert('aasss');
 					buttonElement.style.position = 'fixed'
 				}
 			}
@@ -8738,13 +8739,13 @@ AFRAME.registerSystem('arjs', {
 			if( _this.data.debugUIEnabled )	initDebugUI()
 			function initDebugUI(){
 				// get or create containerElement
-				var containerElement = document.querySelector('#arjsDebugUIContainer')
-				if( containerElement === null ){
-					containerElement = document.createElement('div')
-					containerElement.id = 'arjsDebugUIContainer'
-					containerElement.setAttribute('style', 'position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;color: grey;')
-					document.body.appendChild(containerElement)
-				}
+//				var containerElement = document.querySelector('#arjsDebugUIContainer')
+//				if( containerElement === null ){
+//					containerElement = document.createElement('div')
+//					containerElement.id = 'arjsDebugUIContainer'
+//					containerElement.setAttribute('style', 'position: fixed; bottom: 10px; width:100%; text-align: center; z-index: 1;color: grey;')
+//					document.body.appendChild(containerElement)
+//				}
 
 				// create sessionDebugUI
 				var sessionDebugUI = new ARjs.SessionDebugUI(arSession)
