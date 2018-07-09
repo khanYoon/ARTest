@@ -8313,7 +8313,7 @@ AFRAME.registerComponent('arjs-anchor', {
 			//////////////////////////////////////////////////////////////////////////////
 			//		honor .debugUIEnabled
 			//////////////////////////////////////////////////////////////////////////////
-			if( arjsSystem.data.debugUIEnabled ){
+//			if( arjsSystem.data.debugUIEnabled ){
 				// get or create containerElement
 //				var containerElement = document.querySelector('#arjsDebugUIContainer')
 //				if( containerElement === null ){
@@ -8323,8 +8323,8 @@ AFRAME.registerComponent('arjs-anchor', {
 //					document.body.appendChild(containerElement)
 //				}
 				// create anchorDebugUI
-				var anchorDebugUI = new ARjs.AnchorDebugUI(arAnchor)
-				containerElement.appendChild(anchorDebugUI.domElement)
+//				var anchorDebugUI = new ARjs.AnchorDebugUI(arAnchor)
+//				containerElement.appendChild(anchorDebugUI.domElement)
 			}
 		}, 1000/60)
 	},
@@ -8735,8 +8735,8 @@ AFRAME.registerSystem('arjs', {
 			//////////////////////////////////////////////////////////////////////////////
 			//		honor .debugUIEnabled
 			//////////////////////////////////////////////////////////////////////////////
-			if( _this.data.debugUIEnabled )	initDebugUI()
-			function initDebugUI(){
+//			if( _this.data.debugUIEnabled )	initDebugUI()
+//			function initDebugUI(){
 				// get or create containerElement
 //				var containerElement = document.querySelector('#arjsDebugUIContainer')
 //				if( containerElement === null ){
@@ -8747,8 +8747,8 @@ AFRAME.registerSystem('arjs', {
 //				}
 
 				// create sessionDebugUI
-				var sessionDebugUI = new ARjs.SessionDebugUI(arSession)
-				containerElement.appendChild(sessionDebugUI.domElement)
+			//	var sessionDebugUI = new ARjs.SessionDebugUI(arSession)
+			//	containerElement.appendChild(sessionDebugUI.domElement)
 			}
 		})
 
