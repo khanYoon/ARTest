@@ -19,8 +19,8 @@
       <file leaf-file-name="arModelTest09.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="456" column="41" selection-start-line="456" selection-start-column="41" selection-end-line="456" selection-end-column="41" />
+            <state relative-caret-position="1051">
+              <caret line="665" column="26" selection-start-line="665" selection-start-column="26" selection-end-line="665" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -28,7 +28,7 @@
       <file leaf-file-name="arModelTest08.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2999">
+            <state relative-caret-position="2087">
               <caret line="644" lean-forward="true" selection-start-line="644" selection-end-line="644" />
             </state>
           </provider>
@@ -37,8 +37,8 @@
       <file leaf-file-name="arModelTest05.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="738">
-              <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+            <state relative-caret-position="966">
+              <caret line="70" selection-start-line="70" selection-end-line="73" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -221,12 +221,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="9947000" />
+      <workItem from="1531096198554" duration="10390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9947000" />
+    <option name="totallyTimeSpent" value="10390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -397,13 +397,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="52" column="32" lean-forward="true" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1099">
@@ -413,15 +406,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2999">
+        <state relative-caret-position="2087">
           <caret line="644" lean-forward="true" selection-start-line="644" selection-end-line="644" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="70" selection-start-line="70" selection-end-line="73" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="456" column="41" selection-start-line="456" selection-start-column="41" selection-end-line="456" selection-end-column="41" />
+        <state relative-caret-position="1051">
+          <caret line="665" column="26" selection-start-line="665" selection-start-column="26" selection-end-line="665" selection-end-column="26" />
         </state>
       </provider>
     </entry>
