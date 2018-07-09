@@ -454,7 +454,7 @@
 	</a-entity>
 
 	<!-- gameView -->
-	<a-entity id="gameView" position="2 -1 0" rotation="0 0 0" scale="1.000 0.500 1.500">
+	<a-entity id="gameView" position="0 2 2" rotation="0 0 0" scale="1.000 0.500 1.500">
 
 		<!-- 시작 confirm -->
 		<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
@@ -486,7 +486,7 @@
 
 		<!-- 슬롯머신 -->
 		<a-gui-flex-container id="rouletteBoard" visible="false">
-			<a-entity position="0 2 2">
+			<a-entity position="0 1 0">
 
 				<a-entity geometry="primitive : plane;height:1; width:2" material="color:blue" position="0 -1 -3">
 					<!-- panel1 -->
@@ -665,6 +665,7 @@
     <a-entity camera id="gameViewCamera" cursor="fuse: true; fuseTimeout: 500">
 <!--        <a-entity id="ray" cursor="fuse: true; fuseTimeout: 500">
         </a-entity> -->
+
     </a-entity>
 
 
