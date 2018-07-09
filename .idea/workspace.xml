@@ -3,6 +3,117 @@
   <component name="ChangeListManager">
     <list default="true" id="cf87119b-d7e1-4089-9f54-76f0dbd6689d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/dist/aframe-ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/dist/aframe-ar.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/dist/aframe-master.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/dist/aframe-three-ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/dist/three.ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/CTMLoader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/CTMWorker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/aframe-teleport-controls.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/anim_1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/anim_2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/ctm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/ctm_component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/envMapMaterial.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/lzma.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mobile_component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_HEAD.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_LEFT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_RIGHT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_2_HEAD.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_2_LEFT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_2_RIGHT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_3_HEAD.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_3_LEFT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_3_RIGHT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_4_HEAD.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_4_LEFT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_4_RIGHT.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/spheres_anim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/_fractal_3.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/_fractal_3.obj.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/acropolis.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/acropolis.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/acropolis.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/anim1/negx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/anim1/negy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/anim1/negz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/anim1/posx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/anim1/posy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/anim1/posz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/castle_lake.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/castle_lake.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/castle_lake.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david_bike_hall_3.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david_bike_hall_3.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david_bike_hall_3.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/david_low.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_head.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_head.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_head.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_head_low.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_head_low.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_helmet.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_helmet.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/female_helmet.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_1.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_1.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_1.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_2.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_2.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_2.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_3.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_3.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/fractal_3.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/good_samaritan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/good_samaritan.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/good_samaritan.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/greek_bust.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/greek_bust.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/greek_bust.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/greek_bust_low.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/greek_bust_low.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/hall/negx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/hall/negy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/hall/negz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/hall/posx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/hall/posy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/hall/posz.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lamps.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lamps.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lamps.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lamps.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lion.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lion.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lion.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lion_low.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/lion_low.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/monk.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/monk.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/monk.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/monk_uv.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/monk_uv.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/monk_uv.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/moonlight.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/moonlight.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/moonlight.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/nefertiti.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/nefertiti.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/nefertiti.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/old_man.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/old_man.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/old_man.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/paintings.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/paintings.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/podiums.ctm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/podiums.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/podiums.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/podiums.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/models/sky_sphere.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,8 +130,8 @@
       <file leaf-file-name="arModelTest07.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
+            <state relative-caret-position="95">
+              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -35,6 +146,11 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>K-FRAME</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,14 +205,25 @@
               <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="ARTest" type="462c0819:PsiDirectoryNode" />
               <item name="AR" type="462c0819:PsiDirectoryNode" />
-              <item name="aframe" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="ARTest" type="462c0819:PsiDirectoryNode" />
               <item name="AR" type="462c0819:PsiDirectoryNode" />
-              <item name="aframe" type="462c0819:PsiDirectoryNode" />
-              <item name="examples" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ARTest" type="462c0819:PsiDirectoryNode" />
+              <item name="AR" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ARTest" type="462c0819:PsiDirectoryNode" />
+              <item name="AR" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -139,12 +266,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="1640000" />
+      <workItem from="1531096198554" duration="2024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1640000" />
+    <option name="totallyTimeSpent" value="2024000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -154,13 +281,13 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289777" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -252,10 +379,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AR/js/aframe-master.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="71477" column="13" selection-start-line="71477" selection-start-column="6" selection-end-line="71477" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
+        <state relative-caret-position="95">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
         </state>
       </provider>
     </entry>
