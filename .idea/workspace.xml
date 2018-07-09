@@ -2,64 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf87119b-d7e1-4089-9f54-76f0dbd6689d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-animation-component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-environment-component.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-extras.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-gui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-master.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/game.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/kdom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/text-geometry/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/text-geometry/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/text-geometry/sample.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/three.ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/utils2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/utils3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/utils_back.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/Building.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/Building.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/CNtower.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/CNtower.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/CM_houses.12.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/CM_houses.13.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/EULA.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/brick_old.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/creamRendercolour.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/houseF.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/houseF.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/red.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/roofTiles.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/stone_buff.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/terracotta.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/HousF/white.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/HousF/Info.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/Trump.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/Trump.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/Trump.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/Trump1.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/Trump1.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/bot4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/monster.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/monster.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test3.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test5.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test6.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/test7.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/textures/tumpLPcolors.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/trump/tumpLPcolors.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AR/js/aframe-master.js" beforeDir="false" afterPath="$PROJECT_DIR$/AR/js/aframe-master.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopoly/test10.html" beforeDir="false" afterPath="$PROJECT_DIR$/monopoly/test10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monopoly/test9.html" beforeDir="false" afterPath="$PROJECT_DIR$/monopoly/test9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -76,8 +19,8 @@
       <file leaf-file-name="arModelTest07.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+            <state relative-caret-position="684">
+              <caret line="36" column="77" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -91,29 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test10.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monopoly/test10.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="59" selection-end-line="668" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test9.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monopoly/test9.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="34" selection-end-line="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="arModelTest08.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="342">
+              <caret line="267" column="77" selection-start-line="267" selection-start-column="77" selection-end-line="267" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -189,6 +114,13 @@
             <path>
               <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="ARTest" type="462c0819:PsiDirectoryNode" />
+              <item name="AR" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="HousF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ARTest" type="462c0819:PsiDirectoryNode" />
               <item name="monopoly" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -246,12 +178,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="2881000" />
+      <workItem from="1531096198554" duration="3516000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2881000" />
+    <option name="totallyTimeSpent" value="3516000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -362,13 +294,6 @@
     <entry file="file://$PROJECT_DIR$/AR/dist/aframe-ar2.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
@@ -403,10 +328,17 @@
     <entry file="file://$PROJECT_DIR$/AR/models/CNtower.mtl">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="36" column="77" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+        <state relative-caret-position="342">
+          <caret line="267" column="77" selection-start-line="267" selection-start-column="77" selection-end-line="267" selection-end-column="77" />
         </state>
       </provider>
     </entry>
