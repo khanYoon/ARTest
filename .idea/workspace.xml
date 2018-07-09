@@ -2,134 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf87119b-d7e1-4089-9f54-76f0dbd6689d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/dist/aframe-ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/dist/aframe-ar.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/dist/aframe-extras.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/dist/aframe-master.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/dist/aframe-three-ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/dist/three.ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/CTMLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/CTMWorker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-extras.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-inspector.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-master.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/aframe-teleport-controls.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/anim_1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/anim_2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/ctm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/ctm_component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/envMapMaterial.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/lzma.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mobile_component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_HEAD.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_LEFT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_RIGHT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_2_HEAD.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_2_LEFT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_2_RIGHT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_3_HEAD.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_3_LEFT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_3_RIGHT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_4_HEAD.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_4_LEFT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_4_RIGHT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/js/spheres_anim.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/_fractal_3.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/_fractal_3.obj.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/acropolis.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/acropolis.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/acropolis.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/anim1/negx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/anim1/negy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/anim1/negz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/anim1/posx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/anim1/posy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/anim1/posz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/bot4.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/castle_lake.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/castle_lake.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/castle_lake.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david_bike_hall_3.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david_bike_hall_3.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david_bike_hall_3.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/david_low.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_head.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_head.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_head.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_head_low.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_head_low.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_helmet.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_helmet.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/female_helmet.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/floor.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/floor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/floor.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/floor.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/floor_normal.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_1.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_1.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_1.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_2.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_2.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_2.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_3.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_3.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/fractal_3.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/good_samaritan.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/good_samaritan.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/good_samaritan.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/greek_bust.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/greek_bust.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/greek_bust.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/greek_bust_low.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/greek_bust_low.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall/negx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall/negy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall/negz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall/posx.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall/posy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall/posz.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall_full.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall_low_floor.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/hall_low_floor.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lamps.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lamps.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lamps.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lamps.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lion.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lion.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lion.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lion_low.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/lion_low.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/monk.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/monk.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/monk.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/monk_uv.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/monk_uv.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/monk_uv.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/moonlight.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/moonlight.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/moonlight.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/nefertiti.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/nefertiti.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/nefertiti.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/old_man.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/old_man.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/old_man.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/paintings.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/paintings.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/podiums.ctm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/podiums.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/podiums.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/podiums.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AR/models/sky_sphere.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -146,17 +19,8 @@
       <file leaf-file-name="arModelTest07.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest06.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest06.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" selection-start-line="1" selection-end-line="5" selection-end-column="46" />
+            <state relative-caret-position="684">
+              <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -164,26 +28,8 @@
       <file leaf-file-name="arModelTest05.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="53" lean-forward="true" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest05.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/arModel/examples/arModelTest05.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest06.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/arModel/examples/arModelTest06.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="39" column="45" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="45" />
+            <state relative-caret-position="855">
+              <caret line="60" column="97" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -242,7 +88,15 @@
             <path>
               <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
               <item name="ARTest" type="462c0819:PsiDirectoryNode" />
-              <item name="arModel" type="462c0819:PsiDirectoryNode" />
+              <item name="AR" type="462c0819:PsiDirectoryNode" />
+              <item name="aframe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ARTest" type="462c0819:PsiDirectoryNode" />
+              <item name="AR" type="462c0819:PsiDirectoryNode" />
+              <item name="aframe" type="462c0819:PsiDirectoryNode" />
+              <item name="examples" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -285,12 +139,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="1395000" />
+      <workItem from="1531096198554" duration="1640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1395000" />
+    <option name="totallyTimeSpent" value="1640000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -377,13 +231,6 @@
     <entry file="file://$PROJECT_DIR$/AR/js/mocap/am_threejs_CEC_BODY_1_HEAD.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="53" lean-forward="true" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest06.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -398,10 +245,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="60" column="97" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+        <state relative-caret-position="684">
+          <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
         </state>
       </provider>
     </entry>

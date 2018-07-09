@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="../js/aframe-master.js"></script>
-	<script src="../dist/aframe-extras.js"></script>
+	<script src="../../js/aframe-master.js"></script>
+	<script src="../../dist/aframe-extras.js"></script>
 	<script src="../build/aframe-ar2.js"></script>
 	<script>
         var isWalk = false;
@@ -34,11 +34,11 @@
 	</script>
 </head>
 <body>
-<a-scene ar>
+<a-scene arjs="sourceType:webcam; maxDetectionRate:30; debugUiEnabled:false;">
 	<a-assets>
-		<a-asset-item id="bot" src="../models/bot4.json"></a-asset-item>
+		<a-asset-item id="bot" src="../../models/bot4.json"></a-asset-item>
 		<a-asset-item id="hall_obj" src="../models/hall.obj"></a-asset-item>
-		<img id="hall-texture" src="../models/hall.jpg">
+		<img id="hall-texture" src="../../models/hall.jpg">
 	</a-assets>
 
 	<a-entity obj-model="obj:#hall_obj;" material="src: #hall-texture" position="0 -1 -1" scale="0.5 0.5 0.5"></a-entity>
