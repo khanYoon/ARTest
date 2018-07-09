@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf87119b-d7e1-4089-9f54-76f0dbd6689d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,71 +16,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="arModelTest07.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest07.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="684">
-              <caret line="36" column="77" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="77" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest08.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="277" column="81" lean-forward="true" selection-start-line="277" selection-start-column="81" selection-end-line="277" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest09.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="arModelTest09.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="919">
-              <caret line="657" column="8" selection-start-line="657" selection-start-column="8" selection-end-line="657" selection-end-column="8" />
+            <state relative-caret-position="407">
+              <caret line="281" column="13" selection-start-line="281" selection-start-column="5" selection-end-line="281" selection-end-column="13" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vr-camera-controls.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/vr-camera-controls.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest01.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest01.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="arModelTest02.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest02.html">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="arModelTest03.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest03.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
+            <state relative-caret-position="700">
               <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test8.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monopoly/test8.html">
+      <file leaf-file-name="arModelTest05.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1653">
-              <caret line="87" selection-end-line="670" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test9.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monopoly/test9.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="40" column="11" selection-start-line="40" selection-start-column="11" selection-end-line="40" selection-end-column="11" />
+            <state relative-caret-position="1080">
+              <caret line="76" column="8" lean-forward="true" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -93,6 +51,7 @@
       <find>K-Frame</find>
       <find>visible</find>
       <find>mak</find>
+      <find>a-marker</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -252,12 +211,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="5518000" />
+      <workItem from="1531096198554" duration="8188000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5518000" />
+    <option name="totallyTimeSpent" value="8188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -303,13 +262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="529">
           <caret line="57" column="31" selection-start-line="57" selection-start-column="15" selection-end-line="57" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest04.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="46" column="68" lean-forward="true" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -367,13 +319,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/js/aframe-ar2.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="855">
-          <caret line="60" column="97" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="97" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/js/game.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -433,26 +378,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/vr-camera-controls.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest01.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest02.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/vr-camera-controls.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest03.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
+        <state relative-caret-position="700">
           <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
-          <caret line="657" column="8" selection-start-line="657" selection-start-column="8" selection-end-line="657" selection-end-column="8" />
+        <state relative-caret-position="407">
+          <caret line="281" column="13" selection-start-line="281" selection-start-column="5" selection-end-line="281" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest04.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1042">
+          <caret line="99" column="13" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest05.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="76" column="8" lean-forward="true" selection-start-line="76" selection-start-column="8" selection-end-line="76" selection-end-column="8" />
         </state>
       </provider>
     </entry>
