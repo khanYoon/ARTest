@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf87119b-d7e1-4089-9f54-76f0dbd6689d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/AR/dist/aframe-master.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AR/dist/aframe-ar2.js" beforeDir="false" afterPath="$PROJECT_DIR$/AR/js/aframe-ar2.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="arModelTest08.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+            <state relative-caret-position="465">
+              <caret line="284" column="187" selection-start-line="284" selection-start-column="187" selection-end-line="284" selection-end-column="187" />
             </state>
           </provider>
         </entry>
@@ -60,6 +58,7 @@
     <findStrings>
       <find>K-FRAME</find>
       <find>K-Frame</find>
+      <find>visible</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,12 +203,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="4660000" />
+      <workItem from="1531096198554" duration="4977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4660000" />
+    <option name="totallyTimeSpent" value="4977000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -373,8 +372,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest08.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
+        <state relative-caret-position="465">
+          <caret line="284" column="187" selection-start-line="284" selection-start-column="187" selection-end-line="284" selection-end-column="187" />
         </state>
       </provider>
     </entry>
