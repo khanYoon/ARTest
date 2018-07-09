@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf87119b-d7e1-4089-9f54-76f0dbd6689d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html" beforeDir="false" afterPath="$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/aframe-ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR/js/three.ar.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,11 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="arModelTest09.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="arModelTest09.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="266" column="13" selection-start-line="266" selection-start-column="13" selection-end-line="266" selection-end-column="13" />
+            <state relative-caret-position="586">
+              <caret line="645" column="28" lean-forward="true" selection-start-line="645" selection-start-column="28" selection-end-line="645" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aframe-ar2.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AR/js/aframe-ar2.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2966">
+              <caret line="8752" column="10" lean-forward="true" selection-start-line="8752" selection-start-column="10" selection-end-line="8752" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -62,6 +72,8 @@
       <find>mak</find>
       <find>a-marker</find>
       <find>position</find>
+      <find>enter</find>
+      <find>content</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,20 +137,6 @@
               <item name="ARTest" type="462c0819:PsiDirectoryNode" />
               <item name="AR" type="462c0819:PsiDirectoryNode" />
               <item name="aframe" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ARTest" type="462c0819:PsiDirectoryNode" />
-              <item name="AR" type="462c0819:PsiDirectoryNode" />
-              <item name="aframe" type="462c0819:PsiDirectoryNode" />
-              <item name="examples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ARTest" type="462c0819:PsiDirectoryNode" />
-              <item name="AR" type="462c0819:PsiDirectoryNode" />
-              <item name="aframe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ARTest" type="b2602c69:ProjectViewProjectNode" />
@@ -221,21 +219,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1531096196417</updated>
-      <workItem from="1531096198554" duration="10588000" />
+      <workItem from="1531096198554" duration="11367000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10588000" />
+    <option name="totallyTimeSpent" value="11367000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24990238" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32974634" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289777" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
@@ -327,9 +324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AR/js/aframe-ar2.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/AR/js/game.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -420,8 +414,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AR/aframe/examples/arModelTest09.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="266" column="13" selection-start-line="266" selection-start-column="13" selection-end-line="266" selection-end-column="13" />
+        <state relative-caret-position="586">
+          <caret line="645" column="28" lean-forward="true" selection-start-line="645" selection-start-column="28" selection-end-line="645" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AR/js/aframe-ar2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2966">
+          <caret line="8752" column="10" lean-forward="true" selection-start-line="8752" selection-start-column="10" selection-end-line="8752" selection-end-column="10" />
         </state>
       </provider>
     </entry>
