@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>monoPoly Scene</title>
+			<!-- aframe-master.js 와 ar 관련 js 다른 경로에 두어야 한다. -->
+			<script src="dist/aframe-master.js"></script>
+			<script src="js/three.ar.js"></script>
+	    <script src="js/aframe-ar.js"></script>
+			<script src="js/aframe-extras.js"></script>
+			<script src="js/aframe-gui.js"></script>
+			<script src="js/utils.js"></script>
+			<script src="js/text-geometry/build.js"></script>
+		<script>
+
+			var moveNo = 0;
+			AFRAME.registerComponent("user1-object", {
+				schema: {
+					// moveX: {type: "number", default: 0},
+					// moveY: {type: "number", default: 0},
+					// moveZ: {type: "number", default: 0}
+				},
+				init: function () {
+					this.id = this.el.getAttribute("id");
+					this.positionIndex = 0;
+					gameStatus = "00";
+					gameInfo.gameUser[0]._this = this;
+					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+
+				},
+				tick: function (time, timeDelta) {
+					// 사용자의 순서일경우
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tick");
+					}
+				},
+				tock: function(time, timeDelta){
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tock");
+						switch (gameStatus) {
+							// 게임준비일경우
+							case "00" :
+
+								utils.objView("startConfirm", true); // 시작버튼 confilm 띄우기
+								gameStatus = "01";
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 시작버튼을 활성화 되어있을 경우
+							case "01" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 게임준비 창이 비활성화 일경우 상태값 변경
+								if(utils.obj("#startConfirm").getAttribute("visible") == false){
+									gameStatus = "02";
+								}
+								break;
+							// 주사위 굴리기
+							case "02" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 룰렛 판이 비활성화 일경우 상태값 변경
+								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+									gameStatus = "03";
+								}
+								break;
+							// 이동
+							case "03" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+								if(runType == "idle"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									console.log('positionINdex : ' + this.positionIndex);
+									utils.move(this.id, this.positionIndex);
+
+								}else if(runType == "run_stop"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+									// 움직인 만큼 포지션 추가
+									this.positionIndex += moveCount;
+
+									if(this.positionIndex >= positionArr.length){
+										this.positionIndex -= positionArr.length;
+									}
+									// 움직인 카운트 초기화
+									moveCount = 0;
+									// utils.objView("text", false);
+									gameStatus = "04";
+
+								}
+
+								break;
+							// 정지
+							case "04" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 소유권확인
+								utils.ownerCheck(this.id);
+								break;
+							// 말판구입
+							case "05" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+									// 소유권확인
+									utils.confirm("ownerDialog", true);
+								}
+								break;
+							// 건물건설
+							case "06" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog4").getAttribute("visible") == false){
+									// 건물 체크
+									utils.buildCheck();
+								}
+								break;
+							// 전체View
+							case "07" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 대기
+							case "08" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								nowGameUserIndex += 1;
+
+								if(nowGameUserIndex + 1 > totalUser){
+									nowGameUserIndex = 0;
+								}
+								utils.objView("rouletteBoard", true);
+								gameStatus = "02";
+								break;
+						}
+					}
+				},
+				update: function(){
+					console.log("update");
+				},
+				remove: function(){
+					console.log("remove");
+				}
+			});
+
+			AFRAME.registerComponent("user2-object", {
+				schema: {
+					// moveX: {type: "number", default: 0},
+					// moveY: {type: "number", default: 0},
+					// moveZ: {type: "number", default: 0}
+				},
+				init: function () {
+
+					this.id = this.el.getAttribute("id");
+					this.positionIndex = 0;
+					gameStatus = "00";
+					gameInfo.gameUser[1]._this = this;
+					console.log("[" + this.id + "]init");
+					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+
+				},
+				tick: function (time, timeDelta) {
+					// 사용자의 순서일경우
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log(this);
+						console.log("tick");
+					}
+				},
+				tock: function(time, timeDelta){
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tock");
+						switch (gameStatus) {
+							// 게임준비일경우
+							case "00" :
+								utils.objView("startConfirm", true); // 시작버튼 confilm 띄우기
+								gameStatus = "01";
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 시작버튼을 활성화 되어있을 경우
+							case "01" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 게임준비 창이 비활성화 일경우 상태값 변경
+								if(utils.obj("#startConfirm").getAttribute("visible") == false){
+									gameStatus = "02";
+								}
+								break;
+							// 주사위 굴리기
+							case "02" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 룰렛 판이 비활성화 일경우 상태값 변경
+								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+									gameStatus = "03";
+								}
+								break;
+							// 이동
+							case "03" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+								if(runType == "idle"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									utils.move(this.id, this.positionIndex);
+								}else if(runType == "run_stop"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+									// 움직인 만큼 포지션 추가
+									this.positionIndex += moveCount;
+
+									if(this.positionIndex >= positionArr.length){
+										this.positionIndex -= positionArr.length;
+									}
+									// 움직인 카운트 초기화
+									moveCount = 0;
+									// utils.objView("text", false);
+									gameStatus = "04";
+
+								}
+
+								break;
+							// 정지
+							case "04" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 소유권확인
+								utils.ownerCheck(this.id);
+								break;
+							// 말판구입
+							case "05" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+									// 소유권확인
+									utils.confirm("ownerDialog", true);
+								}
+								break;
+							// 건물건설
+							case "06" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog4").getAttribute("visible") == false){
+									// 건물 체크
+									utils.buildCheck();
+								}
+								break;
+							// 전체View
+							case "07" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// 대기
+							case "08" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								nowGameUserIndex += 1;
+
+								if(nowGameUserIndex + 1 > totalUser){
+									nowGameUserIndex = 0;
+								}
+								utils.objView("rouletteBoard", true);
+								gameStatus = "02";
+								break;
+						}
+					}
+				},
+				update: function(){
+					console.log("update");
+				},
+				remove: function(){
+					console.log("remove");
+				}
+			});
+		</script>
+	</head>
+	<body>
+	<a-scene>
+		<a-assets>
+			<a-asset-item id="monopoly_json" src="models/monopoly.json"></a-asset-item>
+			<img id="monopoly_texture1" src="models/monopoly_texture1.png">
+			<img id="monopoly_texture2" src="models/monopoly_texture1.png">
+		</a-assets>
+
+		<a-entity id="monoPoly" fbx-model="src:#monopoly_json" material=""></a-entity>
+		<a-entity>
+		</a-entiy>
+
+	 <a-entity camera="active:false" id="allViewCamera"></a-entity>
+	 </a-scene>
+	 <script src="dist/aframe-inspector.js"></script>
+  </body>
+</html>
