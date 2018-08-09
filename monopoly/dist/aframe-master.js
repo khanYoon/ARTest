@@ -69925,12 +69925,10 @@ function getFuzzyPatchVersion (version) {
   return split.join('.');
 }
 
-//var INSPECTOR_DEV_URL = 'http://localhost:3333/dist/aframe-inspector.js';
+//var INSPECTOR_DEV_URL = 'https://aframe.io/aframe-inspector/dist/aframe-inspector.js';
 //var INSPECTOR_RELEASE_URL = 'https://unpkg.com/aframe-inspector@' + getFuzzyPatchVersion(pkg.version) + '/dist/aframe-inspector.min.js';
-//var INSPECTOR_DEV_URL = 'http://localhost:3333/dist/aframe-inspector.js';
-//var INSPECTOR_RELEASE_URL = 'http://localhost:3333/dist/aframe-inspector.js';
-var INSPECTOR_DEV_URL = '/resources/js/aframe-inspector.js';
-var INSPECTOR_RELEASE_URL = '/resources/js/aframe-inspector.js';
+var INSPECTOR_DEV_URL = 'http://localhost:3333/dist/aframe-inspector.js';
+var INSPECTOR_RELEASE_URL = 'http://localhost:3333/dist/aframe-inspector.js';
 var INSPECTOR_URL = process.env.INSPECTOR_VERSION === 'dev' ? INSPECTOR_DEV_URL : INSPECTOR_RELEASE_URL;
 var LOADING_MESSAGE = 'Loading Inspector';
 var LOADING_ERROR_MESSAGE = 'Error loading Inspector';
@@ -70979,7 +70977,7 @@ var MAX_ANISOTROPY = 16;
 
 var FONT_BASE_URL = 'https://cdn.aframe.io/fonts/';
 var FONTS = {
-  aileronsemibold: FONT_BASE_URL + 'Aileron-Semibold.fnt',
+/*  aileronsemibold: FONT_BASE_URL + 'Aileron-Semibold.fnt',
   dejavu: FONT_BASE_URL + 'DejaVu-sdf.fnt',
   exo2bold: FONT_BASE_URL + 'Exo2Bold.fnt',
   exo2semibold: FONT_BASE_URL + 'Exo2SemiBold.fnt',
@@ -70987,10 +70985,12 @@ var FONTS = {
   monoid: FONT_BASE_URL + 'Monoid.fnt',
   mozillavr: FONT_BASE_URL + 'mozillavr.fnt',
   roboto: FONT_BASE_URL + 'Roboto-msdf.json',
-  sourcecodepro: FONT_BASE_URL + 'SourceCodePro.fnt'
+  sourcecodepro: FONT_BASE_URL + 'SourceCodePro.fnt'*/
+  '고딕체': '/resources/fonts/godic.fnt',
+  '바탕체': '/resources/fonts/batang.fnt'
 };
 var MSDF_FONTS = ['roboto'];
-var DEFAULT_FONT = 'roboto';
+var DEFAULT_FONT = '고딕체';
 module.exports.FONTS = FONTS;
 
 var cache = new PromiseCache();
@@ -71014,7 +71014,7 @@ module.exports.Component = registerComponent('text', {
     anchor: {default: 'center', oneOf: ['left', 'right', 'center', 'align']},
     baseline: {default: 'center', oneOf: ['top', 'center', 'bottom']},
     color: {type: 'color', default: '#FFF'},
-    font: {type: 'string', default: DEFAULT_FONT},
+    font: {type: 'string', default: DEFAULT_FONT, oneOf: ['고딕체', '바탕체']},
     // `fontImage` defaults to the font name as a .png (e.g., mozillavr.fnt -> mozillavr.png).
     fontImage: {type: 'string'},
     // `height` has no default, will be populated at layout.
@@ -74461,10 +74461,10 @@ var proto = Object.create(ANode.prototype, {
 	}
   },
   setVisible : {
-		value: function (visible) {
-			this.setAttribute("visible", visible);
-		}
-   }
+	value: function (visible) {
+		this.setAttribute("visible", visible);
+	}
+  }
   ///////////////K-FRAME END
 });
 
@@ -75271,29 +75271,28 @@ var Component = module.exports.Component = function (el, attrValue, id) {
 	      		
 	      		this.translate(directionVector.x, directionVector.y, directionVector.z);
 	      	},
-	      	
-	      	translateAnimation : function(vector, curve, velocity) {
-	      		self.startCoroutine(
-	      			function* () {
-	      				var sumTime = 0.0; 
-	      				var test = 0.0;
-	      				do {
-	      					sumTime += Time.deltaTime;
-	      					test = curve.evaluate(sumTime);
-	      					if (test == 0.0) { 
-	        					this.setAnimationClip('idle');			
-	        				} else {
-	        					if (test > 0.9) {
-	        						this.setAnimationClip('run');	
-	        					} else {
-	        				        this.setAnimationClip('walk');
-	        					}	
-        				 	}
-        				 	this.transform.translateVector(vector, (test * Time.deltaTime * velocity));
-        				 	yield null;
-	      				} while (test != 0.0);
-	      			}.bind(self)()
-	      		);
+	      	translateAnimation : function(vector, curve, deltaTime) {
+		      	
+					if (!this.sumTime) {
+						this.sumTime = 0.0;
+					}
+
+		       		
+				this.sumTime += deltaTime; 
+				test = curve.evaluate(this.sumTime);
+				if (test == 0.0) { 
+					self.setAnimationClip('idle');		
+				} else {
+					if (test > 0.9) {
+						self.setAnimationClip('run');		
+					} else {
+				        self.setAnimationClip('walk');
+					}	
+			 	}
+			 	
+			 	
+				this.translateVector(vector, (test * deltaTime));
+		  		
 	      	},
 	      	
 	      	getLocalPosition : function () {
@@ -78610,7 +78609,7 @@ _dereq_('./core/a-mixin');
 _dereq_('./extras/components/');
 _dereq_('./extras/primitives/');
 
-console.log('A-Frame Version: 0.8.1 (Date 2018-03-12, Commit #22bf02fd)');
+console.log('A-Frame Version: 0.8.1 (Date 2018-05-28, Commit #22bf02fd)');
 console.log('three Version:', pkg.dependencies['three']);
 console.log('WebVR Polyfill Version:', pkg.dependencies['webvr-polyfill']);
 
