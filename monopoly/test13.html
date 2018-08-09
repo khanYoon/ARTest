@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>monoPoly Scene</title>
+		<script src="dist/aframe-master.js"></script>
+	</head>
+	<body>
+	<a-scene>
+		<a-assets>
+			<a-asset-item id="tex1" src="models/texture01.png"></a-asset-item>
+			<a-asset-item id="tex2" src="models/texture02.png"></a-asset-item>
+			<a-asset-item id="TilesRune-obj" src="models/SM_Env_Tiles_Rune.obj"></a-asset-item>	
+			<a-asset-item id="TilesRune-mtl" src="models/SM_Env_Tiles_Rune.mtl"></a-asset-item>
+							
+		</a-assets>
+		
+		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
+		<a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1" id="directionalLight"></a-entity>		
+		
+		
+		<!--   <a-entity id="Tiles_Rune" obj-model="obj:#TilesRune-obj; mtl:#TilesRune-mtl" material="src:#tex1" ></a-entity>-->
+		<a-entity id="Tiles_Rune" obj-model="obj:#TilesRune-obj; mtl:#TilesRune-mtl" ></a-entity>
+		<a-entity id="Tiles_Rune" obj-model="obj:#TilesRune-obj;" ></a-entity>
+
+		<a-camera id="gameViewCamera">
+			<a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+		</a-camera>
+
+    </a-scene>    
+    <script src="dist/aframe-inspector.js"></script>
+  </body>
+</html>
