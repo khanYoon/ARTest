@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>monoPoly Scene</title>
+			<!-- aframe-master.js �� ar 愿��젴 js �떎瑜� 寃쎈줈�뿉 �몢�뼱�빞 �븳�떎. -->
+			<script src="dist/aframe-master.js"></script>
+			<script src="js/three.ar.js"></script>
+	    	<script src="js/aframe-ar.js"></script>
+			<script src="js/aframe-extras.js"></script>
+			<script src="js/aframe-gui.js"></script>
+			<script src="js/utils4.js"></script>
+			<script src="js/text-geometry/build.js"></script>
+		<script>
+
+			var moveNo = 0;
+			AFRAME.registerComponent("user1-object", {
+				schema: {
+					// moveX: {type: "number", default: 0},
+					// moveY: {type: "number", default: 0},
+					// moveZ: {type: "number", default: 0}
+				},
+				init: function () {
+					this.id = this.el.getAttribute("id");
+					this.positionIndex = 0;
+					gameStatus = "00";
+					gameInfo.gameUser[0]._this = this;
+					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+
+				},
+				tick: function (time, timeDelta) {
+					// �궗�슜�옄�쓽 �닚�꽌�씪寃쎌슦
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tick");
+					}
+				},
+				tock: function(time, timeDelta){
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tock");
+						switch (gameStatus) {
+							// 寃뚯엫以�鍮꾩씪寃쎌슦
+							case "00" :
+
+								utils.objView("startConfirm", true); // �떆�옉踰꾪듉 confilm �쓣�슦湲�
+								gameStatus = "01";
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// �떆�옉踰꾪듉�쓣 �솢�꽦�솕 �릺�뼱�엳�쓣 寃쎌슦
+							case "01" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 寃뚯엫以�鍮� 李쎌씠 鍮꾪솢�꽦�솕 �씪寃쎌슦 �긽�깭媛� 蹂�寃�
+								if(utils.obj("#startConfirm").getAttribute("visible") == false){
+									gameStatus = "02";
+								}
+								break;
+							// 二쇱궗�쐞 援대━湲�
+							case "02" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 猷곕젢 �뙋�씠 鍮꾪솢�꽦�솕 �씪寃쎌슦 �긽�깭媛� 蹂�寃�
+								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+									gameStatus = "03";
+								}
+								break;
+							// �씠�룞
+							case "03" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+								if(runType == "idle"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									console.log('positionINdex : ' + this.positionIndex);
+									utils.move(this.id, this.positionIndex);
+
+								}else if(runType == "run_stop"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+									// ��吏곸씤 留뚰겮 �룷吏��뀡 異붽�
+									this.positionIndex += moveCount;
+
+									if(this.positionIndex >= positionArr.length){
+										this.positionIndex -= positionArr.length;
+									}
+									// ��吏곸씤 移댁슫�듃 珥덇린�솕
+									moveCount = 0;
+									// utils.objView("text", false);
+									gameStatus = "04";
+
+								}
+
+								break;
+							// �젙吏�
+							case "04" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// �냼�쑀沅뚰솗�씤
+								utils.ownerCheck(this.id);
+								break;
+							// 留먰뙋援ъ엯
+							case "05" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+									// �냼�쑀沅뚰솗�씤
+									utils.confirm("ownerDialog", true);
+								}
+								break;
+							// 嫄대Ъ嫄댁꽕
+							case "06" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog4").getAttribute("visible") == false){
+									// 嫄대Ъ 泥댄겕
+									utils.buildCheck();
+								}
+								break;
+							// �쟾泥큋iew
+							case "07" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// ��湲�
+							case "08" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								nowGameUserIndex += 1;
+
+								if(nowGameUserIndex + 1 > totalUser){
+									nowGameUserIndex = 0;
+								}
+								utils.objView("rouletteBoard", true);
+								gameStatus = "02";
+								break;
+						}
+					}
+				},
+				update: function(){
+					console.log("update");
+				},
+				remove: function(){
+					console.log("remove");
+				}
+			});
+
+			AFRAME.registerComponent("user2-object", {
+				schema: {
+					// moveX: {type: "number", default: 0},
+					// moveY: {type: "number", default: 0},
+					// moveZ: {type: "number", default: 0}
+				},
+				init: function () {
+
+					this.id = this.el.getAttribute("id");
+					this.positionIndex = 0;
+					gameStatus = "00";
+					gameInfo.gameUser[1]._this = this;
+					console.log("[" + this.id + "]init");
+					utils.obj("#" + this.id).setAttribute("rotation", {x:-180, y:360, z:-180});
+
+				},
+				tick: function (time, timeDelta) {
+					// �궗�슜�옄�쓽 �닚�꽌�씪寃쎌슦
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log(this);
+						console.log("tick");
+					}
+				},
+				tock: function(time, timeDelta){
+					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+						console.log("tock");
+						switch (gameStatus) {
+							// 寃뚯엫以�鍮꾩씪寃쎌슦
+							case "00" :
+								utils.objView("startConfirm", true); // �떆�옉踰꾪듉 confilm �쓣�슦湲�
+								gameStatus = "01";
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// �떆�옉踰꾪듉�쓣 �솢�꽦�솕 �릺�뼱�엳�쓣 寃쎌슦
+							case "01" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 寃뚯엫以�鍮� 李쎌씠 鍮꾪솢�꽦�솕 �씪寃쎌슦 �긽�깭媛� 蹂�寃�
+								if(utils.obj("#startConfirm").getAttribute("visible") == false){
+									gameStatus = "02";
+								}
+								break;
+							// 二쇱궗�쐞 援대━湲�
+							case "02" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// 猷곕젢 �뙋�씠 鍮꾪솢�꽦�솕 �씪寃쎌슦 �긽�깭媛� 蹂�寃�
+								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+									gameStatus = "03";
+								}
+								break;
+							// �씠�룞
+							case "03" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+								if(runType == "idle"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+									utils.move(this.id, this.positionIndex);
+								}else if(runType == "run_stop"){
+
+									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+									// ��吏곸씤 留뚰겮 �룷吏��뀡 異붽�
+									this.positionIndex += moveCount;
+
+									if(this.positionIndex >= positionArr.length){
+										this.positionIndex -= positionArr.length;
+									}
+									// ��吏곸씤 移댁슫�듃 珥덇린�솕
+									moveCount = 0;
+									// utils.objView("text", false);
+									gameStatus = "04";
+
+								}
+
+								break;
+							// �젙吏�
+							case "04" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								// �냼�쑀沅뚰솗�씤
+								utils.ownerCheck(this.id);
+								break;
+							// 留먰뙋援ъ엯
+							case "05" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+									// �냼�쑀沅뚰솗�씤
+									utils.confirm("ownerDialog", true);
+								}
+								break;
+							// 嫄대Ъ嫄댁꽕
+							case "06" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
+								   utils.obj("#buildDialog4").getAttribute("visible") == false){
+									// 嫄대Ъ 泥댄겕
+									utils.buildCheck();
+								}
+								break;
+							// �쟾泥큋iew
+							case "07" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								break;
+							// ��湲�
+							case "08" :
+								console.log(utils.getGameStatus(gameStatus).name);
+								nowGameUserIndex += 1;
+
+								if(nowGameUserIndex + 1 > totalUser){
+									nowGameUserIndex = 0;
+								}
+								utils.objView("rouletteBoard", true);
+								gameStatus = "02";
+								break;
+						}
+					}
+				},
+				update: function(){
+					console.log("update");
+				},
+				remove: function(){
+					console.log("remove");
+				}
+			});
+		</script>
+	</head>
+	<body>
+	<a-scene ar>
+		<a-assets>
+			<a-asset-item id="SM_Env_MountainSnow_texture" src="models/MaxVR/SM_Env_MountainSnow.png"></a-asset-item>
+			<a-asset-item id="SM_Env_MountainSnow" src="models/MaxVR/SM_Env_MountainSnow.obj"></a-asset-item>					
+		</a-assets>
+		
+		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
+		<a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1" id="directionalLight"></a-entity>		
+		
+		
+		<a-entity id="MountainSnow" obj-model="obj: #SM_Env_MountainSnow;" material="src:#SM_Env_MountainSnow_texture" postion="0 10 0"></a-entity>
+		
+
+
+		<a-camera id="gameViewCamera">
+			<a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+		</a-camera>
+
+    </a-scene>    
+  </body>
+</html>
