@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>monoPoly Scene</title>			
-			<script src="dist/aframe-master.js"></script>
+		<title>monoPoly Scene</title>
+		<script src="dist/aframe-master.js"></script>
 	</head>
 	<body>
 	<a-scene>
 		<a-assets>
-			<a-asset-item id="MountainSnow_texture" src="models/MaxVR/SM_Env_MountainSnow.png"></a-asset-item>
-			<a-asset-item id="MountainSnow-obj" src="models/MaxVR/SM_Env_MountainSnow.obj"></a-asset-item>					
+			<a-asset-item id="test-glb" src="models/Maxted-A-Frame-VR-03.glb"></a-asset-item>	
+			<a-asset-item id="test-glb2" src="models/Maxted-A-Frame-VR-TX_03.glb"></a-asset-item>						
 		</a-assets>
 		
 		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
-		<a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1" id="directionalLight"></a-entity>		
+		<a-entity light="type: directional; color: #FFF; intensity: 0.6" position="-0.5 1 1" id="directionalLight"></a-entity>	
+					
+<!-- 		<a-entity id="rune" obj-model="obj:#all-obj;" material="src:#all-texture;" > </a-entity>  
+		<a-entity id="rune" gltf-model="#test-glb"> </a-entity>-->
 		
-		
-		<!--   <a-entity id="MountainSnow" obj-model="obj: #MountainSnow-obj;" material="src:#MountainSnow_texture" postion="0 10 0"></a-entity>-->
-		
-		
-		<a-entity id="MountainSnow" obj-model="obj: #MountainSnow-obj;" postion="0 10 0"></a-entity>
-		
-
-
-		<a-camera id="gameViewCamera">
+		<a-entity id="rune2" gltf-model="#test-glb2"> </a-entity>
+	
+		<a-camera id="gameViewCamera" wasd-contorls="" looks-controls="">
 			<a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
-		</a-camera>		
-    </a-scene>   
-    <script src="dist/aframe-inspector.js"></script> 
+		</a-camera>
+
+    </a-scene>  
+    	<script src="dist/aframe-inspector.js"></script>   
   </body>
 </html>
