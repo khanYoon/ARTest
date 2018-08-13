@@ -270,6 +270,7 @@
 		
 			<!-- cliff -->						
 			<a-asset-item id="SM_Env_Cliff" src="models/MaxVR/SM_Env_Cliff.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tree" src="models/MaxVR/SM_Env_Tree_Twisted.glb"></a-asset-item>
 			
 			<!-- Corner -->
 			<a-asset-item id="SM_Env_Coner_A_01" src="models/MaxVR/SM_Env_Coner_A_01.glb"></a-asset-item>
@@ -346,7 +347,9 @@
 			
 			<a-asset-item id="bot" src="models/bot4.json"></a-asset-item>
 
-            <a-asset-item id="building_obj" src="models/Building.obj"></a-asset-item>
+			<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
+			<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
+
 		</a-assets>
 		
 		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
@@ -357,39 +360,148 @@
 
 		<!-- user -->
 		<a-entity id="user2" user2-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 5.2 6" scale="1 1 1" rotation="180 0 180"></a-entity>
-		
-	<a-entity id="MonoLand" rotation="0 90 0" position="10 0 -10">
-		<a-entity id="main" gltf-model="#SM_Env_Main"></a-entity>
 
-		<a-entity id="board1" gltf-model="#SM_Env_Start_A" position="-15 0 -15"></a-entity>
-        <a-entity id="board1-1" gltf-model="#SM_Env_Tiles_A_01" position="-10 0 -15"></a-entity>
-        <a-entity id="board1-2" gltf-model="#SM_Env_Tiles_A_02" position="-5 0 -15"></a-entity>
-        <a-entity id="board1-3" gltf-model="#SM_Env_Tiles_A_03" position="0 0 -15"></a-entity>
-        <a-entity id="board1-4" gltf-model="#SM_Env_Tiles_A_04" position="5 0 -15"></a-entity>
-        <a-entity id="board1-5" gltf-model="#SM_Env_Tiles_A_05" position="10 0 -15"></a-entity>
+		<a-entity id="cliff" gltf-model="#SM_Env_Cliff" position="8 0 -11"></a-entity>
 
-        <a-entity id="board2" gltf-model="#SM_Env_Coner_A_01" position="15 0 -15"></a-entity>
-		<a-entity id="board2-1" gltf-model="#SM_Env_Tiles_A_01" position="15 0 -10"></a-entity>
-		<a-entity id="board2-2" gltf-model="#SM_Env_Tiles_A_02" position="15 0 -5"></a-entity>
-		<a-entity id="board2-3" gltf-model="#SM_Env_Tiles_A_03" position="15 0 0"></a-entity>
-		<a-entity id="board2-4" gltf-model="#SM_Env_Tiles_A_04" position="15 0 5"></a-entity>
-		<a-entity id="board2-5" gltf-model="#SM_Env_Tiles_A_05" position="15 0 10"></a-entity>
+		<a-entity id="tree" gltf-model="#SM_Env_Tree" position="0 0 -1.5"></a-entity>
 
-		<a-entity id="board3" gltf-model="#SM_Env_Coner_A_02" position="15 0 15"></a-entity>
-		<a-entity id="board3-1" gltf-model="#SM_Env_Tiles_A_01" position="10 0 15"></a-entity>
-		<a-entity id="board3-2" gltf-model="#SM_Env_Tiles_A_02" position="5 0 15"></a-entity>
-		<a-entity id="board3-3" gltf-model="#SM_Env_Tiles_A_03" position="0 0 15"></a-entity>
-		<a-entity id="board3-4" gltf-model="#SM_Env_Tiles_A_04" position="-5 0 15"></a-entity>
-		<a-entity id="board3-5" gltf-model="#SM_Env_Tiles_A_05" position="-10 0 15"></a-entity>
 
-		<a-entity id="board4" gltf-model="#SM_Env_Coner_A_03" position="-15 0 15"></a-entity>
-		<a-entity id="board4-1" gltf-model="#SM_Env_Tiles_A_01" position="-15 0 10"></a-entity>
-		<a-entity id="board4-2" gltf-model="#SM_Env_Tiles_A_02" position="-15 0 5"></a-entity>
-		<a-entity id="board4-3" gltf-model="#SM_Env_Tiles_A_03" position="-15 0 0"></a-entity>
-		<a-entity id="board4-4" gltf-model="#SM_Env_Tiles_A_04" position="-15 0 -5"></a-entity>
-		<a-entity id="board4-5" gltf-model="#SM_Env_Tiles_A_05" position="-15 0 -10"></a-entity>
+		<a-entity id="mound" gltf-model="#SM_Env_GroundMound"></a-entity>
+		<a-entity id="grass" gltf-model="#SM_Env_MountainGrass"></a-entity>
+		<a-entity id="snow" gltf-model="#SM_Env_MountainSnow"></a-entity>
 
-      </a-entity>
+		<a-entity id="MonoLand" rotation="0 90 0" position="10 0 -10">
+			<a-entity id="main" gltf-model="#SM_Env_Main"></a-entity>
+
+			<a-entity id="board1" gltf-model="#SM_Env_Start_A" position="-15 0 -15"></a-entity>
+			<a-entity id="board1-1" gltf-model="#SM_Env_Tiles_A_01" position="-10 0 -15">
+				<a-entity id="small1-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large1-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board1-2" gltf-model="#SM_Env_Tiles_A_02" position="-5 0 -15">
+				<a-entity id="small1-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large1-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board1-3" gltf-model="#SM_Env_Tiles_A_03" position="0 0 -15">
+				<a-entity id="small1-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large1-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board1-4" gltf-model="#SM_Env_Tiles_A_04" position="5 0 -15">
+				<a-entity id="small1-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large1-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board1-5" gltf-model="#SM_Env_Tiles_A_05" position="10 0 -15">
+				<a-entity id="small1-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large1-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+
+			<a-entity id="board2" gltf-model="#SM_Env_Coner_A_01" position="15 0 -15"></a-entity>
+			<a-entity id="board2-1" gltf-model="#SM_Env_Tiles_A_01" position="15 0 -10">
+				<a-entity id="small2-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large2-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board2-2" gltf-model="#SM_Env_Tiles_A_02" position="15 0 -5">
+				<a-entity id="small2-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large2-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board2-3" gltf-model="#SM_Env_Tiles_A_03" position="15 0 0">
+				<a-entity id="small2-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large2-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board2-4" gltf-model="#SM_Env_Tiles_A_04" position="15 0 5">
+				<a-entity id="small2-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large2-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board2-5" gltf-model="#SM_Env_Tiles_A_05" position="15 0 10">
+				<a-entity id="small2-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large2-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+
+			<a-entity id="board3" gltf-model="#SM_Env_Coner_A_02" position="15 0 15"></a-entity>
+			<a-entity id="board3-1" gltf-model="#SM_Env_Tiles_A_01" position="10 0 15">
+				<a-entity id="small3-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large3-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board3-2" gltf-model="#SM_Env_Tiles_A_02" position="5 0 15">
+				<a-entity id="small3-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large3-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board3-3" gltf-model="#SM_Env_Tiles_A_03" position="0 0 15">
+				<a-entity id="small3-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large3-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board3-4" gltf-model="#SM_Env_Tiles_A_04" position="-5 0 15">
+				<a-entity id="small3-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large3-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board3-5" gltf-model="#SM_Env_Tiles_A_05" position="-10 0 15">
+				<a-entity id="small3-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large3-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+
+			<a-entity id="board4" gltf-model="#SM_Env_Coner_A_03" position="-15 0 15"></a-entity>
+			<a-entity id="board4-1" gltf-model="#SM_Env_Tiles_A_01" position="-15 0 10">
+				<a-entity id="small4-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large4-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board4-2" gltf-model="#SM_Env_Tiles_A_02" position="-15 0 5">
+				<a-entity id="small4-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large4-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board4-3" gltf-model="#SM_Env_Tiles_A_03" position="-15 0 0">
+				<a-entity id="small4-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large4-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board4-4" gltf-model="#SM_Env_Tiles_A_04" position="-15 0 -5">
+				<a-entity id="small4-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large4-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+			<a-entity id="board4-5" gltf-model="#SM_Env_Tiles_A_05" position="-15 0 -10">
+				<a-entity id="small4-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-1.8 5 2" visible="false">
+				</a-entity>
+				<a-entity id="large4-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-1.6 5 -1.6"  visible="false">
+				</a-entity>
+			</a-entity>
+
+		</a-entity>
 				
         <!-- gameView -->
 		<a-entity id="gameView" position="8 10 15" rotation="0 0 0" scale="1.000 0.500 1.500">
@@ -480,21 +592,21 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['01']})"
-					value="집만들기"
+					value="작은빌딩만들기"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['02']})"
-					value="빌딩올리기"
+					value="큰빌딩만들기"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['03']})"
-					value="집 & 빌딩올리기"
+					value="작은 & 큰 빌딩 만들기"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -522,7 +634,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog2', false, {fn:utils.setOwnerBuild, param:['01']})"
-					value="집만들기"
+					value="작은 빌등 만들기"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -550,7 +662,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog3', false, {fn:utils.setOwnerBuild, param:['02']})"
-					value="빌딩올리기"
+					value="큰 빌딩 만들기"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
