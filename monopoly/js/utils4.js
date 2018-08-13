@@ -1,9 +1,9 @@
 var scene;
 var rouletteTimeoutId;
 // 말판의 포지션
-var positionArr = ["bord1-1", "bord1-2", "bord1-3", "bord1-4", "bord1-5", "bord2-1", "bord2-2", "bord2-3", "bord2-4", "bord2-5", "bord3-1", "bord3-2", "bord3-3", "bord3-4", "bord3-5", "bord4-1", "bord4-2", "bord4-3", "bord4-4", "bord4-5"];
+var positionArr = ["board1","board1-1", "board1-2", "board1-3", "board1-4", "board1-5", "board2", "board2-1", "board2-2", "board2-3", "board2-4", "board2-5", "board3", "board3-1", "board3-2", "board3-3", "board3-4", "board3-5", "board4", "board4-1", "board4-2", "board4-3", "board4-4", "board4-5"];
 // 꺽어지는 위치
-var turnArr = ["bord1-1", "bord2-1", "bord3-1", "bord4-1"];
+var turnArr = ["board1", "board2", "board3", "board4"];
 // 게임 유저
 var gameInfo = {
 	  gameUser : [{id:"user1", name:"홍길동", color:"yellow", active:"on", _this:{}}, {id:"user2", name:"AI 유져", color:"black", active:"off"}]
@@ -252,6 +252,8 @@ utils = {
 					var sPositionIndex = positionIndex + _moveCount;
 					var ePositionIndex = sPositionIndex + 1;
 
+					alert("sPositionIndex : " + sPositionIndex )
+
 					// 마지막 말판에 도착했는지를 확인
 					if(sPositionIndex >= positionArr.length){
 						sPositionIndex -= positionArr.length;
@@ -265,8 +267,10 @@ utils = {
 					// 종료ID
 					var endId = positionArr[ePositionIndex];
 
+					alert("startid : " + startId + " endId : "+ endId);
+
 					var _y = 0;
-					if(movingIndex == 0 && (endId == "bord1-1" || endId == "bord2-1" || endId == "bord3-1" || endId == "bord4-1")){
+					if(movingIndex == 0 && (endId == "board1" || endId == "board2" || endId == "board3" || endId == "board4")){
 						var _y = utils.obj("#" + moveId).getAttribute("rotation").y - 90;
 
 						if(utils.obj("#" + moveId).getAttribute("rotation").y <= 0){
@@ -277,8 +281,9 @@ utils = {
 
 					// 한칸씩 이동
 					var obj = utils.obj("#" + moveId);
+
 					var sPosition = utils.obj("#" + startId).object3D.position;
-					var ePosition = utils.obj("#" + endId).object3D.position;
+					var ePosition = utils.obj("#" + endId).object3D.position
 
 					var movePosition = {};
 
@@ -287,14 +292,14 @@ utils = {
 					// x축으로 움직일경우
 					if(sPosition.x != ePosition.x){
 						index = Math.abs(sPosition.x + ePosition.x * -1);
-						movePosition = {x: index};
-
+						movePosition = {z: index};
 						// x축으로 움직일때
+                        //플레이트 내에서는 x축 차이가 world 내에서는 z축 차이 이므로  플레이트 값이 x축 값이 차이날때 obj를 z 축 값 변경으로 이동한다.
 						if(typeof movePosition.x === "number"){
 							if(sPosition.x > ePosition.x){
-								obj.object3D.position.x += (movePosition.x * -1) / 4;
+								obj.object3D.position.z += movePosition.z * 4;
 							}else{
-								obj.object3D.position.x += movePosition.x / 4;
+								obj.object3D.position.z += (movePosition.z  * -1) * 4;
 							}
 						}
 					}
@@ -302,14 +307,15 @@ utils = {
 					// z축으로 움직일경우
 					if(sPosition.z != ePosition.z){
 						index = Math.abs(sPosition.z + ePosition.z * -1);
-						movePosition = {z: index};
-
+						movePosition = {x: index};
 						// z축으로 움직일때
+                        //플레이트 내에서는 z축 차이가 world 내에서는 x축 차이 이므로  플레이트 값이 z축 값이 차이날때 obj를 x 축 값 변경으로 이동한다.
 						if(typeof movePosition.z === "number"){
 							if(sPosition.z > ePosition.z){
-								obj.object3D.position.z += (movePosition.z * -1) / 4;
+								obj.object3D.position.x += (movePosition.x * -1) * 4;
 							}else{
-								obj.object3D.position.z += movePosition.z / 4;
+								obj.object3D.position.x += movePosition.x * 4;
+								obj.object3D.position.x += movePosition.x * 4;
 							}
 						}
 					}
