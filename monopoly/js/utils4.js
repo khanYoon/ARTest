@@ -6,7 +6,7 @@ var positionArr = ["board1","board1-1", "board1-2", "board1-3", "board1-4", "boa
 var turnArr = ["board1", "board2", "board3", "board4"];
 // 게임 유저
 var gameInfo = {
-	  gameUser : [{id:"user1", name:"홍길동", color:"yellow", active:"on", _this:{}}, {id:"user2", name:"AI 유져", color:"black", active:"off"}]
+	  gameUser : [{id:"user1", name:"홍길동", color:"yellow", active:"on", model:"B", _this:{}}, {id:"user2", name:"AI 유져", color:"black", active:"off", model:"C"}]
 	 ,gameStatus : [{code:"00", name:"게임준비"}, {code:"01", name:"시작버튼"}, {code:"02", name:"주사위굴리기"}, {code:"03", name:"이동"}, {code:"04", name:"정지"}
 	             , {code:"05", name:"말판구입"}, {code:"06", name:"건물건설"}, {code:"07", name:"전체View"}, {code:"08", name:"대기"},]
 }
@@ -82,7 +82,9 @@ utils = {
 			//시작점에 서 false 로 바뀐뒤  turnOver되면 isOwnerCheck 값이 항상 false 이므로 매번 호출 될때 마다 초기화
 			isOwnerCheck = true;
 			// 시작점은 제외
-			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0){
+            // 추가적으로 코너 추가
+			if(gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 0 || gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 6
+                || gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 12 || gameInfo.gameUser[nowGameUserIndex]._this.positionIndex == 18){
 
 				//20180702 khan 추가
 				utils.turnOver();
@@ -102,23 +104,23 @@ utils = {
 				}else{
 
 					if(moveId != ownObj.ownerId){
-						var isHouse = ownObj.el.querySelector("[house]").getAttribute("visible");
-						var isBuilding = ownObj.el.querySelector("[building]").getAttribute("visible");
+						var isSmall = ownObj.el.querySelector("[small]").getAttribute("visible");
+						var isLarge = ownObj.el.querySelector("[large]").getAttribute("visible");
 
 						var toll = 200;
-						var houseUse = 0;
-						var buildingUse = 0;
+						var smallUse = 0;
+						var largeUse = 0;
 
 						var text = "Toll : 200";
-						if(isHouse){
-							houseUse = 300;
-							text += "House Use : 300 ";
+						if(isSmall){
+                            smallUse = 300;
+							text += "Small Use : 300 ";
 						}
 
-						if(isBuilding){
-							buildingUse = 500;
+						if(isLarge){
+                            largeUse = 500;
 
-							text += "Building Use : 500 ";
+							text += "Large Use : 500 ";
 						}
 
 						text += "Minus";
@@ -146,24 +148,40 @@ utils = {
 		 */
 		setOwner : function(){
 			ownObj.ownerId = gameInfo.gameUser[nowGameUserIndex].id;
-			ownObj.el.querySelector("[geometry]").setAttribute("material", "color", gameInfo.gameUser[nowGameUserIndex].color);
+			//user가 위치한 flate의 id를 찾아 가져온다.
+            var flateId =  positionArr[gameInfo.gameUser[nowGameUserIndex]._this.positionIndex];
+            //flate 정보 가져오기.
+            var flate = document.getElementById(flateId);
+            //이전 모델 정보 가져오기
+            var models = flate.getAttribute("gltf-model");
+
+            var split = models.split("_");
+            var splitNo = (split[4]).split(".")
+            var changeModel = "#SM_"+ split[1] +"_"+ split[2]+"_"+gameInfo.gameUser[nowGameUserIndex].model+"_"+ splitNo[0];
+            flate.setAttribute("gltf-model", changeModel);
 			gameStatus = "06";
 		},
 		/*
 		 * 건물 체크
 		 */
 		buildCheck : function(moveId){
+		    //현재 캐릭터가 있는 위치의 플레이트 판을 찾고 자식인 building 들을 찾아세팅 해준다.
+            var flateId =  positionArr[gameInfo.gameUser[nowGameUserIndex]._this.positionIndex];
+            var flate = document.getElementById(flateId);
 
-			var isHouse = ownObj.el.querySelector("[house]").getAttribute("visible");
-			var isBuilding = ownObj.el.querySelector("[building]").getAttribute("visible");
+            var small = flate.childNodes.item(1);
+            var large = flate.childNodes.item(3);
 
-			if(isHouse == false && isBuilding == false){
+			var isSmall = small.getAttribute("visible");
+			var isLarge = large.getAttribute("visible");
+
+			if(isSmall == false && isLarge == false){
 				utils.confirm("buildDialog1", true);
-			}else if(isHouse == false && isBuilding == true){
+			}else if(isSmall == false && isLarge == true){
 				utils.confirm("buildDialog2", true);
-			}else if(isHouse == true && isBuilding == false){
+			}else if(isSmall == true && isLarge == false){
 				utils.confirm("buildDialog3", true);
-			}else if(isHouse == true && isBuilding == true){
+			}else if(isSmall == true && isLarge == true){
 				utils.confirm("buildDialog4", true);
 			}
 
@@ -172,14 +190,18 @@ utils = {
 		 * 건설하기
 		 **/
 		setOwnerBuild : function(code){
+            var flateId =  positionArr[gameInfo.gameUser[nowGameUserIndex]._this.positionIndex];
+            var flate = document.getElementById(flateId);
+            var small = flate.childNodes.item(1);
+            var large = flate.childNodes.item(3);
 
 			if(code == "01"){
-				ownObj.el.querySelector("[house]").setAttribute("visible", true);
+				small.setAttribute("visible", true);
 			}else if(code == "02"){
-				ownObj.el.querySelector("[building]").setAttribute("visible", true);
+				large.setAttribute("visible", true);
 			}else if(code == "03"){
-				ownObj.el.querySelector("[house]").setAttribute("visible", true);
-				ownObj.el.querySelector("[building]").setAttribute("visible", true);
+                small.setAttribute("visible", true);
+                large.setAttribute("visible", true);
 			}
 			utils.buildCheck();
 		},
@@ -252,8 +274,6 @@ utils = {
 					var sPositionIndex = positionIndex + _moveCount;
 					var ePositionIndex = sPositionIndex + 1;
 
-					alert("sPositionIndex : " + sPositionIndex )
-
 					// 마지막 말판에 도착했는지를 확인
 					if(sPositionIndex >= positionArr.length){
 						sPositionIndex -= positionArr.length;
@@ -266,8 +286,6 @@ utils = {
 					var startId = positionArr[sPositionIndex];
 					// 종료ID
 					var endId = positionArr[ePositionIndex];
-
-					alert("startid : " + startId + " endId : "+ endId);
 
 					var _y = 0;
 					if(movingIndex == 0 && (endId == "board1" || endId == "board2" || endId == "board3" || endId == "board4")){
@@ -283,49 +301,83 @@ utils = {
 					var obj = utils.obj("#" + moveId);
 
 					var sPosition = utils.obj("#" + startId).object3D.position;
-					var ePosition = utils.obj("#" + endId).object3D.position
+					var ePosition = utils.obj("#" + endId).object3D.position;
 
 					var movePosition = {};
 
 					let isLoop = true;
+                    //
+					// // x축으로 움직일경우
+					// if(sPosition.x != ePosition.x){
+					// 	index = Math.abs(sPosition.x + ePosition.x * -1);
+					// 	movePosition = {x: index};
+					// 	// x축으로 움직일때
+                     //    //플레이트 내에서는 x축 차이가 world 내에서는 z축 차이 이므로  플레이트 값이 x축 값이 차이날때 obj를 z 축 값 변경으로 이동한다.
+					// 	if(typeof movePosition.x === "number"){
+					// 		if(sPosition.x > ePosition.x){
+					// 			obj.object3D.position.z += movePosition.x / 4;
+					// 		}else{
+					// 			obj.object3D.position.z += (movePosition.x  * -1) / 4;
+					// 		}
+					// 	}
+					// }
+					//
+					// // z축으로 움직일경우
+					// if(sPosition.z != ePosition.z){
+					// 	index = Math.abs(sPosition.z + ePosition.z * -1);
+					// 	movePosition = {z: index};
+					// 	// z축으로 움직일때
+                     //    //플레이트 내에서는 z축 차이가 world 내에서는 x축 차이 이므로  플레이트 값이 z축 값이 차이날때 obj를 x 축 값 변경으로 이동한다.
+					// 	if(typeof movePosition.z === "number"){
+					// 		if(sPosition.z > ePosition.z){
+					// 			obj.object3D.position.x += (movePosition.z * -1) / 4;
+					// 		}else{
+					// 			obj.object3D.position.x += movePosition.z / 4;
+					// 		}
+					// 	}
+					// }
+                    //
+					// if(movingIndex == 3){
+					// 	_moveCount++;
+					// 	movingIndex = 0;
+					// }else{
+					// 	movingIndex++;
+					// }
 
-					// x축으로 움직일경우
-					if(sPosition.x != ePosition.x){
-						index = Math.abs(sPosition.x + ePosition.x * -1);
-						movePosition = {z: index};
-						// x축으로 움직일때
-                        //플레이트 내에서는 x축 차이가 world 내에서는 z축 차이 이므로  플레이트 값이 x축 값이 차이날때 obj를 z 축 값 변경으로 이동한다.
-						if(typeof movePosition.x === "number"){
-							if(sPosition.x > ePosition.x){
-								obj.object3D.position.z += movePosition.z * 4;
-							}else{
-								obj.object3D.position.z += (movePosition.z  * -1) * 4;
-							}
-						}
-					}
-					
-					// z축으로 움직일경우
-					if(sPosition.z != ePosition.z){
-						index = Math.abs(sPosition.z + ePosition.z * -1);
-						movePosition = {x: index};
-						// z축으로 움직일때
-                        //플레이트 내에서는 z축 차이가 world 내에서는 x축 차이 이므로  플레이트 값이 z축 값이 차이날때 obj를 x 축 값 변경으로 이동한다.
-						if(typeof movePosition.z === "number"){
-							if(sPosition.z > ePosition.z){
-								obj.object3D.position.x += (movePosition.x * -1) * 4;
-							}else{
-								obj.object3D.position.x += movePosition.x * 4;
-								obj.object3D.position.x += movePosition.x * 4;
-							}
-						}
-					}
+                    // x축으로 움직일경우
+                    if(sPosition.x != ePosition.x){
+                        index = Math.abs(sPosition.x + ePosition.x * -1);
+                        movePosition = {x: index};
+                        // x축으로 움직일때
+                        if(typeof movePosition.x === "number"){
+                            if(sPosition.x > ePosition.x){
+                                obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.x / 4) / 10).toFixed(3))).toFixed(3);
+                            }else{
+                                obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat(((movePosition.x * -1) / 4) / 10).toFixed(3))).toFixed(3);
+                            }
+                        }
+                    }
 
-					if(movingIndex == 3){
-						_moveCount++;
-						movingIndex = 0;
-					}else{
-						movingIndex++;
-					}
+                    // z축으로 움직일경우
+                    if(sPosition.z != ePosition.z){
+                        index = Math.abs(sPosition.z + ePosition.z * -1);
+                        movePosition = {z: index};
+                        // z축으로 움직일때
+                        if(typeof movePosition.z === "number"){
+                            if(sPosition.z > ePosition.z){
+                                obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 10).toFixed(3))).toFixed(3);
+                            }else{
+                                obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat((movePosition.z / 4) / 10).toFixed(3))).toFixed(3);
+                            }
+                        }
+                    }
+
+                    if(movingIndex == 38){
+                        _moveCount++;
+                        movingIndex = 0;
+                    }else{
+                        movingIndex ++;
+                    }
 
 				}
 			}
