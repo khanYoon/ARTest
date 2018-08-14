@@ -104,8 +104,14 @@ utils = {
 				}else{
 
 					if(moveId != ownObj.ownerId){
-						var isSmall = ownObj.el.querySelector("[small]").getAttribute("visible");
-						var isLarge = ownObj.el.querySelector("[large]").getAttribute("visible");
+                        var flateId =  positionArr[gameInfo.gameUser[nowGameUserIndex]._this.positionIndex];
+                        var flate = document.getElementById(flateId);
+
+                        var small = flate.childNodes.item(1);
+                        var large = flate.childNodes.item(3);
+
+                        var isSmall = small.getAttribute("visible");
+                        var isLarge = large.getAttribute("visible");
 
 						var toll = 200;
 						var smallUse = 0;

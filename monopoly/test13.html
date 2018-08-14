@@ -348,7 +348,6 @@
 
 			<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
 			<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
-			<a-asset-item id="md" src="models/MaxVR/Character_Soldier_Running.json"></a-asset-item>
 		</a-assets>
 		<a-marker preset="hiro" markerhandler="">
 		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
@@ -359,9 +358,6 @@
 
 		<!-- user -->
 		<a-entity id="user2" user2-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 5.2 6" scale="1 1 1" rotation="180 0 180"></a-entity>
-
-		<!-- user -->
-		<a-entity id="user3" json-model="src:#md" position="-4.7 5.2 6" scale="1 1 1" rotation="180 0 180"></a-entity>
 
 		<a-entity id="cliff" gltf-model="#SM_Env_Cliff" position="8 0 -11"></a-entity>
 
