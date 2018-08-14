@@ -4,8 +4,7 @@
 		<title>monoPoly Scene</title>
             <meta charset="utf-8">
 			<script src="dist/aframe-master.js"></script>
-			<script src="js/three.ar.js"></script>
-	    	<script src="js/aframe-ar.js"></script>
+			<script src="js/aframe-arjs.js"></script>
 			<script src="js/aframe-extras.js"></script>
 			<script src="js/aframe-gui.js"></script>			
 			<script src="js/text-geometry/build.js"></script>
@@ -265,7 +264,7 @@
 		</script>
 	</head>
 	<body>
-	<a-scene ar>
+	<a-scene arjs>
 		<a-assets>
 		
 			<!-- cliff -->						
@@ -351,7 +350,7 @@
 			<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
 			<a-asset-item id="md" src="models/MaxVR/Character_Soldier_Running.json"></a-asset-item>
 		</a-assets>
-		
+		<a-marker preset="hiro" markerhandler="">
 		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
 		<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>	
 		
@@ -709,7 +708,8 @@
 				</a-entity>
 			</a-gui-flex-container>
 		</a-entity>						
-	
+		</a-marker>
+
 		<a-camera id="gameViewCamera" wasd-contorls="" looks-controls="" position="8 10 20" rotation="0 0 0">
 			<a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-camera>
