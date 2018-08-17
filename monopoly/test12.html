@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<title>monoPoly Scene</title>
-            <meta charset="utf-8">
+			<meta charset="utf-8">
 			<script src="dist/aframe-master.js"></script>
 			<script src="js/three.ar.js"></script>
-	    	<script src="js/aframe-ar.js"></script>
+	    <script src="js/aframe-ar.js"></script>
 			<script src="js/aframe-extras.js"></script>
-			<script src="js/aframe-gui.js"></script>			
+			<script src="js/aframe-gui.js"></script>
 			<script src="js/text-geometry/build.js"></script>
-			<script src="js/utils4.js"></script>				
+			<script src="js/utils4.js"></script>
 		<script>
 
 			var moveNo = 0;
@@ -267,11 +267,11 @@
 	<body>
 	<a-scene ar>
 		<a-assets>
-		
-			<!-- cliff -->						
+
+			<!-- cliff -->
 			<a-asset-item id="SM_Env_Cliff" src="models/MaxVR/SM_Env_Cliff.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Tree" src="models/MaxVR/SM_Env_Tree_Twisted.glb"></a-asset-item>
-			
+
 			<!-- Corner -->
 			<a-asset-item id="SM_Env_Coner_A_01" src="models/MaxVR/SM_Env_Coner_A_01.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Coner_A_02" src="models/MaxVR/SM_Env_Coner_A_02.glb"></a-asset-item>
@@ -285,21 +285,21 @@
 			<a-asset-item id="SM_Env_Coner_D_01" src="models/MaxVR/SM_Env_Coner_D_01.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Coner_D_02" src="models/MaxVR/SM_Env_Coner_D_02.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Coner_D_03" src="models/MaxVR/SM_Env_Coner_D_03.glb"></a-asset-item>
-			
+
 			<!-- Start -->
 			<a-asset-item id="SM_Env_Start_A" src="models/MaxVR/SM_Env_Start_A.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Start_B" src="models/MaxVR/SM_Env_Start_B.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Start_C" src="models/MaxVR/SM_Env_Start_C.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Start_D" src="models/MaxVR/SM_Env_Start_D.glb"></a-asset-item>
-			
+
 			<!-- Main -->
 			<a-asset-item id="SM_Env_Main" src="models/MaxVR/SM_Env_Main.glb"></a-asset-item>
-			
+
 			<!-- GroundMound -->
 			<a-asset-item id="SM_Env_GroundMound" src="models/MaxVR/SM_Env_GroundMound.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_MountainGrass" src="models/MaxVR/SM_Env_MountainGrass.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_MountainSnow" src="models/MaxVR/SM_Env_MountainSnow.glb"></a-asset-item>
-			
+
 			<!-- Rounded -->
 			<a-asset-item id="SM_Env_Rounded_A_01" src="models/MaxVR/SM_Env_Rounded_A_01.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Rounded_A_02" src="models/MaxVR/SM_Env_Rounded_A_02.glb"></a-asset-item>
@@ -321,9 +321,9 @@
 			<a-asset-item id="SM_Env_Rounded_D_03" src="models/MaxVR/SM_Env_Rounded_D_03.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Rounded_D_04" src="models/MaxVR/SM_Env_Rounded_D_04.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Rounded_D_05" src="models/MaxVR/SM_Env_Rounded_D_05.glb"></a-asset-item>
-			
+
 			<!-- Tiles -->
-			
+
 			<a-asset-item id="SM_Env_Tiles_A_01" src="models/MaxVR/SM_Env_Tiles_A_01.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Tiles_A_02" src="models/MaxVR/SM_Env_Tiles_A_02.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Tiles_A_03" src="models/MaxVR/SM_Env_Tiles_A_03.glb"></a-asset-item>
@@ -344,16 +344,16 @@
 			<a-asset-item id="SM_Env_Tiles_D_03" src="models/MaxVR/SM_Env_Tiles_D_03.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Tiles_D_04" src="models/MaxVR/SM_Env_Tiles_D_04.glb"></a-asset-item>
 			<a-asset-item id="SM_Env_Tiles_D_05" src="models/MaxVR/SM_Env_Tiles_D_05.glb"></a-asset-item>
-			
+
 			<a-asset-item id="bot" src="models/bot4.json"></a-asset-item>
 
 			<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
 			<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
 		</a-assets>
-		
+
 		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
-		<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>	
-		
+		<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>
+
 		<!-- user -->
 		<a-entity id="user1" user1-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 5.2 6" scale="1 1 1" rotation="180 0 180"></a-entity>
 
@@ -501,7 +501,7 @@
 			</a-entity>
 
 		</a-entity>
-				
+
         <!-- gameView -->
 		<a-entity id="gameView" position="8 10 15" rotation="0 0 0" scale="1.000 0.500 1.500">
 
@@ -704,9 +704,9 @@
 				position="-1.4 2 -4">
 				</a-entity>
 			</a-gui-flex-container>
-		</a-entity>						
-	
-		<a-camera id="gameViewCamera" wasd-contorls="" looks-controls="" position="8 10 20" rotation="0 0 0">
+		</a-entity>
+
+		<a-camera id="gameViewCamera" wasd-contorls="" looks-controls="" position="0 20 40" rotation="0 0 0">
 			<a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-camera>
 
