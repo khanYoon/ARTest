@@ -332,7 +332,7 @@
 			<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
 			<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
 		</a-assets>
-		
+
 		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
 		<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>
 
@@ -482,7 +482,7 @@
 			</a-entity>
 
 		</a-entity>
-				
+
         <!-- gameView -->
 		<a-entity id="gameView" position="0 0 0" rotation="0 0 0" scale="1.000 0.500 1.500">
 
@@ -685,8 +685,79 @@
 				position="-1.4 2 -4">
 				</a-entity>
 			</a-gui-flex-container>
-		</a-entity>						
-	
+		</a-entity>
+
+
+		<!-- gameView -->
+		<a-entity id="gameView" position="2 1 -1" rotation="0 0 0" scale="1.000 0.500 1.500">
+
+			<!-- 시작 confirm -->
+			<a-entity id="startConfirm" position="-1.5 -1 -5.2" rotation="0 0 0" visible="true">
+				<a-entity id="start" gltf-model="#Start_Panel">
+					<a-entity id="startYes" start-cp="" gltf-model="#Ready_Yes_None" position="-0.8 0.5 0.02"></a-entity>
+					<a-entity id="startNo" start-cp="" gltf-model="#Ready_No_None" position="0.8 0.5 0.02"></a-entity>
+				</a-entity>
+
+			</a-entity>
+
+			<!-- 슬롯머신 -->
+			<a-entity id="rouletteBoard" visible="false" roulette-cp="" position="-1.5 -1.5 -3" scale="0.3 0.3 0.3">
+				<a-entity id="Logo" gltf-model="#Roulette_Logo" position="0 1.5 0.02" scale="2.05 2 2"></a-entity>
+				<!-- panel1 -->
+				<a-entity id="roulette1_bg" gltf-model="#Roulette_Block" position="-3.5 -1.91 0.02">
+					<a-entity id="roulette1" num-cp="" text="color: red; align: center; width: 35" position="0 2 0"></a-entity>
+				</a-entity>
+
+				<!-- panel2 -->
+				<a-entity id="roulette2_bg" gltf-model="#Roulette_Block" position="-0.1 -1.91 0.02">
+					<a-entity id="roulette2" num-cp="" text="color: red; align: center; width: 35" position="0 2 0"></a-entity>
+				</a-entity>
+
+				<a-entity id="startButton" roulettestart-cp="" gltf-model="#Roulette_StartNone" position="3.4 0.14 0.02"></a-entity>
+				<a-entity id="stopButton" roulettestop-cp="" gltf-model="#Roulette_StopNone" position="3.4 -1.6 0.02"></a-entity>
+			</a-entity>
+
+
+			<!-- 말판 소유하기 dialog-->
+			<a-entity id="ownerDialog" ownerdialog-cp="" position="-1.5 -2 -3" rotation="0 0 0" visible="false">
+				<a-entity id="buyPanel" gltf-model="#Buy_Panel">
+					<a-entity id="buyYes" onclick="utils.confirm('startConfirm', false, {fn:utils.objView, param:['rouletteBoard', true]})" gltf-model="#Buy_Yes_None" position="-0.4 0.5 0.02"></a-entity>
+					<a-entity id="buyNo" buyno-cp="" gltf-model="#Buy_No_None" position="0.4 0.5 0.02"></a-entity>
+				</a-entity>
+
+			</a-entity>
+
+			<!-- 건물올리기 dialog1 집, 빌딩 모두-->
+			<a-entity id="buildDialog1" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog1Small" smallbtn-cp="" gltf-model="#Build_Small_None" position="-0.65 0.75 0.05" scale="0.7 1 1"></a-entity>
+				<a-entity id="buildDialog1Large" bigbtn-cp="" gltf-model="#Build_Large_None" position="0.45 0.75 0.05" scale="0.7 1 1"></a-entity>
+				<a-entity id="buildDialog1Double" doublebtn-cp="" gltf-model="#Build_Double_None" position="-0.6 0.35 0.05" scale="0.7 1 1"></a-entity>
+				<a-entity id="buildDialog1TurnOver" turnoverbtn-cp="" gltf-model="#Build_TurnOver_None" position="0.5 0.35 0.05" scale="0.7 1 1"></a-entity>
+			</a-entity>
+
+			<!-- 건물올리기 dialog2 집-->
+			<a-entity id="buildDialog2" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog2Small" smallbtn-cp="" gltf-model="#Build_Small_None" position="0 0.8 0.05"></a-entity>
+				<a-entity id="buildDialog2TurnOver" turnoverbtn-cp="" gltf-model="#Build_TurnOver_None" position="0 0.4 0.05"></a-entity>
+			</a-entity>
+
+			<!-- 건물올리기 dialog3 빌딩 -->
+			<a-entity id="buildDialog3" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog3Large" bigbtn-cp="" gltf-model="#Build_Large_None" position="0 0.8 0.05"></a-entity>
+				<a-entity id="buildDialog3TurnOver" turnoverbtn-cp="" gltf-model="#Build_TurnOver_None"position="0 0.4 0.05"></a-entity>
+			</a-entity>
+
+			<!-- 건물올리기 dialog4 모두 건설했을경우 -->
+			<a-entity id="buildDialog4" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog4TurnOver" turnoverbtn-cp=""  gltf-model="#Build_TurnOver_None" position="0 0.7 0.05"></a-entity>
+			</a-entity>
+
+			<!-- text -->
+			<a-entity id="alertText" alerttext-cp="" visible="false" text-geometry="value: " material="color: #66E1B4" position="-1.5 3 -5">
+			</a-entity>
+
+		</a-entity>
+
 		<a-camera id="gameViewCamera" wasd-contorls="" looks-controls="" position="0 0 0" rotation="0 0 0">
 			<a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
 		</a-camera>
