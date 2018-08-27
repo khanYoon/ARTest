@@ -70992,8 +70992,8 @@ var FONTS = {
   mozillavr: FONT_BASE_URL + 'mozillavr.fnt',
   roboto: FONT_BASE_URL + 'Roboto-msdf.json',
   sourcecodepro: FONT_BASE_URL + 'SourceCodePro.fnt',*/
-  '고딕체': https://cdn.aframe.io/fonts/mozillavr.fnt,
-  '바탕체': https://cdn.aframe.io/fonts/mozillavr.fnt
+  '고딕체': 'resources/fonts/godic.fnt',
+  '바탕체': 'resources/fonts/batang.fnt'
 };
 var MSDF_FONTS = ['roboto'];
 var DEFAULT_FONT = '고딕체';
