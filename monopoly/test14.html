@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>monoPoly Scene</title>
+	<meta charset="utf-8">
+	<script src="/resources/js/jquery.3.2.1.min.js"></script>
+	<script src="/resources/js/go.js"></script>
+	<script src="/resources/js/highlight.js"></script>
+	<script src="/resources/js/aframe-master.js"></script>
+	<script src="/resources/js/aframe-physics-system.js"></script>
+	<script src="/resources/js/aframe-physics-extras.js"></script>
+	<script src="/resources/js/kframe.js"></script>
+	<script src="/resources/js/aframe-extras.js"></script>
+	<script src="js/three.ar.js"></script>
+	<script src="js/aframe-ar.js"></script>
+	<script src="js/aframe-gui.js"></script>
+	<script src="js/text-geometry/build.js"></script>
+	<script src="js/utils4.js"></script>
+	<script>
+
+        var moveNo = 0;
+        AFRAME.registerComponent("user1-object", {
+            schema: {
+                // moveX: {type: "number", default: 0},
+                // moveY: {type: "number", default: 0},
+                // moveZ: {type: "number", default: 0}
+            },
+            init: function () {
+                this.id = this.el.getAttribute("id");
+                this.positionIndex = 0;
+                gameStatus = "00";
+                gameInfo.gameUser[0]._this = this;
+                utils.obj("#" + this.id).setAttribute("rotation", {x:180, y:0, z:180});
+
+            },
+            tick: function (time, timeDelta) {
+                // 사용자의 순서일경우
+                if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+                }
+            },
+            tock: function(time, timeDelta){
+                if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+                    switch (gameStatus) {
+                        // 게임준비일경우
+                        case "00" :
+
+                            utils.objView("startConfirm", true); // 시작버튼 confilm 띄우기
+                            gameStatus = "01";
+                            break;
+                        // 시작버튼을 활성화 되어있을 경우
+                        case "01" :
+                            // 게임준비 창이 비활성화 일경우 상태값 변경
+                            if(utils.obj("#startConfirm").getAttribute("visible") == false){
+                                gameStatus = "02";
+                            }
+                            break;
+                        // 주사위 굴리기
+                        case "02" :
+                            // 룰렛 판이 비활성화 일경우 상태값 변경
+                            if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+                                gameStatus = "03";
+                            }
+                            break;
+                        // 이동
+                        case "03" :
+                            var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+                            if(runType == "idle"){
+
+                                utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+                                utils.move(this.id, this.positionIndex);
+
+                            }else if(runType == "run_stop"){
+
+                                utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+                                // 움직인 만큼 포지션 추가
+                                this.positionIndex += moveCount;
+
+                                if(this.positionIndex >= positionArr.length){
+                                    this.positionIndex -= positionArr.length;
+                                }
+                                // 움직인 카운트 초기화
+                                moveCount = 0;
+                                // utils.objView("text", false);
+                                gameStatus = "04";
+
+                            }
+
+                            break;
+                        // 정지
+                        case "04" :
+                            // 소유권확인
+                            utils.ownerCheck(this.id);
+                            break;
+                        // 말판구입
+                        case "05" :
+                            if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+                                // 소유권확인
+                                utils.confirm("ownerDialog", true);
+                            }
+                            break;
+                        // 건물건설
+                        case "06" :
+                            if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+                                utils.obj("#buildDialog2").getAttribute("visible") == false &&
+                                utils.obj("#buildDialog3").getAttribute("visible") == false &&
+                                utils.obj("#buildDialog4").getAttribute("visible") == false){
+                                // 건물 체크
+                                utils.buildCheck();
+                            }
+                            break;
+                        // 전체View
+                        case "07" :
+                            break;
+                        // 대기
+                        case "08" :
+                            nowGameUserIndex += 1;
+
+                            if(nowGameUserIndex + 1 > totalUser){
+                                nowGameUserIndex = 0;
+                            }
+                            utils.objView("rouletteBoard", true);
+                            gameStatus = "02";
+                            break;
+                    }
+                }
+            },
+            update: function(){
+            },
+            remove: function(){
+            }
+        });
+
+        AFRAME.registerComponent("user2-object", {
+            schema: {
+                // moveX: {type: "number", default: 0},
+                // moveY: {type: "number", default: 0},
+                // moveZ: {type: "number", default: 0}
+            },
+            init: function () {
+
+                this.id = this.el.getAttribute("id");
+                this.positionIndex = 0;
+                gameStatus = "00";
+                gameInfo.gameUser[1]._this = this;
+                utils.obj("#" + this.id).setAttribute("rotation", {x:180, y:0, z:180});
+
+            },
+            tick: function (time, timeDelta) {
+                // 사용자의 순서일경우
+                if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+                }
+            },
+            tock: function(time, timeDelta){
+                if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
+                    switch (gameStatus) {
+                        // 게임준비일경우
+                        case "00" :
+                            utils.objView("startConfirm", true); // 시작버튼 confilm 띄우기
+                            gameStatus = "01";
+                            break;
+                        // 시작버튼을 활성화 되어있을 경우
+                        case "01" :
+                            // 게임준비 창이 비활성화 일경우 상태값 변경
+                            if(utils.obj("#startConfirm").getAttribute("visible") == false){
+                                gameStatus = "02";
+                            }
+                            break;
+                        // 주사위 굴리기
+                        case "02" :
+                            // 룰렛 판이 비활성화 일경우 상태값 변경
+                            if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
+                                gameStatus = "03";
+                            }
+                            break;
+                        // 이동
+                        case "03" :
+                            var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
+                            if(runType == "idle"){
+
+                                utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "run");
+                                utils.move(this.id, this.positionIndex);
+                            }else if(runType == "run_stop"){
+
+                                utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
+                                // 움직인 만큼 포지션 추가
+                                this.positionIndex += moveCount;
+
+                                if(this.positionIndex >= positionArr.length){
+                                    this.positionIndex -= positionArr.length;
+                                }
+                                // 움직인 카운트 초기화
+                                moveCount = 0;
+                                // utils.objView("text", false);
+                                gameStatus = "04";
+
+                            }
+
+                            break;
+                        // 정지
+                        case "04" :
+                            // 소유권확인
+                            utils.ownerCheck(this.id);
+                            break;
+                        // 말판구입
+                        case "05" :
+                            if(utils.obj("#ownerDialog").getAttribute("visible") == false){
+                                // 소유권확인
+                                utils.confirm("ownerDialog", true);
+                            }
+                            break;
+                        // 건물건설
+                        case "06" :
+                            if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
+                                utils.obj("#buildDialog2").getAttribute("visible") == false &&
+                                utils.obj("#buildDialog3").getAttribute("visible") == false &&
+                                utils.obj("#buildDialog4").getAttribute("visible") == false){
+                                // 건물 체크
+                                utils.buildCheck();
+                            }
+                            break;
+                        // 전체View
+                        case "07" :
+                            break;
+                        // 대기
+                        case "08" :
+                            nowGameUserIndex += 1;
+
+                            if(nowGameUserIndex + 1 > totalUser){
+                                nowGameUserIndex = 0;
+                            }
+                            utils.objView("rouletteBoard", true);
+                            gameStatus = "02";
+                            break;
+                    }
+                }
+            },
+            update: function(){
+            },
+            remove: function(){
+            }
+        });
+	</script>
+</head>
+<body>
+<a-scene id="monopoly">
+	<a-assets>
+
+		<a-asset-item id="SM_Env_Cliff" src="models/MaxVR/SM_Env_Cliff.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tree" src="models/MaxVR/SM_Env_Tree_Twisted.glb"></a-asset-item>
+
+		<!-- Corner -->
+		<a-asset-item id="SM_Env_Coner_A_01" src="models/MaxVR/SM_Env_Coner_A_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_A_02" src="models/MaxVR/SM_Env_Coner_A_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_A_03" src="models/MaxVR/SM_Env_Coner_A_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_B_01" src="models/MaxVR/SM_Env_Coner_B_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_B_02" src="models/MaxVR/SM_Env_Coner_B_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_B_03" src="models/MaxVR/SM_Env_Coner_B_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_C_01" src="models/MaxVR/SM_Env_Coner_C_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_C_02" src="models/MaxVR/SM_Env_Coner_C_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_C_03" src="models/MaxVR/SM_Env_Coner_C_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_D_01" src="models/MaxVR/SM_Env_Coner_D_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_D_02" src="models/MaxVR/SM_Env_Coner_D_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_D_03" src="models/MaxVR/SM_Env_Coner_D_03.glb"></a-asset-item>
+
+		<!-- Start -->
+		<a-asset-item id="SM_Env_Start_A" src="models/MaxVR/SM_Env_Start_A.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Start_B" src="models/MaxVR/SM_Env_Start_B.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Start_C" src="models/MaxVR/SM_Env_Start_C.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Start_D" src="models/MaxVR/SM_Env_Start_D.glb"></a-asset-item>
+
+		<!-- Main -->
+		<a-asset-item id="SM_Env_Main" src="models/MaxVR/SM_Env_Main.glb"></a-asset-item>
+
+		<!-- GroundMound -->
+		<a-asset-item id="SM_Env_GroundMound" src="models/MaxVR/SM_Env_GroundMound.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_MountainGrass" src="models/MaxVR/SM_Env_MountainGrass.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_MountainSnow" src="models/MaxVR/SM_Env_MountainSnow.glb"></a-asset-item>
+
+		<!-- Tiles -->
+
+		<a-asset-item id="SM_Env_Tiles_A_01" src="models/MaxVR/SM_Env_Tiles_A_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_02" src="models/MaxVR/SM_Env_Tiles_A_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_03" src="models/MaxVR/SM_Env_Tiles_A_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_04" src="models/MaxVR/SM_Env_Tiles_A_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_05" src="models/MaxVR/SM_Env_Tiles_A_05.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_01" src="models/MaxVR/SM_Env_Tiles_B_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_02" src="models/MaxVR/SM_Env_Tiles_B_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_03" src="models/MaxVR/SM_Env_Tiles_B_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_04" src="models/MaxVR/SM_Env_Tiles_B_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_05" src="models/MaxVR/SM_Env_Tiles_B_05.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_01" src="models/MaxVR/SM_Env_Tiles_C_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_02" src="models/MaxVR/SM_Env_Tiles_C_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_03" src="models/MaxVR/SM_Env_Tiles_C_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_04" src="models/MaxVR/SM_Env_Tiles_C_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_05" src="models/MaxVR/SM_Env_Tiles_C_05.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_01" src="models/MaxVR/SM_Env_Tiles_D_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_02" src="models/MaxVR/SM_Env_Tiles_D_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_03" src="models/MaxVR/SM_Env_Tiles_D_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_04" src="models/MaxVR/SM_Env_Tiles_D_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_05" src="models/MaxVR/SM_Env_Tiles_D_05.glb"></a-asset-item>
+
+		<a-asset-item id="bot" src="models/bot4.json"></a-asset-item>
+
+		<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
+		<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
+
+		<!-- Start Panel-->
+		<a-asset-item id="Start_Panel" src="models/MaxVR/Maxted-Text_AR_Ready.glb"></a-asset-item>
+		<a-asset-item id="Ready_Yes_None" src="models/MaxVR/Maxted-Text_Yes_A.glb"></a-asset-item>
+		<a-asset-item id="Ready_No_None" src="models/MaxVR/Maxted-Text_No_A.glb"></a-asset-item>
+		<a-asset-item id="Ready_Yes_Hover" src="models/MaxVR/Maxted-Text_Yes_B.glb"></a-asset-item>
+		<a-asset-item id="Ready_No_Hover" src="models/MaxVR/Maxted-Text_No_B.glb"></a-asset-item>
+
+		<!-- Buy Panel-->
+		<a-asset-item id="Buy_Panel" src="models/MaxVR/Maxted-Text_Bh.glb"></a-asset-item>
+		<a-asset-item id="Buy_Yes_Hover" src="models/MaxVR/Maxted-Text_Bh_Yes_A.glb"></a-asset-item>
+		<a-asset-item id="Buy_No_Hover" src="models/MaxVR/Maxted-Text_Bh_No_A.glb"></a-asset-item>
+		<a-asset-item id="Buy_Yes_None" src="models/MaxVR/Maxted-Text_Bh_Yes_B.glb"></a-asset-item>
+		<a-asset-item id="Buy_No_None" src="models/MaxVR/Maxted-Text_Bh_No_B.glb"></a-asset-item>
+
+		<!-- Build Panel-->
+		<a-asset-item id="Build_Panel" src="models/MaxVR/Maxted-Text_Building.glb"></a-asset-item>
+		<a-asset-item id="Build_Small_None" src="models/MaxVR/Maxted-Text_Building_Main_B_01.glb"></a-asset-item>
+		<a-asset-item id="Build_Large_None" src="models/MaxVR/Maxted-Text_Building_Main_B_02.glb"></a-asset-item>
+		<a-asset-item id="Build_Double_None" src="models/MaxVR/Maxted-Text_Building_Main_B_03.glb"></a-asset-item>
+		<a-asset-item id="Build_TurnOver_None" src="models/MaxVR/Maxted-Text_Building_Main_B_04.glb"></a-asset-item>
+		<a-asset-item id="Build_Small_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_01.glb"></a-asset-item>
+		<a-asset-item id="Build_Large_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_02.glb"></a-asset-item>
+		<a-asset-item id="Build_Double_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_03.glb"></a-asset-item>
+		<a-asset-item id="Build_TurnOver_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_04.glb"></a-asset-item>
+
+	</a-assets>
+
+	<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
+	<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>
+
+	<!-- user -->
+	<a-entity id="user1" user1-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 -4.14 -14" scale="1 1 1" rotation="180 0 180"></a-entity>
+
+	<!-- user -->
+	<a-entity id="user2" user2-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 -4.14 -14" scale="1 1 1" rotation="180 0 180"></a-entity>
+
+	<a-entity id="tree" gltf-model="#SM_Env_Tree" position="0 -27 -21.5"></a-entity>
+
+	<a-entity id="cliff" gltf-model="#SM_Env_Cliff" position="10 -13.8 -33"></a-entity>
+
+	<a-entity id="mound" gltf-model="#SM_Env_GroundMound" position="0 -27 -20"></a-entity>
+	<a-entity id="grass" gltf-model="#SM_Env_MountainGrass" position="0 -27 -20"></a-entity>
+	<a-entity id="snow" gltf-model="#SM_Env_MountainSnow" position="65 -27 -20" rotation="0 25 0"></a-entity>
+
+	<a-entity id="MonoLand" rotation="0 90 0" position="10 -7 -30">
+		<a-entity id="main" gltf-model="#SM_Env_Main"></a-entity>
+
+		<a-entity id="board1" gltf-model="#SM_Env_Start_A" position="-15 0 -15"></a-entity>
+		<a-entity id="board1-1" gltf-model="#SM_Env_Tiles_A_01" position="-9.25 0 -15">
+			<a-entity id="small1-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large1-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board1-2" gltf-model="#SM_Env_Tiles_A_02" position="-3.5 0 -15">
+			<a-entity id="small1-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large1-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board1-3" gltf-model="#SM_Env_Tiles_A_03" position="2.25 0 -15">
+			<a-entity id="small1-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large1-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board1-4" gltf-model="#SM_Env_Tiles_A_04" position="8 0 -15">
+			<a-entity id="small1-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large1-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board1-5" gltf-model="#SM_Env_Tiles_A_05" position="13.75 0 -15">
+			<a-entity id="small1-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large1-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+
+		<a-entity id="board2" gltf-model="#SM_Env_Coner_A_01" position="19 0 -15"></a-entity>
+		<a-entity id="board2-1" gltf-model="#SM_Env_Tiles_A_01" position="19 0 -9.25">
+			<a-entity id="small2-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large2-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board2-2" gltf-model="#SM_Env_Tiles_A_02" position="19 0 -3.5">
+			<a-entity id="small2-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large2-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board2-3" gltf-model="#SM_Env_Tiles_A_03" position="19 0 2.25">
+			<a-entity id="small2-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large2-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board2-4" gltf-model="#SM_Env_Tiles_A_04" position="19 0 8">
+			<a-entity id="small2-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large2-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board2-5" gltf-model="#SM_Env_Tiles_A_05" position="19 0 13.75">
+			<a-entity id="small2-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large2-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+
+		<a-entity id="board3" gltf-model="#SM_Env_Coner_A_02" position="19 0 19"></a-entity>
+		<a-entity id="board3-1" gltf-model="#SM_Env_Tiles_A_01" position="13.75 0 19">
+			<a-entity id="small3-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large3-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board3-2" gltf-model="#SM_Env_Tiles_A_02" position="8 0 19">
+			<a-entity id="small3-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large3-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board3-3" gltf-model="#SM_Env_Tiles_A_03" position="2.25 0 19">
+			<a-entity id="small3-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large3-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board3-4" gltf-model="#SM_Env_Tiles_A_04" position="-3.5 0 19">
+			<a-entity id="small3-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large3-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board3-5" gltf-model="#SM_Env_Tiles_A_05" position="-9.25 0 19">
+			<a-entity id="small3-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large3-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+
+		<a-entity id="board4" gltf-model="#SM_Env_Coner_A_03" position="-15 0 19"></a-entity>
+		<a-entity id="board4-1" gltf-model="#SM_Env_Tiles_A_01" position="-15 0 13.75">
+			<a-entity id="small4-1" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large4-1" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board4-2" gltf-model="#SM_Env_Tiles_A_02" position="-15 0 8">
+			<a-entity id="small4-2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large4-2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board4-3" gltf-model="#SM_Env_Tiles_A_03" position="-15 0 2.25">
+			<a-entity id="small4-3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large4-3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board4-4" gltf-model="#SM_Env_Tiles_A_04" position="-15 0 -3.5">
+			<a-entity id="small4-4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large4-4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+		<a-entity id="board4-5" gltf-model="#SM_Env_Tiles_A_05" position="-15 0 -9.25">
+			<a-entity id="small4-5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false">
+			</a-entity>
+			<a-entity id="large4-5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false">
+			</a-entity>
+		</a-entity>
+
+	</a-entity>
+
+	<!-- gameView -->
+	<a-entity id="gameView" position="2 1 -1" rotation="0 0 0" scale="1.000 0.500 1.500">
+
+		<!-- 시작 confirm -->
+		<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+							  opacity="0.7" width="3" height="3"
+							  position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="true">
+			<a-gui-label
+					width="2.5" height="0.75"
+					value="시작하시겠습니까?"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-label>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false, {fn:utils.objView, param:['rouletteBoard', true]})" key-code="32"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('startConfirm', false);"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button >
+
+		</a-gui-flex-container>
+
+		<!-- 슬롯머신 -->
+		<a-gui-flex-container id="rouletteBoard" visible="false">
+			<a-entity position="0 1 0">
+
+				<a-entity geometry="primitive : plane;height:1; width:2" material="color:blue" position="0 -1 -3">
+					<!-- panel1 -->
+					<a-entity id="roulette1" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="-0.6 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+					<!-- panel2 -->
+					<a-entity id="roulette2" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="0 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+					<!-- Button -->
+					<a-entity id="startButton" geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.6 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="utils.rouletteStart();"></a-entity>
+					<a-entity id="stopButton" geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.6 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05" onclick="utils.rouletteEnd();"></a-entity>
+				</a-entity>
+
+			</a-entity>
+		</a-gui-flex-container>
+
+		<!-- 말판 소유하기 dialog -->
+		<a-gui-flex-container id="ownerDialog" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+							  opacity="0.7" width="3" height="3"
+							  position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+			<a-gui-label
+					width="2.5" height="0.75"
+					value="여기를 구매하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-label>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('ownerDialog', false, {fn:utils.setOwner, param:[]})"
+					value="예"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('ownerDialog', false, {fn:utils.turnOver, param:[]});"
+					value="아니요"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button >
+
+		</a-gui-flex-container>
+
+		<!-- 건물올리기 dialog1 집, 빌딩 모두-->
+		<a-gui-flex-container id="buildDialog1" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+							  opacity="0.7" width="3" height="5.5"
+							  position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+			<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-label>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['01']})"
+					value="작은빌딩만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['02']})"
+					value="큰빌딩만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['03']})"
+					value="작은 & 큰 빌딩 만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog1', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button >
+
+		</a-gui-flex-container>
+
+		<!-- 건물올리기 dialog2 집-->
+		<a-gui-flex-container id="buildDialog2" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+							  opacity="0.7" width="3" height="3.7"
+							  position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+			<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-label>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog2', false, {fn:utils.setOwnerBuild, param:['01']})"
+					value="작은 빌등 만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog2', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button >
+
+		</a-gui-flex-container>
+
+		<!-- 건물올리기 dialog3 빌딩 -->
+		<a-gui-flex-container id="buildDialog3" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+							  opacity="0.7" width="3" height="3.7"
+							  position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+			<a-gui-label
+					width="2.5" height="0.75"
+					value="건설하기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-label>
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog3', false, {fn:utils.setOwnerBuild, param:['02']})"
+					value="큰 빌딩 만들기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button>
+
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog3', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button >
+		</a-gui-flex-container>
+
+		<!-- 건물올리기 dialog4 모두 건설했을경우 -->
+		<a-gui-flex-container id="buildDialog4" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
+							  opacity="0.7" width="3" height="3"
+							  position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+			<a-gui-label
+					width="2.5" height="0.75"
+					value="건설완료"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-label>
+
+			<a-gui-button
+					width="2.5" height="0.75"
+					onclick="utils.confirm('buildDialog4', false, {fn:utils.turnOver, param:[]});"
+					value="순서 넘기기"
+					font-family="Arial"
+					margin="0 0 0.05 0">
+			</a-gui-button >
+
+		</a-gui-flex-container>
+
+		<!-- text -->
+		<a-gui-flex-container id="alertText" visible="false" position="0 -3.8 -1.65">
+			<a-entity
+					text-geometry="value: "
+					material="color: #66E1B4"
+					position="-1.4 2 -4">
+			</a-entity>
+		</a-gui-flex-container>
+	</a-entity>
+
+	<a-entity camera="active:true" id="gameViewCamera" scale="1.000 1.000 1.000" rotation="0 0 0" look-controls="" wasd-controls="">
+		<!-- <a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>-->
+	</a-entity>
+
+	<!--	<a-camera id="gameViewCamera" wasd-contorls="" looks-controls="" position="8 10 20" rotation="0 0 0">
+            <a-entity id="ray" cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+        </a-camera>-->
+
+	<!-- Left Hand
+	<a-entity id="leftController" laser-controls="hand: left" line="color: red; opacity: 0.75" testController="">
+	</a-entity>-->
+
+	<a-entity id="rightController" laser-controls="hand: right" line="color: red; opacity: 0.75">
+	</a-entity>
+
+</a-scene>
+<script src="dist/aframe-inspector_sin.js"></script>
+</body>
+</html>

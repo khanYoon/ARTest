@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>monoPoly Scene</title>
+		<meta charset="utf-8">
+		<script src="/resources/js/jquery.3.2.1.min.js"></script>
+		<script src="/resources/js/go.js"></script>
+		<script src="/resources/js/highlight.js"></script>
+		<script src="/resources/js/aframe-master.js"></script>
+		<script src="/resources/js/aframe-physics-system.js"></script>
+		<script src="/resources/js/aframe-physics-extras.js"></script>
+		<script src="/resources/js/kframe.js"></script>
+		<script src="/resources/js/aframe-extras.js"></script>
+		<script src="js/three.ar.js"></script>
+		<script src="js/aframe-ar.js"></script>
+		<script src="js/monoutil.js"></script>
+		<script>
+
+			//start 관련 Start
+			KFRAME.registerComponent('start-cp',  {
+				onMouseDown : function(){
+                    var startConfirm = monoutil.findObject("startConfirm"); //object 검색
+                    monoutil.setVisible(startConfirm, false); //visible 값 변경
+                    var rouletteBoard = monoutil.findObject("rouletteBoard"); // object 검색
+					monoutil.setVisible(rouletteBoard, true);//visible 값 변경
+				}
+			});
+
+            //start 관련 End
+
+			//룰렛 관련 Start
+            KFRAME.registerComponent('roulette-cp',  {
+                schema: {
+                    isTick: {default: false},// tick flag 변수
+                    totalValue: {default: 0}, // random Number 2개 합친 값
+					state: {default: false}, // 처음부터 stop 버튼 눌리는 것을 막기위한 변수
+					coner1: {default:"1;7;13;19;24"} // coner 세팅
+                }
+            });
+
+            KFRAME.registerComponent('roulettestart-cp',  {
+                onMouseDown: function(){
+                    var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+                    monoutil.setProperty(rouletteBoard, "roulette-cp", "isTick", true); // isTick 값 변경
+                    monoutil.setProperty(rouletteBoard, "roulette-cp", "state", true); // state 값 변경
+                }
+            });
+
+            KFRAME.registerComponent('roulettestop-cp',  {
+                schema: {
+                    temp1: {default: 0}, // 임시변수1
+                    temp2: {default: 0} // 임시변수2
+                },
+                onMouseDown: function(){
+
+                    var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+                    var state = monoutil.getProperty(rouletteBoard, "roulette-cp", "state"); // state 값 가져오기
+                    if(monoutil.compare(state,true)){ //state 값 true 일 경우에만 stop 버튼 반영
+						monoutil.setProperty(rouletteBoard, "roulette-cp", "isTick", false); // isTick 값 변경
+
+						var stopButton = monoutil.findObject("stopButton"); //object 검색
+
+						var roulette1 = monoutil.findObject("roulette1"); //object 검색
+
+						var num1 = monoutil.getProperty(roulette1, "num-cp", "numValue"); //num1-cp numValue 값 가져오기
+
+						monoutil.setProperty(stopButton, "roulettestop-cp", "temp1", num1); //임시 temp1 변수에 값 세팅
+
+						var roulette2 = monoutil.findObject("roulette2"); //object 검색
+
+						var num2 = monoutil.getProperty(roulette2, "num-cp", "numValue"); //num2-cp numValue 값 가져오기
+
+						monoutil.setProperty(stopButton, "roulettestop-cp", "temp2", num2); //임시 temp2 변수에 값 세팅
+
+						var sumNum = monoutil.sum(this.data.temp1, this.data.temp2); // temp1 + temp2
+
+						monoutil.setProperty(rouletteBoard, "roulette-cp", "totalValue", sumNum); //totalValue 에 값 세팅
+
+						monoutil.setVisible(rouletteBoard, false);//visible 값 변경
+
+						var alertText = monoutil.findObject("alertText"); //object 검색
+
+						monoutil.setVisible(alertText, true);//visible 값 변경
+
+						monoutil.setProperty(alertText, "alerttext-cp", "isTick", true); //alerttext-cp isTick 값 세팅하기
+
+						//console.log("khan alertText isTick : " + alertText.getAttribute("visible"));
+						/*
+						* 추가 나중에 사용할 룰렛 초기화 필요
+						* */
+						monoutil.setProperty(roulette1, "num1-cp", "numValue", 0 );//num1-cp numValue 값 세팅
+						monoutil.setProperty(roulette2, "num2-cp", "numValue", 0 );//num1-cp numValue 값 세팅
+                    }
+                }
+            });
+
+            KFRAME.registerComponent('num-cp',  {
+                schema: {
+                    numValue: {default: 0}
+                },
+                onUpdate: function(deltaTime){
+                    var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+                    var result = monoutil.getProperty(rouletteBoard, "roulette-cp", "isTick"); // isTick 값 가져오기
+                    if(monoutil.compare(result,true)){ // isTick 값 true 값인지 확인
+                        var ranNum = monoutil.random(); //randomNumber 가져오기 1~6
+
+						//console.log("num id : " + this.el.id);
+
+                        var rouletteObj = monoutil.findObject(this.el.id);//object 검색
+                        monoutil.setProperty(rouletteObj, "num-cp", "numValue", ranNum );//num1-cp numValue 값 세팅
+
+                        var resultNum = monoutil.getProperty(rouletteObj, "num-cp", "numValue");
+                        //console.log("khan num1 : " + resultNum);
+
+                        monoutil.setText(rouletteObj, resultNum);//numValue 값 text 세팅
+                    }
+                }
+            });
+            //룰렛 관련 End
+
+			//alert 관련 Start
+            KFRAME.registerComponent('alerttext-cp',  {
+                schema: {
+                    isTick: {default: false}, //Tick 실행 여부
+                    viewTime: {default: 2}, //렌더링 시간
+                    timer: {default: 0}, //출력된 시간
+					userName: {default: "user1"} //실행할 유저 오브젝트의 이름 (User1, User2)
+                },
+                onUpdate: function(deltaTime){
+                    var alertText = monoutil.findObject("alertText"); //object 검색
+					var tick = monoutil.getProperty(alertText, "alerttext-cp", "isTick"); //alerttext-cp isTick 값 가져오기
+
+                    if (monoutil.compare(tick, true)){ // isTick 값 true 값인지 확인
+
+                        var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+
+                        var viewTime = monoutil.getProperty(alertText, "alerttext-cp", "viewTime"); //alerttext-cp viewTime 값 가져오기
+
+                        //console.log("khan viewTime 값 : " + viewTime);
+
+                        //ppt에 값 가져오는 거 생략 되어 보여 추가.
+
+                        var timer = monoutil.getProperty(alertText, "alerttext-cp", "timer"); //alerttext-cp timer 값 가져오기
+
+                        //console.log("khan timer 값 : " + timer);
+
+                        //logic 상 viewTime 값이 timer 보다 클때 timer 값이 계속 변경되어 합산되어야 할것 같다.
+
+						if(monoutil.greaterThan(viewTime, timer)){
+
+                            var totalValue = monoutil.getProperty(rouletteBoard, "roulette-cp", "totalValue"); //roulette-cp totalValue 값 가져오기
+                            //console.log("khan totalValue:" + totalValue);
+
+                            monoutil.setText(alertText, totalValue);//alertText 패널에 totalValue 값 세팅
+
+							var timeValue = monoutil.sumFloat(timer, deltaTime); // alertText timer 값과  deltaTime 값 float 값으로 합하여 가져오기(소수점5자리)
+
+							//console.log("khan timer 값 : " + timer);
+                            //console.log("khan timeValue 값 : " + timeValue);
+
+                            monoutil.setProperty(alertText, "alerttext-cp", "timer", timeValue); //alerttext-cp timer 값 세팅하기
+
+						}else{
+
+                            //중복되어 있는것 같아서 임의 삭제 (여기서 맨 위에 alertText FindObject 함수있어서 생략)
+                            //monoutil.setProperty(alertText, "alerttext-cp", "timer", 0); //alerttext-cp timer 값 세팅하기
+
+                            var userName = monoutil.getProperty(alertText, "alerttext-cp", "userName"); //alerttext-cp userName 값 가져오기
+
+							//console.log("khan textUser : " + userName);
+
+							var user = monoutil.findObject(userName); //object 검색
+
+                            monoutil.setProperty(user, "user-cp", "isTick", true); //user isTick 값 세팅하기
+
+							if(monoutil.compare("user1",userName)){ // user1기준으로 alerttext-cp userName 비교하여 boolean 값 리턴 true 일시 user1 상태이므로 user2로 userName 세팅
+
+								monoutil.setProperty(alertText, "alerttext-cp", "userName", "user2"); // alerttext-cp userName 세팅
+								var resultUser = monoutil.getProperty(alertText, "alerttext-cp", "userName");
+
+								//console.log("khan userName2 : " + resultUser);
+
+								//루프 돌지 않도록 alertText isTick false 값으로 초기화 필요
+                                monoutil.setProperty(alertText, "alerttext-cp", "isTick", false);
+							}else{
+
+                                monoutil.setProperty(alertText, "alerttext-cp", "userName", "user1");// alerttext-cp userName 세팅
+                                var resultUser = monoutil.getProperty(alertText, "alerttext-cp", "userName");
+
+                                //console.log("khan userName1 : " + resultUser);
+
+                                //루프 돌지 않도록 alertText isTick false 값으로 초기화 필요
+                                monoutil.setProperty(alertText, "alerttext-cp", "isTick", false);
+							}
+						}
+					}
+                }
+            });
+
+            //alert 관련 End
+
+			//user 관련 Start
+
+            KFRAME.registerComponent('user-cp',  {
+                schema: {
+                    isTick: {default: false},// tick flag 변수
+					//boardLength :{default: 5.75}, //보드 하나의 가로세로 길이
+					addPosition : {default: 0}, // 누적 된 이동 값 moveCount 가 올라갈때 마다 초기화
+					moveCount : {default : 1}, // 이동한 count 수 도착시 초기화.
+					addMoveCount : {default : 1}, // 누적된 이동한 count 수 MoveCount 24이 되면 초기화
+					axis:{default: "x"}, // 현재 회전축 이동하는 방향
+                    rotation:{default: -90}, // 기본 rotation 방향
+                    userName: {default: 0} //username
+                },
+				onAwake: function(){
+                  this.data.userName = this.el.id;
+				},
+                onUpdate: function(deltaTime){
+
+                    var user = monoutil.findObject(this.el.id); //object 검색
+
+                    var usertick = monoutil.getProperty(user, "user-cp", "isTick"); //user isTick 값 가져오기
+
+					if(monoutil.compare(usertick, true)){ //userturn(tick = true) 값일때만 시작한다.
+
+                        var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+
+                        var totalValue = monoutil.getProperty(rouletteBoard, "roulette-cp", "totalValue"); // totalValue 값 가져오기
+
+						//var coners = monoutil.getProperty(rouletteBoard, "roulette-cp", "coner"); // 기본 세팅되어 있는 코너 값 가져오기
+
+                        var moveCount = monoutil.getProperty(user, "user-cp", "moveCount"); // 이동시 누적되는 move 수
+                        var addMoveCount = monoutil.getProperty(user, "user-cp", "addMoveCount"); // 이동시 누적되는 move 수
+                        var addPostion = monoutil.getProperty(user, "user-cp", "addPostion"); // 이동시 누적되는 move 수
+
+						var axis = monoutil.getProperty(user, "user-cp", "axis"); //현재 어떤축으로 이동하고 있는지 계산
+
+						if (monoutil.compare(axis,"x")){ //x축 이동중일시
+                            monoutil.setProperty(user, "animation-mixer" ,"clip", "run"); //animation-mixer 값을 run 으로 변경
+                            var beforePositon = user.getAttribute("position").x //이동 하기 이전의 position.
+                            console.log("this.position x before : " + beforePositon);
+                            this.transform.translateVector( new Vector3(0, 0, 3), deltaTime);// 델타타임동안 vector 값만큼 이동한다.
+                            var afterPosition = user.getAttribute("position").x//이동한 이후의 postion
+                            console.log("this.position x after : " + afterPosition);
+
+							var minus =  monoutil.minusFloat(afterPosition, beforePositon); // 이동한 차이 값을 구한다.
+
+							var add = monoutil.sumFloat(addPostion, monoutil.abs(minus));//지금까지 이동한 거리를 누적한
+
+							if(monoutil.greaterThan(add , 5.75)){ // 누적된 Position 값이 한칸이동 거리보다 큰지 확인.
+								var moveCnt = monoutil.sum(moveCount, 1); // movecount 증가
+								if (monoutil.compare(moveCnt, totalValue)){ // 증가된 move 카운트가 이동거리와 맞으면
+                                    monoutil.setProperty(user, "user-cp", "moveCount",0); //moveCount 초기화
+                                    monoutil.setProperty(user, "animation-mixer" ,"clip", "idle");
+                                    /*
+                                    *건물 사는것으로 넘어간다.
+                                    * */
+                                    var addMoveCnt = monoutil.sum(addMoveCount, totalValue); // 말판 누적
+									if(monoutil.greaterThan(addMoveCnt, 24)){ //
+                                        monoutil.getProperty(user, "user-cp", "addMoveCount", monoutil.minus(addMoveCnt, 24)); //한바퀴 이상 돌때
+									}else{
+                                    	monoutil.getProperty(user, "user-cp", "addMoveCount",addMoveCnt); // addMoveCount 누적
+                                    }
+								}else{
+                                    monoutil.setProperty(user, "user-cp", "moveCount",moveCnt); //moveCount 증가
+								}
+                            }else{
+                                monoutil.getProperty(user, "user-cp", "addMoveCount",add); //position을 누적해 준다.
+							}
+
+						}else{
+                            monoutil.setProperty(user, "animation-mixer" ,"clip", "run"); //animation-mixer 값을 run 으로 변경
+                            var beforePositon = user.getAttribute("position").x //이동 하기 이전의 position.
+                            console.log("this.position z before : " + beforePositon);
+                            this.transform.translateVector( new Vector3(0, 0, 3), deltaTime);// 델타타임동안 vector 값만큼 이동한다.
+                            var afterPosition = user.getAttribute("position").z//이동한 이후의 postion
+                            console.log("this.position z after : " + afterPosition);
+
+                            var minus =  monoutil.minusFloat(afterPosition, beforePositon); // 이동한 차이 값을 구한다.
+
+                            var add = monoutil.sumFloat(addPostion, monoutil.abs(minus));//지금까지 이동한 거리를 누적한
+
+                            if(monoutil.greaterThan(add , 5.75)){ // 누적된 Position 값이 한칸이동 거리보다 큰지 확인.
+                                var moveCnt = monoutil.sum(moveCount, 1); // movecount 증가
+                                if (monoutil.compare(moveCnt, totalValue)){ // 증가된 move 카운트가 이동거리와 맞으면
+                                    monoutil.setProperty(user, "user-cp", "moveCount",0); //moveCount 초기화
+                                    monoutil.setProperty(user, "animation-mixer" ,"clip", "idle");
+                                    /*
+                                    *건물 사는것으로 넘어간다.
+                                    * */
+                                    var addMoveCnt = monoutil.sum(addMoveCount, totalValue); // 말판 누적
+                                    if(monoutil.greaterThan(addMoveCnt, 24)){ //
+                                        monoutil.getProperty(user, "user-cp", "addMoveCount", monoutil.minus(addMoveCnt, 24)); //한바퀴 이상 돌때
+                                    }else{
+                                        monoutil.getProperty(user, "user-cp", "addMoveCount",addMoveCnt); // addMoveCount 누적
+                                    }
+                                }else{
+                                    monoutil.setProperty(user, "user-cp", "moveCount",moveCnt); //moveCount 증가
+                                }
+                            }else{
+                                monoutil.getProperty(user, "user-cp", "addMoveCount",add); //position을 누적해 준다.
+                            }
+                        }
+
+
+                        //console.log("khan Vector x : " + Vector3.forward.x + " y : " + Vector3.forward.y + " z : " + Vector3.forward.z )
+                        //기본 forward new Vector3(0, 0, 1) 로 되어 있음
+
+
+					}
+                }
+            });
+
+			//user 관련 End
+
+            //board 관련 Start
+
+            KFRAME.registerComponent('board-cp',  {
+                schema: {
+                    type: {default: ""},
+                    position: {default: 0},
+                    money: {default: 0},
+                    buyer: {default: ""},
+                    bigBuilding: {default: ""},
+                    smallBuilding: {default: ""},
+					state:{default: 0}
+                },
+                onUpdate: function(deltaTime){
+                }
+            });
+
+            //board 관련 End
+		</script>
+
+	</head>
+	<body>
+	<a-scene id="monopoly">
+		<a-assets>
+		
+			<!-- cliff -->						
+			<a-asset-item id="SM_Env_Cliff" src="models/MaxVR/SM_Env_Cliff.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tree" src="models/MaxVR/SM_Env_Tree_Twisted.glb"></a-asset-item>
+			
+			<!-- Corner -->
+			<a-asset-item id="SM_Env_Coner_A_01" src="models/MaxVR/SM_Env_Coner_A_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_A_02" src="models/MaxVR/SM_Env_Coner_A_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_A_03" src="models/MaxVR/SM_Env_Coner_A_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_B_01" src="models/MaxVR/SM_Env_Coner_B_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_B_02" src="models/MaxVR/SM_Env_Coner_B_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_B_03" src="models/MaxVR/SM_Env_Coner_B_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_C_01" src="models/MaxVR/SM_Env_Coner_C_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_C_02" src="models/MaxVR/SM_Env_Coner_C_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_C_03" src="models/MaxVR/SM_Env_Coner_C_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_D_01" src="models/MaxVR/SM_Env_Coner_D_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_D_02" src="models/MaxVR/SM_Env_Coner_D_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Coner_D_03" src="models/MaxVR/SM_Env_Coner_D_03.glb"></a-asset-item>
+			
+			<!-- Start -->
+			<a-asset-item id="SM_Env_Start_A" src="models/MaxVR/SM_Env_Start_A.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Start_B" src="models/MaxVR/SM_Env_Start_B.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Start_C" src="models/MaxVR/SM_Env_Start_C.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Start_D" src="models/MaxVR/SM_Env_Start_D.glb"></a-asset-item>
+			
+			<!-- Main -->
+			<a-asset-item id="SM_Env_Main" src="models/MaxVR/SM_Env_Main.glb"></a-asset-item>
+			
+			<!-- GroundMound -->
+			<a-asset-item id="SM_Env_GroundMound" src="models/MaxVR/SM_Env_GroundMound.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_MountainGrass" src="models/MaxVR/SM_Env_MountainGrass.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_MountainSnow" src="models/MaxVR/SM_Env_MountainSnow.glb"></a-asset-item>
+			
+			<!-- Tiles -->
+			
+			<a-asset-item id="SM_Env_Tiles_A_01" src="models/MaxVR/SM_Env_Tiles_A_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_A_02" src="models/MaxVR/SM_Env_Tiles_A_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_A_03" src="models/MaxVR/SM_Env_Tiles_A_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_A_04" src="models/MaxVR/SM_Env_Tiles_A_04.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_A_05" src="models/MaxVR/SM_Env_Tiles_A_05.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_B_01" src="models/MaxVR/SM_Env_Tiles_B_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_B_02" src="models/MaxVR/SM_Env_Tiles_B_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_B_03" src="models/MaxVR/SM_Env_Tiles_B_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_B_04" src="models/MaxVR/SM_Env_Tiles_B_04.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_B_05" src="models/MaxVR/SM_Env_Tiles_B_05.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_C_01" src="models/MaxVR/SM_Env_Tiles_C_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_C_02" src="models/MaxVR/SM_Env_Tiles_C_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_C_03" src="models/MaxVR/SM_Env_Tiles_C_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_C_04" src="models/MaxVR/SM_Env_Tiles_C_04.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_C_05" src="models/MaxVR/SM_Env_Tiles_C_05.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_D_01" src="models/MaxVR/SM_Env_Tiles_D_01.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_D_02" src="models/MaxVR/SM_Env_Tiles_D_02.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_D_03" src="models/MaxVR/SM_Env_Tiles_D_03.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_D_04" src="models/MaxVR/SM_Env_Tiles_D_04.glb"></a-asset-item>
+			<a-asset-item id="SM_Env_Tiles_D_05" src="models/MaxVR/SM_Env_Tiles_D_05.glb"></a-asset-item>
+			
+			<a-asset-item id="bot" src="models/bot4.json"></a-asset-item>
+
+			<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
+			<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
+
+			<!-- Start Panel-->
+			<a-asset-item id="Start_Panel" src="models/MaxVR/Maxted-Text_AR_Ready.glb"></a-asset-item>
+			<a-asset-item id="Ready_Yes_None" src="models/MaxVR/Maxted-Text_Yes_A.glb"></a-asset-item>
+			<a-asset-item id="Ready_No_None" src="models/MaxVR/Maxted-Text_No_A.glb"></a-asset-item>
+			<a-asset-item id="Ready_Yes_Hover" src="models/MaxVR/Maxted-Text_Yes_B.glb"></a-asset-item>
+			<a-asset-item id="Ready_No_Hover" src="models/MaxVR/Maxted-Text_No_B.glb"></a-asset-item>
+
+			<!-- Buy Panel-->
+			<a-asset-item id="Buy_Panel" src="models/MaxVR/Maxted-Text_Bh.glb"></a-asset-item>
+			<a-asset-item id="Buy_Yes_Hover" src="models/MaxVR/Maxted-Text_Bh_Yes_A.glb"></a-asset-item>
+			<a-asset-item id="Buy_No_Hover" src="models/MaxVR/Maxted-Text_Bh_No_A.glb"></a-asset-item>
+			<a-asset-item id="Buy_Yes_None" src="models/MaxVR/Maxted-Text_Bh_Yes_B.glb"></a-asset-item>
+			<a-asset-item id="Buy_No_None" src="models/MaxVR/Maxted-Text_Bh_No_B.glb"></a-asset-item>
+
+			<!-- Build Panel-->
+			<a-asset-item id="Build_Panel" src="models/MaxVR/Maxted-Text_Building.glb"></a-asset-item>
+			<a-asset-item id="Build_Small_None" src="models/MaxVR/Maxted-Text_Building_Main_B_01.glb"></a-asset-item>
+			<a-asset-item id="Build_Large_None" src="models/MaxVR/Maxted-Text_Building_Main_B_02.glb"></a-asset-item>
+			<a-asset-item id="Build_Double_None" src="models/MaxVR/Maxted-Text_Building_Main_B_03.glb"></a-asset-item>
+			<a-asset-item id="Build_TurnOver_None" src="models/MaxVR/Maxted-Text_Building_Main_B_04.glb"></a-asset-item>
+			<a-asset-item id="Build_Small_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_01.glb"></a-asset-item>
+			<a-asset-item id="Build_Large_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_02.glb"></a-asset-item>
+			<a-asset-item id="Build_Double_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_03.glb"></a-asset-item>
+			<a-asset-item id="Build_TurnOver_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_04.glb"></a-asset-item>
+
+		</a-assets>
+		
+		<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
+		<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>
+
+		<a-entity id="tree" gltf-model="#SM_Env_Tree" position="0 -27 -21.5"></a-entity>
+
+		<a-entity id="cliff" gltf-model="#SM_Env_Cliff" position="10 -13.8 -33"></a-entity>
+
+		<a-entity id="mound" gltf-model="#SM_Env_GroundMound" position="0 -27 -20"></a-entity>
+		<a-entity id="grass" gltf-model="#SM_Env_MountainGrass" position="0 -27 -20"></a-entity>
+		<a-entity id="snow" gltf-model="#SM_Env_MountainSnow" position="65 -27 -20" rotation="0 25 0"></a-entity>
+
+		<a-entity id="MonoLand" rotation="0 90 0" position="10 -7 -30">
+			<a-entity id="main" gltf-model="#SM_Env_Main"></a-entity>
+
+			<!-- user -->
+			<a-entity id="user1" user-cp="" json-model="src:#bot" animation-mixer="clip: idle" position="-15 2.85 -15" scale="1 1 1" rotation="180 -90 180"></a-entity>
+
+			<!-- user -->
+			<a-entity id="user2" user-cp="" json-model="src:#bot" animation-mixer="clip: idle" position="-15 2.85 -15" scale="1 1 1" rotation="180 -90 180"></a-entity>
+
+			<a-entity id="board1" gltf-model="#SM_Env_Start_A" position="-15 0 -15"></a-entity>
+			<a-entity id="board2" gltf-model="#SM_Env_Tiles_A_01" position="-9.25 0 -15">
+				<a-entity id="small2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board3" gltf-model="#SM_Env_Tiles_A_02" position="-3.5 0 -15">
+				<a-entity id="small3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board4" gltf-model="#SM_Env_Tiles_A_03" position="2.25 0 -15">
+				<a-entity id="small4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board5" gltf-model="#SM_Env_Tiles_A_04" position="8 0 -15">
+				<a-entity id="small5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board6" gltf-model="#SM_Env_Tiles_A_05" position="13.75 0 -15">
+				<a-entity id="small6" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large6" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+
+			<a-entity id="board7" gltf-model="#SM_Env_Coner_A_01" position="19 0 -15"></a-entity>
+			<a-entity id="board8" gltf-model="#SM_Env_Tiles_A_01" position="19 0 -9.25">
+				<a-entity id="small8" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large8" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board9" gltf-model="#SM_Env_Tiles_A_02" position="19 0 -3.5">
+				<a-entity id="small9" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large9" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board10" gltf-model="#SM_Env_Tiles_A_03" position="19 0 2.25">
+				<a-entity id="small10" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large10" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board11" gltf-model="#SM_Env_Tiles_A_04" position="19 0 8">
+				<a-entity id="small11" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large11" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board12" gltf-model="#SM_Env_Tiles_A_05" position="19 0 13.75">
+				<a-entity id="small12" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large12" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+
+			<a-entity id="board13" gltf-model="#SM_Env_Coner_A_02" position="19 0 19"></a-entity>
+			<a-entity id="board14" gltf-model="#SM_Env_Tiles_A_01" position="13.75 0 19">
+				<a-entity id="small14" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large14" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board15" gltf-model="#SM_Env_Tiles_A_02" position="8 0 19">
+				<a-entity id="small15" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large15" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board16" gltf-model="#SM_Env_Tiles_A_03" position="2.25 0 19">
+				<a-entity id="small16" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large16" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board17" gltf-model="#SM_Env_Tiles_A_04" position="-3.5 0 19">
+				<a-entity id="small17" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large17" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board18" gltf-model="#SM_Env_Tiles_A_05" position="-9.25 0 19">
+				<a-entity id="small18" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large18" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+
+			<a-entity id="board19" gltf-model="#SM_Env_Coner_A_03" position="-15 0 19"></a-entity>
+			<a-entity id="board20" gltf-model="#SM_Env_Tiles_A_01" position="-15 0 13.75">
+				<a-entity id="small20" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large20" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board21" gltf-model="#SM_Env_Tiles_A_02" position="-15 0 8">
+				<a-entity id="small21" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large21" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board22" gltf-model="#SM_Env_Tiles_A_03" position="-15 0 2.25">
+				<a-entity id="small22" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large22" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board23" gltf-model="#SM_Env_Tiles_A_04" position="-15 0 -3.5">
+				<a-entity id="small23" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large23" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+			<a-entity id="board24" gltf-model="#SM_Env_Tiles_A_05" position="-15 0 -9.25">
+				<a-entity id="small24" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+				<a-entity id="large24" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+			</a-entity>
+
+		</a-entity>
+
+		<!-- gameView -->
+		<a-entity id="gameView" position="2 1 -1" rotation="0 0 0" scale="1.000 0.500 1.500">
+
+			<!-- 시작 confirm -->
+			<a-entity id="startConfirm" position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="true">
+				<a-entity id="start" gltf-model="#Start_Panel">
+					<a-entity id="startYes" start-cp="" gltf-model="#Ready_Yes_None" position="-0.8 0.5 0.02"></a-entity>
+					<a-entity id="startNo" start-cp="" gltf-model="#Ready_No_None" position="0.8 0.5 0.02"></a-entity>
+				</a-entity>
+
+			</a-entity>
+
+			<!-- 슬롯머신 -->
+			<a-entity id="rouletteBoard" visible="false" roulette-cp="">
+				<a-entity position="0 1 0">
+
+					<a-entity geometry="primitive : plane;height:1; width:2" material="color:blue" position="0 -1 -3">
+						<!-- panel1 -->
+						<a-entity id="roulette1" num-cp="" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="-0.6 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- panel2 -->
+						<a-entity id="roulette2" num-cp="" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="0 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<!-- panel1
+						<a-entity id="roulette1" num1-cp="" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="-0.6 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						<a-entity id="roulette2" num2-cp="" geometry="primitive : plane;height:0.5; width:0.5" material="color:white" position="0 0 0.1" text="value: 0; align: center; width: 4; color: #333; zOffset: 0.1"></a-entity>
+						-->
+						<!-- Button -->
+						<a-entity id="startButton" roulettestart-cp="" geometry="primitive: box; width: 0.5; height: 0.3;depth: 0.01" material="color: #333" position="0.6 0.16 0.1" text="value: start; align: center; width: 4; color: #FFF; zOffset: 0.05"></a-entity>
+						<a-entity id="stopButton" roulettestop-cp="" geometry="primitive: box; width: 0.5x; height: 0.3;depth: 0.01" material="color: #333" position="0.6 -0.16 0.1" text="value: stop; align: center; width: 4; color: #FFF; zOffset: 0.05"></a-entity>
+					</a-entity>
+
+				</a-entity>
+			</a-entity>
+
+
+			<!-- 말판 소유하기 dialog-->
+			<a-entity id="ownerDialog" position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-entity id="buyPanel" gltf-model="#Buy_Panel">
+					<a-entity id="buyYes" buy-cp="" gltf-model="#Buy_Yes_None" position="-0.4 0.5 0.02"></a-entity>
+					<a-entity id="buyNo" buy-cp="" gltf-model="#Buy_No_None" position="0.4 0.5 0.02"></a-entity>
+				</a-entity>
+
+			</a-entity>
+
+
+
+			<!-- 건물올리기 dialog1 집, 빌딩 모두-->
+			<a-entity id="buildDialog1" gltf-model="#Building_Panel" position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog1Small" gltf-model="#Build_Small_None" position=""></a-entity>
+				<a-entity id="buildDialog1Large" gltf-model="#Build_Large_None" position=""></a-entity>
+				<a-entity id="buildDialog1Double" gltf-model="#Build_Double_None" position=""></a-entity>
+				<a-entity id="buildDialog1TurnOver" gltf-model="#Build_TurnOver_None" position=""></a-entity>
+			</a-entity>
+
+			<!-- 건물올리기 dialog2 집-->
+			<a-entity id="buildDialog2" gltf-model="#Building_Panel" position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog2Small" gltf-model="#Build_Small_None" position=""></a-entity>
+				<a-entity id="buildDialog2TurnOver" gltf-model="#Build_TurnOver_None" position=""></a-entity>
+			</a-entity>
+
+			<!-- 건물올리기 dialog3 빌딩 -->
+			<a-entity id="buildDialog3" gltf-model="#Building_Panel" position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog3Large" gltf-model="#Build_Large_None" position=""></a-entity>
+				<a-entity id="buildDialog3TurnOver" gltf-model="#Build_TurnOver_None" position=""></a-entity>
+			</a-entity>
+
+			<!-- 건물올리기 dialog4 모두 건설했을경우 -->
+			<a-entity id="buildDialog4" gltf-model="#Building_Panel" position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
+				<a-entity id="buildDialog4TurnOver" gltf-model="#Build_TurnOver_None" position=""></a-entity>
+			</a-entity>
+
+			<!-- text -->
+			<a-entity id="alertText" alerttext-cp="" visible="false" text="color: red; align: center;value:Test; width: 15" position="-0.21 -0.7 -5.2">
+			</a-entity>
+
+		</a-entity>
+
+		<a-entity camera="active:true" id="gameViewCamera" look-controls="" wasd-controls="">
+			<a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
+		</a-entity>
+
+		<!-- Left Hand
+		<a-entity id="leftController"  wasd-contorls="" laser-controls="hand: left" line="color: red; opacity: 0.75"  vive-controls="">
+		</a-entity>
+
+		<a-entity id="rightController" wasd-contorls="" laser-controls="hand: right" line="color: red; opacity: 0.75" vive-controls="" >
+		</a-entity>
+		-->
+    </a-scene>  
+    	<script src="dist/aframe-inspector_sin.js"></script>
+  </body>
+</html>

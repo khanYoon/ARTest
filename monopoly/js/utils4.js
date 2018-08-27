@@ -154,6 +154,7 @@ utils = {
 		 */
 		setOwner : function(){
 			ownObj.ownerId = gameInfo.gameUser[nowGameUserIndex].id;
+			console.log(ownObj.id);
 			//user가 위치한 flate의 id를 찾아 가져온다.
             var flateId =  positionArr[gameInfo.gameUser[nowGameUserIndex]._this.positionIndex];
             //flate 정보 가져오기.
@@ -355,6 +356,7 @@ utils = {
                         index = Math.abs(sPosition.x + ePosition.x * -1);
                         movePosition = {x: index};
                         // x축으로 움직일때
+                        //플레이트 내에서는 x축 차이가 world 내에서는 z축 차이 이므로  플레이트 값이 x축 값이 차이날때 obj를 z 축 값 변경으로 이동한다.
                         if(typeof movePosition.x === "number"){
                             if(sPosition.x > ePosition.x){
                                 obj.object3D.position.z = parseFloat(parseFloat(obj.object3D.position.z) + parseFloat(parseFloat((movePosition.x / 4) / 4).toFixed(3))).toFixed(3);
@@ -369,6 +371,7 @@ utils = {
                         index = Math.abs(sPosition.z + ePosition.z * -1);
                         movePosition = {z: index};
                         // z축으로 움직일때
+                        //플레이트 내에서는 z축 차이가 world 내에서는 x축 차이 이므로  플레이트 값이 z축 값이 차이날때 obj를 x 축 값 변경으로 이동한다.
                         if(typeof movePosition.z === "number"){
                             if(sPosition.z > ePosition.z){
                                 obj.object3D.position.x = parseFloat(parseFloat(obj.object3D.position.x) + parseFloat(parseFloat(((movePosition.z * -1) / 4) / 4).toFixed(3))).toFixed(3);
@@ -378,7 +381,7 @@ utils = {
                         }
                     }
 
-                    if(movingIndex == 15){
+                    if(movingIndex == 14){
                         _moveCount++;
                         movingIndex = 0;
                     }else{
@@ -407,7 +410,7 @@ utils = {
 			clearTimeout(rouletteTimeoutId);
 			moveCount = this.getText("roulette1") + this.getText("roulette2");
 			if(moveCount == 0){
-				alert("start 버튼을 눌러 주세요");
+				//alert("start 버튼을 눌러 주세요");
 				return false;
 			}
 

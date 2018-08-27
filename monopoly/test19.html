@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>monoPoly Scene</title>
+	<meta charset="utf-8">
+	<script src="/resources/js/jquery.3.2.1.min.js"></script>
+	<script src="/resources/js/go.js"></script>
+	<script src="/resources/js/highlight.js"></script>
+	<script src="/resources/js/aframe-master.js"></script>
+	<script src="/resources/js/aframe-physics-system.js"></script>
+	<script src="/resources/js/aframe-physics-extras.js"></script>
+	<script src="/resources/js/kframe.js"></script>
+	<script src="/resources/js/aframe-extras.js"></script>
+	<script src="js/three.ar.js"></script>
+	<script src="js/aframe-ar.js"></script>
+	<script src="js/monoutil.js"></script>
+	<script>
+
+        //start 관련 Start
+        KFRAME.registerComponent('start-cp',  {
+            onMouseDown : function(){
+                var startConfirm = monoutil.findObject("startConfirm"); //object 검색
+                monoutil.setVisible(startConfirm, false); //visible 값 변경
+                var rouletteBoard = monoutil.findObject("rouletteBoard"); // object 검색
+                monoutil.setVisible(rouletteBoard, true);//visible 값 변경
+            }
+        });
+
+        //start 관련 End
+
+        //룰렛 관련 Start
+        KFRAME.registerComponent('roulette-cp',  {
+            schema: {
+                isTick: {default: false},// tick flag 변수
+                totalValue: {default: 0}, // random Number 2개 합친 값
+                state: {default: false} // 처음부터 stop 버튼 눌리는 것을 막기위한 변수
+
+            }
+        });
+
+        KFRAME.registerComponent('roulettestart-cp',  {
+            onMouseDown: function(){
+                var rouletteBoard1 = monoutil.findObject("rouletteBoard"); //object 검색
+                monoutil.setProperty(rouletteBoard1, "roulette-cp", "isTick", true); // isTick 값 변경
+
+                var rouletteBoard2 = monoutil.findObject("rouletteBoard"); //object 검색
+                monoutil.setProperty(rouletteBoard2, "roulette-cp", "state", true); // state 값 변경
+            }
+        });
+
+        KFRAME.registerComponent('num-cp',  {
+            schema: {
+                numValue: {default: 0}
+            },
+            onUpdate: function(deltaTime){
+                var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+                var result = monoutil.getProperty(rouletteBoard, "roulette-cp", "isTick"); // isTick 값 가져오기
+                if(monoutil.compare(result,true)){ // isTick 값 true 값인지 확인
+                    var ranNum = monoutil.random(1,6); //randomNumber 가져오기 1~6
+
+                    var rouletteObj = monoutil.findObject(this.el.id);
+                    monoutil.setProperty(rouletteObj, "num-cp", "numValue", ranNum );//num1-cp numValue 값 세팅
+
+                    var text = this.data.numValue;
+                    var rouletteObj = monoutil.findObject(this.el.id);
+                    monoutil.setText(rouletteObj, text);//numValue 값 text 세팅
+                }
+            }
+        });
+
+        KFRAME.registerComponent('roulettestop-cp',  {
+            schema: {
+                temp1: {default: 0}, // 임시변수1
+                temp2: {default: 0} // 임시변수2
+            },
+            onMouseDown: function(){
+
+                var rouletteBoard1 = monoutil.findObject("rouletteBoard"); //object 검색
+                var state = monoutil.getProperty(rouletteBoard1, "roulette-cp", "state"); // state 값 가져오기
+                if(monoutil.branch(state)){ //state 값 true 일 경우에만 stop 버튼 반영
+                    var rouletteBoard2 = monoutil.findObject("rouletteBoard"); //object 검색
+                    monoutil.setProperty(rouletteBoard2, "roulette-cp", "isTick", false); // isTick 값 변경
+
+                    var roulette1 = monoutil.findObject("roulette1"); //object 검색
+                    var num1 = monoutil.getProperty(roulette1, "num-cp", "numValue"); //num1-cp numValue 값 가져오기
+
+                    var stopButton = monoutil.findObject("stopButton"); //object 검색
+                    monoutil.setProperty(stopButton, "roulettestop-cp", "temp1", num1); //임시 temp1 변수에 값 세팅
+
+                    var roulette2 = monoutil.findObject("roulette2"); //object 검색
+                    var num2 = monoutil.getProperty(roulette2, "num-cp", "numValue"); //num-cp numValue 값 가져오기
+
+                    var stopButton2 = monoutil.findObject("stopButton"); //object 검색
+                    monoutil.setProperty(stopButton2, "roulettestop-cp", "temp2", num2); //임시 temp2 변수에 값 세팅
+
+                    var sumNum = monoutil.sum(this.data.temp1, this.data.temp2); // temp1 + temp2
+                    var rouletteBoard3 = monoutil.findObject("rouletteBoard"); //object 검색
+                    monoutil.setProperty(rouletteBoard3, "roulette-cp", "totalValue", sumNum); //totalValue 에 값 세팅
+
+                    var rouletteBoard4 = monoutil.findObject("rouletteBoard"); //object 검색
+                    monoutil.setVisible(rouletteBoard4, false);//visible 값 변경
+
+                    var rouletteBoard5 = monoutil.findObject("rouletteBoard"); //object 검색
+                    monoutil.setProperty(rouletteBoard5 , "roulette-cp", "state", false); // state 값 변경
+
+                    var roulette3= monoutil.findObject("roulette1"); //룰렛 초기화 설정
+                    monoutil.setText(roulette3, 0);
+
+                    var roulette4 = monoutil.findObject("roulette2"); //룰렛 초기화 설정
+                    monoutil.setText(roulette4 , 0);
+
+                    var alertText = monoutil.findObject("alertText"); //object 검색
+                    monoutil.setVisible(alertText, true);//visible 값 변경
+
+                    var alertText = monoutil.findObject("alertText"); //object 검색
+                    monoutil.setProperty(alertText, "alerttext-cp", "isTick", true); //alerttext-cp isTick 값 세팅하기
+
+                    //console.log("khan alertText isTick : " + alertText.getAttribute("visible"));
+                    /*
+                    * 추가 나중에 사용할 룰렛 초기화 필요
+                    * */
+                }
+            }
+        });
+
+
+
+        //룰렛 관련 End
+
+        //alert 관련 Start
+        KFRAME.registerComponent('alerttext-cp',  {
+            schema: {
+                isTick: {default: false}, //Tick 실행 여부
+                viewTime: {default: 1}, //렌더링 시간
+                timer: {default: 0}, //출력된 시간
+                userName: {default: "user1"} //실행할 유저 오브젝트의 이름 (User1, User2)
+            },
+            onUpdate: function(deltaTime){
+
+                if (monoutil.branch(this.data.isTick)){ // isTick 값 true 값인지 확인
+
+                    if(monoutil.greaterThan(this.data.viewTime, this.data.timer)){
+                        //var rouletteBoard = monoutil.findObject("rouletteBoard");
+                        //var totalValue = monoutil.getProperty(rouletteBoard, "roulette-cp", "totalValue"); //roulette-cp totalValue 값 가져오기
+                        //console.log("khan totalValue:" + totalValue);
+
+                        //1
+                        var rouletteBoard = monoutil.findObject("rouletteBoard");
+                        var totalValue = monoutil.getProperty(rouletteBoard, "roulette-cp", "totalValue");
+                        var numString = monoutil.intToString(totalValue);
+                        var moveString = monoutil.concat(numString," 칸 이동 합니다."); // khan 수정
+
+                        var alertText = monoutil.findObject("alertText"); //object 검색
+                        monoutil.setText(alertText, moveString);//alertText 패널에 totalValue 값 세팅
+
+                        var timeValue = monoutil.sumFloat(this.data.timer, deltaTime); // alertText timer 값과  deltaTime 값 float 값으로 합하여 가져오기(소수점5자리)
+                        monoutil.setProperty(alertText, "alerttext-cp", "timer", timeValue); //alerttext-cp timer 값 세팅하기
+
+                        // 텍스트  set 해주고 바로 움직이게 하려고 이곳으로 로직 이동 -> 반복된다. 디테일 나중에 수정
+                        //var userName = monoutil.getProperty(alertText, "alerttext-cp", "userName"); //alerttext-cp userName 값 가져오기
+                        //var user = monoutil.findObject(userName); //object 검색
+                        //monoutil.setProperty(user, "user-cp", "isTick", true); //user isTick 값 세팅하기
+
+                    }else{
+                        var alertText = monoutil.findObject("alertText"); //object 검색
+                        monoutil.setProperty(alertText, "alerttext-cp", "timer", 0); //alerttext-cp timer 값 초기화
+
+                        var user = monoutil.findObject(this.data.userName); //object 검색
+
+                        monoutil.setProperty(user, "user-cp", "isTick", true); //user isTick 값 세팅하기
+
+                        if(monoutil.compare(this.data.userName, "user1")){ // user1기준으로 alerttext-cp userName 비교하여 boolean 값 리턴 true 일시 user1 상태이므로 user2로 userName 세팅
+
+                            var alertText = monoutil.findObject("alertText"); //object 검색
+                            monoutil.setProperty(alertText, "alerttext-cp", "userName", "user2"); // alerttext-cp userName 세팅
+
+                            var alertText = monoutil.findObject("alertText"); //object 검색
+                            monoutil.setText(alertText, "");
+
+                            var alertText = monoutil.findObject("alertText"); //object 검색
+                            monoutil.setProperty(alertText, "alerttext-cp", "isTick", false);
+                        }else{
+
+                            var alertText = monoutil.findObject("alertText"); //object 검색
+                            monoutil.setProperty(alertText, "alerttext-cp", "userName", "user1");// alerttext-cp userName 세팅
+
+                            var alertText = monoutil.findObject("alertText"); //object 검색
+                            monoutil.setText(alertText, "");
+
+                            var alertText = monoutil.findObject("alertText"); //object 검색
+                            monoutil.setProperty(alertText, "alerttext-cp", "isTick", false);
+                        }
+                    }//else 종료
+                }
+            }
+        });
+
+        //alert 관련 End
+
+        //user 관련 Start
+
+        KFRAME.registerComponent('user-cp',  {
+            schema: {
+                isTick: {default: false},// tick flag 변수
+                movedDistance : {default: 0},
+                isCount : {default: 0},
+                movingCount : {default: 0},
+                axis:{default: "x"}, //
+                nowBoardNums:{default: 1},
+                nowBoardName : {default :""},
+                userName: {default: ""},
+                distance: {default: 5.75},
+                turnPoint: {default: ";1;7;13;19"},
+            },
+            onAwake: function(){
+                this.data.userName = this.el.id;
+                //var user = monoutil.findObject(this.el.id);
+                //monoutil.setProperty(this, "user-cp", "userName", this.data.userName);
+                //console.log("khan userName : " + monoutil.getProperty(user, "user-cp", "userName"));
+            },
+            onUpdate: function(deltaTime) { // 매프레임 시작시
+                this.data.userName = this.el.id;
+                var user = monoutil.findObject(this.data.userName); //object 검색
+                var tick = monoutil.getProperty(user, "user-cp", "isTick"); //user isTick 값 가져오기
+                //분기는 어떻게 노드로 하지...
+                if(monoutil.branch(tick)){
+                    var rouletteObj = monoutil.findObject("rouletteBoard");// 오브젝트 찾기(rouletteBoard)
+                    var totalValue = monoutil.getProperty(rouletteObj, "roulette-cp", "totalValue");//GetProperty(rouletteObj, roulette, totalValue)
+
+                    monoutil.setProperty(user, "user-cp", "movingCount", totalValue); // SetProperty(this, user, movingCount, value)
+
+                    console.log("movingNums : " + this.data.movingCount);
+                    console.log("isCount : " + this.data.isCount);
+                    if(monoutil.lessThan(this.data.isCount, this.data.movingCount)){ //LessThan(isCount, movingCount)
+                        monoutil.setProperty(user, "animation-mixer" ,"clip", "run"); //SetAnimation(this, Run)
+
+                        monoutil.transformForward(this, new THREE.Vector3(0, 0, this.data.distance), deltaTime);
+
+                        var fpd = this.data.distance * deltaTime; // mult(distance, deltaTime)
+                        var totalDistance = this.data.movedDistance + fpd; // sum(movedDistance, fdp)
+                        monoutil.setProperty(user, "user-cp", "movedDistance", totalDistance);
+                        console.log("movedDistance : " + this.data.movedDistance);
+
+                        if(monoutil.greaterThan(this.data.movedDistance, this.data.distance)){
+                            var increaseMove = this.data.isCount + 1;
+                            monoutil.setProperty(user ,"user-cp", "isCount", increaseMove);
+                            var increaseBoardNums = this.data.nowBoardNums + 1;
+                            monoutil.setProperty(user, "user-cp", "nowBoardNums", increaseBoardNums);
+
+                            if(monoutil.greaterThan(this.data.nowBoardNums, 24)){
+                                console.log("this.data.nowBoardNums is greater!!!!!!!!!!!");
+                                var restValue = monoutil.minus(this.data.nowBoardNums,24);
+                                monoutil.setProperty(user, "user-cp", "nowBoardNums", restValue);
+                                console.log("this.data.nowBoardNums minus 23 value : " + this.data.nowBoardNums);
+
+                                monoutil.setProperty(user, "user-cp", "movedDistance", 0);
+
+                                var numToStr = monoutil.intToString(this.data.nowBoardNums);
+                                var isContain = monoutil.contain(numToStr, this.data.turnPoint);
+                                console.log("target Board : " + numToStr);
+
+
+                                if(monoutil.branch(isContain)){
+                                    console.log("isCorner?" + "true");
+                                    console.log("Corner Value : " + this.data.nowBoardNums);
+
+                                    monoutil.setRotation(user, "user-cp", 0, -90, 0);
+                                }else
+                                    console.log("isCorner?" + "false");{
+                                    console.log("Corner Value : " + this.data.nowBoardNums);
+                                }
+                            }else{
+                                monoutil.setProperty(user, "user-cp", "movedDistance", 0);
+
+                                var numToStr = monoutil.intToString(this.data.nowBoardNums);
+                                var isContain = monoutil.contain(numToStr, this.data.turnPoint);
+                                console.log("target Board : " + numToStr);
+
+
+                                if(monoutil.branch(isContain)){
+                                    console.log("isCorner?" + "true");
+                                    console.log("Corner Value : " + this.data.nowBoardNums);
+
+                                    monoutil.setRotation(user, "user-cp", 0, -90, 0);
+                                }else
+                                    console.log("isCorner?" + "false");{
+                                    console.log("Corner Value : " + this.data.nowBoardNums);
+                                }
+                            }
+                        }
+                    }else{
+                        monoutil.setProperty(user, "animation-mixer" ,"clip", "idle"); //SetAnimation(this, Idle)
+                        console.log("Character Stop!!");
+
+                        var numToStr2 = monoutil.intToString(this.data.nowBoardNums);
+                        var boardStr = monoutil.concat("board",numToStr2);
+
+                        monoutil.setProperty(user, "user-cp", "nowBoardName", boardStr);
+
+                        var board = monoutil.findObject(this.data.nowBoardName); //object 검색
+                        var boardPosition = monoutil.getPosition(board);
+                        boardPosition.y = 2.85; // 보정노드 따로 만들어야함.
+                        monoutil.setPosition(user, boardPosition);
+
+                        monoutil.setProperty(user, "user-cp", "isTick", false);
+                        monoutil.setProperty(user, "user-cp", "isCount", 0);
+
+                        var numToStr3 = monoutil.intToString(this.data.nowBoardNums);
+                        var isContain2 = monoutil.contain(numToStr3, this.data.turnPoint);
+
+                        if(monoutil.branch(isContain2)){
+                            var roulette = monoutil.findObject("rouletteBoard")
+                            monoutil.setVisible(roulette, true);
+                        }else{
+                            var ownerDialog = monoutil.findObject("ownerDialog");
+                            //khan 수정 this.data.userName -> this.el.id 로 바꿈
+                            monoutil.setProperty(ownerDialog, "ownerdialog-cp", "nowUser", this.el.id);
+                            //khan 수정
+                            console.log("khan dfdf : " + this.data.userName);
+                            var usersasdf = monoutil.getProperty(ownerDialog, "ownerdialog-cp", "nowUser");
+                            console.log("khan userName "+ usersasdf);
+                            //
+                            var board1 = monoutil.findObject(this.data.nowBoardName);
+                            var isOwner = monoutil.getProperty(board1, "board-cp", "isOwner");
+
+                            if(monoutil.compare(isOwner, "none")){
+                                var ownerDialog = monoutil.findObject("ownerDialog");
+                                monoutil.setVisible(ownerDialog, true);
+                            }else{
+                                var board2 = monoutil.findObject(this.data.nowBoardName);
+                                var isOwner2 = monoutil.getProperty(board2, "board-cp", "isOwner");
+                                var target1 = monoutil.getProperty(user,"user-cp","userName");
+                                if(monoutil.compare(isOwner2, target1)){
+                                    var board3 = monoutil.findObject(this.data.nowBoardName);
+                                    var bigBuilding1 = monoutil.getProperty(board3, "board-cp", "bigBuilding");
+                                    if(monoutil.branch(bigBuilding1)){
+                                        var board4 = monoutil.findObject(this.data.nowBoardName);
+                                        var smallBuilding1 = monoutil.getProperty(board4, "board-cp", "smallBuilding");
+                                        if(monoutil.branch(smallBuilding1)){
+                                            var buildingDialog4 = monoutil.findObject("buildingDialog4");
+                                            monoutil.setVisible(buildingDialog4, true);
+                                        }else{
+                                            var buildingDialog3 = monoutil.findObject("buildingDialog3");
+                                            monoutil.setVisible(buildingDialog3, true);
+                                        }
+                                    }else{
+                                        var board5 = monoutil.findObject(this.data.nowBoardName);
+                                        var smallBuilding2 = monoutil.getProperty(board5, "board-cp", "smallBuilding");
+                                        if(monoutil.branch(smallBuilding2)){
+                                            var buildingDialog2 = monoutil.findObject("buildingDialog2");
+                                            monoutil.setVisible(buildingDialog2, true);
+                                        }else{
+                                            var buildingDialog = monoutil.findObject("buildingDialog");
+                                            monoutil.setVisible(buildingDialog, true);
+                                        }
+                                    }
+                                }else{
+                                    var alert = monoutil.findObject("alertText");
+                                    var board6 = monoutil.findObject(this.data.nowBoardName);
+                                    var toll = monoutil.getProperty(board6, "board-cp", "toll");
+                                    var text = monoutil.concat("통행료 : ", toll);
+                                    monoutil.setText(alert, text);
+
+                                    var roulette2 = monoutil.findObject("rouletteBoard");
+                                    monoutil.setVisible(roulette2, true);
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        //user 관련 End
+
+        //board 관련 Start
+
+        KFRAME.registerComponent('board-cp',  {
+            schema: {
+                toll: {default: 0}, //통행료
+                isOwner: {default: "none"}, // owner
+                bigBuilding: {default: false}, //건물 유무
+                smallBuilding: {default: false}, //건물 유무
+                state:{default: 0}
+            }
+        });
+
+        //board 관련 End
+        //ownerDailog 관련 //현재 사용 유저
+        KFRAME.registerComponent('ownerdialog-cp',  {
+            schema: {
+                nowUser :{default: ""}
+            }
+        });
+
+        KFRAME.registerComponent('buyyes-cp',  {
+            onMouseDown: function(){
+                //1 Set visible에 obj를 find Object로 값 채우기
+                var ownerDialog1 = monoutil.findObject("ownerDialog" );
+                monoutil.setVisible(ownerDialog1, false);
+
+                //2 현재 다이얼로그 사용유저를 ownerDialo에서 가져오기
+                var ownerDialog2 = monoutil.findObject("ownerDialog" );
+                var userName1 = monoutil.getProperty(ownerDialog2, "ownerdialog-cp","nowUser");
+                //3 2번에서 가져온 user 네임으로 현재보드 아이디를 가져와 보드 아이디를 설정하여 4번 단락의 setProperty 에 사용
+                var user1 = monoutil.findObject(userName1);
+                var boardId1 = monoutil.getProperty(user1,"user-cp", "nowBoardName");
+                var board1 = monoutil.findObject(boardId1);
+                //4 현재 다이얼로그 사용유저를 ownerDialo에서 가져와 보드에 owner 사용자를 설정한다.
+                var ownerDialog3 = monoutil.findObject("ownerDialog" );
+                var userName2 = monoutil.getProperty(ownerDialog3, "ownerdialog-cp","nowUser");
+                monoutil.setProperty(board1,"board-cp","owner", userName2);
+
+
+                //5  통행료 설정
+                var ownerDialog4 = monoutil.findObject("ownerDialog" );
+                var userName3 = monoutil.getProperty(ownerDialog4, "ownerdialog-cp","nowUser");
+                var user2 = monoutil.findObject(userName3);
+                var boardId2 = monoutil.getProperty(user2,"user-cp", "nowBoardName");
+                var board2 = monoutil.findObject(boardId2);
+                monoutil.setProperty(board2,"board-cp","toll", 150);
+
+                //6 board의 오너 유저 설정
+                var ownerDialog5 = monoutil.findObject("ownerDialog" );
+                var userName5 = monoutil.getProperty(ownerDialog5, "ownerdialog-cp","nowUser");
+                var user5 = monoutil.findObject(userName5);
+                var boardId4 = monoutil.getProperty(user5,"user-cp", "nowBoardName");
+                var board4 = monoutil.findObject(boardId4);
+                monoutil.setProperty(board4,"board-cp","isOwner", userName5);
+
+
+                //console.log("khan board toll : " + monoutil.getProperty(board,"board-cp","toll", 150) +" / boardOwner : " + monoutil.getProperty(board,"board-cp","owner"));
+
+                var buildDialog1 = monoutil.findObject("buildDialog1" );//objectFind
+                monoutil.setVisible(buildDialog1, true);// visible true
+            }
+        });
+
+        KFRAME.registerComponent('buyno-cp',  {
+            onMouseDown: function(){
+                var ownerDialog = monoutil.findObject("ownerDialog" );
+                monoutil.setVisible(ownerDialog, false);
+
+                var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+                monoutil.setVisible(rouletteBoard, true); //룰렛보드 다시보이기
+            }
+        });
+        // owner관련 end
+
+        KFRAME.registerComponent('smallbtn-cp',  {
+            onMouseDown: function(){
+                //1 나머지 visible Check
+                var buildDialog1 = monoutil.findObject("buildDialog1" );//objectFind
+                monoutil.setVisible(buildDialog1, false);// visible true
+                var buildDialog2 = monoutil.findObject("buildDialog2" );//objectFind
+                monoutil.setVisible(buildDialog2, false);// visible true
+                var buildDialog4 = monoutil.findObject("buildDialog4" );//objectFind
+                monoutil.setVisible(buildDialog4, false);// visible true
+
+                //2 현재 유저가 있는 자리값을 가져와 samllbuilding의 아이디 값을 만들어 visible 값을 true 값으로 변경
+                var ownerDialog1 = monoutil.findObject("ownerDialog" );
+                var userName1 = monoutil.getProperty(ownerDialog1, "ownerdialog-cp","nowUser");
+                var user1 = monoutil.findObject(userName1);
+                var nowBoardNums1 = monoutil.getProperty(user1,"user-cp", "nowBoardNums");
+                var smallId1 = monoutil.concat("small",nowBoardNums1);
+                var smallBuilding1 = monoutil.findObject(smallId1);
+                monoutil.setVisible(smallBuilding1, true);
+
+                //3 board에 있는 스몰빌딩 체크
+                var ownerDialog2 = monoutil.findObject("ownerDialog" );
+                var userName2 = monoutil.getProperty(ownerDialog2, "ownerdialog-cp","nowUser");
+                var user2 = monoutil.findObject(userName2);
+                var boardId1 = monoutil.getProperty(user2,"user-cp", "nowBoardName");
+                var board1 = monoutil.findObject(boardId1);
+                monoutil.setProperty(board1,"board-cp","smallBuilding",true);
+
+                //4 미리 저장되어 있는 통행료 확인하여 작은 빌딩 값이랑 더해주기 나온 output 값을 5번 단락의 보드에 세팅해준다.
+                var ownerDialog3 = monoutil.findObject("ownerDialog" );
+                var userName3 = monoutil.getProperty(ownerDialog3, "ownerdialog-cp","nowUser");
+                var user3 = monoutil.findObject(userName3);
+                var boardId2 = monoutil.getProperty(user3,"user-cp", "nowBoardName");
+                var board2 = monoutil.findObject(boardId2);
+                var toll = monoutil.getProperty(board2,"board-cp","toll");
+                var resultToll = monoutil.sum(toll, 200);
+
+                //5 board의 통행료 값을 설정
+                var ownerDialog4 = monoutil.findObject("ownerDialog" );
+                var userName4 = monoutil.getProperty(ownerDialog4, "ownerdialog-cp","nowUser");
+                var user4 = monoutil.findObject(userName4);
+                var boardId3 = monoutil.getProperty(user4,"user-cp", "nowBoardName");
+                var board3 = monoutil.findObject(boardId3);
+                monoutil.setProperty(board3,"board-cp","toll", resultToll);
+
+                //6 board의 오너 유저 설정
+                var ownerDialog5 = monoutil.findObject("ownerDialog" );
+                var userName5 = monoutil.getProperty(ownerDialog5, "ownerdialog-cp","nowUser");
+                var user5 = monoutil.findObject(userName5);
+                var boardId4 = monoutil.getProperty(user5,"user-cp", "nowBoardName");
+                var board4 = monoutil.findObject(boardId4);
+                monoutil.setProperty(board4,"board-cp","isOwner", userName5);
+
+                //7 board bigBuilding 의 값이 true 값인지 체크 하여 4번이나 3번 dialog를 보여준다.
+                var ownerDialog6 = monoutil.findObject("ownerDialog" );
+                var userName6 = monoutil.getProperty(ownerDialog6, "ownerdialog-cp","nowUser");
+                var user6 = monoutil.findObject(userName6);
+                var boardId5 = monoutil.getProperty(user6,"user-cp", "nowBoardName");
+                var board5 = monoutil.findObject(boardId5);
+                if(monoutil.getProperty(board5,"board-cp","bigBuilding")){
+                    var buildDialog4 = monoutil.findObject("buildDialog4" );//objectFind
+                    monoutil.setVisible(buildDialog4, true);// visible true
+                }else{
+                    var buildDialog3 = monoutil.findObject("buildDialog3" );//objectFind
+                    monoutil.setVisible(buildDialog3, true);// visible true
+                }
+            }
+        });
+        KFRAME.registerComponent('bigbtn-cp',  {
+            onMouseDown: function(){
+
+                //1 나머지 visible Check
+                var buildDialog1 = monoutil.findObject("buildDialog1" );//objectFind
+                monoutil.setVisible(buildDialog1, false);// visible true
+                var buildDialog3 = monoutil.findObject("buildDialog3" );//objectFind
+                monoutil.setVisible(buildDialog3, false);// visible true
+                var buildDialog4 = monoutil.findObject("buildDialog4" );//objectFind
+                monoutil.setVisible(buildDialog4, false);// visible true
+
+                //2 현재 유저가 있는 자리값을 가져와 bingBuilding 아이디 값을 만들어 visible 값을 true 값으로 변경
+                var ownerDialog1 = monoutil.findObject("ownerDialog" );
+                var userName1 = monoutil.getProperty(ownerDialog1, "ownerdialog-cp","nowUser");
+                var user1 = monoutil.findObject(userName1);
+                var nowBoardNums1 = monoutil.getProperty(user1,"user-cp", "nowBoardNums");
+                var largeId1 = monoutil.concat("large",nowBoardNums1);
+                var largeBuilding1 = monoutil.findObject(largeId1);
+                monoutil.setVisible(largeBuilding1, true);
+
+                //3 board에 있는 bigBuilding 사용으로 체크
+                var ownerDialog2 = monoutil.findObject("ownerDialog" );
+                var userName2 = monoutil.getProperty(ownerDialog2, "ownerdialog-cp","nowUser");
+                var user2 = monoutil.findObject(userName2);
+                var boardId1 = monoutil.getProperty(user2,"user-cp", "nowBoardName");
+                var board1 = monoutil.findObject(boardId1);
+                monoutil.setProperty(board1,"board-cp","bigBuilding",true);
+
+                //4 미리 저장되어 있는 통행료 확인하여 큰 빌딩 값이랑 더해주기 나온 output 값을 5번 단락의 보드에 세팅해준다.
+                var ownerDialog3 = monoutil.findObject("ownerDialog" );
+                var userName3 = monoutil.getProperty(ownerDialog3, "ownerdialog-cp","nowUser");
+                var user3 = monoutil.findObject(userName3);
+                var boardId2 = monoutil.getProperty(user3,"user-cp", "nowBoardName");
+                var board2 = monoutil.findObject(boardId2);
+                var toll = monoutil.getProperty(board2,"board-cp","toll");
+                var resultToll = monoutil.sum(toll, 300);
+
+                //5 board의 통행료 값을 설정
+                var ownerDialog4 = monoutil.findObject("ownerDialog" );
+                var userName4 = monoutil.getProperty(ownerDialog4, "ownerdialog-cp","nowUser");
+                var user4 = monoutil.findObject(userName4);
+                var boardId3 = monoutil.getProperty(user4,"user-cp", "nowBoardName");
+                var board3 = monoutil.findObject(boardId3);
+                monoutil.setProperty(board3,"board-cp","toll", resultToll);
+
+                //6 board의 오너 유저 설정
+                var ownerDialog5 = monoutil.findObject("ownerDialog" );
+                var userName5 = monoutil.getProperty(ownerDialog5, "ownerdialog-cp","nowUser");
+                var user5 = monoutil.findObject(userName5);
+                var boardId4 = monoutil.getProperty(user5,"user-cp", "nowBoardName");
+                var board4 = monoutil.findObject(boardId4);
+                monoutil.setProperty(board4,"board-cp","isOwner", userName5);
+
+                //7 board samllBuilding 의 값이 true 값인지 체크 하여 4번이나 2번 dialog를 보여준다.
+                var ownerDialog6 = monoutil.findObject("ownerDialog" );
+                var userName6 = monoutil.getProperty(ownerDialog6, "ownerdialog-cp","nowUser");
+                var user6 = monoutil.findObject(userName6);
+                var boardId5 = monoutil.getProperty(user6,"user-cp", "nowBoardName");
+                var board5 = monoutil.findObject(boardId5);
+                if(monoutil.getProperty(board5,"board-cp","smallBuilding")){
+                    var buildDialog4 = monoutil.findObject("buildDialog4" );//objectFind
+                    monoutil.setVisible(buildDialog4, true);// visible true
+                }else{
+                    var buildDialog2 = monoutil.findObject("buildDialog2" );//objectFind
+                    monoutil.setVisible(buildDialog2, true);// visible true
+                }
+
+            }
+        });
+        KFRAME.registerComponent('doublebtn-cp',  {
+            onMouseDown: function(){
+                //1 안쓰는 dialog 보이지 않기
+                var buildDialog1 = monoutil.findObject("buildDialog1" );//objectFind
+                monoutil.setVisible(buildDialog1, false);// visible true
+                var buildDialog2 = monoutil.findObject("buildDialog2" );//objectFind
+                monoutil.setVisible(buildDialog2, false);// visible true
+                var buildDialog3 = monoutil.findObject("buildDialog3" );//objectFind
+                monoutil.setVisible(buildDialog3, false);// visible true
+
+                //2 현재 유저가 있는 자리값을 가져와 samllbuilding의 아이디 값을 만들어 visible 값을 true 값으로 변경
+                var ownerDialog1 = monoutil.findObject("ownerDialog" );
+                var userName1 = monoutil.getProperty(ownerDialog1, "ownerdialog-cp","nowUser");
+                var user1 = monoutil.findObject(userName1);
+                var nowBoardNums1 = monoutil.getProperty(user1,"user-cp", "nowBoardNums");
+                var smallId1 = monoutil.concat("small",nowBoardNums1);
+                var smallBuilding1 = monoutil.findObject(smallId1);
+                monoutil.setVisible(smallBuilding1, true);
+
+                //3 board에 있는 스몰빌딩 체크
+                var ownerDialog2 = monoutil.findObject("ownerDialog" );
+                var userName2 = monoutil.getProperty(ownerDialog2, "ownerdialog-cp","nowUser");
+                var user2 = monoutil.findObject(userName2);
+                var boardId1 = monoutil.getProperty(user2,"user-cp", "nowBoardName");
+                var board1 = monoutil.findObject(boardId1);
+                monoutil.setProperty(board1,"board-cp","smallBuilding",true);
+
+                //3 현재 유저가 있는 자리값을 가져와 bingBuilding 아이디 값을 만들어 visible 값을 true 값으로 변경
+                var ownerDialog3 = monoutil.findObject("ownerDialog" );
+                var userName3 = monoutil.getProperty(ownerDialog3, "ownerdialog-cp","nowUser");
+                var user3 = monoutil.findObject(userName3);
+                var nowBoardNums2 = monoutil.getProperty(user3,"user-cp", "nowBoardNums");
+                var largeId1 = monoutil.concat("large",nowBoardNums2);
+                var largeBuilding1 = monoutil.findObject(largeId1);
+                monoutil.setVisible(largeBuilding1, true);
+
+                //4 board에 있는 bigBuilding 사용으로 체크
+                var ownerDialog4 = monoutil.findObject("ownerDialog" );
+                var userName4 = monoutil.getProperty(ownerDialog4, "ownerdialog-cp","nowUser");
+                var user4 = monoutil.findObject(userName4);
+                var boardId2 = monoutil.getProperty(user4,"user-cp", "nowBoardName");
+                var board2 = monoutil.findObject(boardId2);
+                monoutil.setProperty(board2,"board-cp","bigBuilding",true);
+
+                //5 미리 저장되어 있는 통행료 확인하여 작은 빌딩 및 큰 빌딩 값이랑 더해주기 나온 output 값을 6번 단락의 보드에 세팅해준다.
+                var ownerDialog5 = monoutil.findObject("ownerDialog" );
+                var userName5 = monoutil.getProperty(ownerDialog5, "ownerdialog-cp","nowUser");
+                var user5 = monoutil.findObject(userName5);
+                var boardId3 = monoutil.getProperty(user5,"user-cp", "nowBoardName");
+                var board3 = monoutil.findObject(boardId3);
+                var toll = monoutil.getProperty(board3,"board-cp","toll");
+                var resultToll = monoutil.sum(toll, 500);
+
+                //6 board의 통행료 값을 설정
+                var ownerDialog6 = monoutil.findObject("ownerDialog" );
+                var userName6 = monoutil.getProperty(ownerDialog6, "ownerdialog-cp","nowUser");
+                var user6 = monoutil.findObject(userName6);
+                var boardId4 = monoutil.getProperty(user6,"user-cp", "nowBoardName");
+                var board4 = monoutil.findObject(boardId4);
+                monoutil.setProperty(board4,"board-cp","toll", resultToll);
+
+                //8 board의 오너 유저 설정
+                var ownerDialog7 = monoutil.findObject("ownerDialog" );
+                var userName7 = monoutil.getProperty(ownerDialog7, "ownerdialog-cp","nowUser");
+                var user6 = monoutil.findObject(userName6);
+                var boardId5 = monoutil.getProperty(user6,"user-cp", "nowBoardName");
+                var board5 = monoutil.findObject(boardId5);
+                monoutil.setProperty(board5,"board-cp","isOwner", userName7);
+
+                var buildDialog4 = monoutil.findObject("buildDialog4" );//objectFind
+                monoutil.setVisible(buildDialog4, true);// visible true
+
+            }
+        });
+        KFRAME.registerComponent('turnoverbtn-cp',  {
+            onMouseDown: function(){
+                var buildDialog1 = monoutil.findObject("buildDialog1" );//objectFind
+                monoutil.setVisible(buildDialog1, false);// visible true
+                var buildDialog2 = monoutil.findObject("buildDialog2" );//objectFind
+                monoutil.setVisible(buildDialog2, false);// visible true
+                var buildDialog3 = monoutil.findObject("buildDialog3" );//objectFind
+                monoutil.setVisible(buildDialog3, false);// visible true
+                var buildDialog4 = monoutil.findObject("buildDialog4" );//objectFind
+                monoutil.setVisible(buildDialog4, false);// visible true
+                var rouletteBoard = monoutil.findObject("rouletteBoard"); //object 검색
+                monoutil.setVisible(rouletteBoard, true); //룰렛보드 다시보이기
+            }
+        });
+
+	</script>
+
+</head>
+<body>
+<a-scene id="monopoly">
+	<a-assets>
+
+		<!-- cliff -->
+		<a-asset-item id="SM_Env_Cliff" src="models/MaxVR/SM_Env_Cliff.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tree" src="models/MaxVR/SM_Env_Tree_Twisted.glb"></a-asset-item>
+
+		<!-- Corner -->
+		<a-asset-item id="SM_Env_Coner_A_01" src="models/MaxVR/SM_Env_Coner_A_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_A_02" src="models/MaxVR/SM_Env_Coner_A_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_A_03" src="models/MaxVR/SM_Env_Coner_A_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_B_01" src="models/MaxVR/SM_Env_Coner_B_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_B_02" src="models/MaxVR/SM_Env_Coner_B_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_B_03" src="models/MaxVR/SM_Env_Coner_B_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_C_01" src="models/MaxVR/SM_Env_Coner_C_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_C_02" src="models/MaxVR/SM_Env_Coner_C_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_C_03" src="models/MaxVR/SM_Env_Coner_C_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_D_01" src="models/MaxVR/SM_Env_Coner_D_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_D_02" src="models/MaxVR/SM_Env_Coner_D_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Coner_D_03" src="models/MaxVR/SM_Env_Coner_D_03.glb"></a-asset-item>
+
+		<!-- Start -->
+		<a-asset-item id="SM_Env_Start_A" src="models/MaxVR/SM_Env_Start_A.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Start_B" src="models/MaxVR/SM_Env_Start_B.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Start_C" src="models/MaxVR/SM_Env_Start_C.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Start_D" src="models/MaxVR/SM_Env_Start_D.glb"></a-asset-item>
+
+		<!-- Main -->
+		<a-asset-item id="SM_Env_Main" src="models/MaxVR/SM_Env_Main.glb"></a-asset-item>
+
+		<!-- GroundMound -->
+		<a-asset-item id="SM_Env_GroundMound" src="models/MaxVR/SM_Env_GroundMound.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_MountainGrass" src="models/MaxVR/SM_Env_MountainGrass.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_MountainSnow" src="models/MaxVR/SM_Env_MountainSnow.glb"></a-asset-item>
+
+		<!-- Tiles -->
+
+		<a-asset-item id="SM_Env_Tiles_A_01" src="models/MaxVR/SM_Env_Tiles_A_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_02" src="models/MaxVR/SM_Env_Tiles_A_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_03" src="models/MaxVR/SM_Env_Tiles_A_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_04" src="models/MaxVR/SM_Env_Tiles_A_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_A_05" src="models/MaxVR/SM_Env_Tiles_A_05.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_01" src="models/MaxVR/SM_Env_Tiles_B_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_02" src="models/MaxVR/SM_Env_Tiles_B_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_03" src="models/MaxVR/SM_Env_Tiles_B_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_04" src="models/MaxVR/SM_Env_Tiles_B_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_B_05" src="models/MaxVR/SM_Env_Tiles_B_05.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_01" src="models/MaxVR/SM_Env_Tiles_C_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_02" src="models/MaxVR/SM_Env_Tiles_C_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_03" src="models/MaxVR/SM_Env_Tiles_C_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_04" src="models/MaxVR/SM_Env_Tiles_C_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_C_05" src="models/MaxVR/SM_Env_Tiles_C_05.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_01" src="models/MaxVR/SM_Env_Tiles_D_01.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_02" src="models/MaxVR/SM_Env_Tiles_D_02.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_03" src="models/MaxVR/SM_Env_Tiles_D_03.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_04" src="models/MaxVR/SM_Env_Tiles_D_04.glb"></a-asset-item>
+		<a-asset-item id="SM_Env_Tiles_D_05" src="models/MaxVR/SM_Env_Tiles_D_05.glb"></a-asset-item>
+
+		<a-asset-item id="bot" src="models/bot4.json"></a-asset-item>
+
+		<a-asset-item id="sb" src="models/MaxVR/SM_Env_SmallBuilding.glb"></a-asset-item>
+		<a-asset-item id="lb" src="models/MaxVR/SM_Env_LargeBuilding.glb"></a-asset-item>
+
+		<!-- Start Panel-->
+		<a-asset-item id="Start_Panel" src="models/MaxVR/Maxted-Text_AR_Ready.glb"></a-asset-item>
+		<a-asset-item id="Ready_Yes_None" src="models/MaxVR/Maxted-Text_Yes_A.glb"></a-asset-item>
+		<a-asset-item id="Ready_No_None" src="models/MaxVR/Maxted-Text_No_A.glb"></a-asset-item>
+		<a-asset-item id="Ready_Yes_Hover" src="models/MaxVR/Maxted-Text_Yes_B.glb"></a-asset-item>
+		<a-asset-item id="Ready_No_Hover" src="models/MaxVR/Maxted-Text_No_B.glb"></a-asset-item>
+
+		<!-- Buy Panel-->
+		<a-asset-item id="Buy_Panel" src="models/MaxVR/Maxted-Text_Bh.glb"></a-asset-item>
+		<a-asset-item id="Buy_Yes_Hover" src="models/MaxVR/Maxted-Text_Bh_Yes_A.glb"></a-asset-item>
+		<a-asset-item id="Buy_No_Hover" src="models/MaxVR/Maxted-Text_Bh_No_A.glb"></a-asset-item>
+		<a-asset-item id="Buy_Yes_None" src="models/MaxVR/Maxted-Text_Bh_Yes_B.glb"></a-asset-item>
+		<a-asset-item id="Buy_No_None" src="models/MaxVR/Maxted-Text_Bh_No_B.glb"></a-asset-item>
+
+		<!-- Build Panel-->
+		<a-asset-item id="Build_Panel" src="models/MaxVR/Maxted-Text_Building.glb"></a-asset-item>
+		<a-asset-item id="Build_Small_None" src="models/MaxVR/Maxted-Text_Building_Main_B_01.glb"></a-asset-item>
+		<a-asset-item id="Build_Large_None" src="models/MaxVR/Maxted-Text_Building_Main_B_02.glb"></a-asset-item>
+		<a-asset-item id="Build_Double_None" src="models/MaxVR/Maxted-Text_Building_Main_B_03.glb"></a-asset-item>
+		<a-asset-item id="Build_TurnOver_None" src="models/MaxVR/Maxted-Text_Building_Main_B_04.glb"></a-asset-item>
+		<a-asset-item id="Build_Small_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_01.glb"></a-asset-item>
+		<a-asset-item id="Build_Large_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_02.glb"></a-asset-item>
+		<a-asset-item id="Build_Double_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_03.glb"></a-asset-item>
+		<a-asset-item id="Build_TurnOver_Hover" src="models/MaxVR/Maxted-Text_Building_Main_A_04.glb"></a-asset-item>
+
+		<!-- roulett Panel-->
+
+		<a-asset-item id="Roulette_Main" src="models/MaxVR/Main_UI_BG.glb"></a-asset-item>
+		<a-asset-item id="Roulette_Block" src="models/MaxVR/Main_Block_BG.glb"></a-asset-item>
+		<a-asset-item id="Roulette_Logo" src="models/MaxVR/Main_Monopoly.glb"></a-asset-item>
+		<a-asset-item id="Roulette_StartNone" src="models/MaxVR/Main_Start_BG_01.glb"></a-asset-item>
+		<a-asset-item id="Roulette_StartHover" src="models/MaxVR/Main_Start_BG_01_01.glb"></a-asset-item>
+		<a-asset-item id="Roulette_StopNone" src="models/MaxVR/Main_Stop_BG_01.glb"></a-asset-item>
+		<a-asset-item id="Roulette_StopHover" src="models/MaxVR/Main_Stop_BG_01_01.glb"></a-asset-item>
+
+
+
+		<!-- slot Number-->
+		<a-asset-item id="Slot1_None" src="models/MaxVR/Slot_Number_01.glb"></a-asset-item>
+		<a-asset-item id="Slot1_Selected" src="models/MaxVR/Slot_Number_01_01.glb"></a-asset-item>
+		<a-asset-item id="Slot2_None" src="models/MaxVR/Slot_Number_02.glb"></a-asset-item>
+		<a-asset-item id="Slot2_Selected" src="models/MaxVR/Slot_Number_02_02.glb"></a-asset-item>
+		<a-asset-item id="Slot3_None" src="models/MaxVR/Slot_Number_03.glb"></a-asset-item>
+		<a-asset-item id="Slot3_Selected" src="models/MaxVR/Slot_Number_03_03.glb"></a-asset-item>
+		<a-asset-item id="Slot4_None" src="models/MaxVR/Slot_Number_04.glb"></a-asset-item>
+		<a-asset-item id="Slot4_Selected" src="models/MaxVR/Slot_Number_04_04.glb"></a-asset-item>
+		<a-asset-item id="Slot5_None" src="models/MaxVR/Slot_Number_05.glb"></a-asset-item>
+		<a-asset-item id="Slot5_Selected" src="models/MaxVR/Slot_Number_05_05.glb"></a-asset-item>
+		<a-asset-item id="Slot6_None" src="models/MaxVR/Slot_Number_06.glb"></a-asset-item>
+		<a-asset-item id="Slot6_Selected" src="models/MaxVR/Slot_Number_06_06.glb"></a-asset-item>
+
+
+	</a-assets>
+
+	<a-entity light="type: ambient; color: #BBB" id="ambientLight"></a-entity>
+	<a-entity light="type: directional; color: #FFF; intensity: 3" position="-0.5 10 1" id="directionalLight"></a-entity>
+
+	<a-entity id="tree" gltf-model="#SM_Env_Tree" position="0 -27 -21.5"></a-entity>
+
+	<a-entity id="cliff" gltf-model="#SM_Env_Cliff" position="10 -13.8 -33"></a-entity>
+
+	<a-entity id="mound" gltf-model="#SM_Env_GroundMound" position="0 -27 -20"></a-entity>
+	<a-entity id="grass" gltf-model="#SM_Env_MountainGrass" position="0 -27 -20"></a-entity>
+	<a-entity id="snow" gltf-model="#SM_Env_MountainSnow" position="65 -27 -20" rotation="0 25 0"></a-entity>
+
+	<!-- user
+    <a-entity id="user1" user1-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 -4.14 -14" scale="1 1 1" rotation="180 0 180"></a-entity>
+    <a-entity id="user2" user2-object="" json-model="src:#bot" animation-mixer="clip: idle" position="-4.7 -4.14 -14" scale="1 1 1" rotation="180 0 180"></a-entity> -->
+
+	<a-entity id="MonoLand" rotation="0 90 0" position="10 -7 -30">
+		<a-entity id="main" gltf-model="#SM_Env_Main" position="2.25 0 2.25"></a-entity>
+
+		<!-- user -->
+		<a-entity id="user1" user-cp="" json-model="src:#bot" animation-mixer="clip: idle" position="-15 2.85 -15" scale="1 1 1" rotation="180 270 180"></a-entity>
+
+		<!-- user -->
+		<a-entity id="user2" user-cp="" json-model="src:#bot" animation-mixer="clip: idle" position="-15 2.85 -15" scale="1 1 1" rotation="180 270 180"></a-entity>
+
+		<a-entity id="board1" board-cp="" gltf-model="#SM_Env_Start_A" position="-15 0 -15"></a-entity>
+		<a-entity id="board2" board-cp="" gltf-model="#SM_Env_Tiles_A_01" position="-9.25 0 -15">
+			<a-entity id="small2" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large2" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board3" board-cp="" gltf-model="#SM_Env_Tiles_A_02" position="-3.5 0 -15">
+			<a-entity id="small3" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large3" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board4" board-cp="" gltf-model="#SM_Env_Tiles_A_03" position="2.25 0 -15">
+			<a-entity id="small4" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large4" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board5" board-cp="" gltf-model="#SM_Env_Tiles_A_04" position="8 0 -15">
+			<a-entity id="small5" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large5" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board6" board-cp="" gltf-model="#SM_Env_Tiles_A_05" position="13.75 0 -15">
+			<a-entity id="small6" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large6" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+
+		<a-entity id="board7" board-cp="" gltf-model="#SM_Env_Coner_A_01" position="19 0 -15"></a-entity>
+		<a-entity id="board8" board-cp="" gltf-model="#SM_Env_Tiles_A_01" position="19 0 -9.25">
+			<a-entity id="small8" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large8" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board9" board-cp="" gltf-model="#SM_Env_Tiles_A_02" position="19 0 -3.5">
+			<a-entity id="small9" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large9" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board10" board-cp="" gltf-model="#SM_Env_Tiles_A_03" position="19 0 2.25">
+			<a-entity id="small10" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large10" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board11" board-cp="" gltf-model="#SM_Env_Tiles_A_04" position="19 0 8">
+			<a-entity id="small11" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large11" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board12" board-cp="" gltf-model="#SM_Env_Tiles_A_05" position="19 0 13.75">
+			<a-entity id="small12" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large12" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+
+		<a-entity id="board13" board-cp="" gltf-model="#SM_Env_Coner_A_02" position="19 0 19"></a-entity>
+		<a-entity id="board14" board-cp="" gltf-model="#SM_Env_Tiles_A_01" position="13.75 0 19">
+			<a-entity id="small14" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large14" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board15" board-cp="" gltf-model="#SM_Env_Tiles_A_02" position="8 0 19">
+			<a-entity id="small15" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large15" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board16" board-cp="" gltf-model="#SM_Env_Tiles_A_03" position="2.25 0 19">
+			<a-entity id="small16" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large16" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board17" board-cp="" gltf-model="#SM_Env_Tiles_A_04" position="-3.5 0 19">
+			<a-entity id="small17" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large17" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board18" board-cp="" gltf-model="#SM_Env_Tiles_A_05" position="-9.25 0 19">
+			<a-entity id="small18" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large18" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+
+		<a-entity id="board19" board-cp="" gltf-model="#SM_Env_Coner_A_03" position="-15 0 19"></a-entity>
+		<a-entity id="board20" board-cp="" gltf-model="#SM_Env_Tiles_A_01" position="-15 0 13.75">
+			<a-entity id="small20" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large20" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board21" board-cp="" gltf-model="#SM_Env_Tiles_A_02" position="-15 0 8">
+			<a-entity id="small21" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large21" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board22" board-cp="" gltf-model="#SM_Env_Tiles_A_03" position="-15 0 2.25">
+			<a-entity id="small22" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large22" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board23" board-cp="" gltf-model="#SM_Env_Tiles_A_04" position="-15 0 -3.5">
+			<a-entity id="small23" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large23" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+		<a-entity id="board24" board-cp="" gltf-model="#SM_Env_Tiles_A_05" position="-15 0 -9.25">
+			<a-entity id="small24" samll="" gltf-model="#sb" scale="0.1 0.1 0.1" position="-2 3 2.4" visible="false"></a-entity>
+			<a-entity id="large24" large="" gltf-model="#lb" scale="0.1 0.1 0.1" position="-2 3 -2"  visible="false"></a-entity>
+		</a-entity>
+
+	</a-entity>
+
+	<!-- gameView -->
+	<a-entity id="gameView" position="2 1 -1" rotation="0 0 0" scale="1.000 0.500 1.500">
+
+		<!-- 시작 confirm -->
+		<a-entity id="startConfirm" position="-1.5 -1 -5.2" rotation="0 0 0" visible="true">
+			<a-entity id="start" gltf-model="#Start_Panel">
+				<a-entity id="startYes" start-cp="" gltf-model="#Ready_Yes_None" position="-0.8 0.5 0.02"></a-entity>
+				<a-entity id="startNo" start-cp="" gltf-model="#Ready_No_None" position="0.8 0.5 0.02"></a-entity>
+			</a-entity>
+
+		</a-entity>
+
+		<!-- 슬롯머신 -->
+		<a-entity id="rouletteBoard" visible="false" roulette-cp="" position="-1.5 -1.5 -3" scale="0.3 0.3 0.3">
+			<a-entity id="Logo" gltf-model="#Roulette_Logo" position="0 1.5 0.02" scale="2.05 2 2"></a-entity>
+			<!-- panel1 -->
+			<a-entity id="roulette1_bg" gltf-model="#Roulette_Block" position="-3.5 -1.91 0.02">
+				<a-entity id="roulette1" num-cp="" text="color: red; align: center; width: 35" position="0 2 0"></a-entity>
+			</a-entity>
+
+			<!-- panel2 -->
+			<a-entity id="roulette2_bg" gltf-model="#Roulette_Block" position="-0.1 -1.91 0.02">
+				<a-entity id="roulette2" num-cp="" text="color: red; align: center; width: 35" position="0 2 0"></a-entity>
+			</a-entity>
+
+			<a-entity id="startButton" roulettestart-cp="" gltf-model="#Roulette_StartNone" position="3.4 0.14 0.02"></a-entity>
+			<a-entity id="stopButton" roulettestop-cp="" gltf-model="#Roulette_StopNone" position="3.4 -1.6 0.02"></a-entity>
+		</a-entity>
+
+
+		<!-- 말판 소유하기 dialog-->
+		<a-entity id="ownerDialog" ownerdialog-cp="" position="-1.5 -2 -3" rotation="0 0 0" visible="false">
+			<a-entity id="buyPanel" gltf-model="#Buy_Panel">
+				<a-entity id="buyYes" buyyes-cp="" gltf-model="#Buy_Yes_None" position="-0.4 0.5 0.02"></a-entity>
+				<a-entity id="buyNo" buyno-cp="" gltf-model="#Buy_No_None" position="0.4 0.5 0.02"></a-entity>
+			</a-entity>
+
+		</a-entity>
+
+		<!-- 건물올리기 dialog1 집, 빌딩 모두-->
+		<a-entity id="buildDialog1" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+			<a-entity id="buildDialog1Small" smallbtn-cp="" gltf-model="#Build_Small_None" position="-0.65 0.75 0.05" scale="0.7 1 1"></a-entity>
+			<a-entity id="buildDialog1Large" bigbtn-cp="" gltf-model="#Build_Large_None" position="0.45 0.75 0.05" scale="0.7 1 1"></a-entity>
+			<a-entity id="buildDialog1Double" doublebtn-cp="" gltf-model="#Build_Double_None" position="-0.6 0.35 0.05" scale="0.7 1 1"></a-entity>
+			<a-entity id="buildDialog1TurnOver" turnoverbtn-cp="" gltf-model="#Build_TurnOver_None" position="0.5 0.35 0.05" scale="0.7 1 1"></a-entity>
+		</a-entity>
+
+		<!-- 건물올리기 dialog2 집-->
+		<a-entity id="buildDialog2" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+			<a-entity id="buildDialog2Small" smallbtn-cp="" gltf-model="#Build_Small_None" position="0 0.8 0.05"></a-entity>
+			<a-entity id="buildDialog2TurnOver" turnoverbtn-cp="" gltf-model="#Build_TurnOver_None" position="0 0.4 0.05"></a-entity>
+		</a-entity>
+
+		<!-- 건물올리기 dialog3 빌딩 -->
+		<a-entity id="buildDialog3" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+			<a-entity id="buildDialog3Large" bigbtn-cp="" gltf-model="#Build_Large_None" position="0 0.8 0.05"></a-entity>
+			<a-entity id="buildDialog3TurnOver" turnoverbtn-cp="" gltf-model="#Build_TurnOver_None"position="0 0.4 0.05"></a-entity>
+		</a-entity>
+
+		<!-- 건물올리기 dialog4 모두 건설했을경우 -->
+		<a-entity id="buildDialog4" gltf-model="#Build_Panel" position="-1.5 -2 -3" scale="2 2 2" rotation="0 0 0" visible="false">
+			<a-entity id="buildDialog4TurnOver" turnoverbtn-cp=""  gltf-model="#Build_TurnOver_None" position="0 0.7 0.05"></a-entity>
+		</a-entity>
+
+		<!-- text -->
+		<a-entity id="alertText" alerttext-cp="" visible="false" text="color: red; align: center; width: 20" position="-1.5 3 -5">
+		</a-entity>
+
+	</a-entity>
+
+	<a-entity camera="active:true" id="gameViewCamera" look-controls="" wasd-controls="">
+		<!--<a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity> -->
+	</a-entity>
+
+	<!-- Left Hand
+    <a-entity id="leftController"  wasd-contorls="" laser-controls="hand: left" line="color: red; opacity: 0.75"  vive-controls="">
+    </a-entity>
+-->
+    <a-entity id="rightController" wasd-contorls="" laser-controls="hand: right" line="color: red; opacity: 0.75" vive-controls="" >
+    </a-entity>
+
+</a-scene>
+<script src="dist/aframe-inspector_sin.js"></script>
+</body>
+</html>

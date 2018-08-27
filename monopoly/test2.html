@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>monoPoly Scene</title>
-			<!-- aframe-master.js ì™€ ar ê´€ë ¨ js ë‹¤ë¥¸ ê²½ë¡œì— ë‘ì–´ì•¼ í•œë‹¤. -->
+			<!-- aframe-master.js ¿Í ar °ü·Ã js ´Ù¸¥ °æ·Î¿¡ µÎ¾î¾ß ÇÑ´Ù. -->
 			<script src="dist/aframe-master.js"></script>
 			<script src="js/three.ar.js"></script>
 	    <script src="js/aframe-ar.js"></script>
@@ -29,7 +29,7 @@
 
 				},
 				tick: function (time, timeDelta) {
-					// ì‚¬ìš©ìì˜ ìˆœì„œì¼ê²½ìš°
+					// »ç¿ëÀÚÀÇ ¼ø¼­ÀÏ°æ¿ì
 					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
 						console.log("tick");
 					}
@@ -38,22 +38,22 @@
 					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
 						console.log("tock");
 						switch (gameStatus) {
-							// ê²Œì„ì¤€ë¹„ì¼ê²½ìš°
+							// °ÔÀÓÁØºñÀÏ°æ¿ì
 							case "00" :
 
-								utils.objView("startConfirm", true); // ì‹œì‘ë²„íŠ¼ confilm ë„ìš°ê¸°
+								utils.objView("startConfirm", true); // ½ÃÀÛ¹öÆ° confilm ¶ç¿ì±â
 								gameStatus = "01";
 								console.log(utils.getGameStatus(gameStatus).name);
 								break;
-							// ì‹œì‘ë²„íŠ¼ì„ í™œì„±í™” ë˜ì–´ìˆì„ ê²½ìš°
+							// ½ÃÀÛ¹öÆ°À» È°¼ºÈ­ µÇ¾îÀÖÀ» °æ¿ì
 							case "01" :
 								console.log(utils.getGameStatus(gameStatus).name);
-								// ê²Œì„ì¤€ë¹„ ì°½ì´ ë¹„í™œì„±í™” ì¼ê²½ìš° ìƒíƒœê°’ ë³€ê²½
+								// °ÔÀÓÁØºñ Ã¢ÀÌ ºñÈ°¼ºÈ­ ÀÏ°æ¿ì »óÅÂ°ª º¯°æ
 								if(utils.obj("#startConfirm").getAttribute("visible") == false){
 									gameStatus = "02";
 								}
 								break;
-							// ì£¼ì‚¬ìœ„ êµ´ë¦¬ê¸°
+							// ÁÖ»çÀ§ ±¼¸®±â
 							case "02" :
 								console.log(utils.getGameStatus(gameStatus).name);
 
@@ -62,12 +62,12 @@
 								console.log(ly);
 								utils.obj("#user1Camera").setAttribute("rotation", {x:0, y:ly - 1, z:0});
 
-								// ë£°ë › íŒì´ ë¹„í™œì„±í™” ì¼ê²½ìš° ìƒíƒœê°’ ë³€ê²½
+								// ·ê·¿ ÆÇÀÌ ºñÈ°¼ºÈ­ ÀÏ°æ¿ì »óÅÂ°ª º¯°æ
 								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
 									gameStatus = "03";
 								}
 								break;
-							// ì´ë™
+							// ÀÌµ¿
 							case "03" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
@@ -79,13 +79,13 @@
 								}else if(runType == "run_stop"){
 
 									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
-									// ì›€ì§ì¸ ë§Œí¼ í¬ì§€ì…˜ ì¶”ê°€
+									// ¿òÁ÷ÀÎ ¸¸Å­ Æ÷Áö¼Ç Ãß°¡
 									this.positionIndex += moveCount;
 
 									if(this.positionIndex >= positionArr.length){
 										this.positionIndex -= positionArr.length;
 									}
-									// ì›€ì§ì¸ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
+									// ¿òÁ÷ÀÎ Ä«¿îÆ® ÃÊ±âÈ­
 									moveCount = 0;
 									// utils.objView("text", false);
 									gameStatus = "04";
@@ -93,36 +93,36 @@
 								}
 
 								break;
-							// ì •ì§€
+							// Á¤Áö
 							case "04" :
 								console.log(utils.getGameStatus(gameStatus).name);
-								// ì†Œìœ ê¶Œí™•ì¸
+								// ¼ÒÀ¯±ÇÈ®ÀÎ
 								utils.ownerCheck(this.id);
 								break;
-							// ë§íŒêµ¬ì…
+							// ¸»ÆÇ±¸ÀÔ
 							case "05" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
-									// ì†Œìœ ê¶Œí™•ì¸
+									// ¼ÒÀ¯±ÇÈ®ÀÎ
 									utils.confirm("ownerDialog", true);
 								}
 								break;
-							// ê±´ë¬¼ê±´ì„¤
+							// °Ç¹°°Ç¼³
 							case "06" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
 								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
 								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
 								   utils.obj("#buildDialog4").getAttribute("visible") == false){
-									// ê±´ë¬¼ ì²´í¬
+									// °Ç¹° Ã¼Å©
 									utils.buildCheck();
 								}
 								break;
-							// ì „ì²´View
+							// ÀüÃ¼View
 							case "07" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								break;
-							// ëŒ€ê¸°
+							// ´ë±â
 							case "08" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								nowGameUserIndex += 1;
@@ -162,7 +162,7 @@
 
 				},
 				tick: function (time, timeDelta) {
-					// ì‚¬ìš©ìì˜ ìˆœì„œì¼ê²½ìš°
+					// »ç¿ëÀÚÀÇ ¼ø¼­ÀÏ°æ¿ì
 					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
 						console.log(this);
 						console.log("tick");
@@ -172,33 +172,33 @@
 					if(this.id == gameInfo.gameUser[nowGameUserIndex].id){
 						console.log("tock");
 						switch (gameStatus) {
-							// ê²Œì„ì¤€ë¹„ì¼ê²½ìš°
+							// °ÔÀÓÁØºñÀÏ°æ¿ì
 							case "00" :
-								utils.objView("startConfirm", true); // ì‹œì‘ë²„íŠ¼ confilm ë„ìš°ê¸°
+								utils.objView("startConfirm", true); // ½ÃÀÛ¹öÆ° confilm ¶ç¿ì±â
 								gameStatus = "01";
 								console.log(utils.getGameStatus(gameStatus).name);
 								break;
-							// ì‹œì‘ë²„íŠ¼ì„ í™œì„±í™” ë˜ì–´ìˆì„ ê²½ìš°
+							// ½ÃÀÛ¹öÆ°À» È°¼ºÈ­ µÇ¾îÀÖÀ» °æ¿ì
 							case "01" :
 								console.log(utils.getGameStatus(gameStatus).name);
-								// ê²Œì„ì¤€ë¹„ ì°½ì´ ë¹„í™œì„±í™” ì¼ê²½ìš° ìƒíƒœê°’ ë³€ê²½
+								// °ÔÀÓÁØºñ Ã¢ÀÌ ºñÈ°¼ºÈ­ ÀÏ°æ¿ì »óÅÂ°ª º¯°æ
 								if(utils.obj("#startConfirm").getAttribute("visible") == false){
 									gameStatus = "02";
 								}
 								break;
-							// ì£¼ì‚¬ìœ„ êµ´ë¦¬ê¸°
+							// ÁÖ»çÀ§ ±¼¸®±â
 							case "02" :
 								console.log(utils.getGameStatus(gameStatus).name);
 
 								console.log(utils.obj("#user1Camera").getAttribute("rotation"));
 								var ly = utils.obj("#user1Camera").getAttribute("rotation").y;
 								console.log(ly);
-								// ë£°ë › íŒì´ ë¹„í™œì„±í™” ì¼ê²½ìš° ìƒíƒœê°’ ë³€ê²½
+								// ·ê·¿ ÆÇÀÌ ºñÈ°¼ºÈ­ ÀÏ°æ¿ì »óÅÂ°ª º¯°æ
 								if(utils.obj("#rouletteBoard").getAttribute("visible") == false){
 									gameStatus = "03";
 								}
 								break;
-							// ì´ë™
+							// ÀÌµ¿
 							case "03" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								var runType = utils.obj("#" + this.id).getAttribute("animation-mixer").clip;
@@ -210,13 +210,13 @@
 								}else if(runType == "run_stop"){
 
 									utils.obj("#" + this.id).setAttribute("animation-mixer", "clip", "idle");
-									// ì›€ì§ì¸ ë§Œí¼ í¬ì§€ì…˜ ì¶”ê°€
+									// ¿òÁ÷ÀÎ ¸¸Å­ Æ÷Áö¼Ç Ãß°¡
 									this.positionIndex += moveCount;
 
 									if(this.positionIndex >= positionArr.length){
 										this.positionIndex -= positionArr.length;
 									}
-									// ì›€ì§ì¸ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
+									// ¿òÁ÷ÀÎ Ä«¿îÆ® ÃÊ±âÈ­
 									moveCount = 0;
 									// utils.objView("text", false);
 									gameStatus = "04";
@@ -224,36 +224,36 @@
 								}
 
 								break;
-							// ì •ì§€
+							// Á¤Áö
 							case "04" :
 								console.log(utils.getGameStatus(gameStatus).name);
-								// ì†Œìœ ê¶Œí™•ì¸
+								// ¼ÒÀ¯±ÇÈ®ÀÎ
 								utils.ownerCheck(this.id);
 								break;
-							// ë§íŒêµ¬ì…
+							// ¸»ÆÇ±¸ÀÔ
 							case "05" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								if(utils.obj("#ownerDialog").getAttribute("visible") == false){
-									// ì†Œìœ ê¶Œí™•ì¸
+									// ¼ÒÀ¯±ÇÈ®ÀÎ
 									utils.confirm("ownerDialog", true);
 								}
 								break;
-							// ê±´ë¬¼ê±´ì„¤
+							// °Ç¹°°Ç¼³
 							case "06" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								if(utils.obj("#buildDialog1").getAttribute("visible") == false &&
 								   utils.obj("#buildDialog2").getAttribute("visible") == false &&
 								   utils.obj("#buildDialog3").getAttribute("visible") == false &&
 								   utils.obj("#buildDialog4").getAttribute("visible") == false){
-									// ê±´ë¬¼ ì²´í¬
+									// °Ç¹° Ã¼Å©
 									utils.buildCheck();
 								}
 								break;
-							// ì „ì²´View
+							// ÀüÃ¼View
 							case "07" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								break;
-							// ëŒ€ê¸°
+							// ´ë±â
 							case "08" :
 								console.log(utils.getGameStatus(gameStatus).name);
 								nowGameUserIndex += 1;
@@ -308,7 +308,7 @@
 				<a-gui-button
 					width="2" height="0.5"
 					onclick="utils.cameraOn('gameViewCamera');"
-					value="ëŒì•„ê°€ê¸°"
+					value="µ¹¾Æ°¡±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -508,7 +508,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.cameraOn('userCamera');utils.objView('dialog', true);utils.objView('allViewDialog', false);" key-code="32"
-					value="ëŒì•„ê°€ê¸°"
+					value="µ¹¾Æ°¡±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -520,26 +520,26 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.zoomInOut('allViewCamera', 'gameViewCamera');"
-					value="ëŒì•„ê°€ê¸°"
+					value="µ¹¾Æ°¡±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
 			</a-gui-flex-container> -->
 
-			<!-- ì‹œì‘ confirm -->
+			<!-- ½ÃÀÛ confirm -->
 			<a-gui-flex-container id="startConfirm" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
 			opacity="0.7" width="3" height="3"
 			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="true">
 				<a-gui-label
 					width="2.5" height="0.75"
-					value="ì‹œì‘í•˜ì‹œê² ìŠµë‹ˆê¹Œ?"
+					value="½ÃÀÛÇÏ½Ã°Ú½À´Ï±î?"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-label>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('startConfirm', false, {fn:utils.objView, param:['rouletteBoard', true]})" key-code="32"
-					value="ì˜ˆ"
+					value="¿¹"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -547,14 +547,14 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('startConfirm', false);"
-					value="ì•„ë‹ˆìš”"
+					value="¾Æ´Ï¿ä"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button >
 
 			</a-gui-flex-container>
 
-			<!-- ìŠ¬ë¡¯ë¨¸ì‹  -->
+			<!-- ½½·Ô¸Ó½Å -->
 			<a-gui-flex-container id="rouletteBoard" visible="false">
 				<a-entity position="0 1 0">
 
@@ -571,20 +571,20 @@
 				</a-entity>
 			</a-gui-flex-container>
 
-			<!-- ë§íŒ ì†Œìœ í•˜ê¸° dialog -->
+			<!-- ¸»ÆÇ ¼ÒÀ¯ÇÏ±â dialog -->
 			<a-gui-flex-container id="ownerDialog" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
 			opacity="0.7" width="3" height="3"
 			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
 				<a-gui-label
 					width="2.5" height="0.75"
-					value="ì—¬ê¸°ë¥¼ êµ¬ë§¤í•˜ê¸°"
+					value="¿©±â¸¦ ±¸¸ÅÇÏ±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-label>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('ownerDialog', false, {fn:utils.setOwner, param:[]})"
-					value="ì˜ˆ"
+					value="¿¹"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -592,41 +592,41 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('ownerDialog', false, {fn:utils.turnOver, param:[]});"
-					value="ì•„ë‹ˆìš”"
+					value="¾Æ´Ï¿ä"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button >
 
 			</a-gui-flex-container>
 
-			<!-- ê±´ë¬¼ì˜¬ë¦¬ê¸° dialog1 ì§‘, ë¹Œë”© ëª¨ë‘-->
+			<!-- °Ç¹°¿Ã¸®±â dialog1 Áı, ºôµù ¸ğµÎ-->
 			<a-gui-flex-container id="buildDialog1" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
 			opacity="0.7" width="3" height="5.5"
 			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
 				<a-gui-label
 					width="2.5" height="0.75"
-					value="ê±´ì„¤í•˜ê¸°"
+					value="°Ç¼³ÇÏ±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-label>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['01']})"
-					value="ì§‘ë§Œë“¤ê¸°"
+					value="Áı¸¸µé±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['02']})"
-					value="ë¹Œë”©ì˜¬ë¦¬ê¸°"
+					value="ºôµù¿Ã¸®±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.setOwnerBuild, param:['03']})"
-					value="ì§‘ & ë¹Œë”©ì˜¬ë¦¬ê¸°"
+					value="Áı & ºôµù¿Ã¸®±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -634,7 +634,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.cameraOn()"
-					value="ë‘˜ëŸ¬ë³´ê¸°"
+					value="µÑ·¯º¸±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -642,27 +642,27 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog1', false, {fn:utils.turnOver, param:[]});"
-					value="ìˆœì„œ ë„˜ê¸°ê¸°"
+					value="¼ø¼­ ³Ñ±â±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button >
 
 			</a-gui-flex-container>
 
-			<!-- ê±´ë¬¼ì˜¬ë¦¬ê¸° dialog2 ì§‘-->
+			<!-- °Ç¹°¿Ã¸®±â dialog2 Áı-->
 			<a-gui-flex-container id="buildDialog2" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
 			opacity="0.7" width="3" height="3.7"
 			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
 				<a-gui-label
 					width="2.5" height="0.75"
-					value="ê±´ì„¤í•˜ê¸°"
+					value="°Ç¼³ÇÏ±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-label>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog2', false, {fn:utils.setOwnerBuild, param:['01']})"
-					value="ì§‘ë§Œë“¤ê¸°"
+					value="Áı¸¸µé±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -670,7 +670,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.cameraOn()"
-					value="ë‘˜ëŸ¬ë³´ê¸°"
+					value="µÑ·¯º¸±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -678,27 +678,27 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog2', false, {fn:utils.turnOver, param:[]});"
-					value="ìˆœì„œ ë„˜ê¸°ê¸°"
+					value="¼ø¼­ ³Ñ±â±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button >
 
 			</a-gui-flex-container>
 
-			<!-- ê±´ë¬¼ì˜¬ë¦¬ê¸° dialog3 ë¹Œë”© -->
+			<!-- °Ç¹°¿Ã¸®±â dialog3 ºôµù -->
 			<a-gui-flex-container id="buildDialog3" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
 			opacity="0.7" width="3" height="3.7"
 			position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
 				<a-gui-label
 					width="2.5" height="0.75"
-					value="ê±´ì„¤í•˜ê¸°"
+					value="°Ç¼³ÇÏ±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-label>
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog3', false, {fn:utils.setOwnerBuild, param:['02']})"
-					value="ë¹Œë”©ì˜¬ë¦¬ê¸°"
+					value="ºôµù¿Ã¸®±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -706,7 +706,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.cameraOn()"
-					value="ë‘˜ëŸ¬ë³´ê¸°"
+					value="µÑ·¯º¸±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
@@ -714,19 +714,19 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.confirm('buildDialog3', false, {fn:utils.turnOver, param:[]});"
-					value="ìˆœì„œ ë„˜ê¸°ê¸°"
+					value="¼ø¼­ ³Ñ±â±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button >
 			</a-gui-flex-container>
 
-			<!-- ê±´ë¬¼ì˜¬ë¦¬ê¸° dialog4 ëª¨ë‘ ê±´ì„¤í–ˆì„ê²½ìš° -->
+			<!-- °Ç¹°¿Ã¸®±â dialog4 ¸ğµÎ °Ç¼³ÇßÀ»°æ¿ì -->
 			<a-gui-flex-container id="buildDialog4" flex-direction="column" justify-content="center" align-items="normal" component-padding="0.1"
 				opacity="0.7" width="3" height="3"
 				position="-0.21 -0.7 -5.2" rotation="0 0 0" visible="false">
 					<a-gui-label
 						width="2.5" height="0.75"
-						value="ê±´ì„¤ì™„ë£Œ"
+						value="°Ç¼³¿Ï·á"
 						font-family="Arial"
 						margin="0 0 0.05 0">
 					</a-gui-label>
@@ -734,7 +734,7 @@
 					<a-gui-button
 						width="2.5" height="0.75"
 						onclick="utils.cameraOn()"
-						value="ë‘˜ëŸ¬ë³´ê¸°"
+						value="µÑ·¯º¸±â"
 						font-family="Arial"
 						margin="0 0 0.05 0">
 					</a-gui-button>
@@ -742,7 +742,7 @@
 					<a-gui-button
 						width="2.5" height="0.75"
 						onclick="utils.confirm('buildDialog4', false, {fn:utils.turnOver, param:[]});"
-						value="ìˆœì„œ ë„˜ê¸°ê¸°"
+						value="¼ø¼­ ³Ñ±â±â"
 						font-family="Arial"
 						margin="0 0 0.05 0">
 					</a-gui-button >
@@ -772,7 +772,7 @@
 				<a-gui-button
 					width="2.5" height="0.75"
 					onclick="utils.cameraOn('gameViewCamera');"
-					value="ëŒì•„ê°€ê¸°"
+					value="µ¹¾Æ°¡±â"
 					font-family="Arial"
 					margin="0 0 0.05 0">
 				</a-gui-button>
