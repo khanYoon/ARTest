@@ -69925,7 +69925,6 @@ function getFuzzyPatchVersion (version) {
   return split.join('.');
 }
 
-/* khan 추가
 //var INSPECTOR_DEV_URL = 'http://localhost:3333/dist/aframe-inspector.js';
 //var INSPECTOR_RELEASE_URL = 'https://unpkg.com/aframe-inspector@' + getFuzzyPatchVersion(pkg.version) + '/dist/aframe-inspector.min.js';
 var INSPECTOR_DEV_URL = 'http://192.168.1.102:3333/dist/aframe-inspector.js';
@@ -70015,7 +70014,7 @@ module.exports.Component = registerComponent('inspector', {
     window.removeEventListener('message', this.onMessage);
   }
 });
-*/khan 추가
+
 }).call(this,_dereq_('_process'))
 
 },{"../../../package":75,"../../constants":116,"../../core/component":125,"../../utils/bind":189,"_process":6}],102:[function(_dereq_,module,exports){
