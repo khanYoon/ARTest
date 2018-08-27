@@ -69930,11 +69930,11 @@ function getFuzzyPatchVersion (version) {
 //var INSPECTOR_DEV_URL = 'http://192.168.1.102:3333/dist/aframe-inspector.js';
 //var INSPECTOR_RELEASE_URL = 'http://192.168.1.102:3333/dist/aframe-inspector.js';
 
-// var INSPECTOR_DEV_URL = '/resources/js/aframe-inspector.js';
-// var INSPECTOR_RELEASE_URL = '/resources/js/aframe-inspector.js';
+var INSPECTOR_DEV_URL = '/resources/js/aframe-inspector.js';
+var INSPECTOR_RELEASE_URL = '/resources/js/aframe-inspector.js';
 
-var INSPECTOR_DEV_URL = 'http://175.123.137.176:8080/resources/js/aframe-inspector.js';
-var INSPECTOR_RELEASE_URL = 'http://175.123.137.176:8080/resources/js/aframe-inspector.js';
+//var INSPECTOR_DEV_URL = 'http://175.123.137.176:8080/resources/js/aframe-inspector.js';
+//var INSPECTOR_RELEASE_URL = 'http://175.123.137.176:8080/resources/js/aframe-inspector.js';
 var INSPECTOR_URL = process.env.INSPECTOR_VERSION === 'dev' ? INSPECTOR_DEV_URL : INSPECTOR_RELEASE_URL;
 var LOADING_MESSAGE = 'Loading Inspector';
 var LOADING_ERROR_MESSAGE = 'Error loading Inspector';
