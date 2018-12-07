@@ -1,0 +1,37 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>K-Frame</title>
+<meta name="description" content="K-Frame">
+<script src="resources/js/jquery.3.2.1.min.js"></script>
+<script src="resources/js/go.js"></script>
+<script src="resources/js/go_extention_TextEditorSelectBox.js"></script>
+<script src="resources/js/go_extention_TextEditorRadioButtons.js"></script>
+<script src="resources/js/highlight.js"></script>
+<script src="resources/js/aframe-master_noneInspector.js"></script>
+<script src="resources/js/aframe-physics-system.js"></script>
+<script src="resources/js/aframe-physics-extras.js"></script>
+<script src="resources/js/aframe-animation-component.js"></script>
+<script src="resources/js/kframe_noneInspector.js"></script>
+<script src="resources/js/aframe-extras.js"></script>
+<script src="resources/js/aframe-text-geometry-component.js"></script>
+<script src="resources/js/maxUtils.js"></script>
+<script src="resources/js/components.js"></script>
+<script src="resources/ar/three.ar.js"></script>
+<script src="resources/ar/aframe-ar.js"></script>
+</head>
+<body id="__a-scene-data__" calss="a-body">
+	<a-scene id="장면" broadcast="" ar="">
+	<a-entity id="배경조명" light="type:ambient;color:#BBB"></a-entity>
+	<a-entity id="방향조명(직사광선)" position="7.076 3.486 5.665" light="castShadow:true"></a-entity>
+			<a-entity id="주카메라" position="-95.313 99.445 152.284" rotation="-28.247 -37.128 -5.099">
+				<a-entity id="camera" camera="active:true;far:100000" look-controls="" wasd-controls="" data-aframe-inspector-original-camera="" rotation="0 0 0">
+					<a-entity id="rayCursor" cursor="" geometry="primitive:ring;radiusInner:0.01;radiusOuter:0.016" material="color:#EEE" position="0 0 -1" raycaster=""></a-entity>
+				</a-entity>
+			</a-entity>
+	<a-entity id="sphere" geometry="primitive:sphere" position="0 50 0" scale="20 20 20" material="color:#c9baf7" shadow="" testmove=""></a-entity>
+	</a-scene>
+</body>
+</html>
