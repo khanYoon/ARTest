@@ -59,7 +59,7 @@
 	    bevelSize: {default: 8, min: 0},
 	    bevelThickness: {default: 12, min: 0},
 	    curveSegments: {default: 12, min: 0},
-	    font: {type: 'asset', default: 'http://localhost:8080/resources/fonts/NanumGothic.json'},
+	    font: {type: 'asset', default: '/ARTest/tester/resources/fonts/NanumGothic.json'},
 	    height: {default: 0.05, min: 0},
 	    size: {default: 0.5, min: 0},
 	    style: {default: 'normal', oneOf: ['normal', 'italics']},
