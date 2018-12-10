@@ -4,24 +4,24 @@
 <head>
 <title>K-Frame</title>
 <meta name="description" content="K-Frame">
-<script src="/demo/resources/js/jquery.3.2.1.min.js"></script>
-<script src="/demo/resources/js/go.js"></script>
-<script src="/demo/resources/js/go_extention_TextEditorSelectBox.js"></script>
-<script src="/demo/resources/js/go_extention_TextEditorRadioButtons.js"></script>
-<script src="/demo/resources/js/highlight.js"></script>
-<script src="/demo/resources/js/aframe-master_noneInspector.js"></script>
-<script src="/demo/resources/js/aframe-physics-system.js"></script>
-<script src="/demo/resources/js/aframe-physics-extras.js"></script>
-<script src="/demo/resources/js/aframe-animation-component.js"></script>
-<script src="/demo/resources/js/kframe_noneInspector.js"></script>
-<script src="/demo/resources/js/aframe-extras.js"></script>
-<script src="/demo/resources/js/aframe-text-geometry-component.js"></script>
-<script src="/demo/resources/js/maxUtils.js"></script>
-<script src="/demo/resources/js/components.js"></script>
+<script src="/ARTest/resources/js/jquery.3.2.1.min.js"></script>
+<script src="/ARTest/resources/js/go.js"></script>
+<script src="/ARTest/resources/js/go_extention_TextEditorSelectBox.js"></script>
+<script src="/ARTest/resources/js/go_extention_TextEditorRadioButtons.js"></script>
+<script src="/ARTest/resources/js/highlight.js"></script>
+<script src="/ARTest/resources/js/aframe-master_noneInspector.js"></script>
+<script src="/ARTest/resources/js/aframe-physics-system.js"></script>
+<script src="/ARTest/resources/js/aframe-physics-extras.js"></script>
+<script src="/ARTest/resources/js/aframe-animation-component.js"></script>
+<script src="/ARTest/resources/js/kframe_noneInspector.js"></script>
+<script src="/ARTest/resources/js/aframe-extras.js"></script>
+<script src="/ARTest/resources/js/aframe-text-geometry-component.js"></script>
+<script src="/ARTest/resources/js/maxUtils.js"></script>
+<script src="/ARTest/resources/js/components.js"></script>
 <!-- <script src="/ARTest/monopoly/js/three.ar.js"></script>
 <script src="/ARTest/monopoly/js/aframe-ar.js"></script> -->
-<script src="/demo/resources/ar/three.ar.js"></script>
-<script src="/demo/resources/ar/aframe-ar.js"></script>
+<script src="/ARTest/resources/ar/three.ar.js"></script>
+<script src="/ARTest/resources/ar/aframe-ar.js"></script>
 <link rel="stylesheet" href="/resources/css/style.css">
 <script type="text/javascript">
 window.projectCode = "PROJ20181209165113872";
@@ -51,44 +51,44 @@ var _ComplexObjectList = new Array();
 var obj = new Object();
 obj.id = "COBJ111111";
 var tmp = new Array();
-tmp.push({"clip":"1", "src":"/demo/models/samples/Dice_Left_Num1.glb"});
-tmp.push({"clip":"2", "src":"/demo/models/samples/Dice_Left_Num2.glb"});
-tmp.push({"clip":"3", "src":"/demo/models/samples/Dice_Left_Num3.glb"});
-tmp.push({"clip":"4", "src":"/demo/models/samples/Dice_Left_Num4.glb"});
-tmp.push({"clip":"5", "src":"/demo/models/samples/Dice_Left_Num5.glb"});
-tmp.push({"clip":"6", "src":"/demo/models/samples/Dice_Left_Num6.glb"});
+tmp.push({"clip":"1", "src":"/ARTest/models/samples/Dice_Left_Num1.glb"});
+tmp.push({"clip":"2", "src":"/ARTest/models/samples/Dice_Left_Num2.glb"});
+tmp.push({"clip":"3", "src":"/ARTest/models/samples/Dice_Left_Num3.glb"});
+tmp.push({"clip":"4", "src":"/ARTest/models/samples/Dice_Left_Num4.glb"});
+tmp.push({"clip":"5", "src":"/ARTest/models/samples/Dice_Left_Num5.glb"});
+tmp.push({"clip":"6", "src":"/ARTest/models/samples/Dice_Left_Num6.glb"});
 obj.clip = tmp;
 _ComplexObjectList.push(obj);
 
 obj = new Object();
 obj.id = "COBJ222222";
 tmp = new Array();
-tmp.push({"clip":"1", "src":"/demo/models/samples/Dice_Right_Num1.glb"});
-tmp.push({"clip":"2", "src":"/demo/models/samples/Dice_Right_Num2.glb"});
-tmp.push({"clip":"3", "src":"/demo/models/samples/Dice_Right_Num3.glb"});
-tmp.push({"clip":"4", "src":"/demo/models/samples/Dice_Right_Num4.glb"});
-tmp.push({"clip":"5", "src":"/demo/models/samples/Dice_Right_Num5.glb"});
-tmp.push({"clip":"6", "src":"/demo/models/samples/Dice_Right_Num6.glb"});
+tmp.push({"clip":"1", "src":"/ARTest/models/samples/Dice_Right_Num1.glb"});
+tmp.push({"clip":"2", "src":"/ARTest/models/samples/Dice_Right_Num2.glb"});
+tmp.push({"clip":"3", "src":"/ARTest/models/samples/Dice_Right_Num3.glb"});
+tmp.push({"clip":"4", "src":"/ARTest/models/samples/Dice_Right_Num4.glb"});
+tmp.push({"clip":"5", "src":"/ARTest/models/samples/Dice_Right_Num5.glb"});
+tmp.push({"clip":"6", "src":"/ARTest/models/samples/Dice_Right_Num6.glb"});
 obj.clip = tmp;
 _ComplexObjectList.push(obj);
 
 obj = new Object();
 obj.id = "COBJ33333";
 tmp = new Array();
-tmp.push({"clip":"idle", "src":"/demo/models/samples/male_idle.glb"});
-tmp.push({"clip":"run", "src":"/demo/models/samples/male_run.glb"});
-tmp.push({"clip":"cheer", "src":"/demo/models/samples/male_cheer.glb"});
-tmp.push({"clip":"defeat", "src":"/demo/models/samples/male_defeat.glb"});
+tmp.push({"clip":"idle", "src":"/ARTest/models/samples/male_idle.glb"});
+tmp.push({"clip":"run", "src":"/ARTest/models/samples/male_run.glb"});
+tmp.push({"clip":"cheer", "src":"/ARTest/models/samples/male_cheer.glb"});
+tmp.push({"clip":"defeat", "src":"/ARTest/models/samples/male_defeat.glb"});
 obj.clip = tmp;
 _ComplexObjectList.push(obj);
 
 obj = new Object();
 obj.id = "COBJ44444";
 tmp = new Array();
-tmp.push({"clip":"idle", "src":"/demo/models/samples/female_idle.glb"});
-tmp.push({"clip":"run", "src":"/demo/models/samples/female_run.glb"});
-tmp.push({"clip":"cheer", "src":"/demo/models/samples/female_cheer.glb"});
-tmp.push({"clip":"defeat", "src":"/demo/models/samples/female_defeat.glb"});
+tmp.push({"clip":"idle", "src":"/ARTest/models/samples/female_idle.glb"});
+tmp.push({"clip":"run", "src":"/ARTest/models/samples/female_run.glb"});
+tmp.push({"clip":"cheer", "src":"/ARTest/models/samples/female_cheer.glb"});
+tmp.push({"clip":"defeat", "src":"/ARTest/models/samples/female_defeat.glb"});
 obj.clip = tmp;
 _ComplexObjectList.push(obj);
 
@@ -3364,7 +3364,7 @@ var __component;
 
   <a-scene id="scene" state="" fog="type:exponential;color:#fff;density:0" shadow="type: pcf" broadcast="" ar="" p01_start_intro="">
       <a-assets>
-          <a-asset-item id="camera-model" src="/demo/models/camera.glb"></a-asset-item>
+          <a-asset-item id="camera-model" src="/ARTest/models/camera.glb"></a-asset-item>
           <img id="gold" src="https://ucarecdn.com/15222182-083e-4032-b952-d79baca2f507/" crossorigin="anonymous">
       </a-assets>
       <a-entity id="배경조명" light="type:ambient;color:#BBB"></a-entity>
@@ -3374,212 +3374,212 @@ var __component;
             <a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
           </a-entity>
           <a-entity id="sound">
-              <a-entity id="snd_footstep" geometry="primitive:plane" sound="src:/demo/files/others/20181208/1544251400114.mp3"></a-entity>
-              <a-entity id="snd_setblock" geometry="primitive:plane" sound="src:/demo/files/others/20181209/1544334991890.mp3"></a-entity>
-              <a-entity id="snd_coin" geometry="primitive:plane" sound="src:/demo/files/others/20181209/1544336594341.mp3"></a-entity>
-              <a-entity id="snd_dice" geometry="primitive:plane" sound="src:/demo/files/others/20181209/1544337453367.mp3"></a-entity>
-              <a-entity id="snd_construction" geometry="primitive:plane" sound="src:/demo/files/others/20181209/1544337966253.mp3"></a-entity>
+              <a-entity id="snd_footstep" geometry="primitive:plane" sound="src:/ARTest/files/others/20181208/1544251400114.mp3"></a-entity>
+              <a-entity id="snd_setblock" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544334991890.mp3"></a-entity>
+              <a-entity id="snd_coin" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544336594341.mp3"></a-entity>
+              <a-entity id="snd_dice" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544337453367.mp3"></a-entity>
+              <a-entity id="snd_construction" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544337966253.mp3"></a-entity>
           </a-entity>
       </a-entity>
 
       <a-entity id="popup" material="color:#ffffff" text-geometry="value:aaaaaa" crossorigin="anonymous" scale="500 500 1" visible="false" test_obj=""></a-entity>
       <a-entity id="money_controller" crossorigin="anonymous" get_share_money="">
-          <a-entity id="coin_left" geometry="primitive:cylinder" material="src:/demo/files/images/20181112/1542005491890.png;color:#ffffff" scale="100 1 100" position="-920 1000 300" rotation="0 0 3259.0000000000005" visible="false" get_coin_left_event=""></a-entity>
-          <a-entity id="coin_right" geometry="primitive:cylinder" material="src:/demo/files/images/20181112/1542005491890.png;color:#ffffff" scale="100 1 100" position="950 1000 300" rotation="0 0 3259.0000000000005" visible="false" get_coin_right_event=""></a-entity>
+          <a-entity id="coin_left" geometry="primitive:cylinder" material="src:/ARTest/files/images/20181112/1542005491890.png;color:#ffffff" scale="100 1 100" position="-920 1000 300" rotation="0 0 3259.0000000000005" visible="false" get_coin_left_event=""></a-entity>
+          <a-entity id="coin_right" geometry="primitive:cylinder" material="src:/ARTest/files/images/20181112/1542005491890.png;color:#ffffff" scale="100 1 100" position="950 1000 300" rotation="0 0 3259.0000000000005" visible="false" get_coin_right_event=""></a-entity>
       </a-entity>
       <a-entity id="status-window_controller" crossorigin="anonymous" get_share_money_sw="">
           <a-entity id="txt_user1" position="-430 1980 2400" scale="80 80 1" rotation="-29.999999999999996 0 0" material="color:#ffffff" text-geometry="value:500;bevelThickness:11.99;height:2" crossorigin="anonymous" get_update_coin_value="">
-              <a-entity id="image" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544338767005.png" position="0.27 0.44 -6.19" scale="2.4 1.2 1.2"></a-entity>
+              <a-entity id="image" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544338767005.png" position="0.27 0.44 -6.19" scale="2.4 1.2 1.2"></a-entity>
           </a-entity>
           <a-entity id="txt_user2" position="310 1980 2400" scale="80 80 1" rotation="-29.999999999999996 0 0" material="color:#ffffff" text-geometry="bevelThickness:11.99;height:2;value:500" crossorigin="anonymous" get_update_coin_value="">
-              <a-entity id="image-2" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544338888229.png" position="1.019 0.44 -6.19" scale="2.4 1.2 1"></a-entity>
+              <a-entity id="image-2" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544338888229.png" position="1.019 0.44 -6.19" scale="2.4 1.2 1"></a-entity>
           </a-entity>
       </a-entity>
       <a-entity id="dice_controller" crossorigin="anonymous" get_dice="val_dice_left:1;val_dice_right:2" visible="false">
-          <a-entity id="left_dice" gltf-model="/demo/models/samples/Dice_Left_Num1.glb" complex-object="id:COBJ111111" position="-500 1200 2000" visible="false" get_run_ani=""></a-entity>
-          <a-entity id="right_dice" gltf-model="/demo/models/samples/Dice_Right_Num2.glb" complex-object="id:COBJ222222" position="500 1200 2000" visible="false" get_run_ani="ref_val_dice:val_dice_right;ani_start_position:500 1200 2000"></a-entity>
+          <a-entity id="left_dice" gltf-model="/ARTest/models/samples/Dice_Left_Num1.glb" complex-object="id:COBJ111111" position="-500 1200 2000" visible="false" get_run_ani=""></a-entity>
+          <a-entity id="right_dice" gltf-model="/ARTest/models/samples/Dice_Right_Num2.glb" complex-object="id:COBJ222222" position="500 1200 2000" visible="false" get_run_ani="ref_val_dice:val_dice_right;ani_start_position:500 1200 2000"></a-entity>
       </a-entity>
       <a-entity id="diceValue_controller" crossorigin="anonymous" position="-313 500 700" rotation="-59.99999999999999 0 0" visible="false" get_show_dice_value="">
           <a-entity id="text_dice_value" scale="350 350 1" material="color:#000000" text-geometry="" crossorigin="anonymous" position="96.375 0 0"></a-entity>
-          <a-entity id="image-3" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544338637522.png" position="320 110 -10" scale="700 350 1"></a-entity>
+          <a-entity id="image-3" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544338637522.png" position="320 110 -10" scale="700 350 1"></a-entity>
       </a-entity>
       <a-entity id="block_controller" crossorigin="anonymous" block_manager="">
-          <a-entity id="block_0" gltf-model="/demo/files/others/20181025/1540468374814.glb" position="-900 0 900" block_up_ani="" visible="false"></a-entity>
-          <a-entity id="block_19" gltf-model="/demo/files/others/20181025/1540468122748.glb" position="600 0 900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_20" gltf-model="/demo/files/others/20181025/1540468122748.glb" position="300 0 900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_21" gltf-model="/demo/files/others/20181025/1540468122748.glb" position="0 0 900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_22" gltf-model="/demo/files/others/20181025/1540468122748.glb" position="-300 0 900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_23" gltf-model="/demo/files/others/20181025/1540468122748.glb" position="-600 0 900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_12" gltf-model="/demo/files/others/20181025/1540468258036.glb" position="900 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_1" gltf-model="/demo/files/others/20181025/1540468148906.glb" position="-900 0 600" block_up_ani="" visible="false"></a-entity>
-          <a-entity id="block_2" gltf-model="/demo/files/others/20181025/1540468148906.glb" position="-900 0 300" block_up_ani="" visible="false"></a-entity>
-          <a-entity id="block_3" gltf-model="/demo/files/others/20181025/1540468148906.glb" position="-900 0 0" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_4" gltf-model="/demo/files/others/20181025/1540468148906.glb" position="-900 0 -300" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_5" gltf-model="/demo/files/others/20181025/1540468148906.glb" position="-900 0 -600" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_18" gltf-model="/demo/files/others/20181025/1540468359297.glb" position="900 0 900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_7" gltf-model="/demo/files/others/20181025/1540468058830.glb" position="-600 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_8" gltf-model="/demo/files/others/20181025/1540468058830.glb" position="-300 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_9" gltf-model="/demo/files/others/20181025/1540468058830.glb" position="0 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_10" gltf-model="/demo/files/others/20181025/1540468058830.glb" position="300 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_11" gltf-model="/demo/files/others/20181025/1540468058830.glb" position="600 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_6" gltf-model="/demo/files/others/20181025/1540468300262.glb" position="-900 0 -900" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_13" gltf-model="/demo/files/others/20181025/1540468175355.glb" position="900 0 -600" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_14" gltf-model="/demo/files/others/20181025/1540468175355.glb" position="900 0 -300" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_15" gltf-model="/demo/files/others/20181025/1540468175355.glb" position="900 0 0" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_16" gltf-model="/demo/files/others/20181025/1540468175355.glb" position="900 0 300" visible="false" block_up_ani=""></a-entity>
-          <a-entity id="block_17" gltf-model="/demo/files/others/20181025/1540468175355.glb" position="900 0 600" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_0" gltf-model="/ARTest/files/others/20181025/1540468374814.glb" position="-900 0 900" block_up_ani="" visible="false"></a-entity>
+          <a-entity id="block_19" gltf-model="/ARTest/files/others/20181025/1540468122748.glb" position="600 0 900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_20" gltf-model="/ARTest/files/others/20181025/1540468122748.glb" position="300 0 900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_21" gltf-model="/ARTest/files/others/20181025/1540468122748.glb" position="0 0 900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_22" gltf-model="/ARTest/files/others/20181025/1540468122748.glb" position="-300 0 900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_23" gltf-model="/ARTest/files/others/20181025/1540468122748.glb" position="-600 0 900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_12" gltf-model="/ARTest/files/others/20181025/1540468258036.glb" position="900 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_1" gltf-model="/ARTest/files/others/20181025/1540468148906.glb" position="-900 0 600" block_up_ani="" visible="false"></a-entity>
+          <a-entity id="block_2" gltf-model="/ARTest/files/others/20181025/1540468148906.glb" position="-900 0 300" block_up_ani="" visible="false"></a-entity>
+          <a-entity id="block_3" gltf-model="/ARTest/files/others/20181025/1540468148906.glb" position="-900 0 0" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_4" gltf-model="/ARTest/files/others/20181025/1540468148906.glb" position="-900 0 -300" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_5" gltf-model="/ARTest/files/others/20181025/1540468148906.glb" position="-900 0 -600" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_18" gltf-model="/ARTest/files/others/20181025/1540468359297.glb" position="900 0 900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_7" gltf-model="/ARTest/files/others/20181025/1540468058830.glb" position="-600 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_8" gltf-model="/ARTest/files/others/20181025/1540468058830.glb" position="-300 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_9" gltf-model="/ARTest/files/others/20181025/1540468058830.glb" position="0 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_10" gltf-model="/ARTest/files/others/20181025/1540468058830.glb" position="300 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_11" gltf-model="/ARTest/files/others/20181025/1540468058830.glb" position="600 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_6" gltf-model="/ARTest/files/others/20181025/1540468300262.glb" position="-900 0 -900" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_13" gltf-model="/ARTest/files/others/20181025/1540468175355.glb" position="900 0 -600" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_14" gltf-model="/ARTest/files/others/20181025/1540468175355.glb" position="900 0 -300" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_15" gltf-model="/ARTest/files/others/20181025/1540468175355.glb" position="900 0 0" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_16" gltf-model="/ARTest/files/others/20181025/1540468175355.glb" position="900 0 300" visible="false" block_up_ani=""></a-entity>
+          <a-entity id="block_17" gltf-model="/ARTest/files/others/20181025/1540468175355.glb" position="900 0 600" visible="false" block_up_ani=""></a-entity>
       </a-entity>
       <a-entity id="uninhabited-controller" crossorigin="anonymous" get_check_uninhabited=""></a-entity>
       <a-entity id="salarypos-controller" crossorigin="anonymous" get_check_start_pos=""></a-entity>
       <a-entity id="speial_pos_controller" crossorigin="anonymous" get_check_social_fund=""></a-entity>
       <a-entity id="char_controller" crossorigin="anonymous" get_char_move_step="tempPos:3">
           <a-entity id="player1" position="-900 100 234.557" scale="100 100 100" rotation="0 540 0" get_player_move="">
-              <a-entity id="player1_run" gltf-model="/demo/files/others/20181208/1544254433548.glb" scale="0.015 0.015 0.015" visible="false" animation-mixer=""></a-entity>
-              <a-entity id="player1_idle" gltf-model="/demo/files/others/20181208/1544254075812.glb" scale="0.015 0.015 0.015" animation-mixer=""></a-entity>
+              <a-entity id="player1_run" gltf-model="/ARTest/files/others/20181208/1544254433548.glb" scale="0.015 0.015 0.015" visible="false" animation-mixer=""></a-entity>
+              <a-entity id="player1_idle" gltf-model="/ARTest/files/others/20181208/1544254075812.glb" scale="0.015 0.015 0.015" animation-mixer=""></a-entity>
           </a-entity>
           <a-entity id="player2" position="-900 100 900" scale="100 100 100" rotation="0 180 0" get_player_move="">
-              <a-entity id="player2_run" gltf-model="/demo/files/others/20181208/1544254013202.glb" scale="0.016 0.016 0.016" visible="false" animation-mixer=""></a-entity>
-              <a-entity id="player2_idle" gltf-model="/demo/files/others/20181208/1544253850160.glb" scale="0.016 0.016 0.016" animation-mixer=""></a-entity>
+              <a-entity id="player2_run" gltf-model="/ARTest/files/others/20181208/1544254013202.glb" scale="0.016 0.016 0.016" visible="false" animation-mixer=""></a-entity>
+              <a-entity id="player2_idle" gltf-model="/ARTest/files/others/20181208/1544253850160.glb" scale="0.016 0.016 0.016" animation-mixer=""></a-entity>
           </a-entity>
       </a-entity>
       <a-entity id="land_controller" crossorigin="anonymous" position="0 2000 2400" get_check_land="tempValue:1">
           <a-entity id="text_rent_fee" scale="65 65 1" rotation="-30.023 0 0" crossorigin="anonymous" position="-225.761 0 0" visible="false">
-              <a-entity id="image-4" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544339100177.png" position="3.47 0 -1" scale="7 1 1"></a-entity>
+              <a-entity id="image-4" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544339100177.png" position="3.47 0 -1" scale="7 1 1"></a-entity>
           </a-entity>
           <a-entity id="text_social" scale="65 65 1" rotation="-30.023 0 0" crossorigin="anonymous" position="-225.761 0 0" visible="false">
-              <a-entity id="image-5" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544338906834.png" position="3.47 0.2 -1" scale="7 1 1"></a-entity>
+              <a-entity id="image-5" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544338906834.png" position="3.47 0.2 -1" scale="7 1 1"></a-entity>
           </a-entity>
           <a-entity id="text_salary" scale="65 65 1" rotation="-30.023 0 0" crossorigin="anonymous" position="-166.783 0 0" visible="false">
-              <a-entity id="image-6" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544339077478.png" position="2.6 0.2 -1" scale="5.5 1 1"></a-entity>
+              <a-entity id="image-6" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544339077478.png" position="2.6 0.2 -1" scale="5.5 1 1"></a-entity>
           </a-entity>
           <a-entity id="text_buy_land">
-              <a-entity id="image-7" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544331436775.png" position="0 0 -30" rotation="-29.999999999999996 0 0" scale="500 150 1"></a-entity>
-              <a-entity id="btn_yes" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544338536071.png" position="-80 -35 0" rotation="-29.999999999999996 0 0" scale="70 30 30" click_buy_land=""></a-entity>
-              <a-entity id="btn_no" geometry="primitive:plane" material="src:/demo/files/images/20181209/1544338568898.png" position="80 -35 0" rotation="-29.999999999999996 0 0" scale="70 30 30" click_dont_buy_land=""></a-entity>
+              <a-entity id="image-7" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544331436775.png" position="0 0 -30" rotation="-29.999999999999996 0 0" scale="500 150 1"></a-entity>
+              <a-entity id="btn_yes" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544338536071.png" position="-80 -35 0" rotation="-29.999999999999996 0 0" scale="70 30 30" click_buy_land=""></a-entity>
+              <a-entity id="btn_no" geometry="primitive:plane" material="src:/ARTest/files/images/20181209/1544338568898.png" position="80 -35 0" rotation="-29.999999999999996 0 0" scale="70 30 30" click_dont_buy_land=""></a-entity>
           </a-entity>
       </a-entity>
       <a-entity id="turn_controller" crossorigin="anonymous" get_next_turn=""></a-entity>
       <a-entity id="main_controls" p02_share_money="" p03_dice_ani="" p04_dice_value="" p05_check_uninhabited="" p07_char_move="" p12_next_turn="" p11_check_land="" p10_land="" p09_check_end_move="" p08_check_start_pos=""></a-entity>
       <a-entity id="building_controller" geometry="primitive:plane" material="color:#c9baf7" shadow="" building_manager="">
           <a-entity id="building_1" position="-900 100 600" visible="false" building_up_ani="start_pos:-900 -200 600">
-              <a-entity id="gltf" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="-101.673 0 76.412" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-2" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="-118.835 0 -82.46" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-3" gltf-model="/demo/files/others/20181205/1543995844999.glb" position="92.052 0 -39.198" rotation="0 90.01166961505233 0"></a-entity>
-              <a-entity id="gltf-4" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="102.066 0 91.76"></a-entity>
+              <a-entity id="gltf" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="-101.673 0 76.412" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-2" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="-118.835 0 -82.46" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-3" gltf-model="/ARTest/files/others/20181205/1543995844999.glb" position="92.052 0 -39.198" rotation="0 90.01166961505233 0"></a-entity>
+              <a-entity id="gltf-4" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="102.066 0 91.76"></a-entity>
           </a-entity>
           <a-entity id="building_2" position="-900 100 300" visible="false" building_up_ani="start_pos:-900 -200 300">
-              <a-entity id="gltf-6" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="105.386 0 59.091" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-7" gltf-model="/demo/files/others/20181205/1543995495618.glb" position="-86.333 0 5.417" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-5" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="108.003 0 -113.685"></a-entity>
-              <a-entity id="gltf-8" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="107.835 0 -54.664"></a-entity>
+              <a-entity id="gltf-6" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="105.386 0 59.091" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-7" gltf-model="/ARTest/files/others/20181205/1543995495618.glb" position="-86.333 0 5.417" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-5" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="108.003 0 -113.685"></a-entity>
+              <a-entity id="gltf-8" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="107.835 0 -54.664"></a-entity>
           </a-entity>
           <a-entity id="building_3" position="-900 100 0" visible="false" building_up_ani="start_pos:-900 -200 0">
-              <a-entity id="gltf-9" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-105.257 0 10.062"></a-entity>
-              <a-entity id="gltf-10" gltf-model="/demo/files/others/20181025/1540468442845.glb" position="-91.158 -2.209 -95.224" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-11" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="-104.732 0 95.518" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-12" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="112.119 0 -20.035" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-9" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-105.257 0 10.062"></a-entity>
+              <a-entity id="gltf-10" gltf-model="/ARTest/files/others/20181025/1540468442845.glb" position="-91.158 -2.209 -95.224" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-11" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="-104.732 0 95.518" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-12" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="112.119 0 -20.035" rotation="0 90 0"></a-entity>
           </a-entity>
           <a-entity id="building_4" position="-900 100 -300" visible="false" building_up_ani="start_pos:-900 -200 -300">
-              <a-entity id="gltf-13" gltf-model="/demo/files/others/20181205/1543995844999.glb" position="73.554 0 43.627" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-14" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="-92.185 0 -87.163" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
-              <a-entity id="gltf-15" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="114.251 0 -104.929" rotation="0 90 0" scale="0.5 0.5 0.5"></a-entity>
-              <a-entity id="gltf-16" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-101.551 0 85.097"></a-entity>
-              <a-entity id="gltf-17" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-97.994 0 -5.654"></a-entity>
+              <a-entity id="gltf-13" gltf-model="/ARTest/files/others/20181205/1543995844999.glb" position="73.554 0 43.627" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-14" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="-92.185 0 -87.163" rotation="0 90 0" scale="0.6 0.6 0.6"></a-entity>
+              <a-entity id="gltf-15" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="114.251 0 -104.929" rotation="0 90 0" scale="0.5 0.5 0.5"></a-entity>
+              <a-entity id="gltf-16" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-101.551 0 85.097"></a-entity>
+              <a-entity id="gltf-17" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-97.994 0 -5.654"></a-entity>
           </a-entity>
           <a-entity id="building_5" position="-900 100 -600" visible="false" building_up_ani="start_pos:-900 -200 -600">
-              <a-entity id="gltf-19" gltf-model="/demo/files/others/20181205/1543995495618.glb" position="-85.532 0 -52.772" rotation="0 90 0" scale="0.6 0.5 0.8"></a-entity>
-              <a-entity id="gltf-22" gltf-model="/demo/files/others/20181205/1543995495618.glb" position="-85.532 0 69.36" rotation="0 90 0" scale="0.6 0.5 0.8"></a-entity>
-              <a-entity id="gltf-20" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="109.132 0 -60.867" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-21" gltf-model="/demo/files/others/20181025/1540468442845.glb" position="97.62 0 36.311" rotation="0 -90 0" scale="0.8 0.3 0.6"></a-entity>
+              <a-entity id="gltf-19" gltf-model="/ARTest/files/others/20181205/1543995495618.glb" position="-85.532 0 -52.772" rotation="0 90 0" scale="0.6 0.5 0.8"></a-entity>
+              <a-entity id="gltf-22" gltf-model="/ARTest/files/others/20181205/1543995495618.glb" position="-85.532 0 69.36" rotation="0 90 0" scale="0.6 0.5 0.8"></a-entity>
+              <a-entity id="gltf-20" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="109.132 0 -60.867" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-21" gltf-model="/ARTest/files/others/20181025/1540468442845.glb" position="97.62 0 36.311" rotation="0 -90 0" scale="0.8 0.3 0.6"></a-entity>
           </a-entity>
           <a-entity id="building_6" position="-900 100 -900" visible="false" building_up_ani="start_pos:-900 -200 -900"></a-entity>
           <a-entity id="building_7" position="-600 100 -900" visible="false" building_up_ani="start_pos:-600 -200 -900">
-              <a-entity id="gltf-18" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="-45.111 0 -75"></a-entity>
-              <a-entity id="gltf-23" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="59.072 0 -75"></a-entity>
-              <a-entity id="gltf-24" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="52.91 0 101.173" scale="5 1.5 1"></a-entity>
-              <a-entity id="gltf-25" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="-59.422 0 98.907"></a-entity>
+              <a-entity id="gltf-18" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="-45.111 0 -75"></a-entity>
+              <a-entity id="gltf-23" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="59.072 0 -75"></a-entity>
+              <a-entity id="gltf-24" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="52.91 0 101.173" scale="5 1.5 1"></a-entity>
+              <a-entity id="gltf-25" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="-59.422 0 98.907"></a-entity>
           </a-entity>
           <a-entity id="building_8" position="-300 100 -900" visible="false" building_up_ani="start_pos:-300 -200 -900">
-              <a-entity id="gltf-26" gltf-model="/demo/files/others/20181205/1543995844999.glb" position="-23.508 0 95.451" scale="1 2 0.5"></a-entity>
-              <a-entity id="gltf-27" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="17.068 0 -82.116" scale="4 1 1"></a-entity>
+              <a-entity id="gltf-26" gltf-model="/ARTest/files/others/20181205/1543995844999.glb" position="-23.508 0 95.451" scale="1 2 0.5"></a-entity>
+              <a-entity id="gltf-27" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="17.068 0 -82.116" scale="4 1 1"></a-entity>
           </a-entity>
           <a-entity id="building_9" position="0 100 -900" visible="false" building_up_ani="start_pos:0 -200 -900">
-              <a-entity id="gltf-28" gltf-model="/demo/files/others/20181025/1540468442845.glb" position="5.632 0 -90.505" scale="1.5 0.6 1"></a-entity>
-              <a-entity id="gltf-29" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="-50.16 0 93.224" scale="1 0.5 1"></a-entity>
-              <a-entity id="gltf-30" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="87.809 0 108.205"></a-entity>
+              <a-entity id="gltf-28" gltf-model="/ARTest/files/others/20181025/1540468442845.glb" position="5.632 0 -90.505" scale="1.5 0.6 1"></a-entity>
+              <a-entity id="gltf-29" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="-50.16 0 93.224" scale="1 0.5 1"></a-entity>
+              <a-entity id="gltf-30" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="87.809 0 108.205"></a-entity>
           </a-entity>
           <a-entity id="building_10" position="300 100 -900" visible="false" building_up_ani="start_pos:300 -200 -900">
-              <a-entity id="gltf-31" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="-54.394 0 102.275" scale="2 1.5 1"></a-entity>
-              <a-entity id="gltf-32" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-62.859 0 -86.189"></a-entity>
-              <a-entity id="gltf-33" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="7.802 0 -86.189"></a-entity>
-              <a-entity id="gltf-34" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="81.447 0 -86.189"></a-entity>
-              <a-entity id="gltf-35" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="69.024 0 104.492" scale="0.6 0.5 0.9"></a-entity>
+              <a-entity id="gltf-31" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="-54.394 0 102.275" scale="2 1.5 1"></a-entity>
+              <a-entity id="gltf-32" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-62.859 0 -86.189"></a-entity>
+              <a-entity id="gltf-33" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="7.802 0 -86.189"></a-entity>
+              <a-entity id="gltf-34" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="81.447 0 -86.189"></a-entity>
+              <a-entity id="gltf-35" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="69.024 0 104.492" scale="0.6 0.5 0.9"></a-entity>
           </a-entity>
           <a-entity id="building_11" position="600 100 -900" visible="false" building_up_ani="start_pos:600 -200 -900">
-              <a-entity id="gltf-36" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="-78.532 0 -98.215"></a-entity>
-              <a-entity id="gltf-37" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="89.191 0 109.298"></a-entity>
-              <a-entity id="gltf-38" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="4.103 0 -97.671"></a-entity>
-              <a-entity id="gltf-39" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-48.107 0 95.656" scale="4 1 1"></a-entity>
-              <a-entity id="gltf-40" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="80.762 0 -105.754"></a-entity>
+              <a-entity id="gltf-36" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="-78.532 0 -98.215"></a-entity>
+              <a-entity id="gltf-37" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="89.191 0 109.298"></a-entity>
+              <a-entity id="gltf-38" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="4.103 0 -97.671"></a-entity>
+              <a-entity id="gltf-39" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-48.107 0 95.656" scale="4 1 1"></a-entity>
+              <a-entity id="gltf-40" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="80.762 0 -105.754"></a-entity>
           </a-entity>
           <a-entity id="building_12" position="900 100 -900" visible="false" building_up_ani="start_pos:900 -200 -900"></a-entity>
           <a-entity id="building_13" position="900 100 -600" visible="false" building_up_ani="start_pos:900 -200 -600">
-              <a-entity id="gltf-41" gltf-model="/demo/files/others/20181025/1540468442845.glb" position="72.631 0 70.725" rotation="0 90 0" scale="1 0.8 1"></a-entity>
-              <a-entity id="gltf-42" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="59.419 0 -49.019" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-43" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-108.501 0 -42.136" scale="1 2 3"></a-entity>
-              <a-entity id="gltf-44" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="-106.913 0 80.405" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-41" gltf-model="/ARTest/files/others/20181025/1540468442845.glb" position="72.631 0 70.725" rotation="0 90 0" scale="1 0.8 1"></a-entity>
+              <a-entity id="gltf-42" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="59.419 0 -49.019" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-43" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-108.501 0 -42.136" scale="1 2 3"></a-entity>
+              <a-entity id="gltf-44" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="-106.913 0 80.405" rotation="0 90 0"></a-entity>
           </a-entity>
           <a-entity id="building_14" position="900 100 -300" visible="false" building_up_ani="start_pos:900 -200 -300">
-              <a-entity id="gltf-45" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="99.493 0 -39.384" rotation="0 90 0" scale="2 2 2"></a-entity>
-              <a-entity id="gltf-46" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="93.118 0 89.443"></a-entity>
-              <a-entity id="gltf-47" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-101.116 0 -72.554" scale="2 1.5 2"></a-entity>
-              <a-entity id="gltf-48" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-113.655 0 -11.771"></a-entity>
-              <a-entity id="gltf-49" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-118.985 0 38.953"></a-entity>
+              <a-entity id="gltf-45" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="99.493 0 -39.384" rotation="0 90 0" scale="2 2 2"></a-entity>
+              <a-entity id="gltf-46" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="93.118 0 89.443"></a-entity>
+              <a-entity id="gltf-47" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-101.116 0 -72.554" scale="2 1.5 2"></a-entity>
+              <a-entity id="gltf-48" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-113.655 0 -11.771"></a-entity>
+              <a-entity id="gltf-49" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-118.985 0 38.953"></a-entity>
           </a-entity>
           <a-entity id="building_15" position="900 100 0" visible="false" building_up_ani="start_pos:900 -200 0">
-              <a-entity id="gltf-50" gltf-model="/demo/files/others/20181205/1543995844999.glb" position="-93.471 0 0" rotation="0 90 0" scale="1 2 0.7"></a-entity>
-              <a-entity id="gltf-51" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="96.132 0 -35.027" rotation="0 90 0" scale="3 1 1"></a-entity>
-              <a-entity id="gltf-52" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="99.608 0 83.92" scale="1 2 2"></a-entity>
+              <a-entity id="gltf-50" gltf-model="/ARTest/files/others/20181205/1543995844999.glb" position="-93.471 0 0" rotation="0 90 0" scale="1 2 0.7"></a-entity>
+              <a-entity id="gltf-51" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="96.132 0 -35.027" rotation="0 90 0" scale="3 1 1"></a-entity>
+              <a-entity id="gltf-52" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="99.608 0 83.92" scale="1 2 2"></a-entity>
           </a-entity>
           <a-entity id="building_16" position="900 100 300" visible="false" building_up_ani="start_pos:900 -200 300">
-              <a-entity id="gltf-53" gltf-model="/demo/files/others/20181205/1543995495618.glb" position="84.91 0 0" rotation="0 90 0"></a-entity>
-              <a-entity id="gltf-54" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-94.864 0 -85.728"></a-entity>
-              <a-entity id="gltf-55" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="-101.188 0 51.454" rotation="0 90 0" scale="2 1.6 1"></a-entity>
+              <a-entity id="gltf-53" gltf-model="/ARTest/files/others/20181205/1543995495618.glb" position="84.91 0 0" rotation="0 90 0"></a-entity>
+              <a-entity id="gltf-54" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-94.864 0 -85.728"></a-entity>
+              <a-entity id="gltf-55" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="-101.188 0 51.454" rotation="0 90 0" scale="2 1.6 1"></a-entity>
           </a-entity>
           <a-entity id="building_17" position="900 100 600" visible="false" building_up_ani="start_pos:900 -200 600">
-              <a-entity id="gltf-59" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="91.209 0 -53.439" rotation="0 90 0" scale="2 1 1"></a-entity>
-              <a-entity id="gltf-60" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-102.064 0 -76.874"></a-entity>
-              <a-entity id="gltf-61" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="85.222 0 70.42" scale="1.5 3 2"></a-entity>
-              <a-entity id="gltf-62" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-100.142 0 58.821" scale="0.8 1 2"></a-entity>
+              <a-entity id="gltf-59" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="91.209 0 -53.439" rotation="0 90 0" scale="2 1 1"></a-entity>
+              <a-entity id="gltf-60" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-102.064 0 -76.874"></a-entity>
+              <a-entity id="gltf-61" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="85.222 0 70.42" scale="1.5 3 2"></a-entity>
+              <a-entity id="gltf-62" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-100.142 0 58.821" scale="0.8 1 2"></a-entity>
           </a-entity>
           <a-entity id="building_18" position="900 100 900" visible="false" building_up_ani="start_pos:900 -200 900"></a-entity>
           <a-entity id="building_19" position="600 100 900" visible="false" building_up_ani="start_pos:600 -200 900">
-              <a-entity id="gltf-57" gltf-model="/demo/files/others/20181206/1544048834893.glb" position="22.863 0 91.429"></a-entity>
-              <a-entity id="gltf-75" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="89.322 0 -102.463" scale="1.2 1 1"></a-entity>
-              <a-entity id="gltf-76" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="7.248 0 -111.786" scale="0.6699999999999999 1.3 1.08"></a-entity>
-              <a-entity id="gltf-77" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-82.795 0 -101.151" scale="1.4 1.37 0.81"></a-entity>
+              <a-entity id="gltf-57" gltf-model="/ARTest/files/others/20181206/1544048834893.glb" position="22.863 0 91.429"></a-entity>
+              <a-entity id="gltf-75" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="89.322 0 -102.463" scale="1.2 1 1"></a-entity>
+              <a-entity id="gltf-76" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="7.248 0 -111.786" scale="0.6699999999999999 1.3 1.08"></a-entity>
+              <a-entity id="gltf-77" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-82.795 0 -101.151" scale="1.4 1.37 0.81"></a-entity>
           </a-entity>
           <a-entity id="building_20" position="300 100 900" visible="false" building_up_ani="start_pos:300 -200 900">
-              <a-entity id="gltf-63" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-60.126 0 96.141" scale="2 1.8 1"></a-entity>
-              <a-entity id="gltf-65" gltf-model="/demo/files/others/20181205/1543995363624.glb" position="64.039 0 99.362" scale="2 2 2"></a-entity>
-              <a-entity id="gltf-73" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="57.937 0 -100.902" scale="3 1.5 1"></a-entity>
-              <a-entity id="gltf-74" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-40.031 0 -100.902" scale="1 2 1"></a-entity>
+              <a-entity id="gltf-63" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-60.126 0 96.141" scale="2 1.8 1"></a-entity>
+              <a-entity id="gltf-65" gltf-model="/ARTest/files/others/20181205/1543995363624.glb" position="64.039 0 99.362" scale="2 2 2"></a-entity>
+              <a-entity id="gltf-73" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="57.937 0 -100.902" scale="3 1.5 1"></a-entity>
+              <a-entity id="gltf-74" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-40.031 0 -100.902" scale="1 2 1"></a-entity>
           </a-entity>
           <a-entity id="building_21" position="0 100 900" visible="false" building_up_ani="start_pos:0 -200 900">
-              <a-entity id="gltf-56" gltf-model="/demo/files/others/20181025/1540468442845.glb" position="29.598 0 87.313" scale="1.5 1 1"></a-entity>
-              <a-entity id="gltf-72" gltf-model="/demo/files/others/20181205/1543995844999.glb" position="0 0 -88.229" scale="1 3 1"></a-entity>
+              <a-entity id="gltf-56" gltf-model="/ARTest/files/others/20181025/1540468442845.glb" position="29.598 0 87.313" scale="1.5 1 1"></a-entity>
+              <a-entity id="gltf-72" gltf-model="/ARTest/files/others/20181205/1543995844999.glb" position="0 0 -88.229" scale="1 3 1"></a-entity>
           </a-entity>
           <a-entity id="building_22" position="-300 100 900" visible="false" building_up_ani="start_pos:-300 -200 900">
-              <a-entity id="gltf-64" gltf-model="/demo/files/others/20181206/1544048064764.glb" position="17.337 0 86.285" scale="3 1.5 1"></a-entity>
-              <a-entity id="gltf-69" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="91.55 0 -112.323" scale="1 0.8 0.5"></a-entity>
-              <a-entity id="gltf-70" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="10.976 0 -112.323" scale="1 0.8 0.5"></a-entity>
-              <a-entity id="gltf-71" gltf-model="/demo/files/others/20181025/1540468460324.glb" position="-71.649 0 -112.323" scale="1 0.8 0.5"></a-entity>
+              <a-entity id="gltf-64" gltf-model="/ARTest/files/others/20181206/1544048064764.glb" position="17.337 0 86.285" scale="3 1.5 1"></a-entity>
+              <a-entity id="gltf-69" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="91.55 0 -112.323" scale="1 0.8 0.5"></a-entity>
+              <a-entity id="gltf-70" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="10.976 0 -112.323" scale="1 0.8 0.5"></a-entity>
+              <a-entity id="gltf-71" gltf-model="/ARTest/files/others/20181025/1540468460324.glb" position="-71.649 0 -112.323" scale="1 0.8 0.5"></a-entity>
           </a-entity>
           <a-entity id="building_23" position="-600 100 900" visible="false" building_up_ani="start_pos:-600 -200 900">
-              <a-entity id="gltf-58" gltf-model="/demo/files/others/20181205/1543995495618.glb" position="-42.3 0 81.386"></a-entity>
-              <a-entity id="gltf-66" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="0 0 -104.162" scale="2.21 1.34 1"></a-entity>
-              <a-entity id="gltf-67" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="78.548 0 -104.162" scale="2.21 1.34 1"></a-entity>
-              <a-entity id="gltf-68" gltf-model="/demo/files/others/20181205/1543995792954.glb" position="-72.42 0 -108.232" scale="1 2 1"></a-entity>
+              <a-entity id="gltf-58" gltf-model="/ARTest/files/others/20181205/1543995495618.glb" position="-42.3 0 81.386"></a-entity>
+              <a-entity id="gltf-66" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="0 0 -104.162" scale="2.21 1.34 1"></a-entity>
+              <a-entity id="gltf-67" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="78.548 0 -104.162" scale="2.21 1.34 1"></a-entity>
+              <a-entity id="gltf-68" gltf-model="/ARTest/files/others/20181205/1543995792954.glb" position="-72.42 0 -108.232" scale="1 2 1"></a-entity>
           </a-entity>
           <a-entity id="building_0" position="-900 100 900" visible="false" building_up_ani="start_pos:-900 -200 900"></a-entity>
       </a-entity>

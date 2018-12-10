@@ -5,24 +5,24 @@
 <head>
 <title>K-Frame</title>
 <meta name="description" content="K-Frame">
-<script src="/demo/resources/js/jquery.3.2.1.min.js"></script>
-<script src="/demo/resources/js/go.js"></script>
-<script src="/demo/resources/js/go_extention_TextEditorSelectBox.js"></script>
-<script src="/demo/resources/js/go_extention_TextEditorRadioButtons.js"></script>
-<script src="/demo/resources/js/highlight.js"></script>
-<script src="/demo/resources/js/aframe-master_noneInspector.js"></script>
-<script src="/demo/resources/js/aframe-physics-system.js"></script>
-<script src="/demo/resources/js/aframe-physics-extras.js"></script>
-<script src="/demo/resources/js/aframe-animation-component.js"></script>
-<script src="/demo/resources/js/kframe_noneInspector.js"></script>
-<script src="/demo/resources/js/aframe-extras.js"></script>
-<script src="/demo/resources/js/aframe-text-geometry-component.js"></script>
-<script src="/demo/resources/js/maxUtils.js"></script>
-<script src="/demo/resources/js/components.js"></script>
+<script src="/ARTest/resources/js/jquery.3.2.1.min.js"></script>
+<script src="/ARTest/resources/js/go.js"></script>
+<script src="/ARTest/resources/js/go_extention_TextEditorSelectBox.js"></script>
+<script src="/ARTest/resources/js/go_extention_TextEditorRadioButtons.js"></script>
+<script src="/ARTest/resources/js/highlight.js"></script>
+<script src="/ARTest/resources/js/aframe-master_noneInspector.js"></script>
+<script src="/ARTest/resources/js/aframe-physics-system.js"></script>
+<script src="/ARTest/resources/js/aframe-physics-extras.js"></script>
+<script src="/ARTest/resources/js/aframe-animation-component.js"></script>
+<script src="/ARTest/resources/js/kframe_noneInspector.js"></script>
+<script src="/ARTest/resources/js/aframe-extras.js"></script>
+<script src="/ARTest/resources/js/aframe-text-geometry-component.js"></script>
+<script src="/ARTest/resources/js/maxUtils.js"></script>
+<script src="/ARTest/resources/js/components.js"></script>
 <!-- <script src="/ARTest/monopoly/js/three.ar.js"></script>
 <script src="/ARTest/monopoly/js/aframe-ar.js"></script> -->
-<script src="/demo/resources/ar/three.ar.js"></script>
-<script src="/demo/resources/ar/aframe-ar.js"></script>
+<script src="/ARTest/resources/ar/three.ar.js"></script>
+<script src="/ARTest/resources/ar/aframe-ar.js"></script>
 
 <script type="text/javascript">
 window.projectCode = "PROJ20181203213956912";
@@ -52,44 +52,44 @@ window.addEventListener('keydown', function(e){
  var obj = new Object();
  obj.id = "COBJ111111";
  var tmp = new Array();
- tmp.push({"clip":"1", "src":"/demo/models/samples/Dice_Left_Num1.glb"});
- tmp.push({"clip":"2", "src":"/demo/models/samples/Dice_Left_Num2.glb"});
- tmp.push({"clip":"3", "src":"/demo/models/samples/Dice_Left_Num3.glb"});
- tmp.push({"clip":"4", "src":"/demo/models/samples/Dice_Left_Num4.glb"});
- tmp.push({"clip":"5", "src":"/demo/models/samples/Dice_Left_Num5.glb"});
- tmp.push({"clip":"6", "src":"/demo/models/samples/Dice_Left_Num6.glb"});
+ tmp.push({"clip":"1", "src":"/ARTest/models/samples/Dice_Left_Num1.glb"});
+ tmp.push({"clip":"2", "src":"/ARTest/models/samples/Dice_Left_Num2.glb"});
+ tmp.push({"clip":"3", "src":"/ARTest/models/samples/Dice_Left_Num3.glb"});
+ tmp.push({"clip":"4", "src":"/ARTest/models/samples/Dice_Left_Num4.glb"});
+ tmp.push({"clip":"5", "src":"/ARTest/models/samples/Dice_Left_Num5.glb"});
+ tmp.push({"clip":"6", "src":"/ARTest/models/samples/Dice_Left_Num6.glb"});
  obj.clip = tmp;
  _ComplexObjectList.push(obj);
 
  obj = new Object();
  obj.id = "COBJ222222";
  tmp = new Array();
- tmp.push({"clip":"1", "src":"/demo/models/samples/Dice_Right_Num1.glb"});
- tmp.push({"clip":"2", "src":"/demo/models/samples/Dice_Right_Num2.glb"});
- tmp.push({"clip":"3", "src":"/demo/models/samples/Dice_Right_Num3.glb"});
- tmp.push({"clip":"4", "src":"/demo/models/samples/Dice_Right_Num4.glb"});
- tmp.push({"clip":"5", "src":"/demo/models/samples/Dice_Right_Num5.glb"});
- tmp.push({"clip":"6", "src":"/demo/models/samples/Dice_Right_Num6.glb"});
+ tmp.push({"clip":"1", "src":"/ARTest/models/samples/Dice_Right_Num1.glb"});
+ tmp.push({"clip":"2", "src":"/ARTest/models/samples/Dice_Right_Num2.glb"});
+ tmp.push({"clip":"3", "src":"/ARTest/models/samples/Dice_Right_Num3.glb"});
+ tmp.push({"clip":"4", "src":"/ARTest/models/samples/Dice_Right_Num4.glb"});
+ tmp.push({"clip":"5", "src":"/ARTest/models/samples/Dice_Right_Num5.glb"});
+ tmp.push({"clip":"6", "src":"/ARTest/models/samples/Dice_Right_Num6.glb"});
  obj.clip = tmp;
  _ComplexObjectList.push(obj);
 
  obj = new Object();
  obj.id = "COBJ33333";
  tmp = new Array();
- tmp.push({"clip":"idle", "src":"/demo/models/samples/male_idle.glb"});
- tmp.push({"clip":"run", "src":"/demo/models/samples/male_run.glb"});
- tmp.push({"clip":"cheer", "src":"/demo/models/samples/male_cheer.glb"});
- tmp.push({"clip":"defeat", "src":"/demo/models/samples/male_defeat.glb"});
+ tmp.push({"clip":"idle", "src":"/ARTest/models/samples/male_idle.glb"});
+ tmp.push({"clip":"run", "src":"/ARTest/models/samples/male_run.glb"});
+ tmp.push({"clip":"cheer", "src":"/ARTest/models/samples/male_cheer.glb"});
+ tmp.push({"clip":"defeat", "src":"/ARTest/models/samples/male_defeat.glb"});
  obj.clip = tmp;
  _ComplexObjectList.push(obj);
 
  obj = new Object();
  obj.id = "COBJ44444";
  tmp = new Array();
- tmp.push({"clip":"idle", "src":"/demo/models/samples/female_idle.glb"});
- tmp.push({"clip":"run", "src":"/demo/models/samples/female_run.glb"});
- tmp.push({"clip":"cheer", "src":"/demo/models/samples/female_cheer.glb"});
- tmp.push({"clip":"defeat", "src":"/demo/models/samples/female_defeat.glb"});
+ tmp.push({"clip":"idle", "src":"/ARTest/models/samples/female_idle.glb"});
+ tmp.push({"clip":"run", "src":"/ARTest/models/samples/female_run.glb"});
+ tmp.push({"clip":"cheer", "src":"/ARTest/models/samples/female_cheer.glb"});
+ tmp.push({"clip":"defeat", "src":"/ARTest/models/samples/female_defeat.glb"});
  obj.clip = tmp;
  _ComplexObjectList.push(obj);
 
@@ -460,24 +460,6 @@ var __component;
 }
 
 
-var NewComponentCode = "";
-function getComponentId() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/api/components/getId.do');
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.send();
-
-    xhr.onloadend = function () {
-        if (xhr.readyState === xhr.DONE) { // 요청이 완료되면
-            if (xhr.status === 200 || xhr.status === 201) {
-                console.log(xhr.responseText);
-                NewComponentCode = xhr.responseText;
-            } else {
-                console.error(xhr.responseText);
-            }
-        }
-    };
-}
 </script>
 
 </head>
