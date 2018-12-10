@@ -3374,13 +3374,15 @@ var __component;
             <a-entity cursor="" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.016" material="color: #EEE" position="0 0 -1"></a-entity>
           </a-entity>
           <a-entity id="sound">
-              <a-entity id="snd_footstep" geometry="primitive:plane" sound="src:/ARTest/files/others/20181208/1544251400114.mp3"></a-entity>
-              <a-entity id="snd_setblock" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544334991890.mp3"></a-entity>
-              <a-entity id="snd_coin" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544336594341.mp3"></a-entity>
-              <a-entity id="snd_dice" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544337453367.mp3"></a-entity>
-              <a-entity id="snd_construction" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544337966253.mp3"></a-entity>
+              <a-entity id="snd_footstep" scale="0.001 0.001 0.001" geometry="primitive:plane" sound="src:/ARTest/files/others/20181208/1544251400114.mp3"></a-entity>
+              <a-entity id="snd_setblock" scale="0.001 0.001 0.001" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544334991890.mp3"></a-entity>
+              <a-entity id="snd_coin" scale="0.001 0.001 0.001" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544336594341.mp3"></a-entity>
+              <a-entity id="snd_dice" scale="0.001 0.001 0.001" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544337453367.mp3"></a-entity>
+              <a-entity id="snd_construction" scale="0.001 0.001 0.001" geometry="primitive:plane" sound="src:/ARTest/files/others/20181209/1544337966253.mp3"></a-entity>
           </a-entity>
       </a-entity>
+
+      <a-entity id="terrain" gltf-model="/ARTest/files/others/20181205/1543993763103.glb" scale="1.05 1.05 1.05"></a-entity>
 
       <a-entity id="popup" material="color:#ffffff" text-geometry="value:aaaaaa" crossorigin="anonymous" scale="500 500 1" visible="false" test_obj=""></a-entity>
       <a-entity id="money_controller" crossorigin="anonymous" get_share_money="">
